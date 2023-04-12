@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Lifetime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,6 +9,8 @@ namespace CapaLogicaNegocio.MessageErrors
 {
     public class MessageErrors
     {
+        
+        public static string searchNotFoundPleaseBeMoreSpecific = "busqueda no encontrada, favor de ser mas especifico";
         public static string selectABranchPlease = "Seleccione una sucursal por favor por favor";
         public static string incorrectFomrmantEmail = "El correo electronico no tiene el formato correcto, verifica por favor";
         public static string failedSendEmail = "Ocurrió un error al enviar el correo electrónico";

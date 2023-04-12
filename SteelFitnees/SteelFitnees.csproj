@@ -154,6 +154,8 @@
     <Content Include="gentelella-master\production\aboutUsAdmin.aspx" />
     <Content Include="gentelella-master\production\addProductsToBranches.aspx" />
     <Content Include="gentelella-master\production\adminMaster.Master" />
+    <Content Include="gentelella-master\production\allBranches.aspx" />
+    <Content Include="gentelella-master\production\allProducts.aspx" />
     <Content Include="gentelella-master\production\bootstrap-5.0.2-dist\css\bootstrap-grid.css.map" />
     <Content Include="gentelella-master\production\bootstrap-5.0.2-dist\css\bootstrap-grid.min.css.map" />
     <Content Include="gentelella-master\production\bootstrap-5.0.2-dist\css\bootstrap-grid.rtl.css.map" />
@@ -216,6 +218,9 @@
     <Content Include="gentelella-master\production\js\personalizados\addProductsToBranches\requestBuildTableFilterBy.js" />
     <Content Include="gentelella-master\production\js\personalizados\addProductsToBranches\requestProducts.js" />
     <Content Include="gentelella-master\production\js\personalizados\addProductsToBranches\update.js" />
+    <Content Include="gentelella-master\production\js\personalizados\allProducts\OnkeyupSearch.js" />
+    <Content Include="gentelella-master\production\js\personalizados\allProducts\requestAllProducts.js" />
+    <Content Include="gentelella-master\production\js\personalizados\allProducts\build\productsCards.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\Add.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\buildCardsImages.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\buildTable.js" />
@@ -5836,6 +5841,20 @@
     </Compile>
     <Compile Include="gentelella-master\production\adminMaster.Master.designer.cs">
       <DependentUpon>adminMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="gentelella-master\production\allBranches.aspx.cs">
+      <DependentUpon>allBranches.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gentelella-master\production\allBranches.aspx.designer.cs">
+      <DependentUpon>allBranches.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gentelella-master\production\allProducts.aspx.cs">
+      <DependentUpon>allProducts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gentelella-master\production\allProducts.aspx.designer.cs">
+      <DependentUpon>allProducts.aspx</DependentUpon>
     </Compile>
     <Compile Include="gentelella-master\production\Galeria.aspx.cs">
       <DependentUpon>Galeria.aspx</DependentUpon>

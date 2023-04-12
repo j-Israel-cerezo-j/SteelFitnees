@@ -35,6 +35,8 @@ namespace CapaLogicaNegocio
                     return productService.onkeyupSearchListByCharacteresAndIdBranche(result,strId);
                 case "searchMaster":
                     return searchService.onkeyupSearchList(result);
+                case "allProducts":
+                    return productService.coincidencesProductByCharacters(result);
                 default:
                     throw new ServiceException(MessageErrors.MessageErrors.catalogNoExists);
             }
@@ -58,6 +60,8 @@ namespace CapaLogicaNegocio
                     return branchService.onkeyupSearchTable(result);
                 case "productsByBrancheAndCharacteres":
                     return productService.onkeyupSearchTableByIdBrancheAndCharacteres(result, strId);
+                case "allProducts":
+                    return productService.tableProductsAllByCharacteres(result);
                 default:
                     throw new ServiceException(MessageErrors.MessageErrors.catalogNoExists);
             }
@@ -79,11 +83,10 @@ namespace CapaLogicaNegocio
         {
             char[] charsToTrim = { ' ' };
             string resultTrim = caracteres.Trim(charsToTrim);
-            string result="%"+resultTrim+"%";
             switch (catalogo)
             {
                 case "actionSearchubmit":
-                    return searchService.urlRederictByCharacterSought(result);
+                    return searchService.urlRederictByCharacterSought(resultTrim);
 
                 default:
                     throw new ServiceException(MessageErrors.MessageErrors.catalogNoExists);

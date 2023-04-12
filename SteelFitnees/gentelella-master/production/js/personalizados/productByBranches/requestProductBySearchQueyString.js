@@ -1,6 +1,9 @@
-﻿function requestProductBySearchQueyString(id) {
+﻿function requestProductBySearchQueyString(id, characters) {
+    console.log(characters)
     if (id != -1 && id!=0) {
         document.getElementById("branches").value = id
-        buildProductsByBranche()
+        document.getElementById("exampleDataList").value = characters;
+        onkeyupSearchh();
+        document.getElementById("exampleDataList").value = "";
     }
 }

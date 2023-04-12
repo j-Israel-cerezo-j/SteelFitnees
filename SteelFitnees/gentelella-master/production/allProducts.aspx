@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="productsByBranche.aspx.cs" Inherits="SteelFitnees.gentelella_master.production.productsByBranche" MasterPageFile="~/gentelella-master/production/principal.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="allProducts.aspx.cs" Inherits="SteelFitnees.gentelella_master.production.allProducts" MasterPageFile="~/gentelella-master/production/principal.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
  <meta charset="utf-8"/>
@@ -9,26 +9,13 @@
     <link rel="shortcut icon" type="templates/fitnessclub-master/image/x-icon" href="templates/fitnessclub-master/assets/img/favicon.ico"/>
 	<!-- CSS here -->
 	<link href="bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" />
-	
+    <link href="css/personalizados/reflejos.css" rel="stylesheet" />
 	<link rel="stylesheet" href="templates/fitnessclub-master/assets/css/style.css"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="home-blog-area " style="z-index:1 !important">
             <div class="container">
-                
-                <!-- Section Tittle -->
                 <div class="row justify-content-center">
-                    <div class="section-tittle text-center">
-                        <span style="font-size:40px">Productos de la sucursal</span>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="section-tittle text-center mb-100">
-                             <select class="form-select form-select-lg mb-3" id="branches" onchange="buildProductsByBranche()">
-                            </select>
-                        </div>
-                    </div>
                     <div class="col-lg-6 col-md-6 col-sm-12" >
                         <form id="formOnkeyup">	
                             <input type="hidden" id="catalogo" name="catalogo" value="productsByBrancheAndCharacteres" />
@@ -44,40 +31,22 @@
                         </form>
                     </div>                    
                 </div>
-                <div class="row justify-content-center">
-                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="section-tittle text-center mb-50">                             
-                            <h2 id="nameBranche"></h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" style="justify-content: center;" id="containerCardsProducts">
-                    <h2 style="text-align:center">Selecciona una sucursal por favor</h2>
+                <div class="row" style="justify-content: center;margin-top:50px;" id="containerCardsProducts">
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-3">
                     <a href="index.aspx" class="btn wantToWork-btn f-right">Regresar</a>
                 </div>
             </div>
         </section>
-    <script src="js/personalizados/productByBranches/OnkeyupSearch.js"></script>
-    <script src="js/personalizados/productByBranches/requestBranches.js"></script>    
-    <script src="js/personalizados/productByBranches/requestProductByBranche.js"></script>
-    <script src="js/personalizados/productByBranches/build/buildCardsProducts.js"></script>    
-    <script src="js/personalizados/productByBranches/build/slc/buildBranchesSlc.js"></script>
-    <script src="js/personalizados/productByBranches/requestProductBySearchQueyString.js"></script>
-
+    <script src="js/personalizados/allProducts/OnkeyupSearch.js"></script>
+    <script src="js/personalizados/allProducts/requestAllProducts.js"></script>
+    <script src="js/personalizados/allProducts/build/productsCards.js"></script>
     <script src="js/personalizados/utils/switchTableOnkeyup.js"></script>
     <script src="js/personalizados/utils/Ajax/onkeyupSearchCatalogos.js"></script>
     <script src="js/personalizados/utils/Ajax/request.js"></script>
     <script type="text/javascript">
         window.onload = function () {
-            var id =<%=getIdPorduct %>
-            var characters =" <%=getCharacters %> "
-            requestBranches()
-            
-            setTimeout(() => {
-                requestProductBySearchQueyString(id, characters);    
-            }, 1000);
+            requestAllProducts()
         }
     </script>
 

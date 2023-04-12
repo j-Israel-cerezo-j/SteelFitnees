@@ -21,5 +21,7 @@
             break;
         case 'actionSearchubmit':
             redirect(json);
+        case 'allProducts':
+            buildAllProduct(json);
     }
 }

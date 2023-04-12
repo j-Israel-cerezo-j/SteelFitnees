@@ -104,6 +104,20 @@ namespace CapaLogicaNegocio.Services
             }
             return Converter.ToJson(productTable.ByIdBranche(Convert.ToInt32(strId))).ToString();
         }
+        public string jsonProductsAllTable()
+        {
+            return Converter.ToJson(productTable.tableProductsAll(), "idProducto").ToString();
+        }
+        public string tableProductsAllByCharacteres(string caracteres)
+        {
+            return Converter.ToJson(productTable.tableProductsAllByCharacteres(caracteres)).ToString();
+        }
+        public List<string> coincidencesProductByCharacters(string caracteres)
+        {
+            caracteres = "%" + caracteres + "%";
+            return Converter.ToList(productTable.coincidencesProductByCharacters(caracteres));
+
+        }
         public bool deleteProducts(string strIds)
         {
             try

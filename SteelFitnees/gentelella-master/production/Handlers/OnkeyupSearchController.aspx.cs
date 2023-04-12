@@ -38,6 +38,10 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             {
                 onkeyupSearchMasterPageAction();
             }
+            else if (action == "allProducts")
+            {
+                onkeyupSearchAllProducts();
+            }
         }
         private void onkeyupSearch()
         {
@@ -164,6 +168,31 @@ namespace SteelFitnees.gentelella_master.production.Handlers
                 data.Add("coincidencias", coincidencias);
                 data.Add("catalogo", catalogo);                
                 data.Add("table", JsonConvert.DeserializeObject(productsJson));
+                response.success = true;
+
+            }
+            catch (ServiceException e)
+            {
+                response.error = e.getMessage();
+            }
+            data.Add("footeer", "Verificar por favor");
+            response.data = data;
+            getJsonResponse = JsonConvert.SerializeObject(response);
+        }
+        private void onkeyupSearchAllProducts()
+        {
+            var data = new Dictionary<string, Object>();
+            Response response = new Response();
+            string catalogo = Request.QueryString["catalogo"];
+            string caracteresDeBusqueda = Request.Form["onkeyupCoincidencias"];
+
+            try
+            {
+                var coincidencias = facadeOnkeyup.coincidences(catalogo, caracteresDeBusqueda);
+                var jsonTable = facadeOnkeyup.tables(catalogo, caracteresDeBusqueda);
+                data.Add("catalogo", catalogo);
+                data.Add("coincidencias", coincidencias);
+                data.Add("table", JsonConvert.DeserializeObject(jsonTable));
                 response.success = true;
 
             }

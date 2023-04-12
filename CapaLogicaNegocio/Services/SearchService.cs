@@ -9,6 +9,7 @@ using CapaDatos.ExceptionDao;
 using CapaLogicaNegocio.Exceptions;
 using System.IO;
 using CapaEntidades;
+using CapaLogicaNegocio.MessageErrors;
 
 namespace CapaLogicaNegocio.Services
 {
@@ -21,25 +22,70 @@ namespace CapaLogicaNegocio.Services
 
         }
         public string urlRederictByCharacterSought(string caracteres)
-        {
-            var response = new Dictionary<string, string>();
-            try
-            {                
-                var idBranche= searchTable.idBrancheByCharacteres(caracteres);                
-                response.Add("url", "showBranchesDetails.aspx?id="+idBranche);
-                return Converter.ToJson(response);
-            }catch (ExceptionDao ed)
+        {            
+            string result = "%" + caracteres + "%";
+            var response = new Dictionary<string, string>();                                   
+            var idBranche = searchTable.idBrancheByCharacteres(result);
+            if (idBranche != -1)
             {
-                try
+                response.Add("url", "showBranchesDetails.aspx?id=" + idBranche);
+                return Converter.ToJson(response);
+            }
+            else
+            {
+                var idProduct = searchTable.idProductByCharacteres(result);
+                if (idProduct!=-1)
                 {
-                    var idProduct=searchTable.idProductByCharacteres(caracteres);
-                    response.Add("url", "productsByBranche.aspx?id=" + idProduct);
+                    response.Add("url", "productsByBranche.aspx?id=" + idProduct + "&characters=" + caracteres);
                     return Converter.ToJson(response);
                 }
-                catch (ExceptionDao ex) {
-                    throw new ServiceException(ex.getMessage());
-                }
+                else
+                {
+                    const string productoWordProduct = "PRODUCTOS";
+                    const string productoWordBranche = "SUCURSALES";
+                    int caracteresSimilaresProductos = 0;
+                    int caracteresSimilaresSucursales = 0;
+                    int caracteresDiferentesProductos = 0;
+                    int caracteresDiferentesSucursales = 0;
 
+                    foreach (char c in caracteres.ToUpper())
+                    {
+                        if (productoWordProduct.Contains(c))
+                        {
+                            caracteresSimilaresProductos++;
+                        }
+                        else
+                        {
+                            caracteresDiferentesProductos++;
+                        }
+                        if (productoWordBranche.Contains(c))
+                        {
+                            caracteresSimilaresSucursales++;
+                        }
+                        else
+                        {
+                            caracteresDiferentesSucursales++;
+                        }
+
+                    }
+                    if (caracteresSimilaresProductos > caracteresSimilaresSucursales)
+                    {
+                        if (caracteresSimilaresProductos >= 6)
+                        {
+                            response.Add("url", "allProducts.aspx");
+                            return Converter.ToJson(response);
+                        }
+                    }
+                    else if (caracteresSimilaresProductos < caracteresSimilaresSucursales)
+                    {
+                        if (caracteresSimilaresSucursales >= 6)
+                        {
+                            response.Add("url", "allBranches.aspx");
+                            return Converter.ToJson(response);
+                        }
+                    }
+                }
+                throw new ServiceException(MessageErrors.MessageErrors.searchNotFoundPleaseBeMoreSpecific);
             }
         }
     }

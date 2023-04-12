@@ -21,6 +21,10 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             {
                 getProductsByIdBranche();
             }
+            else if (Request.QueryString["action"] == "all")
+            {
+                getProductsAllTable();
+            }
             else
             {
                 getProductsAll();
@@ -53,6 +57,24 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             try
             {                
                 string json = productService.jsonProductsByIdBranche(strId);
+                data.Add("recoverData", JsonConvert.DeserializeObject<Dictionary<string, Object>[]>(json));
+                response.success = true;
+            }
+            catch (ServiceException se)
+            {
+                response.error = se.getMessage();
+            }
+            data.Add("footeer", "Verificar por favor");
+            response.data = data;
+            getJsonResponse = JsonConvert.SerializeObject(response);
+        }
+        private void getProductsAllTable()
+        {            
+            var data = new Dictionary<string, Object>();
+            Response response = new Response();
+            try
+            {
+                string json = productService.jsonProductsAllTable();
                 data.Add("recoverData", JsonConvert.DeserializeObject<Dictionary<string, Object>[]>(json));
                 response.success = true;
             }

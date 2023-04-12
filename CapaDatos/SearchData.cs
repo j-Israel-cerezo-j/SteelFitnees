@@ -59,11 +59,12 @@ namespace CapaDatos
                 Comando.Parameters.Add(new SqlParameter("@search", SqlDbType.Text));
                 Comando.Parameters["@search"].Value = search;
                 Conexion.Open();
+                
                 idRecuperado = (int)Comando.ExecuteScalar();
             }
             catch(NullReferenceException ne)
             {
-                throw new ExceptionDao.ExceptionDao("Id no encontrado");
+                idRecuperado = -1;
             }
             catch (SqlException e)
             {
@@ -94,7 +95,7 @@ namespace CapaDatos
             }
             catch (NullReferenceException ne)
             {
-                throw new ExceptionDao.ExceptionDao("Id no encontrado");
+                idRecuperado = -1;
             }
             catch (SqlException e)
             {

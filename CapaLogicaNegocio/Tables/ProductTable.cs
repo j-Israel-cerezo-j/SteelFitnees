@@ -15,6 +15,18 @@ namespace CapaLogicaNegocio.Tables
         public DataTable ByIdBranche(int id) {
             return producData.tableProductsByIdBranche(id);
         }
+        public DataTable tableProductsAll()
+        {
+            return producData.tableProductsAll();
+        }
+        public DataTable tableProductsAllByCharacteres(string characteres)
+        {
+            return producData.tableProductsAllByCharacteres(characteres);
+        }
+        public DataTable coincidencesProductByCharacters(string characteres)
+        {
+            return producData.coincidencesProductByCharacters(characteres);
+        }
         public DataTable ByIdBrancheAndCharacteres(int id,string characteres)
         {
             return producData.tableProductsByIdBrancheAndCharacteres(id, characteres);

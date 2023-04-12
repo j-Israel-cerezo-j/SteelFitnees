@@ -1,7 +1,7 @@
 ﻿function keydown() {
     
 }
-const inputField = document.getElementById("exampleDataList");
+const inputField = document.getElementById("exampleDataListMaster");
 
 inputField.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
