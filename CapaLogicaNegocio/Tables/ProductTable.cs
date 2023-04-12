@@ -19,6 +19,10 @@ namespace CapaLogicaNegocio.Tables
         {
             return producData.tableProductsAll();
         }
+        public DataTable tableProductsByPrices(decimal priceMin,decimal priceMax)
+        {
+            return producData.tableProductsByPrices(priceMin, priceMax);
+        }
         public DataTable tableProductsAllByCharacteres(string characteres)
         {
             return producData.tableProductsAllByCharacteres(characteres);

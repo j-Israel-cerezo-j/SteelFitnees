@@ -7,10 +7,10 @@
         for (var i = 0; i < json.length; i++) {
             ban = true;                            
             htmlProducts +=
-                `<div class="col-lg-4 col-md-6 col-sm-6">
+                `<div class="col-lg-3 col-md-3 col-sm-6 col-xsm-12">
                     <div class="single-team mb-30">
                         <div class="team-img">
-                            <img src="${json[i].imagen}" alt="" width="20" height="280">
+                            <img src="${json[i].imagen}" alt="" width="1" height="230">
                             <div class="team-caption">
                                 <h3><a >${json[i].producto}</a></h3>
                                 <!-- Blog Social -->

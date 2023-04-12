@@ -9,7 +9,11 @@
     <link rel="shortcut icon" type="templates/fitnessclub-master/image/x-icon" href="templates/fitnessclub-master/assets/img/favicon.ico"/>
 	<!-- CSS here -->
 	<link href="css/personalizados/reflejos.css" rel="stylesheet" />
-	<link rel="stylesheet" href="templates/fitnessclub-master/assets/css/style.css"/>
+	
+    
+    <link href="frontend/css/styleIndex.css" rel="stylesheet" />
+    <link rel="stylesheet" href="templates/fitnessclub-master/assets/css/style.css">    
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <main>

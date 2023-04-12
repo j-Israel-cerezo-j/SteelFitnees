@@ -5,12 +5,11 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>    
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="manifest" href="site.webmanifest"/>
-    <link rel="shortcut icon" type="templates/fitnessclub-master/image/x-icon" href="templates/fitnessclub-master/assets/img/favicon.ico"/>
-	<!-- CSS here -->
-	<link href="bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" />
-	
-	<link rel="stylesheet" href="templates/fitnessclub-master/assets/css/style.css"/>
+    <link rel="manifest" href="site.webmanifest"/>    		
+	<link rel="stylesheet" href="templates/fitnessclub-master/assets/css/style.css">    
+    <link href="frontend/css/styleIndex.css" rel="stylesheet" />
+
+    <link href="bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="home-blog-area " style="z-index:1 !important">
@@ -47,7 +46,7 @@
                 <div class="row justify-content-center">
                      <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="section-tittle text-center mb-50">                             
-                            <h2 id="nameBranche"></h2>
+                            <h3 id="nameBranche"></h3>
                         </div>
                     </div>
                 </div>
@@ -55,7 +54,7 @@
                     <h2 style="text-align:center">Selecciona una sucursal por favor</h2>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-3">
-                    <a href="index.aspx" class="btn wantToWork-btn f-right">Regresar</a>
+                    <a style="font-size:25px" href="index.aspx" class="btn btn-primary ">Regresar</a>
                 </div>
             </div>
         </section>
@@ -64,20 +63,13 @@
     <script src="js/personalizados/productByBranches/requestProductByBranche.js"></script>
     <script src="js/personalizados/productByBranches/build/buildCardsProducts.js"></script>    
     <script src="js/personalizados/productByBranches/build/slc/buildBranchesSlc.js"></script>
-    <script src="js/personalizados/productByBranches/requestProductBySearchQueyString.js"></script>
 
     <script src="js/personalizados/utils/switchTableOnkeyup.js"></script>
     <script src="js/personalizados/utils/Ajax/onkeyupSearchCatalogos.js"></script>
     <script src="js/personalizados/utils/Ajax/request.js"></script>
     <script type="text/javascript">
         window.onload = function () {
-            var id =<%=getIdPorduct %>
-            var characters =" <%=getCharacters %> "
             requestBranches()
-            
-            setTimeout(() => {
-                requestProductBySearchQueyString(id, characters);    
-            }, 1000);
         }
     </script>
 

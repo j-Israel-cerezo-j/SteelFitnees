@@ -12,15 +12,15 @@
                         <div class="home-blog-single mb-30">
                             <div class="blog-img-cap">
                                 <div class="blog-img">
-                                    <img src="${json[i].imagen}" alt="" width="10" height="250">
+                                    <img src="${json[i].imagen}" alt="" width="1" height="230">
                                     <!-- Blog date -->
                                     <div class="blog-date text-center">
                                         <span>$ ${json[i].precio}</span>
                                     </div>
                                 </div>
                                 <div class="blog-cap">
-                                    <h4><a >${json[i].producto}</a></h3>
-                                    <span>${json[i].Descripcion}</span>
+                                    <h5><a >${json[i].producto}</a></h5>
+                                    <p>${json[i].Descripcion}</p>
                                 </div>
                             </div>
                         </div>

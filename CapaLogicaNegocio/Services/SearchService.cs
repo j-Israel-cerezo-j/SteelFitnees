@@ -14,17 +14,89 @@ using CapaLogicaNegocio.MessageErrors;
 namespace CapaLogicaNegocio.Services
 {
     public class SearchService
-    {   private SearchTable searchTable= new SearchTable(); 
-        public List<string> onkeyupSearchList(string caracteres)
+    {
+        private const string wordProduct = "PRODUCTOS";
+        private const string wordBranche = "SUCURSALES";
+        private SearchTable searchTable= new SearchTable(); 
+        public List<string> onkeyupSearchListMasterSeeker(string caracteres)
         {
-            caracteres = "%" + caracteres + "%";
-            return Converter.ToList(searchTable.searchCoincidencesPrincipal(caracteres));
+            bool banProduct = false;
+            bool banBrance = false;
+            string caracteresResult = "%" + caracteres + "%";
+            var listCoincidences=Converter.ToList(searchTable.searchCoincidencesPrincipal(caracteresResult));
+            for (int i = 0; i < caracteres.Length; i++)
+            {
+                if (wordProduct.Contains(caracteres.ToUpper()[i]))
+                {                    
+                    banProduct =true;
+                    break;
+                }                
+            }
+            for (int i = 0; i < caracteres.Length; i++)
+            {
+                if (wordBranche.Contains(caracteres.ToUpper()[i]))
+                {                    
+                    banBrance = true;
+                    break;
+                }
+            }
+            if (banProduct)
+            {
+                listCoincidences.Add(wordProduct.ToLower());
+            }
+            if (banBrance)
+            {
+                listCoincidences.Add(wordBranche.ToLower());
+            }
+            return listCoincidences;
 
         }
-        public string urlRederictByCharacterSought(string caracteres)
+        public string urlRederictByCharacterMasterSeeker(string caracteres)
         {            
             string result = "%" + caracteres + "%";
-            var response = new Dictionary<string, string>();                                   
+            var response = new Dictionary<string, string>();
+
+
+           
+            int caracteresSimilaresProductos = 0;
+            int caracteresSimilaresSucursales = 0;
+
+
+            for (int i = 0; i < caracteres.Length; i++)
+            {
+                if (caracteres.Length <= wordProduct.Length)
+                {
+                    if (caracteres.ToUpper()[i] == wordProduct[i])
+                    {
+                        caracteresSimilaresProductos++;
+                    }
+                }
+                if (caracteres.Length <= wordBranche.Length)
+                {
+                    if (caracteres.ToUpper()[i] == wordBranche[i])
+                    {
+                        caracteresSimilaresSucursales++;
+                    }
+                }
+
+            }
+            if (caracteresSimilaresProductos > caracteresSimilaresSucursales)
+            {
+                if (caracteresSimilaresProductos >= 4)
+                {
+                    response.Add("url", "allProducts.aspx");
+                    return Converter.ToJson(response);
+                }
+            }
+            else
+            {
+                if (caracteresSimilaresSucursales >= 4)
+                {
+
+                    response.Add("url", "allBranches.aspx");
+                    return Converter.ToJson(response);
+                }
+            }
             var idBranche = searchTable.idBrancheByCharacteres(result);
             if (idBranche != -1)
             {
@@ -36,54 +108,12 @@ namespace CapaLogicaNegocio.Services
                 var idProduct = searchTable.idProductByCharacteres(result);
                 if (idProduct!=-1)
                 {
-                    response.Add("url", "productsByBranche.aspx?id=" + idProduct + "&characters=" + caracteres);
+                    response.Add("url", "allProducts.aspx?characters=" + caracteres);
                     return Converter.ToJson(response);
                 }
                 else
                 {
-                    const string productoWordProduct = "PRODUCTOS";
-                    const string productoWordBranche = "SUCURSALES";
-                    int caracteresSimilaresProductos = 0;
-                    int caracteresSimilaresSucursales = 0;
-                    int caracteresDiferentesProductos = 0;
-                    int caracteresDiferentesSucursales = 0;
-
-                    foreach (char c in caracteres.ToUpper())
-                    {
-                        if (productoWordProduct.Contains(c))
-                        {
-                            caracteresSimilaresProductos++;
-                        }
-                        else
-                        {
-                            caracteresDiferentesProductos++;
-                        }
-                        if (productoWordBranche.Contains(c))
-                        {
-                            caracteresSimilaresSucursales++;
-                        }
-                        else
-                        {
-                            caracteresDiferentesSucursales++;
-                        }
-
-                    }
-                    if (caracteresSimilaresProductos > caracteresSimilaresSucursales)
-                    {
-                        if (caracteresSimilaresProductos >= 6)
-                        {
-                            response.Add("url", "allProducts.aspx");
-                            return Converter.ToJson(response);
-                        }
-                    }
-                    else if (caracteresSimilaresProductos < caracteresSimilaresSucursales)
-                    {
-                        if (caracteresSimilaresSucursales >= 6)
-                        {
-                            response.Add("url", "allBranches.aspx");
-                            return Converter.ToJson(response);
-                        }
-                    }
+                   
                 }
                 throw new ServiceException(MessageErrors.MessageErrors.searchNotFoundPleaseBeMoreSpecific);
             }

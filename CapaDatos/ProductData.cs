@@ -212,6 +212,36 @@ namespace CapaDatos
             }
             return schedules;
         }
+        public DataTable tableProductsByPrices(decimal priceMin,decimal priceMax)
+        {
+            DataTable schedules = new DataTable();
+            SqlDataReader renglon;
+            try
+            {
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "pro_tableProductByPrices";
+                Comando.Parameters.Add(new SqlParameter("@priceMin", SqlDbType.Decimal));
+                Comando.Parameters["@priceMin"].Value = priceMin;
+                Comando.Parameters.Add(new SqlParameter("@priceMax", SqlDbType.Decimal));
+                Comando.Parameters["@priceMax"].Value = priceMax;
+                Conexion.Open();
+                renglon = Comando.ExecuteReader();
+                schedules.Load(renglon);
+            }
+            catch (SqlException e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                {
+                    Conexion.Close();
+                }
+                Comando.Parameters.Clear();
+            }
+            return schedules;
+        }
         public DataTable tableProductsAllByCharacteres(string characteres)
         {
             DataTable schedules = new DataTable();

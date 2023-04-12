@@ -8,20 +8,20 @@
             ban = true;
             htmlProducts +=
                 `              
-                    <div class="col-xl-3 col-lg-3 col-md-3 cardsBranche" style="margin:5px">
-                        <div class="home-blog-single mb-30">
+                    <div class="col-xl-2 col-lg-2 col-md-3 cardsBranche" style="margin:5px">
+                        <div class="home-blog-single">
                             <div class="blog-img-cap">
-                                <div class="blog-img" style="margin:25px">
-                                    <img src="${json[i].imagen}" alt="" width="10" height="250">
+                                <div class="blog-img" style="padding:8px">
+                                    <img src="${json[i].imagen}" alt="" width="300" height="150">
                                     <!-- Blog date -->
-                                    <div class="blog-date text-center">
+                                    <div class="blog-date text-center" style="padding:10px">
                                         <span>$ ${json[i].precio}</span>
                                     </div>
                                 </div>
-                                <div>
-                                    <h3><a href="showBranchesDetails.aspx?id=${json[i].idSucursal}" >${json[i].nombreSuc}</a></h3>
-                                    <h5><a >${json[i].nombreProduc}</a></h5>
-                                    <span>${json[i].descriptProduct}</span>                                    
+                                <div style="padding:8px">
+                                    <h4><a style="font-size: 15px;" href="showBranchesDetails.aspx?id=${json[i].idSucursal}" >${json[i].nombreSuc}</a></h4>
+                                    <h6><a style="font-size: 15px;" >${json[i].nombreProduc}</a></h6>
+                                    <p style="font-size: 15px;">${json[i].descriptProduct}</p>
                                 </div>
                             </div>
                         </div>

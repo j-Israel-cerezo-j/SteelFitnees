@@ -23,3 +23,31 @@
     border: 0 solid #e2e8f0;
     text-align: -webkit-match-parent;
 }
+.cardsProducts {
+    margin-bottom: 40px;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+    padding-left: 0;
+    padding-right: 0;
+    list-style: none outside;
+    box-sizing: border-box;
+    display: list-item;
+    font-family: "Raleway";
+    border-radius: 10px;
+    padding: 20px 20px 0;
+    border: 1px solid transparent;
+    border-bottom: none;
+    margin-bottom: 30px;
+    zoom: 1;
+    position: relative;
+    margin-bottom: 12px;
+    list-style: none outside;
+    text-decoration: none;
+    transition: 0.5s;
+    color: #0066cc;
+    background: transparent;
+    margin: 0;
+    width: auto;
+    max-width: 100%;
+    vertical-align: middle;
+}

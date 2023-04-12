@@ -1,9 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/gentelella-master/production/principal.Master" AutoEventWireup="true" CodeBehind="Galeria.aspx.cs" Inherits="SteelFitnessWEB.Galeria" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link rel="stylesheet" href="templates/fitnessclub-master/assets/css/style.css">    
+    <link href="frontend/css/styleIndex.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="row" style="margin-bottom:125px"></div>
     <!-- Gallery -->
-<div class="row">
+<div class="row" >
   <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
     <img
       src="sources/galeria/sf1.jpg"

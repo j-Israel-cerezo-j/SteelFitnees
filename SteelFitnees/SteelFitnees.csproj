@@ -179,6 +179,8 @@
     <Content Include="gentelella-master\production\bootstrap-5.0.2-dist\js\bootstrap.js.map" />
     <Content Include="gentelella-master\production\bootstrap-5.0.2-dist\js\bootstrap.min.js.map" />
     <Content Include="gentelella-master\production\css\personalizados\map.css" />
+    <Content Include="gentelella-master\production\css\personalizados\nav.css" />
+    <Content Include="gentelella-master\production\css\personalizados\slider.css" />
     <Content Include="gentelella-master\production\frontend\templatesEmailGym\gymMessageHtml.html" />
     <Content Include="gentelella-master\production\Handlers\aboutUsController.aspx" />
     <Content Include="gentelella-master\production\Handlers\contactController.aspx" />
@@ -262,7 +264,7 @@
     <Content Include="gentelella-master\production\js\personalizados\productByBranches\OnkeyupSearch.js" />
     <Content Include="gentelella-master\production\js\personalizados\productByBranches\requestBranches.js" />
     <Content Include="gentelella-master\production\js\personalizados\productByBranches\requestProductByBranche.js" />
-    <Content Include="gentelella-master\production\js\personalizados\productByBranches\requestProductBySearchQueyString.js" />
+    <Content Include="gentelella-master\production\js\personalizados\allProducts\requestProductBySearchQueyString.js" />
     <Content Include="gentelella-master\production\js\personalizados\Productos\add.js" />
     <Content Include="gentelella-master\production\js\personalizados\Productos\buildTable.js" />
     <Content Include="gentelella-master\production\js\personalizados\Productos\delete.js" />
@@ -280,6 +282,7 @@
     <Content Include="gentelella-master\production\js\personalizados\showBranchesDetails\buildSchedule.js" />
     <Content Include="gentelella-master\production\js\personalizados\showBranchesDetails\map.js" />
     <Content Include="gentelella-master\production\js\personalizados\showBranchesDetails\requestComments.js" />
+    <Content Include="gentelella-master\production\js\personalizados\slider\slider.js" />
     <Content Include="gentelella-master\production\js\personalizados\utils\Ajax\request.js" />
     <Content Include="gentelella-master\production\js\personalizados\utils\Ajax\requestTables.js" />
     <Content Include="gentelella-master\production\Login.aspx" />

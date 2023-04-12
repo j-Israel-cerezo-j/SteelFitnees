@@ -18,6 +18,7 @@ namespace SteelFitnees.gentelella_master.production.Handlers
         public string getJsonResponse { get; private set; } = "{\"k\":1}";
         protected void Page_Load(object sender, EventArgs e)
         {
+            var s = Request.QueryString["action"];
             if (Request.QueryString["action"] == "filterBy")
             {
                 getFilterBy();
@@ -28,6 +29,10 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             }else if (Request.QueryString["action"] == "weeks")
             {
                 getFilterByWeeks();
+            }
+            else if (Request.QueryString["action"] == "prices")
+            {
+                getFilterByPrices();
             }
         }
         private void getFilterBy()
@@ -81,6 +86,28 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             try
             {
                 string json = facedeFilter.commentsBranche(filterByValue, filterBy, idBranche);
+                data.Add("recoverData", JsonConvert.DeserializeObject<Dictionary<string, Object>[]>(json));
+                response.success = true;
+
+            }
+            catch (ServiceException se)
+            {
+                response.error = se.getMessage();
+            }
+            data.Add("footeer", "Verificar por favor");
+            response.data = data;
+            getJsonResponse = JsonConvert.SerializeObject(response);
+        }
+        private void getFilterByPrices()
+        {            
+            string filterBy = Request.QueryString["filterBy"];
+            string valueMin = Request.QueryString["valueMin"];
+            string valueMax = Request.QueryString["valueMax"];
+            var data = new Dictionary<string, Object>();
+            Response response = new Response();
+            try
+            {
+                string json = facedeFilter.filterByPrices(filterBy, valueMin, valueMax);
                 data.Add("recoverData", JsonConvert.DeserializeObject<Dictionary<string, Object>[]>(json));
                 response.success = true;
 

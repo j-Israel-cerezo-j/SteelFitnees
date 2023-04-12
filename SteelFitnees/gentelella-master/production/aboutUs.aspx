@@ -8,16 +8,14 @@
     <link rel="manifest" href="site.webmanifest"/>
     <link rel="shortcut icon" type="templates/fitnessclub-master/image/x-icon" href="templates/fitnessclub-master/assets/img/favicon.ico"/>
 	<!-- CSS here -->
-	
-	
-	<link rel="stylesheet" href="templates/fitnessclub-master/assets/css/style.css"/>
+	<link rel="stylesheet" href="templates/fitnessclub-master/assets/css/style.css">    
+    <link href="frontend/css/styleIndex.css" rel="stylesheet" />
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
-
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">   
+    <div class="row" style="margin-bottom:100px"></div>
     <main>       	
 		<!--? Start Align Area -->
-		<div class="whole-wrap" style="margin-top:80px">
+		<div class="whole-wrap">
 			<div class="container box_1170">				
 				<div class="section-top-border text-right">
 					<h2 class="mb-30">Misión</h2>

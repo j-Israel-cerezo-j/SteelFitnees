@@ -72,5 +72,19 @@ namespace CapaLogicaNegocio
                     throw new ServiceException(MessageErrors.MessageErrors.noneFilter);
             }
         }
+        public string filterByPrices(string filterBy,string valueMin,string valueMax)
+        {
+            if (filterBy == "")
+            {
+                throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
+            }
+            switch (filterBy)
+            {
+                case "prices":
+                    return productService.jsonProductsTableByPrices(valueMin, valueMax);
+                default:
+                    throw new ServiceException(MessageErrors.MessageErrors.noneFilter);
+            }
+        }
     }
 }

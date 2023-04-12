@@ -34,7 +34,7 @@ namespace CapaLogicaNegocio
                 case "productsByBrancheAndCharacteres":
                     return productService.onkeyupSearchListByCharacteresAndIdBranche(result,strId);
                 case "searchMaster":
-                    return searchService.onkeyupSearchList(result);
+                    return searchService.onkeyupSearchListMasterSeeker(result);
                 case "allProducts":
                     return productService.coincidencesProductByCharacters(result);
                 default:
@@ -86,7 +86,7 @@ namespace CapaLogicaNegocio
             switch (catalogo)
             {
                 case "actionSearchubmit":
-                    return searchService.urlRederictByCharacterSought(resultTrim);
+                    return searchService.urlRederictByCharacterMasterSeeker(resultTrim);
 
                 default:
                     throw new ServiceException(MessageErrors.MessageErrors.catalogNoExists);
