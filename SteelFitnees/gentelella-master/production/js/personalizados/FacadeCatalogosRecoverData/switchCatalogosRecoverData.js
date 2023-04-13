@@ -1,13 +1,28 @@
 ﻿function switchCatalogosRecoverData(json, catalogo) {
-    switch (catalogo) {
+        switch (catalogo) {
         case 'horas':
-            for (var i = 0; i < json.length; i++) {
-                document.getElementById("branches").value = json[i].fkSucursal;
-                document.getElementById("days").value = json[i].fkDia;
-                document.getElementById("horaInicio").value = json[i].horaInicio;
-                document.getElementById("horaTermino").value = json[i].horaCierre;
-                document.getElementById("save").value = json[i].id;
-            }
+                for (var i = 0; i < json.length; i++) {
+
+                    const scheduleOpen = json[i].horaInicio;
+                    var [hora, minutos] = scheduleOpen.split(":").map(num => parseInt(num));
+                    if (scheduleOpen.includes("p. m.")) {
+                        hora =12+ hora;
+                    }
+                    const fomatCorrectHoraInputIni = `${hora.toString().padStart(2, "0")}:${minutos.toString().padStart(2, "0")}`;
+
+                    const scheduleClose = json[i].horaCierre;
+                    var [horaClose, minutosClose] = scheduleClose.split(":").map(num => parseInt(num));
+                    if (scheduleClose.includes("p. m.")) {
+                        horaClose = 12 + horaClose;
+                    }
+                    const fomatCorrectHoraInputEnd = `${horaClose.toString().padStart(2, "0")}:${minutosClose.toString().padStart(2, "0")}`;
+
+                    document.getElementById("branches").value = json[i].fkSucursal;
+                    document.getElementById("days").value = json[i].fkDia;
+                    document.getElementById("horaInicio").value = fomatCorrectHoraInputIni;
+                    document.getElementById("horaTermino").value = fomatCorrectHoraInputEnd;
+                    document.getElementById("save").value = json[i].id;
+                }
             break;
         case 'productBranche':
             for (var i = 0; i < json.length; i++) {

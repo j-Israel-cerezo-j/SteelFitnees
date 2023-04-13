@@ -32,8 +32,8 @@ namespace CapaEntidades
         {
             return
                 "id:'" + idHorario + "', " +
-                "horaInicio:'" + horaInicio.ToString("HH:mm") + "'," +
-                "horaCierre:'" + horaCierre.ToString("HH:mm") + "',"+
+                "horaInicio:'" + horaInicio.ToString("h:mm tt") + "'," +
+                "horaCierre:'" + horaCierre.ToString("h:mm tt") + "',"+
                 "fkSucursal:'" + fkSucursal + "',"+
                 "fkDia:'" + fkDia + "'";
         }

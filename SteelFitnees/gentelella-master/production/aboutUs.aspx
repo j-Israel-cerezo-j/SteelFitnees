@@ -39,6 +39,11 @@
 		</div>
 		<!-- End Align Area -->
 	</main>
+    <div class="container" style="margin:15px">
+        <div class="col-xl-2 col-lg-2 col-md-3">
+            <a style="font-size:25px" id="return" class="btn btn-primary">Regresar</a>
+        </div>
+    </div> 
     <script src="js/personalizados/aboutUsUser/aboutUsRequest.js"></script>
     <script src="js/personalizados/aboutUsUser/build/buildValores.js"></script>
     <script src="js/personalizados/aboutUsUser/build/buildCardsAboutUs.js"></script>
@@ -82,12 +87,13 @@
     <!-- Jquery Plugins, main Jquery -->	
     <script src="templates/fitnessclub-master/assets/js/plugins.js"></script>
     <script src="templates/fitnessclub-master/assets/js/main.js"></script>
-
+    <script src="js/personalizados/aboutUsUser/addUrlReturn.js"></script>    
 	<script type="text/javascript">
 
 		window.onload = function () {
             aboutUsRequest();
             aboutUsValoresRequest();
+            addUrlReturn();
 		}
     </script>
 </asp:Content>

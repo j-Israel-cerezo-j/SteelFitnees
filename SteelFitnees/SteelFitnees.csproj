@@ -204,6 +204,7 @@
     <Content Include="gentelella-master\production\js\personalizados\aboutUsAdmin\recoverData.js" />
     <Content Include="gentelella-master\production\js\personalizados\aboutUsAdmin\update.js" />
     <Content Include="gentelella-master\production\js\personalizados\aboutUsUser\aboutUsRequest.js" />
+    <Content Include="gentelella-master\production\js\personalizados\aboutUsUser\addUrlReturn.js" />
     <Content Include="gentelella-master\production\js\personalizados\aboutUsUser\build\buildCardsAboutUs.js" />
     <Content Include="gentelella-master\production\js\personalizados\aboutUsUser\build\buildValores.js" />
     <Content Include="gentelella-master\production\js\personalizados\addProductsToBranches\add.js" />
@@ -220,6 +221,8 @@
     <Content Include="gentelella-master\production\js\personalizados\addProductsToBranches\requestBuildTableFilterBy.js" />
     <Content Include="gentelella-master\production\js\personalizados\addProductsToBranches\requestProducts.js" />
     <Content Include="gentelella-master\production\js\personalizados\addProductsToBranches\update.js" />
+    <Content Include="gentelella-master\production\js\personalizados\allBranches\addUrlReturn.js" />
+    <Content Include="gentelella-master\production\js\personalizados\allProducts\addUrlBtnReturn.js" />
     <Content Include="gentelella-master\production\js\personalizados\allProducts\initRange.js" />
     <Content Include="gentelella-master\production\js\personalizados\allProducts\OnkeyupSearch.js" />
     <Content Include="gentelella-master\production\js\personalizados\allProducts\requestAllProducts.js" />
@@ -237,6 +240,7 @@
     <Content Include="gentelella-master\production\js\personalizados\contactForm\ajax\enviiat.js" />
     <Content Include="gentelella-master\production\js\personalizados\Dayass\Add.js" />
     <Content Include="gentelella-master\production\js\personalizados\Dayass\TableOnload.js" />
+    <Content Include="gentelella-master\production\js\personalizados\Galery\addUrlReturn.js" />
     <Content Include="gentelella-master\production\js\personalizados\hours\requestBuildTableFilterBy.js" />
     <Content Include="gentelella-master\production\js\personalizados\hours\build\slc\buildFilterBySlc.js" />
     <Content Include="gentelella-master\production\js\personalizados\hours\build\slc\buildBranchesSlc.js" />
@@ -260,6 +264,7 @@
     <Content Include="gentelella-master\production\js\personalizados\masterPrincipal\keydown.js" />
     <Content Include="gentelella-master\production\js\personalizados\masterPrincipal\OnkeyupSearch.js" />
     <Content Include="gentelella-master\production\js\personalizados\masterPrincipal\redirect.js" />
+    <Content Include="gentelella-master\production\js\personalizados\productByBranches\addUrlReturn.js" />
     <Content Include="gentelella-master\production\js\personalizados\productByBranches\build\buildCardsProducts.js" />
     <Content Include="gentelella-master\production\js\personalizados\productByBranches\build\slc\buildBranchesSlc.js" />
     <Content Include="gentelella-master\production\js\personalizados\productByBranches\OnkeyupSearch.js" />
@@ -277,6 +282,7 @@
     <Content Include="gentelella-master\production\js\personalizados\SendEmails\ajax\sendAjax.js" />
     <Content Include="gentelella-master\production\js\personalizados\SendEmails\btnReset.js" />
     <Content Include="gentelella-master\production\js\personalizados\SendEmails\SendEmail.js" />
+    <Content Include="gentelella-master\production\js\personalizados\showBranchesDetails\addUrlReturn.js" />
     <Content Include="gentelella-master\production\js\personalizados\showBranchesDetails\ajax\branchesAjax.js" />
     <Content Include="gentelella-master\production\js\personalizados\showBranchesDetails\buildAlert.js" />
     <Content Include="gentelella-master\production\js\personalizados\showBranchesDetails\buildProductById.js" />

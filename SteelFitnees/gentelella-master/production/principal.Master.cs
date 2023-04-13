@@ -9,8 +9,10 @@ namespace SteelFitnessWEB
 {
     public partial class principal : System.Web.UI.MasterPage
     {
+        public string getUrlReferrer { get;private set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            getUrlReferrer = Request.UrlReferrer != null ? Request.UrlReferrer.ToString() : string.Empty;
 
         }
     }

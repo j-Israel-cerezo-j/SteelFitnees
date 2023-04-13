@@ -54,10 +54,11 @@
                     <h2 style="text-align:center">Selecciona una sucursal por favor</h2>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-3">
-                    <a style="font-size:25px" href="index.aspx" class="btn btn-primary ">Regresar</a>
+                    <a style="font-size:25px" id="return" class="btn btn-primary ">Regresar</a>
                 </div>
             </div>
         </section>
+    <script src="js/personalizados/productByBranches/addUrlReturn.js"></script>
     <script src="js/personalizados/productByBranches/OnkeyupSearch.js"></script>
     <script src="js/personalizados/productByBranches/requestBranches.js"></script>    
     <script src="js/personalizados/productByBranches/requestProductByBranche.js"></script>
@@ -70,6 +71,7 @@
     <script type="text/javascript">
         window.onload = function () {
             requestBranches()
+            addUrlReturn();
         }
     </script>
 

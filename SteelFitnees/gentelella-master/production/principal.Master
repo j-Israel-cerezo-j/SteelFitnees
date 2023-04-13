@@ -29,6 +29,7 @@
 </head>
 <body id="page-top">
     <header>
+        <input type="hidden" id="urlPrev" value="<%=getUrlReferrer %>" />
         <!--? Header Start -->
         <div class="header-area header-transparent" style="background-color:#212529">
             <div class="main-header header-sticky">

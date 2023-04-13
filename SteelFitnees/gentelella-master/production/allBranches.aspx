@@ -13,10 +13,14 @@
         <h3 class="section-subheading text-muted">Visita nuestras sucursales</h3>
     </div>
     <div class="container">
-        <div class="row" style="justify-content:center" id="team"></div>   
-    </div>        
+        <div class="row" style="justify-content:center" id="team"></div>
+        <div class="col-xl-2 col-lg-2 col-md-3">
+            <a style="font-size:25px" id="return" class="btn btn-primary">Regresar</a>
+        </div>
+    </div>    
       <!-- Inner -->
     <!-- Carousel wrapper -->
+    <script src="js/personalizados/allBranches/addUrlReturn.js"></script>
     <script src="js/personalizados/Index/requestBranches.js"></script>
     <script src="js/personalizados/Index/build/buildCardsBranches.js"></script>
     <script src="js/personalizados/utils/Ajax/request.js"></script>
@@ -25,6 +29,7 @@
     <script type="text/javascript">
         window.onload = function () {
             requestBranches();
+            addUrlReturn();
         }
     </script>
 </asp:Content>

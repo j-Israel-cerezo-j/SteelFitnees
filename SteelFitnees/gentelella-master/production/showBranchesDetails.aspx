@@ -73,20 +73,20 @@
 
     <div class="container">
              <!--? Gallery Area Start -->
-    <div class="gallery-area">
-        <div class="container-fluid p-0 fix">
-            <div class="row">
-                <%foreach (var item in getListImagesById)
-                    { %>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="box snake mb-30">
-                                <div class="gallery-img small-img" style="background-image: url(<%=item.path%>);"></div>                                
+        <div class="gallery-area">
+            <div class="container-fluid p-0 fix">
+                <div class="row">
+                    <%foreach (var item in getListImagesById)
+                        { %>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="box snake mb-30">
+                                    <div class="gallery-img small-img" style="background-image: url(<%=item.path%>);"></div>                                
+                                </div>
                             </div>
-                        </div>
-                    <% } %>
+                        <% } %>
+                </div>
             </div>
         </div>
-    </div>
         <!-- Gallery Area End -->
     </div>
    
@@ -116,6 +116,11 @@
         </div>
     </div>
         <!-- Team Ara End -->
+    <div class="container" style="margin:15px">
+        <div class="col-xl-2 col-lg-2 col-md-3">
+            <a style="font-size:25px" id="return" class="btn btn-primary">Regresar</a>
+        </div>
+    </div>    
         <!--? Want To work -->
     <section class="wantToWork-area w-padding section-bg" data-background="templates/fitnessclub-master/assets/img/gallery/section_bg02.png">
         <div class="container">
@@ -147,9 +152,9 @@
 </main>    
     <!-- Scroll Up -->
     <div id="back-top" >
-        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+        <a title="Go to Top"> <i class="fas fa-level-up-alt"></i></a>
     </div>
-
+    <script src="js/personalizados/showBranchesDetails/addUrlReturn.js"></script>
     <script src="js/personalizados/showBranchesDetails/buildProductById.js"></script>
     <script src="js/personalizados/showBranchesDetails/buildSchedule.js"></script>
     <script src="js/personalizados/showBranchesDetails/requestComments.js"></script>
@@ -201,6 +206,7 @@
             var productsById =<%=getProductsByIdBranche%>
             buildSchedule(jsonSchedules);
             buildProductById(productsById);
+            addUrlReturn();
 
         }
     </script>

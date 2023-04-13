@@ -50,13 +50,13 @@
                     <div class="row" style="justify-content:center">
                         <div class="price-input" style="width:50%;">                        
                             <div class="col-lg-4 col-md-4 col-sm-6 form-group" >
-                                <input style="width:100%;padding:0%" type="number" id="min" class=" form-control" onkeyup="onMin()"  >
+                                <input style="width:100%;padding:0%;text-align:center" type="number" id="min" class=" form-control" onkeyup="onMin()"  >
                             </div>
                             <div class="col-lg-1 col-md-1 col-sm-1 col-xsm-1" >
                                 <div style="width:0%">-</div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-6 form-group">
-                                <input style="width:100%;padding:0%" type="number" id="max"  class="form-control" onkeyup="onMax()">
+                                <input style="width:100%;padding:0%;text-align:center" type="number" id="max"  class="form-control" onkeyup="onMax()">
                             </div>                        
                         </div>
                     </div>                                          
@@ -68,12 +68,13 @@
                 </div>
             </div>            
             <div class="col-xl-2 col-lg-2 col-md-3">
-                <a style="font-size:25px" href="index.aspx" class="btn btn-primary">Regresar</a>
+                <a style="font-size:25px" id="return" class="btn btn-primary">Regresar</a>
             </div>
         </div>
     </section>
     <script src="js/personalizados/slider/slider.js"></script>
     <script src="js/personalizados/allProducts/initRange.js"></script>
+    <script src="js/personalizados/allProducts/addUrlBtnReturn.js"></script>
     <script src="js/personalizados/allProducts/requestProductBySearchQueyString.js"></script>
     <script src="js/personalizados/allProducts/OnkeyupSearch.js"></script>
     <script src="js/personalizados/allProducts/requestAllProducts.js"></script>
@@ -90,6 +91,7 @@
                 requestProductBySearchQueyString(characters);
             }
             requestAllProductsInitRange();
+            addUrlReturn();
         }
     </script>
 

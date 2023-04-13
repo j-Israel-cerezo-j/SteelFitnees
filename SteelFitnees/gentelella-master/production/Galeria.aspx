@@ -49,5 +49,16 @@
     />
   </div>
 </div>
+    <div class="container" style="margin:15px">
+        <div class="col-xl-2 col-lg-2 col-md-3">
+            <a style="font-size:25px" id="return" class="btn btn-primary">Regresar</a>
+        </div>
+    </div> 
 <!-- Gallery -->
+    <script src="js/personalizados/Galery/addUrlReturn.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            addUrlReturn();
+        }        
+    </script>
 </asp:Content>
