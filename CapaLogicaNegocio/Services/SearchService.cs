@@ -82,7 +82,7 @@ namespace CapaLogicaNegocio.Services
             }
             if (caracteresSimilaresProductos > caracteresSimilaresSucursales)
             {
-                if (caracteresSimilaresProductos >= 4)
+                if (caracteresSimilaresProductos >= 3)
                 {
                     response.Add("url", "allProducts.aspx");
                     return Converter.ToJson(response);
@@ -90,7 +90,7 @@ namespace CapaLogicaNegocio.Services
             }
             else
             {
-                if (caracteresSimilaresSucursales >= 4)
+                if (caracteresSimilaresSucursales >= 3)
                 {
 
                     response.Add("url", "allBranches.aspx");

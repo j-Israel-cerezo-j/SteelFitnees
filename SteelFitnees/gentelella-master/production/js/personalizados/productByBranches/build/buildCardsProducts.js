@@ -12,7 +12,7 @@
                         <div class="home-blog-single mb-30">
                             <div class="blog-img-cap">
                                 <div class="blog-img">
-                                    <img src="${json[i].imagen}" alt="" width="1" height="230">
+                                    <img src="${json[i].imagen}" alt="" width="10" height="230">
                                     <!-- Blog date -->
                                     <div class="blog-date text-center">
                                         <span>$ ${json[i].precio}</span>

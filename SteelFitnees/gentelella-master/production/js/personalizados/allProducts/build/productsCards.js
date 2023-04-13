@@ -1,17 +1,19 @@
-﻿function buildAllProduct(json, jsonOnkeyp = true) {
+﻿function buildAllProduct(json, jsonOnkeyp = true) {    
     document.getElementById("containerCardsProducts").innerHTML = ""
 
     var ban = false;
     var htmlProducts = "";
     if (json != undefined) {
+        
         for (var i = 0; i < json.length; i++) {
             ban = true;
+            
             htmlProducts +=
                 `              
-                    <div class="col-xl-2 col-lg-2 col-md-3 cardsBranche" style="margin:5px">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xsm-6 cardsBranche" style="margin:5px">
                         <div class="home-blog-single">
                             <div class="blog-img-cap">
-                                <div class="blog-img" style="padding:8px">
+                                <div class="blog-img" style="padding:25px">
                                     <img src="${json[i].imagen}" alt="" width="300" height="150">
                                     <!-- Blog date -->
                                     <div class="blog-date text-center" style="padding:10px">
@@ -19,9 +21,9 @@
                                     </div>
                                 </div>
                                 <div style="padding:8px">
-                                    <h4><a style="font-size: 15px;" href="showBranchesDetails.aspx?id=${json[i].idSucursal}" >${json[i].nombreSuc}</a></h4>
-                                    <h6><a style="font-size: 15px;" >${json[i].nombreProduc}</a></h6>
-                                    <p style="font-size: 15px;">${json[i].descriptProduct}</p>
+                                    <h4><a style="font-size: 15px;" href="showBranchesDetails.aspx?id=${json[i].idSucursal}" >Suc:  ${json[i].nombreSuc}</a></h4>
+                                    <h6><a style="font-size: 13px;" >${json[i].nombreProduc}</a></h6>
+                                    <p style="font-size: 13px;">${json[i].descriptProduct}</p>
                                 </div>
                             </div>
                         </div>

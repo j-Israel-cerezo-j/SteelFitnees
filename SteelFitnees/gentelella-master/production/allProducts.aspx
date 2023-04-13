@@ -14,11 +14,11 @@
     <link href="css/personalizados/slider.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="row" style="margin-bottom:100px"></div>
+    <div class="row" style="margin-bottom:40px"></div>
     <section class="home-blog-area " style="z-index:1 !important">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-6 col-md-6 col-sm-12 mt-3" >
+                <div class="col-lg-6 col-md-6 col-sm-12" >
                     <form id="formOnkeyup">	
                         <input type="hidden" id="catalogo" name="catalogo" value="productsByBrancheAndCharacteres" />
                         <div class="input-group " > 
@@ -33,31 +33,38 @@
                     </form>
                 </div>
             </div>
-            <div class="row mt-4">
-                <div class="col-lg-2">
-                    <div class="wrapper">
-                        <div class="price-input">
-                            <div class="field">
-                                <span>Min</span>
-                                <input type="number" id="min" min="1" class="input-min" onkeyup="onMin()"  value="1">
-                            </div>
-                            <div class="separator">-</div>
-                            <div class="field">
-                                <span>Max</span>
-                                <input type="number" id="max" min="1" class="input-max" onkeyup="onMax()" value="1000">
-                            </div>
-                        </div>
-                        <div class="slider">
-                            <div class="progress"></div>
-                        </div>
-                        <div class="range-input">
-                            <input type="range" class="range-min" min="0" onmouseup="onMin()" max="10000" value="2500" step="100">
-                            <input type="range" class="range-max" min="0" onmouseup="onMax()" max="10000" value="7500" step="100">
-                        </div>
+            <div class="row mt-4" style="justify-content:center">
+                <div style="width:60%">
+                    <div style="margin-top:10px">
+                        <h4 style="text-align:center;font-weight: 900;margin-top: 0;color: #000;font-family: Raleway, Arial, sans-serif;margin-bottom: 25px;font-size: 18px;text-transform: uppercase;font-weight: 900;
+                            ">Filtrar por precio
+                        </h4>
                     </div>
+                    <div class="slider">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="range-input"  >
+                        <input type="range" class="range-min" min="0" onmouseup="onMin()" max="10000" value="2500" step="10">
+                        <input type="range" class="range-max" min="0" onmouseup="onMax()" max="10000" value="7500" step="10">
+                    </div>    
+                    <div class="row" style="justify-content:center">
+                        <div class="price-input" style="width:50%;">                        
+                            <div class="col-lg-4 col-md-4 col-sm-6 form-group" >
+                                <input style="width:100%;padding:0%" type="number" id="min" class=" form-control" onkeyup="onMin()"  >
+                            </div>
+                            <div class="col-lg-1 col-md-1 col-sm-1 col-xsm-1" >
+                                <div style="width:0%">-</div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6 form-group">
+                                <input style="width:100%;padding:0%" type="number" id="max"  class="form-control" onkeyup="onMax()">
+                            </div>                        
+                        </div>
+                    </div>                                          
                 </div>
-                <div class="col-lg-10">
-                    <div class="row" style="justify-content: center;margin-top:50px;" id="containerCardsProducts"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row" style="justify-content: center;" id="containerCardsProducts"></div>
                 </div>
             </div>            
             <div class="col-xl-2 col-lg-2 col-md-3">
@@ -66,6 +73,7 @@
         </div>
     </section>
     <script src="js/personalizados/slider/slider.js"></script>
+    <script src="js/personalizados/allProducts/initRange.js"></script>
     <script src="js/personalizados/allProducts/requestProductBySearchQueyString.js"></script>
     <script src="js/personalizados/allProducts/OnkeyupSearch.js"></script>
     <script src="js/personalizados/allProducts/requestAllProducts.js"></script>
@@ -76,12 +84,12 @@
     <script type="text/javascript">
         window.onload = function () {            
             var characters = " <%=getCharacters %> "
-            console.log(characters)
             if (characters == " ") {
                 requestAllProducts()
             } else {
                 requestProductBySearchQueyString(characters);
-            }                           
+            }
+            requestAllProductsInitRange();
         }
     </script>
 

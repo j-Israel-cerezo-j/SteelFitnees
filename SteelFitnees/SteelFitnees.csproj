@@ -220,6 +220,7 @@
     <Content Include="gentelella-master\production\js\personalizados\addProductsToBranches\requestBuildTableFilterBy.js" />
     <Content Include="gentelella-master\production\js\personalizados\addProductsToBranches\requestProducts.js" />
     <Content Include="gentelella-master\production\js\personalizados\addProductsToBranches\update.js" />
+    <Content Include="gentelella-master\production\js\personalizados\allProducts\initRange.js" />
     <Content Include="gentelella-master\production\js\personalizados\allProducts\OnkeyupSearch.js" />
     <Content Include="gentelella-master\production\js\personalizados\allProducts\requestAllProducts.js" />
     <Content Include="gentelella-master\production\js\personalizados\allProducts\build\productsCards.js" />
