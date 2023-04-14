@@ -8,7 +8,7 @@
             ban = true;
             htmlProducts +=
                 `              
-                    <div class="col-xl-4 col-lg-4 col-md-4">
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xsm-6">
                         <div class="home-blog-single mb-30">
                             <div class="blog-img-cap">
                                 <div class="blog-img">

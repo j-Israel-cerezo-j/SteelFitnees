@@ -12,9 +12,9 @@
     <link href="bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="row" style="margin-bottom:100px"></div>
     <section class="home-blog-area " style="z-index:1 !important">
-            <div class="container">
-                
+            <div class="container">                
                 <!-- Section Tittle -->
                 <div class="row justify-content-center">
                     <div class="section-tittle text-center">

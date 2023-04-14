@@ -1,4 +1,4 @@
-﻿function addContact() {    
+﻿function addContact() {
     var form = document.getElementById("contactForm");
     if (!form.checkValidity()) {
         event.preventDefault()
@@ -24,5 +24,5 @@
             }
         })
     }
-    form.classList.add('was-validated')
+    form.classList.add('was-validated') 
 }

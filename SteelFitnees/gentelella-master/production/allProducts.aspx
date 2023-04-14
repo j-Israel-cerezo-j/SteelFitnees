@@ -14,7 +14,7 @@
     <link href="css/personalizados/slider.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="row" style="margin-bottom:40px"></div>
+    <div class="row" style="margin-bottom:100px"></div>
     <section class="home-blog-area " style="z-index:1 !important">
         <div class="container">
             <div class="row justify-content-center">

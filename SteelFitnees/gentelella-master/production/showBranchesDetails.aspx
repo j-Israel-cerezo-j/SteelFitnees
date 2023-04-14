@@ -17,6 +17,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <main>
+    <div class="row" style="margin-bottom:100px"></div>
         <!--? About Area Start -->
     <section class="about-area">
         <div class="container">

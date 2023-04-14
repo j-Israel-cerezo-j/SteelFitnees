@@ -5,11 +5,11 @@
     if (json != undefined) {
         for (var i = 0; i < json.length; i++) {
             ban = true;
-            html += `<div class="col-lg-4 col-md-4 col-sm-12 col-xsm-4 cardsBranche">
+            html += `<div class="col-lg-4 col-md-6 col-sm-6 col-xsm-6 cardsBranche">
                         <div class="mb-3 mt-4" style="max-width: 540px;height:100%">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="${json[i].path}" style="height: 50%;width: 100%;" class="reflejo img-fluid rounded-start" alt="...">
+                                    <img src="${json[i].path}" class="reflejo img-fluid rounded-start" alt="...">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">

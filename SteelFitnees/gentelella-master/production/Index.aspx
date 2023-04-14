@@ -75,19 +75,31 @@
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Contactanos</h2>
             </div>
-            <form id="contactForm" class="row g-3 needs-validation mt-4" novalidate>
+            <form id="contactForm" class="g-3 needs-validation mt-4" novalidate>
                 <div class="row align-items-stretch mb-5" style="justify-content:center;">
                     <div class="col-md-6">
                         <div class="form-group">
                             <!-- Name input-->
-                            <input class="form-control" name="nombre" id="nombre" type="text" placeholder="Tu nombre" data-sb-validations="required" />
-                            <div class="invalid-feedback" data-sb-feedback="name:required">El nombre es requerido.</div>
+                            <input class="form-control" required="required" name="nombre" id="nombre" type="text" placeholder="Tu nombre"  onkeyup="onkeyupInputEmtyy('nombre')"  />
+                            <div class="valid-feedback">
+								¡ Buen trabajo!
+						    </div>
+						    <div class="invalid-feedback">
+							    Tu nombre es requerido
+						    </div>
                         </div>
                         <div class="form-group">
                             <!-- Email address input-->
-                            <input class="form-control" name="email" id="email" type="email" placeholder="Tu correo electronico" data-sb-validations="required,email" />
-                            <div class="invalid-feedback" data-sb-feedback="email:required">El correo es requerido</div>
-                            <div class="invalid-feedback" data-sb-feedback="email:email">Correo no valido.</div>
+                            <input class="form-control" required="required" name="email" id="email" type="email" placeholder="Tu correo electronico"  onkeyup="formantCorrectInput('email','inputEmpty','inputFormantIncorrect','@')" />
+                            <div class="valid-feedback">
+								¡ Buen trabajo!
+						    </div>
+						    <div class="invalid-feedback" id="inputEmpty">
+						    	El correo es requerido
+						    </div>
+                            <div class="invalid-feedback" id="inputFormantIncorrect" style="display:none">
+							    Formato incorrecto del correo @
+					        </div>
                         </div>
                     </div>
                 </div>                                    

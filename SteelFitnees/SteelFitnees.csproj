@@ -112,6 +112,7 @@
   <ItemGroup>
     <Content Include="Content\Office.css" />
     <Content Include="Content\OfficeThemes.css" />
+    <Content Include="Error404.aspx" />
     <Content Include="gentelella-master\.bowerrc" />
     <Content Include="gentelella-master\bower.json" />
     <Content Include="gentelella-master\changelog.md" />
@@ -5824,6 +5825,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Error404.aspx.cs">
+      <DependentUpon>Error404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error404.aspx.designer.cs">
+      <DependentUpon>Error404.aspx</DependentUpon>
+    </Compile>
     <Compile Include="gentelella-master\production\aboutUs.aspx.cs">
       <DependentUpon>aboutUs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
