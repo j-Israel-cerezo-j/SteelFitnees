@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace SteelFitnees
 {
-    public partial class Error404 : System.Web.UI.Page
+    public partial class _4041 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

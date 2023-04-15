@@ -6,7 +6,7 @@
     <link href="css/personalizados/reflejos.css" rel="stylesheet" />
     <link href="frontend/css/styleIndex.css" rel="stylesheet" />
     <link rel="stylesheet" href="templates/fitnessclub-master/assets/css/style.css">    
-    <link href="bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" />
+    
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -104,7 +104,7 @@
                     </div>
                 </div>                                    
                 <!-- Submit Button-->               
-                <div class="text-center"><button style="padding: 15px;font-size: 30px;" class="btn btn-primary" type="button" id="submitButton" onclick="addContact()">ENVIAR</button></div>
+                <div class="text-center"><button style="padding: 30px;font-size: 30px;" class="btn btn-primary" type="button" id="submitButton" onclick="addContact()">ENVIAR</button></div>
             </form>
             
         </div>

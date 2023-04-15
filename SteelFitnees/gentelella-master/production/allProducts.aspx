@@ -44,8 +44,8 @@
                         <div class="progress"></div>
                     </div>
                     <div class="range-input"  >
-                        <input type="range" class="range-min" min="0" onmouseup="onMin()" max="10000" value="2500" step="10">
-                        <input type="range" class="range-max" min="0" onmouseup="onMax()" max="10000" value="7500" step="10">
+                        <input id="rangeMin" type="range" class="range-min" min="0" onmouseup="onMin()" max="10000" value="2500" step="10">
+                        <input id="rangeMax" type="range" class="range-max" min="0" onmouseup="onMax()" max="10000" value="7500" step="10">
                     </div>    
                     <div class="row" style="justify-content:center">
                         <div class="price-input" style="width:50%;">                        
@@ -83,7 +83,19 @@
     <script src="js/personalizados/utils/Ajax/onkeyupSearchCatalogos.js"></script>
     <script src="js/personalizados/utils/Ajax/request.js"></script>
     <script type="text/javascript">
-        window.onload = function () {            
+
+
+        window.onload = function () {
+
+            var inputRangeMin = document.getElementById("rangeMin");
+            var inputRangeMax = document.getElementById("rangeMax");
+            inputRangeMin.addEventListener("touchstart", function (event) {
+                onMin();
+            });
+            inputRangeMax.addEventListener("touchstart", function (event) {
+                onMax();
+            });
+
             var characters = " <%=getCharacters %> "
             if (characters == " ") {
                 requestAllProducts()

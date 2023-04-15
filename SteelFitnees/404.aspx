@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Error404.aspx.cs" Inherits="SteelFitnees.Error404" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="404.aspx.cs" Inherits="SteelFitnees._404" %>
 
 <!DOCTYPE html>
 
@@ -8,6 +8,9 @@
     <title></title>
 </head>
 <body>
-  <h1>Pagina no encontrada</h1>
+    <form id="form1" runat="server">
+        <div>
+        </div>
+    </form>
 </body>
 </html>
