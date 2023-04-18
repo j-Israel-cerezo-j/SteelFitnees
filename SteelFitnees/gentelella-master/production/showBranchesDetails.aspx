@@ -133,7 +133,7 @@
                 </div> 
                 <form id="formComments" class="g-3 needs-validation" novalidate style="width:100%"> 
                     <div style="width:100%" class="col-xl-4 col-lg-4 col-md-8 col-sm-12 col-xsm-12">
-                        <label style="color:white" class="form-label">Comentanos tus sugerencias de la sucursal o si fue de tu agarado</label>
+                        <label style="color:white" class="form-label">Comentanos tus sugerencias de la sucursal o si fue de tu agrado</label>
                         <textarea class="form-control" rows="6" id="comments" name="comments" required="required" onkeyup="onkeyupInputEmtyy('comments')"></textarea>
                         <div class="valid-feedback">
 							¡ Buen trabajo!

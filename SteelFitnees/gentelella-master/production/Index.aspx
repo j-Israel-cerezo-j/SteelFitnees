@@ -73,7 +73,7 @@
     <section class="page-section mt-5" id="contact">
         <div class="container">
             <div class="text-center">
-                <h2 class="section-heading text-uppercase">Contactanos</h2>
+                <h2 class="section-heading text-uppercase">Contactanos para resivir promociones</h2>
             </div>
             <form id="contactForm" class="g-3 needs-validation mt-4" novalidate>
                 <div class="row align-items-stretch mb-5" style="justify-content:center;">

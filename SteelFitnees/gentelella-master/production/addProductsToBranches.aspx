@@ -35,7 +35,7 @@
 							¡ Buen trabajo!
 						</div>
 						<div class="invalid-feedback">
-							Seleccione una opción correcta en dias
+							Seleccione una opción correcta en productos
 						</div>
 					</div>
 				</div>

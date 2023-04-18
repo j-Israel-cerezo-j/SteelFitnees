@@ -13,13 +13,13 @@
             htmlHours +=
                 `<div class="tab-pane fade" id = "nav-home${json[i].idHorario}" role = "tabpanel" aria - labelledby="nav-home-tab" >
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-lg-12 col-lg-12 col-md-6 col-lg-12">
                             <div class="tab-wrapper" style="justify-content: center;">
                                 <!-- single -->
                                 <div class="single-box"  style="width:25%">
-                                    <div class="single-caption text-center">
+                                    <div class="single-caption text-center"  style="background: #ff1313;">
                                         <div class="caption">
-                                            <span style="font-size:26px">${json[i].horaInicio} - ${json[i].horaCierre}</span>
+                                            <span style="font-size:26px;background: #fff;color: black;">${json[i].horaInicio} - ${json[i].horaCierre}</span>
                                         </div>
                                     </div>
                                 </div>

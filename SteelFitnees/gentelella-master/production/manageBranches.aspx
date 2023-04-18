@@ -31,7 +31,7 @@
 								¡ Buen trabajo!
 							</div>
 							<div class="invalid-feedback">
-								La fotografia del trabajador es requerida
+								La imagen es requerida
 							</div>
 						</div>
 					</div>	
