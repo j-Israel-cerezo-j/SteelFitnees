@@ -171,8 +171,14 @@
 	<script src="js/personalizados/utils/switchTableOnkeyup.js"></script>
     <script src="js/personalizados/utils/Ajax/onkeyupSearchCatalogos.js"></script>
 	<script src="js/personalizados/utils/onkeyupInputEmpty.js"></script>
-	<script type="text/javascript">
-        window.onload = function () {
+	<script type="text/javascript">                
+
+		window.onload = function () {
+
+            var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
+                keyboard: false
+			})
+
 			buiildTableOnload();
 
 
@@ -184,7 +190,8 @@
             if (checkAll != undefined) {
                 checkAll.nextElementSibling.setAttribute('onclick', 'toggleSelectAll()');
             }
-		}        
+		}
+		
 		function MostraIma(input) {            
 
             document.getElementById("containerImages").innerHTML = ""

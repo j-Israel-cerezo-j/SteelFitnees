@@ -51,8 +51,7 @@
                 var actionUpdateData = document.getElementById("containerImages");
                 actionUpdateData.setAttribute('data-action-uploadAut',false);
 
-                var myModal = new bootstrap.Modal(document.getElementById('exampleModal'))
-                myModal.show()
+                $("#exampleModal").modal("show");
 
                 request(buildCardsImage, 'Handlers/imagesController.aspx?id=' + json[i].id,);
 
