@@ -26,7 +26,7 @@
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-12 form-group" style="margin-top:15px">
 						<div class="mb-3" id="containerFilePhotograph">
-							<input multiple style="border-radius:6px" accept="image/jpeg,image/png"  class="form-control" required="required" type="file" id="formFile" onchange="MostraIma(this)" name="images[]">
+							<input multiple style="border-radius:6px" accept="image/jpeg,image/png,image/jfif"  class="form-control" required="required" type="file" id="formFile" onchange="MostraIma(this)" name="images[]">
 							 <div class="valid-feedback">
 								¡ Buen trabajo!
 							</div>

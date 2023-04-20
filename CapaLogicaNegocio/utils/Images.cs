@@ -24,7 +24,7 @@ namespace CapaLogicaNegocio.utils
                 try
                 {
                     string ext = System.IO.Path.GetExtension(file.FileName);
-                    if (ext != ".jpg" && ext != ".png")
+                    if (ext != ".jpg" && ext != ".png"&& ext != ".JPG" && ext != ".PNG"&& ext != "JPG" && ext != "PNG" && ext != "PNG"&&ext!= ".jfif")
                     {
                         throw new ServiceException(MessageErrors.MessageErrors.wrongFileExtension("png o jpg"));
                     }

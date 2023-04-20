@@ -160,6 +160,8 @@
     <script src="js/personalizados/showBranchesDetails/buildSchedule.js"></script>
     <script src="js/personalizados/showBranchesDetails/requestComments.js"></script>
     <script src="js/personalizados/showBranchesDetails/ajax/branchesAjax.js"></script>
+
+    <script src="js/personalizados/utils/formant12HourTime.js"></script>
     <script src="js/personalizados/utils/onkeyupInputEmpty.js"></script>
     <!-- JS here -->
     <script src="templates/fitnessclub-master/assets/js/vendor/modernizr-3.5.0.min.js"></script>

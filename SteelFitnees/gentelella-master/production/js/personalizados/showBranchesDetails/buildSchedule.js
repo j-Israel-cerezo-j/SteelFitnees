@@ -8,6 +8,10 @@
     if (json != undefined) {
         for (var i = 0; i < json.length; i++) {
             ban = true;
+
+            var scheduleOpen = formant12HoursTime(json[i].horaInicio);
+            var scheduleClose = formant12HoursTime(json[i].horaCierre);
+
             htmlDays += 
                 `<a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-home${json[i].idHorario}" role="tab" aria-controls="nav-home" aria-selected="true">${json[i].dia}</a>`
             htmlHours +=
@@ -19,7 +23,7 @@
                                 <div class="single-box"  style="width:25%">
                                     <div class="single-caption text-center"  style="background: #ff1313;">
                                         <div class="caption">
-                                            <span style="font-size:26px;background: #fff;color: black;">${json[i].horaInicio} - ${json[i].horaCierre}</span>
+                                            <span style="font-size:26px;background: #fff;color: black;">${scheduleOpen} - ${scheduleClose}</span>
                                         </div>
                                     </div>
                                 </div>
