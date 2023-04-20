@@ -195,10 +195,7 @@
     <Content Include="gentelella-master\production\Handlers\productsController.aspx" />
     <Content Include="gentelella-master\production\Handlers\sucursalesController.aspx" />
     <Content Include="gentelella-master\production\Handlers\tablesController.aspx" />
-<<<<<<< HEAD
-=======
     <Content Include="gentelella-master\production\Handlers\userController.aspx" />
->>>>>>> master
     <Content Include="gentelella-master\production\images\perzonalizadas\aboutUs\misongym.png" />
     <Content Include="gentelella-master\production\images\perzonalizadas\login\images.jpg" />
     <Content Include="gentelella-master\production\images\perzonalizadas\userL\285655_user_icon.png" />
@@ -265,10 +262,7 @@
     <Content Include="gentelella-master\production\js\personalizados\indexUser\OnkeyupSearch.js" />
     <Content Include="gentelella-master\production\js\personalizados\indexUser\requestComments.js" />
     <Content Include="gentelella-master\production\js\personalizados\indexUser\requestFilterByDates.js" />
-<<<<<<< HEAD
-=======
     <Content Include="gentelella-master\production\js\personalizados\Index\addU.js" />
->>>>>>> master
     <Content Include="gentelella-master\production\js\personalizados\Index\build\buildCardsBranches.js" />
     <Content Include="gentelella-master\production\js\personalizados\Index\requestBranches.js" />
     <Content Include="gentelella-master\production\js\personalizados\masterPrincipal\keydown.js" />
@@ -309,10 +303,7 @@
     <Content Include="gentelella-master\production\principal.Master" />
     <Content Include="gentelella-master\production\productsByBranche.aspx" />
     <Content Include="gentelella-master\production\showBranchesDetails.aspx" />
-<<<<<<< HEAD
-=======
     <Content Include="gentelella-master\production\sources\slideUno.JPG" />
->>>>>>> master
     <Content Include="gentelella-master\production\templates\fitnessclub-master\assets\css\animate.min.css" />
     <Content Include="gentelella-master\production\templates\fitnessclub-master\assets\css\animated-headline.css" />
     <Content Include="gentelella-master\production\templates\fitnessclub-master\assets\css\bootstrap.min.css" />
@@ -1702,10 +1693,6 @@
     <Content Include="gentelella-master\production\sources\map.jpg" />
     <Content Include="gentelella-master\production\sources\pesas.JPG" />
     <Content Include="gentelella-master\production\sources\runn.jpg" />
-<<<<<<< HEAD
-    <Content Include="gentelella-master\production\sources\slide1.JPG" />
-=======
->>>>>>> master
     <Content Include="gentelella-master\production\sources\slide2.jpg" />
     <Content Include="gentelella-master\production\sources\slide3.jpg" />
     <Content Include="gentelella-master\production\sources\steelAqua.jpg" />
@@ -5987,8 +5974,6 @@
     <Compile Include="gentelella-master\production\Handlers\tablesController.aspx.designer.cs">
       <DependentUpon>tablesController.aspx</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-=======
     <Compile Include="gentelella-master\production\Handlers\userController.aspx.cs">
       <DependentUpon>userController.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5996,7 +5981,6 @@
     <Compile Include="gentelella-master\production\Handlers\userController.aspx.designer.cs">
       <DependentUpon>userController.aspx</DependentUpon>
     </Compile>
->>>>>>> master
     <Compile Include="gentelella-master\production\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
