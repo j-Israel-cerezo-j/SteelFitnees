@@ -199,8 +199,8 @@
             for (var i = 0; i < input.files.length; i++) {
                 let html =
                     `	<div class="col-lg-2 col-md-2 col-sm-6 form-group justify-content-center" style="margin-top:15px">
-								<div class="card reflejo " style="width: 7.5rem;text-align:center;flex-direction:inherit">
-									<img id="image${i}" alt="Cargar fotografía por favor." src="" height="100" width="120" />
+								<div class=" " style="width: 7.5rem;text-align:center;flex-direction:inherit">
+									<img id="image${i}" alt="Cargar fotografía por favor." src="" height="120" width="120" />
 									<div class="card-body">
 									    <div id="msjImagenCargadaAutomatica${i}"></div>
 									</div>

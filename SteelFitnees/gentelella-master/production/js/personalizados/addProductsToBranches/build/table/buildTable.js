@@ -40,6 +40,7 @@
                         <tbody>`;
     if (json != undefined) {
         for (var i = 0; i < json.length; i++) {
+            var precioF = parseFloat(json[i].precio).toFixed(2)
             ban = true;
             html +=
                 `<tr class="even pointer">
@@ -54,7 +55,7 @@
             html += ` <td class=" ">${json[i].nombreProduc}</td>`
             html += ` <td class=" ">${json[i].descriptProduct}</td>`
             html += ` <td class=" ">${json[i].cantidad}</td>`
-            html += ` <td class=" ">${json[i].precio}</td>`
+            html += ` <td class=" ">${precioF}</td>`
             html += ` <td class=" "><img alt="Caragando..." src="${json[i].imagen}" height="100" width="150"/></td>`
             html += `<td class="last"><button id="${json[i].idRegistro}" type="button" onclick="recoverDataa(event)" class="btn btn-success fa fa-pencil" style="height: 40px;width: 40px;"></button></td>`
             html += `

@@ -6,15 +6,16 @@
                     const scheduleOpen = json[i].horaInicio;
                     var [hora, minutos] = scheduleOpen.split(":").map(num => parseInt(num));
                     if (scheduleOpen.includes("p. m.")) {
-                        hora =12+ hora;
+                        hora =12;
                     }
                     const fomatCorrectHoraInputIni = `${hora.toString().padStart(2, "0")}:${minutos.toString().padStart(2, "0")}`;
 
                     const scheduleClose = json[i].horaCierre;
                     var [horaClose, minutosClose] = scheduleClose.split(":").map(num => parseInt(num));
                     if (scheduleClose.includes("p. m.")) {
-                        horaClose = 12 + horaClose;
+                        horaClose = 12;
                     }
+                    console.log(json[i].horaInicio)
                     const fomatCorrectHoraInputEnd = `${horaClose.toString().padStart(2, "0")}:${minutosClose.toString().padStart(2, "0")}`;
 
                     document.getElementById("branches").value = json[i].fkSucursal;

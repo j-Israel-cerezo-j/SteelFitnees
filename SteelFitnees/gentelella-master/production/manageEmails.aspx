@@ -25,7 +25,7 @@
 						<span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
 					</div>
 				</div>
-				<div class="row mt-4">
+				<%--<div class="row mt-4">
 					<label class="form-label"><b>Datos del remitente:</b></label>
 					<div class="col-lg-6 col-md-6 col-sm-12 col-xsm-12 form-group mt-3" style="padding-right: 0px;padding-left:10px;">						
 						<input  style="border-radius:6px" type="text" class="form-control has-feedback-left" required="required" name="senderMail" id="senderMail" placeholder="Correo remitente" onkeyup="formantCorrectInput('senderMail','inputEmpty','inputFormantIncorrect','@')">
@@ -62,7 +62,7 @@
 						</div>
 						<span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
 					</div>
-				</div>
+				</div>--%>
 				<div class="row mt-3">					
 					<div class="col-lg-6 col-md-6 col-sm-12 form-group">
 						<div class="mb-3" id="containerFilePhotograph">
