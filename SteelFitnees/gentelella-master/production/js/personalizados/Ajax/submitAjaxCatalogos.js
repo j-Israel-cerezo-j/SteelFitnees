@@ -77,12 +77,19 @@ function catalogosAddUpdateDelete(typeR, formData) {
 }
 
 function switchTablePahe(json, info) {
+
+    var select = document.getElementById("filterTableBy")
+    var value = select.value;
     switch (info) {
         case 'dias':
             buildTable(json, true);
             break;        
         case 'horas':
-            buildTableHours(json);
+            if (value != "" && value != "-1" && value != undefined) {
+                requestBuildTableFilterBy();
+            } else {
+                buildTableHours(json); 
+            }            
             break;
         case 'productos':
             buildTable(json);
@@ -90,7 +97,11 @@ function switchTablePahe(json, info) {
         case 'sucursales':
             buildTable(json);
         case 'productBranche':
-            buildTable(json);
+            if (value != "" && value != "-1" && value != undefined) {
+                requestBuildTableFilterBy();
+            } else {
+                buildTable(json);
+            }             
         case 'aboutUsAdmin':
             buildTable(json);
             break;

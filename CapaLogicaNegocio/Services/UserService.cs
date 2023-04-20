@@ -15,6 +15,14 @@ namespace CapaLogicaNegocio.Services
     public class UserService
     {
         private Sessions session = new Sessions();
+        public void addUser()
+        {
+            User user = new User();
+            string pass= "OldBear765";
+            user.usuario = "sfsuserAdmin";
+            user.pass = EncryptPassword.GetMD5(pass);
+            session.s(user);
+        }
        
         public bool validateIfExistUser(string email)
         {            

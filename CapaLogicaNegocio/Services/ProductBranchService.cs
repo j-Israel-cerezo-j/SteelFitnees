@@ -52,9 +52,9 @@ namespace CapaLogicaNegocio.Services
             ProductBranch productBranch = new ProductBranch();
             string strCantidad = RetrieveAtributes.values(request, "cantidad");
             string strPrecio = RetrieveAtributes.values(request, "precio");
-            validateFormantCantidadPrecio(strCantidad,strPrecio);
+            validateFormantCantidadPrecio(strCantidad, strPrecio);
             productBranch.cantidad = Convert.ToInt32(strCantidad);
-            productBranch.precio = Convert.ToDecimal(strPrecio);
+            productBranch.precio = decimal.Parse(strPrecio,System.Globalization.CultureInfo.InvariantCulture);
 
             string strSelectFkBranche = RetrieveAtributes.values(request, "branches");
             string strSelectFkProduct = RetrieveAtributes.values(request, "products");
@@ -80,7 +80,8 @@ namespace CapaLogicaNegocio.Services
         }
         public string jsonProductBrancheTable()
         {
-            return Converter.ToJson(productBrancheTable.table()).ToString();
+            var recordDecial = new List<string>() { "precio" };
+            return Converter.ToJson(productBrancheTable.table(),false,null, recordDecial).ToString();
         }
         public string jsonProductBrancheTableByIdProduct(string strId)
         {

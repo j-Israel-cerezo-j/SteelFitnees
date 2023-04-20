@@ -150,8 +150,7 @@
 	<script src="js/personalizados/FacadeCatalogosRecoverData/switchCatalogosRecoverData.js"></script>
 
     <script src="js/personalizados/Ajax/recoverData.js"></script>
-    <script src="js/personalizados/Ajax/submitAjaxCatalogos.js"></script>  
-  
+    <script src="js/personalizados/Ajax/submitAjaxCatalogos.js"></script>
     <script src="js/personalizados/utils/Ajax/requestTables.js"></script>
     <script src="js/personalizados/utils/Ajax/request.js"></script>
     <script src="js/personalizados/utils/Ajax/onkeyupSearchCatalogos.js"></script>

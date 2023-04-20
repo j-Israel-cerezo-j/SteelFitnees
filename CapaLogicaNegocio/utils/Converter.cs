@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-
+using System.Globalization;
+using System.Globalization;
 namespace CapaLogicaNegocio.utils
 {
     public class Converter
@@ -127,7 +128,7 @@ namespace CapaLogicaNegocio.utils
             json += "}";
             return json;
         }
-        public static StringBuilder ToJson(DataTable table,bool typeDateTime=false,List<string> namesTypeDateTime=null)
+        public static StringBuilder ToJson(DataTable table,bool typeDateTime=false,List<string> namesTypeDateTime=null,List<string> recordDecimal=null)
         {
             StringBuilder jsonSb = new StringBuilder();
             jsonSb.Append("[");
@@ -150,6 +151,17 @@ namespace CapaLogicaNegocio.utils
                                 jsonSb.Append(table.Columns[j].ColumnName + ": '" + table.Rows[i][j].ToString() + "',");
                             }
                         }                       
+                    }else if (recordDecimal!=null)
+                    {
+                        if (recordDecimal.Contains(table.Columns[j].ColumnName))
+                        {
+                            decimal campDecimal =Convert.ToDecimal( table.Rows[i][j]);
+                            jsonSb.Append(table.Columns[j].ColumnName + ": '" + campDecimal.ToString("0.00",CultureInfo.InvariantCulture)+ "',");
+                        }
+                        else
+                        {
+                            jsonSb.Append(table.Columns[j].ColumnName + ": '" + table.Rows[i][j].ToString() + "',");
+                        }
                     }
                     else
                     {

@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/gentelella-master/production/principal.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SteelFitnessWEB.Index" %>
+
+﻿    <%@ Page Title="" Language="C#" MasterPageFile="~/gentelella-master/production/principal.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SteelFitnessWEB.Index" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -25,24 +26,24 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="4000">
-                <img src="sources/slide2.jpg" class="d-block w-100" alt="..." width="100">
+                <img src="sources/slideUno.jpg" class="d-block w-100" alt="..." width="100">
                 <div class="carousel-caption d-none d-md-block">
                     <h2 style="color:white" class="section-heading text-uppercase">INSTALACIONES DE PRIMER NIVEL</h2>
-                    <p style="color:white">Some representative placeholder content for the first slide.</p>
+                    <p style="color:white">Siempre con aparatos de la mejor calidad y en constante servicio</p>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="4000">
+                <img src="sources/slide2.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2 style="color:white" class="section-heading text-uppercase">ENTRENADORES CAPACITADOS</h2>
+                    <p style="color:white">Nuestro personal cuenta con preparación previa</p>
                 </div>
             </div>
             <div class="carousel-item" data-bs-interval="4000">
                 <img src="sources/runn.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <h2 style="color:white" class="section-heading text-uppercase">ENTRENADORES CERTIFICADOS</h2>
-                    <p style="color:white">Some representative placeholder content for the second slide.</p>
-                </div>
-            </div>
-            <div class="carousel-item" data-bs-interval="4000">
-                <img src="sources/slide1.jpg" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h2 style="color:white" class="section-heading text-uppercase">EXCELENTE UBICACION</h2>
-                    <p style="color:white">Some representative placeholder content for the third slide.</p>
+                    <h2 style="color:white" class="section-heading text-uppercase">EXCELENTE AMBIENTE</h2>
+                    <p style="color:white">Siempre encontrarás personas con la mejor actitud</p>
                 </div>
             </div>
         </div>
@@ -73,7 +74,7 @@
     <section class="page-section mt-5" id="contact">
         <div class="container">
             <div class="text-center">
-                <h2 class="section-heading text-uppercase">Contactanos para resivir promociones</h2>
+                <h2 class="section-heading text-uppercase">Registrate al Newsletter</h2>
             </div>
             <form id="contactForm" class="g-3 needs-validation mt-4" novalidate>
                 <div class="row align-items-stretch mb-5" style="justify-content:center;">
@@ -115,7 +116,7 @@
     <script src="js/personalizados/Index/requestBranches.js"></script>
     <script src="js/personalizados/Index/build/buildCardsBranches.js"></script>
     <script src="js/personalizados/utils/Ajax/request.js"></script>
-
+    <script src="js/personalizados/Index/addU.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js" integrity="sha256-92U7H+uBjYAJfmb+iNPi7DPoj795ZCTY4ZYmplsn/fQ=" crossorigin="anonymous"></script>
     <script type="text/javascript">
         window.onload = function () {

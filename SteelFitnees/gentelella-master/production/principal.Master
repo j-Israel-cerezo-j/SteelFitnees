@@ -42,7 +42,7 @@
 		                            	<svg style=" position: absolute;width: 20px; height: 20px; left: 12px; top: 50%; transform: translateY(-50%);" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
 	                                		<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
 	                                	</svg>
-		                                <input class="form-control" list="datalistOptionsSerch" id="exampleDataListMaster" placeholder="Busca sucursales,productos, etc..." style="border-radius:10px; width: 100%;padding-left: 40px;padding-right: 15px;padding-bottom:10px;padding-top:10px" onkeyup="onkeyupSearchhMaster()"  name="onkeyupCoincidenciasMaster">
+		                                <input class="form-control" list="datalistOptionsSerch" id="exampleDataListMaster" placeholder="Busca sucursales, productos, etc." style="border-radius:10px; width: 100%;padding-left: 40px;padding-right: 15px;padding-bottom:10px;padding-top:10px" onkeyup="onkeyupSearchhMaster()"  name="onkeyupCoincidenciasMaster">
 		                                <datalist id="datalistOptionsSerch"></datalist>
 		                            </div>
 		                        </div>
@@ -55,7 +55,7 @@
                                     <nav>
                                         <ul id="navigation">
                                             <li><a href="index.aspx">Inicio</a></li>
-                                            <li><a href="Galeria.aspx">Galería</a></li>
+                                            <li><a href="Galeria.aspx">Copa Steel Fitness</a></li>
                                             <li><a href="aboutUs.aspx">Conócenos</a></li>
                                             <li><a>Productos</a>
                                                 <ul class="submenu">
@@ -89,9 +89,9 @@
             <div class="row align-items-center mb-5">
                 <div class="col-lg-4 text-lg-start">Copyright © 2023. Todos los derechos reservados.</div>
                 <div class="col-lg-4 my-3 my-lg-0">
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://instagram.com/steelfitnesssanctorum?igshid=YmMyMTA2M2Y=" aria-label="Twitter"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/steelfitnesssanctorum?mibextid=ZbWKwL" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <%--<a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>--%>
                 </div>
                 <%--<div class="col-lg-4 text-lg-end">
                     <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
