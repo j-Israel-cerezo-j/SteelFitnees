@@ -1,0 +1,3 @@
+﻿function buildTableOnload() {
+    requestTablesAjax(buildTable);
+}
