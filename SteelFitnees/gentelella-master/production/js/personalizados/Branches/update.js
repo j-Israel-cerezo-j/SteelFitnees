@@ -12,6 +12,18 @@
         var imageUploadAut = inputImage.getAttribute("data-action-uploadAut");
         var statusDataFinal = imageUploadAut == null ? false : imageUploadAut
         formData.append("statusImajes", statusDataFinal)
+
+     
+
+        const divCoinatinerImg = document.querySelector('#containerImages'); // selecciona el div
+        const imgTags = divCoinatinerImg.querySelectorAll('img');
+
+        var arrayImgPath = []
+        console.log(imgTags)
+        for (var i = 0; i < imgTags.length - 1; i++) {
+            arrayImgPath.push(imgTags[i].dataset["imageUploadaut"]);
+        }
+        formData.append("arrayParhImgs", arrayImgPath);
         document.getElementById("form1").reset();
         catalogosAddUpdateDelete('update', formData);
         

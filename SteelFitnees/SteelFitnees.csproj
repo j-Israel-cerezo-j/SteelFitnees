@@ -183,6 +183,7 @@
     <Content Include="gentelella-master\production\css\personalizados\map.css" />
     <Content Include="gentelella-master\production\css\personalizados\nav.css" />
     <Content Include="gentelella-master\production\css\personalizados\slider.css" />
+    <Content Include="gentelella-master\production\css\personalizados\x.css" />
     <Content Include="gentelella-master\production\frontend\templatesEmailGym\gymMessageHtml.html" />
     <Content Include="gentelella-master\production\Handlers\aboutUsController.aspx" />
     <Content Include="gentelella-master\production\Handlers\contactController.aspx" />
@@ -236,6 +237,7 @@
     <Content Include="gentelella-master\production\js\personalizados\Branches\delete.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\OnkeyupSearch.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\recoverData.js" />
+    <Content Include="gentelella-master\production\js\personalizados\Branches\removeImg.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\reset.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\tableOnload.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\update.js" />
