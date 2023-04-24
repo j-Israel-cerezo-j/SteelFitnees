@@ -96,6 +96,7 @@ namespace CapaLogicaNegocio.Services
             {
                 bool status =Convert.ToBoolean( RetrieveAtributes.values(request, "statusImajes"));
                 Branche branche = new Branche();
+                var arrayPathImg = Converter.ToList(RetrieveAtributes.values(request, "arrayParhImgs"));
                 branche.idSucursal = Convert.ToInt32(strId);
                 branche.nombre = RetrieveAtributes.values(request, "nombre");
                 branche.descripcion = RetrieveAtributes.values(request, "description");
