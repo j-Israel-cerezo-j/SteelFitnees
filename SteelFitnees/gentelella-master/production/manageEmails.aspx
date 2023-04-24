@@ -76,8 +76,8 @@
 						</div>
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-12 form-group">
-						<div  class="card reflejo " style="width: 13.9rem;text-align:center">
-							<img  id="image" alt="Cargar imagen por favor." src="" height="200" width="220"/>
+						<div  class="" style="width: 13.9rem;text-align:center">
+							<img class="reflejo"  id="image" alt="Cargar imagen por favor." src="" height="200" width="220"/>
 							<div class="card-body">
 								<div id="msjImagenCargadaAutomatica"></div>
 							</div>

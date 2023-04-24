@@ -11,6 +11,9 @@
         var inputImage = document.getElementById("containerImages");
         var imageUploadAut = inputImage.getAttribute("data-action-uploadAut");
         var statusDataFinal = imageUploadAut == null ? false : imageUploadAut
+        //al recuperar las imagenes en para actuzliazar,poner un boton
+        //si quiere quitar las imagenes recuperadas, y si da click.limpiar los data-image
+        //de no ser asi, que mande las imagenes guardadas mas las recien subidas, y volverlas a pintar
         formData.append("statusImajes", statusDataFinal)
         document.getElementById("form1").reset();
         catalogosAddUpdateDelete('update', formData);
