@@ -33,31 +33,31 @@ namespace CapaLogicaNegocio.Services
                     MailMessage mensaje = new MailMessage();
                     string affair = RetrieveAtributes.values(request, "asunto");
                     string bodyEmail = RetrieveAtributes.values(request, "info");
-                    string senderMail = RetrieveAtributes.values(request, "senderMail");
-                    string senderPassword = RetrieveAtributes.values(request, "senderPassword");
+                    //string senderMail = RetrieveAtributes.values(request, "senderMail");
+                    //string senderPassword = RetrieveAtributes.values(request, "senderPassword");
 
-                    if (!senderMail.Contains("@"))
-                    {
-                        throw new ServiceException(MessageErrors.MessageErrors.incorrectFomrmantEmail);
-                    }
+                    //if (!senderMail.Contains("@"))
+                    //{
+                    //    throw new ServiceException(MessageErrors.MessageErrors.incorrectFomrmantEmail);
+                    //}
                     Attachment adjunto = new Attachment(file.InputStream, file.FileName);
                     AlternateView htmlView = AlternateView.CreateAlternateViewFromString(Html.htmlTemplateEmail(), null, "text/html");
                     LinkedResource linkedResource = new LinkedResource(adjunto.ContentStream, adjunto.ContentType);
                     linkedResource.ContentId = "imagenEnHTML";
                     htmlView.LinkedResources.Add(linkedResource);                   
                     mensaje.AlternateViews.Add(htmlView);
-                    string smpEmailSend = selectSmpEmailSend(senderMail);
+                    //string smpEmailSend = selectSmpEmailSend(senderMail);
 
                     mensaje = addMessageRecipients(mensaje);
                     
-                    mensaje.From = new MailAddress(senderMail);
+                    mensaje.From = new MailAddress("steelfitnessclub@hotmail.com");
                     mensaje.Subject = affair;
                     mensaje.Body = bodyEmail;
 
                     // Crear un objeto SmtpClient para enviar el correo
-                    SmtpClient cliente = new SmtpClient(smpEmailSend);
+                    SmtpClient cliente = new SmtpClient("smtp-mail.outlook.com");
                     cliente.Port = 587; // Puerto del servidor SMTP
-                    cliente.Credentials = new NetworkCredential(senderMail, senderPassword);
+                    cliente.Credentials = new NetworkCredential("steelfitnessclub@hotmail.com", "OldBear765");
                     cliente.EnableSsl = true; // Usar SSL para conexión segura
 
                     // Enviar el mensaje

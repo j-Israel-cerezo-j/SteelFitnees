@@ -77,9 +77,8 @@ function catalogosAddUpdateDelete(typeR, formData) {
 }
 
 function switchTablePahe(json, info) {
-
-    var select = document.getElementById("filterTableBy")
-    var value = select.value;
+    
+    var value = document.getElementById("filterTableBy") == undefined ? "-1" : document.getElementById("filterTableBy").value
     switch (info) {
         case 'dias':
             buildTable(json, true);

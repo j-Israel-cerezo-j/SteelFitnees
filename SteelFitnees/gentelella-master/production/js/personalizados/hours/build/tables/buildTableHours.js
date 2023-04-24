@@ -39,6 +39,9 @@
                         <tbody>`;
     if (json != undefined) {
         for (var i = 0; i < json.length; i++) {
+            var scheduleOpen = formant12HoursTime(json[i].horaInicio);
+            var scheduleClose = formant12HoursTime(json[i].horaCierre);
+           
             ban = true;
             html +=
                 `<tr class="even pointer">
@@ -51,8 +54,8 @@
             html += ` <td class=" ">${json[i].nombre}</td>`
             html += ` <td class=" ">${json[i].ubicacion}</td>`
             html += ` <td class=" ">${json[i].dia}</td>`
-            html += ` <td class=" ">${json[i].horaInicio}</td>`
-            html += ` <td class=" ">${json[i].horaCierre}</td>`
+            html += ` <td class=" ">${scheduleOpen}</td>`
+            html += ` <td class=" ">${scheduleClose}</td>`
             html += `<td class="last"><button id="${json[i].idHorario}" type="button" onclick="recoverDataa(event)" class="btn btn-success fa fa-pencil" style="height: 40px;width: 40px;"></button></td>`
             html += `
                                 </tr> `
@@ -85,3 +88,5 @@ function initChecksTable() {
         handle: 'checkbox'
     });
 }
+
+

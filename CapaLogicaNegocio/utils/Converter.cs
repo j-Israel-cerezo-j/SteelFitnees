@@ -144,7 +144,7 @@ namespace CapaLogicaNegocio.utils
                         {
                             if (namesTypeDateTime.Contains(table.Columns[j].ColumnName))
                             {
-                                jsonSb.Append(table.Columns[j].ColumnName + ": '" + Convert.ToDateTime(table.Rows[i][j]).ToString("h:mm tt") + "',");
+                                jsonSb.Append(table.Columns[j].ColumnName + ": '" + Convert.ToDateTime(table.Rows[i][j]).ToString("HH:mm") + "',");
                             }
                             else
                             {

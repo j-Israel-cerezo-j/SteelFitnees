@@ -89,7 +89,8 @@ namespace CapaLogicaNegocio.Services
             {
                 throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
             }
-            return Converter.ToJson(productBrancheTable.ByIdProduct(Convert.ToInt32(strId))).ToString();
+            var recordDecial = new List<string>() { "precio" };
+            return Converter.ToJson(productBrancheTable.ByIdProduct(Convert.ToInt32(strId)), false, null, recordDecial).ToString();
         }
         public string jsonProductBrancheTableByIdBranche(string strId)
         {
@@ -97,7 +98,8 @@ namespace CapaLogicaNegocio.Services
             {
                 throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
             }
-            return Converter.ToJson(productBrancheTable.ByIdBranche(Convert.ToInt32(strId))).ToString();
+            var recordDecial = new List<string>() { "precio" };
+            return Converter.ToJson(productBrancheTable.ByIdBranche(Convert.ToInt32(strId)), false, null, recordDecial).ToString();
         }
         public string jsonRecoverData(string strId)
         {

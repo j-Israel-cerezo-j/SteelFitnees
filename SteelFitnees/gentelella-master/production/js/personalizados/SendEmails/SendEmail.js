@@ -8,7 +8,7 @@
     } else {
         Swal.fire({
             title: '¿Estas seguro de tus datos?',
-            text: 'Tu correo electronico y contraseña deben de ser correctos, de no ser asi no se podra mandar el correo a los destinatarios',
+            text: 'Presiona Correcto si son correctos',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: 'Darkgreen',

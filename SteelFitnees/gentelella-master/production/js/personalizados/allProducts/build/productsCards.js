@@ -7,17 +7,17 @@
         
         for (var i = 0; i < json.length; i++) {
             ban = true;
-            
+            var precioF = parseFloat(json[i].precio).toFixed(2)
             htmlProducts +=
                 `              
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xsm-6 cardsBranche" style="margin:5px">
                         <div class="home-blog-single">
                             <div class="blog-img-cap">
                                 <div class="blog-img" style="padding:25px">
-                                    <img src="${json[i].imagen}" alt="" width="300" height="150">
+                                    <img src="${json[i].imagen}" alt="" width="300" height="250">
                                     <!-- Blog date -->
                                     <div class="blog-date text-center" style="padding:10px">
-                                        <span>$ ${json[i].precio}</span>
+                                        <span>$ ${precioF}</span>
                                     </div>
                                 </div>
                                 <div style="padding:8px">
