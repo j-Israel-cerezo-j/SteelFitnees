@@ -36,9 +36,11 @@ namespace CapaLogicaNegocio.Services
         private BranchesTable branchesTable=new BranchesTable();
         private SchedulesTable schedulesTable = new SchedulesTable();   
         private ProductTable productTable=new ProductTable();
+        private FileService fileService = new FileService();
         public bool add(Dictionary<string, string> request, List<HttpPostedFile> filesList)
-        {            
+        {
             bool ban = false;
+            var a = fileService.saveFilesS();
             var camposEmptysOrNull = Validation.isNullOrEmptys(request);
             if (camposEmptysOrNull.Count == 0)
             {
@@ -104,8 +106,11 @@ namespace CapaLogicaNegocio.Services
                 if (status)
                 {
                     try
-                    {                        
-                        delete.deleteWhere("images", "fkSucursal", branche.idSucursal.ToString());
+                    {
+                        foreach (var pathNotDelete in arrayPathImg)
+                        {
+                            delete.deletWhereNot("images", "fkSucursal", "path", "("+ branche.idSucursal.ToString() + ")","('"+ pathNotDelete + "')");
+                        }                        
                         foreach (var file in filesList)
                         {
                             string fileName = rd.Next(1, 100000000).ToString() + file.FileName;

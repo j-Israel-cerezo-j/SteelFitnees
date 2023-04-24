@@ -50,7 +50,7 @@
                 document.getElementById("formFile").removeAttribute("required");
 
                 var actionUpdateData = document.getElementById("containerImages");
-                actionUpdateData.setAttribute('data-action-uploadAut',false);
+                actionUpdateData.setAttribute('data-action-uploadAut',true);
 
                 $("#exampleModal").modal("show");
 

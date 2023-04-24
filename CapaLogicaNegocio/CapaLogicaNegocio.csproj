@@ -37,6 +37,9 @@
     <Reference Include="CapaEntidades">
       <HintPath>..\CapaEntidades\bin\Debug\CapaEntidades.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -92,6 +95,7 @@
     <Compile Include="Services\ContactService.cs" />
     <Compile Include="Services\DayService.cs" />
     <Compile Include="Services\EmailSendService.cs" />
+    <Compile Include="Services\FileService.cs" />
     <Compile Include="Services\HoursService.cs" />
     <Compile Include="Services\ProductBranchService.cs" />
     <Compile Include="Services\ProductService.cs" />
@@ -124,6 +128,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="templatesGymHtml\img\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

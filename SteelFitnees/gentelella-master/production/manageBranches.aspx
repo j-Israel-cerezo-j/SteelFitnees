@@ -158,6 +158,9 @@
     <script src="js/personalizados/Branches/OnkeyupSearch.js"></script>
     <script src="js/personalizados/Branches/buildCardsImages.js"></script>    
     <script src="js/personalizados/Branches/removeImg.js"></script>
+    <script src="js/personalizados/Branches/requestFiles.js"></script>
+    <script src="js/personalizados/Branches/ajax/filesAjax.js"></script>
+
 
 	<script src="js/personalizados/FacadeCatalogosRecoverData/switchCatalogosRecoverData.js"></script>
 	
@@ -174,6 +177,8 @@
     <script src="js/personalizados/utils/Ajax/onkeyupSearchCatalogos.js"></script>
 	<script src="js/personalizados/utils/onkeyupInputEmpty.js"></script>
 	<script type="text/javascript">
+		var indexImgUpdate = 0;
+		var indexImgUpdate2 = 0;
         window.onload = function () {
 
             var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
@@ -192,36 +197,54 @@
                 checkAll.nextElementSibling.setAttribute('onclick', 'toggleSelectAll()');
             }
 		}        
-		function MostraIma(input) {            
+		function MostraIma(input) {
+            var actionUpdateData = document.getElementById("containerImages");
+			var imageUploadAut = actionUpdateData.getAttribute("data-action-uploadAut");
 
-            document.getElementById("containerImages").innerHTML = ""
-			document.getElementById("containerImages").innerHTML = `<h2 id="msjImages">Tus imagenes cargadas</h2>`
-			var actionUpdateData = document.getElementById("containerImages");
-            actionUpdateData.setAttribute('data-action-uploadAut', true);
+			if (imageUploadAut == null) {
+				document.getElementById("containerImages").innerHTML = ""
+				document.getElementById("containerImages").innerHTML = `<h2 id="msjImages">Tus imagenes cargadas</h2>`
+			} else {
+				if (indexImgUpdate == 0) {
+					indexImgUpdate = parseInt(actionUpdateData.getAttribute("data-indexImage-update"))
+				}				
+			}
             for (var i = 0; i < input.files.length; i++) {
                 let html =
-                    `	<div id="divImage${i}" class="col-lg-2 col-md-2 col-sm-6 form-group justify-content-center" style="margin-top:15px">
+                    `	<div id="divImage${indexImgUpdate == 0 ? i : indexImgUpdate}" class="col-lg-2 col-md-2 col-sm-6 form-group justify-content-center" style="margin-top:15px">
 								<div class=" " style="width: 7.5rem;text-align:center;flex-direction:inherit">
-									<img class="reflejo" id="image${i}" alt="Cargar fotografía por favor." src="" height="120" width="120" />
+									<img class="reflejo" id="image${indexImgUpdate == 0 ? i : indexImgUpdate}" alt="Cargar fotografía por favor." src="" height="120" width="120" />
 									<div class="card-body">
-									    <div id="msjImagenCargadaAutomatica${i}"></div>
+									    <div id="msjImagenCargadaAutomatica${indexImgUpdate == 0 ? i : indexImgUpdate}"></div>
 									</div>
 								</div>
 				            </div> `
-
-                document.getElementById("containerImages").innerHTML += html;
-            }
+				document.getElementById("containerImages").innerHTML += html;
+				if (indexImgUpdate != 0) {
+                    indexImgUpdate++;
+				}                
+			}
+			if (imageUploadAut != null) {
+                if (indexImgUpdate2==0) {
+                    indexImgUpdate2 = parseInt(actionUpdateData.getAttribute("data-indexImage-update"))
+				}                
+			}			
             for (var i = 0; i < input.files.length; i++) {
 				var image = new FileReader();
-                 addImageProcess(image, i, input)
-            }
+				addImageProcess(image, i, input, indexImgUpdate2)
+                if (indexImgUpdate2 != 0) {
+                    indexImgUpdate2++;
+                }
+			}
+			saveTemporaly();
 		}
-        function addImageProcess(image, i, input){
+        function addImageProcess(image, i, input, indexImgUpdate2){
 			return new Promise((resolve, reject) => {
-                image.onload = function (e) {
-                    document.getElementById("image" + i).setAttribute("src", e.target.result);
+				image.onload = function (e) {
+					var newIndex = indexImgUpdate2 == 0 ? i : indexImgUpdate2
+					document.getElementById("image" + newIndex).setAttribute("src", e.target.result);
 				}
-                image.readAsDataURL(input.files[i]);
+				image.readAsDataURL(input.files[i]);
             })
         }
 		

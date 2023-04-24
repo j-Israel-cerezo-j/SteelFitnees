@@ -13,8 +13,10 @@
 				    </div>
 				</div>`      
 
-        document.getElementById("containerImages").innerHTML += html;        
+        document.getElementById("containerImages").innerHTML += html;
     }
+    var containerImg = document.getElementById("containerImages");
+    containerImg = containerImg.setAttribute("data-indexImage-update", json.length)
     addDataImag(json);
 }
 

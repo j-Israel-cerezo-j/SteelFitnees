@@ -49,6 +49,33 @@ namespace CapaDatos
             }
             return ban;
         }
+        public bool whereNot(string table, string fieldWhere1, string fieldWhereNot, string valueFieldCamp1, string valueFieldCampNot)
+        {
+            bool ban = false;
+            Comando.Connection = Conexion;
+            Comando.CommandText = Query.deleteWherePathAndIDNot(table, fieldWhere1, fieldWhereNot,valueFieldCamp1,valueFieldCampNot);
+            Comando.CommandType = CommandType.Text;
+            try
+            {
+                Conexion.Open();
+                Comando.ExecuteNonQuery();
+                ban = true;
+            }
+            catch (SqlException e)
+            {
+                ban = false;
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                {
+                    Conexion.Close();
+                }
+                Comando.Parameters.Clear();
+            }
+            return ban;
+        }
         public bool whereIn(string table, string field, List<string> valuesField)
         {
             bool ban = false;

@@ -13,6 +13,10 @@ namespace CapaLogicaNegocio.Deletes
         {
             return delete.where(table, field, fieldValue);
         }
+        public bool deletWhereNot(string table, string fieldWhere1, string fieldWhereNot, string valueFieldCamp1, string valueFieldCampNot)
+        {
+            return delete.whereNot(table, fieldWhere1, fieldWhereNot, valueFieldCamp1, valueFieldCampNot);
+        }
         public bool whereIn(string table, string field, List<string> valiesField)
         {
             return delete.whereIn(table, field, valiesField);

@@ -189,6 +189,7 @@
     <Content Include="gentelella-master\production\Handlers\contactController.aspx" />
     <Content Include="gentelella-master\production\Handlers\daysController.aspx" />
     <Content Include="gentelella-master\production\Handlers\emailController.aspx" />
+    <Content Include="gentelella-master\production\Handlers\filesController.aspx" />
     <Content Include="gentelella-master\production\Handlers\filterByController.aspx" />
     <Content Include="gentelella-master\production\Handlers\hoursController.aspx" />
     <Content Include="gentelella-master\production\Handlers\imagesController.aspx" />
@@ -232,12 +233,14 @@
     <Content Include="gentelella-master\production\js\personalizados\allProducts\requestAllProducts.js" />
     <Content Include="gentelella-master\production\js\personalizados\allProducts\build\productsCards.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\Add.js" />
+    <Content Include="gentelella-master\production\js\personalizados\Branches\ajax\filesAjax.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\buildCardsImages.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\buildTable.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\delete.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\OnkeyupSearch.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\recoverData.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\removeImg.js" />
+    <Content Include="gentelella-master\production\js\personalizados\Branches\requestFiles.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\reset.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\tableOnload.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\update.js" />
@@ -5927,6 +5930,13 @@
     </Compile>
     <Compile Include="gentelella-master\production\Handlers\emailController.aspx.designer.cs">
       <DependentUpon>emailController.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gentelella-master\production\Handlers\filesController.aspx.cs">
+      <DependentUpon>filesController.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gentelella-master\production\Handlers\filesController.aspx.designer.cs">
+      <DependentUpon>filesController.aspx</DependentUpon>
     </Compile>
     <Compile Include="gentelella-master\production\Handlers\filterByController.aspx.cs">
       <DependentUpon>filterByController.aspx</DependentUpon>
