@@ -9,8 +9,8 @@ namespace CapaLogicaNegocio.MessageErrors
 {
     public class MessageErrors
     {
-        
-        public static string searchNotFoundPleaseBeMoreSpecific = "busqueda no encontrada, favor de ser mas especifico";
+        public static string uploadPicturesPlease = "Favor de cargar la(s) imagene(s) de la sucursal";
+        public static string searchNotFoundPleaseBeMoreSpecific = "Busqueda no encontrada, favor de ser mas especifico";
         public static string selectABranchPlease = "Seleccione una sucursal por favor por favor";
         public static string incorrectFomrmantEmail = "El correo electronico no tiene el formato correcto, verifica por favor";
         public static string failedSendEmail = "Ocurrió un error al enviar el correo electrónico";
@@ -55,6 +55,14 @@ namespace CapaLogicaNegocio.MessageErrors
         public static string wrongFileExtension(string extensions)
         {
             return "Solamente se permiten archivos " + extensions;
+        }
+        public static string wrongSizeInImageName(string fileName)
+        {
+            return "El tamaño en el nombre de la imagen debe de ser menor a 45 caracteres en la imagen: " + fileName;
+        }
+        public static string commasAreNotAllowedInTheImageName(string fileName)
+        {
+            return "No se permiten comas en el nombre de la imagen: " + fileName;
         }
     }
 }

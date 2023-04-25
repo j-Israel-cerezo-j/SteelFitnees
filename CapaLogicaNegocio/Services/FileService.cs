@@ -14,12 +14,7 @@ namespace CapaLogicaNegocio.Services
 {
     public class FileService
     {
-        private static Dictionary<string, List<HttpPostedFile>> httpPostedFilessDirec = new Dictionary<string, List<HttpPostedFile>>()
-        {
-            { "192.168.2.1", new List<HttpPostedFile>() }
-            
-        };
-        
+        private static Dictionary<string, List<HttpPostedFile>> httpPostedFilessDirec = new Dictionary<string, List<HttpPostedFile>>();
         public bool push(List<HttpPostedFile> httpPostedFiless,string ipRequest) {
             try
             {
@@ -46,7 +41,7 @@ namespace CapaLogicaNegocio.Services
                 throw new ServiceException("Error al cargar la imagen");
             }
         }
-        public List<HttpPostedFile> saveFilesS(string ipRequest)
+        public List<HttpPostedFile> selectFile(string ipRequest)
         {
             return FileService.httpPostedFilessDirec[ipRequest];
         }

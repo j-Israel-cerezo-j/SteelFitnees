@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -143,9 +144,9 @@ namespace CapaDatos.Querys
         {
             return "delete from " + table + " where " + fieldWhere + "=" + valueField;
         }
-        public static string deleteWherePathAndIDNot(string table, string fieldWhere1, string fieldWhereNot, string valueFieldCamp1, string valueFieldCampNot)
-        {
-            return "DELETE FROM "+table+" WHERE "+ fieldWhere1 + " IN +"+valueFieldCamp1+"+ AND "+ fieldWhereNot + " NOT IN "+ valueFieldCampNot;
+        public static string deleteWherePathAndInNot(string table, string fieldWhere1, string fieldWhereNot, string valueFieldCamp1, string valueFieldCampNot)
+        {            
+            return "DELETE FROM " + table + " WHERE CONVERT (varchar(MAX)," + fieldWhereNot + ") NOT IN " + valueFieldCampNot + " and " + fieldWhere1 + " = " + valueFieldCamp1;
         }
         public static string deleteWhereIn(string table, string fieldWhere, List<string> valuesField)
         {

@@ -36,9 +36,7 @@ namespace SteelFitnessWEB.gentelella_master.production.Handlers
             }
         }
         private void add()
-        {
-
-            string getUrlReferrer = Request.UserHostAddress;
+        {            
             var data = new Dictionary<string, Object>();
             Response response = new Response();
             string catalogo = Request.Form["catalogo"];
@@ -49,7 +47,7 @@ namespace SteelFitnessWEB.gentelella_master.production.Handlers
             {
                 try
                 {
-                    var success = facadeCrudCatalogs.add(catalogo, valuesSubmit, httpPostFileList, getUrlReferrer);
+                    var success = facadeCrudCatalogs.add(catalogo, valuesSubmit, httpPostFileList);
                     if (success)
                     {
                         response.success = success;

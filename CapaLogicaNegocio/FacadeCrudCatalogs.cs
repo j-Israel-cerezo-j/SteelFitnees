@@ -17,7 +17,7 @@ namespace CapaLogicaNegocio
         private BrancheSerevice brancheSerevice = new BrancheSerevice();
         private ProductBranchService productBranchService = new ProductBranchService();
         private AboutUsService aboutUsService = new AboutUsService();
-        public bool add(string catalog, Dictionary<string, string> request, List<HttpPostedFile> filesList,string getUrlReferrer)
+        public bool add(string catalog, Dictionary<string, string> request, List<HttpPostedFile> filesList)
         {
             if (catalog == "")
             {
@@ -32,7 +32,7 @@ namespace CapaLogicaNegocio
                 case "productos":
                     return productService.add(request, filesList);
                 case "sucursales":
-                    return brancheSerevice.add(request, getUrlReferrer);
+                    return brancheSerevice.add(request, filesList);
                 case "productBranche":
                     return productBranchService.add(request);
                 case "aboutUsAdmin":

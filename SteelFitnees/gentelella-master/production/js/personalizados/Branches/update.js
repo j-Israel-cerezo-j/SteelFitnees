@@ -1,13 +1,11 @@
-﻿function update() {
+﻿function update(formData) {
     
     var form = document.getElementById("form1");
     if (!form.checkValidity()) {
         event.preventDefault()
-        event.stopPropagation()
-        removeAllFiles();
+        event.stopPropagation()        
     } else {
         var id = $("#save").val();
-        var formData = new FormData(document.getElementById("form1"));        
         formData.append('id', id);
         var inputImage = document.getElementById("containerImages");
         var imageUploadAut = inputImage.getAttribute("data-action-uploadAut");
@@ -23,12 +21,15 @@
         const imgTags = divCoinatinerImg.querySelectorAll('img');
 
         var arrayImgPath = []
-        console.log(imgTags)
-        for (var i = 0; i < imgTags.length - 1; i++) {
-            arrayImgPath.push(imgTags[i].dataset["imageUploadaut"]);
+        for (var i = 0; i < imgTags.length; i++) {
+            var dataImage = imgTags[i].dataset["imageUploadaut"]
+            if (dataImage != "" && dataImage!= undefined) {
+                arrayImgPath.push(dataImage);
+            }            
         }
         formData.append("arrayParhImgs", arrayImgPath);
         document.getElementById("form1").reset();
+        resetArrayFiles();
         catalogosAddUpdateDelete('update', formData);
         
         document.getElementById("labelMsjAction").innerText = "Agregar sucursal"

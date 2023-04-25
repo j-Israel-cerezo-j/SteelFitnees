@@ -239,7 +239,7 @@
     <Content Include="gentelella-master\production\js\personalizados\Branches\delete.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\OnkeyupSearch.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\recoverData.js" />
-    <Content Include="gentelella-master\production\js\personalizados\Branches\removeImg.js" />
+    <Content Include="gentelella-master\production\js\personalizados\Branches\Imgs.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\requestFiles.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\reset.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\tableOnload.js" />

@@ -53,7 +53,7 @@ namespace CapaDatos
         {
             bool ban = false;
             Comando.Connection = Conexion;
-            Comando.CommandText = Query.deleteWherePathAndIDNot(table, fieldWhere1, fieldWhereNot,valueFieldCamp1,valueFieldCampNot);
+            Comando.CommandText = Query.deleteWherePathAndInNot(table, fieldWhere1, fieldWhereNot,valueFieldCamp1,valueFieldCampNot);
             Comando.CommandType = CommandType.Text;
             try
             {

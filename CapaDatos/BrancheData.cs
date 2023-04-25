@@ -278,6 +278,36 @@ namespace CapaDatos
             }
             return images;
         }
+        public List<Image> dataImage()
+        {
+            List<Image> images = new List<Image>();
+            try
+            {
+                SqlDataReader renglon;
+                Conexion.Open();
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "pro_listImages";                
+                renglon = Comando.ExecuteReader();
+                while (renglon.Read())
+                {
+                    images.Add(new Image(renglon));
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                {
+                    Conexion.Close();
+                }
+                Comando.Parameters.Clear();
+
+            }
+            return images;
+        }
 
         public bool delete(string strIds)
         {

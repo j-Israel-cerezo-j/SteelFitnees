@@ -19,6 +19,9 @@ using System.Web;
 using System.IO;
 using CapaLogicaNegocio.Inserts;
 using System.Globalization;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
+using System.Xml.Linq;
 
 namespace CapaLogicaNegocio.Services
 {
@@ -36,22 +39,24 @@ namespace CapaLogicaNegocio.Services
         private BranchesTable branchesTable=new BranchesTable();
         private SchedulesTable schedulesTable = new SchedulesTable();   
         private ProductTable productTable=new ProductTable();
-        private FileService fileService = new FileService();
-        public bool add(Dictionary<string, string> request,string getUrlReferrer)
-        {
-            bool ban = false;            
-            var camposEmptysOrNull = Validation.isNullOrEmptys(request);
+        public bool add(Dictionary<string, string> request, List<HttpPostedFile> filesList)
+        {                       
+            if (filesList.Count == 0)
+                throw new ServiceException(MessageErrors.MessageErrors.uploadPicturesPlease);
+
+            bool ban = false;
+            var camposEmptysOrNull = Validation.isNullOrEmptys(request);            
             if (camposEmptysOrNull.Count == 0)
             {
-                var filesList = fileService.saveFilesS(getUrlReferrer);
+                Images.validWrongSizeInImageName(filesList);
+                Images.validateThatTheNameOfTheImageDoesNotHaveCommas(filesList);
                 Branche branche = new Branche();
                 branche.nombre = RetrieveAtributes.values(request, "nombre");
                 branche.descripcion = RetrieveAtributes.values(request, "description");
                 branche.ubicacion = RetrieveAtributes.values(request, "ubicacion");
                 int idBranceAdd=brancheAdd.add(branche);
                 if (idBranceAdd == 0)
-                {
-                    fileService.removeAll(getUrlReferrer);
+                {                    
                     throw new ServiceException(MessageErrors.MessageErrors.errorAddingToBranch);
                 }                
 
@@ -65,17 +70,14 @@ namespace CapaLogicaNegocio.Services
                         Insert.Many(strUnionsFiel, "images");
                     }
                     ban = true;
-                    fileService.removeAll(getUrlReferrer);
                 }
                 catch(ServiceException se)
-                {
-                    fileService.removeAll(getUrlReferrer);
+                {                    
                     rollBackBranche(idBranceAdd.ToString());
                     throw new ServiceException(se.getMessage());
                 }
                 catch (Exception ex)
-                {
-                    fileService.removeAll(getUrlReferrer);
+                {                    
                     deleteBranche(idBranceAdd.ToString());
                     throw new ServiceException(MessageErrors.MessageErrors.errorAddingImage);
                 }
@@ -85,27 +87,27 @@ namespace CapaLogicaNegocio.Services
                 foreach (var item in camposEmptysOrNull)
                 {
                     if (item.Value)
-                    {
-                        fileService.removeAll(getUrlReferrer);
+                    {                        
                         throw new ServiceException(item.Key + " esta vacío");
                     }
                 }
             }
             return ban;
-        }
-        private void rollBackBranche(string strId)
-        {
-            brancheDelete.delete(strId);
-        }
+        }        
         public bool update(Dictionary<string, string> request,string strId, List<HttpPostedFile> filesList)
         {
+            var arrayPathImg = Converter.ToList(RetrieveAtributes.values(request, "arrayParhImgs"));
+            if (filesList.Count == 0&& arrayPathImg[0].ToString()=="")
+                throw new ServiceException(MessageErrors.MessageErrors.uploadPicturesPlease);
+
             bool ban = false;
             var camposEmptysOrNull = Validation.isNullOrEmptys(request);
             if (camposEmptysOrNull.Count == 0)
             {
+                Images.validWrongSizeInImageName(filesList);
+                Images.validateThatTheNameOfTheImageDoesNotHaveCommas(filesList);
                 bool status =Convert.ToBoolean( RetrieveAtributes.values(request, "statusImajes"));
                 Branche branche = new Branche();
-                var arrayPathImg = Converter.ToList(RetrieveAtributes.values(request, "arrayParhImgs"));
                 branche.idSucursal = Convert.ToInt32(strId);
                 branche.nombre = RetrieveAtributes.values(request, "nombre");
                 branche.descripcion = RetrieveAtributes.values(request, "description");
@@ -114,17 +116,20 @@ namespace CapaLogicaNegocio.Services
                 {
                     try
                     {
-                        foreach (var pathNotDelete in arrayPathImg)
-                        {
-                            delete.deletWhereNot("images", "fkSucursal", "path", "("+ branche.idSucursal.ToString() + ")","('"+ pathNotDelete + "')");
-                        }                        
+                        string queryPathImg = queryPathImag(arrayPathImg);
+                        delete.deletWhereNot("images", "fkSucursal", "path", branche.idSucursal.ToString(), queryPathImg);
                         foreach (var file in filesList)
-                        {
+                        {                           
                             string fileName = rd.Next(1, 100000000).ToString() + file.FileName;
                             string path = Images.Save(file, "branches", fileName);
                             string strUnionsFiel = "('" + fileName + "','" + path + "'," + branche.idSucursal + ")";
                             Insert.Many(strUnionsFiel, "images");
-                        }
+                        }                        
+                        return true;
+                    }
+                    catch (ServiceException se)
+                    {
+                        throw new ServiceException(se.getMessage());
                     }
                     catch (Exception e)
                     {
@@ -144,6 +149,22 @@ namespace CapaLogicaNegocio.Services
                 }
             }
             return ban;
+        }        
+        private void rollBackBranche(string strId)
+        {
+            brancheDelete.delete(strId);
+        }
+        private string queryPathImag(List<object> arrayPathImg)
+        {
+            StringBuilder sbPathIm = new StringBuilder();
+            sbPathIm.Append("(");
+            foreach (var path in arrayPathImg)
+            {
+                sbPathIm.Append("'" + path + "',");
+            }
+            sbPathIm.Remove(sbPathIm.Length - 1, 1);
+            sbPathIm.Append(")");
+            return sbPathIm.ToString();   
         }
         public string jsonImagesByIdBranche(string strId)
         {
