@@ -4,6 +4,7 @@
     if (!form.checkValidity()) {
         event.preventDefault()
         event.stopPropagation()
+        removeAllFiles();
     } else {
         var id = $("#save").val();
         var formData = new FormData(document.getElementById("form1"));        

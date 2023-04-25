@@ -179,8 +179,10 @@
 	<script type="text/javascript">
 		var indexImgUpdate = 0;
 		var indexImgUpdate2 = 0;
+		var indexImgAddCards = 0;
+		var ban = false;
         window.onload = function () {
-
+			removeAllFiles();
             var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
                 keyboard: false
             })
@@ -201,48 +203,52 @@
             var actionUpdateData = document.getElementById("containerImages");
 			var imageUploadAut = actionUpdateData.getAttribute("data-action-uploadAut");
 
-			if (imageUploadAut == null) {
-				document.getElementById("containerImages").innerHTML = ""
-				document.getElementById("containerImages").innerHTML = `<h2 id="msjImages">Tus imagenes cargadas</h2>`
-			} else {
+			if (imageUploadAut != null) {
 				if (indexImgUpdate == 0) {
 					indexImgUpdate = parseInt(actionUpdateData.getAttribute("data-indexImage-update"))
-				}				
+				}
 			}
-            for (var i = 0; i < input.files.length; i++) {
-                let html =
-                    `	<div id="divImage${indexImgUpdate == 0 ? i : indexImgUpdate}" class="col-lg-2 col-md-2 col-sm-6 form-group justify-content-center" style="margin-top:15px">
-								<div class=" " style="width: 7.5rem;text-align:center;flex-direction:inherit">
-									<img class="reflejo" id="image${indexImgUpdate == 0 ? i : indexImgUpdate}" alt="Cargar fotografía por favor." src="" height="120" width="120" />
-									<div class="card-body">
-									    <div id="msjImagenCargadaAutomatica${indexImgUpdate == 0 ? i : indexImgUpdate}"></div>
-									</div>
+			for (var i = 0; i < input.files.length; i++) {
+				let html =
+					`	<div id="divImage${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate}" class="col-lg-2 col-md-2 col-sm-6 form-group justify-content-center" style="margin-top:15px">
+							<button style="text-align:center;color:whith" type="button" class="_42ft _2d4g _t7b" id="" onclick="remremoveImag(${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate},'${input.files[i].name}')">X</button>
+							<div class=" " style="width: 7.5rem;text-align:center;flex-direction:inherit">
+								<img class="reflejo" id="image${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate}" alt="Cargar fotografía por favor." src="" height="120" width="120" />
+								<div class="card-body">
+								    <div id="msjImagenCargadaAutomatica${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate}"></div>
 								</div>
-				            </div> `
+							</div>
+				        </div> `
 				document.getElementById("containerImages").innerHTML += html;
-				if (indexImgUpdate != 0) {
-                    indexImgUpdate++;
-				}                
+
+                var image = new FileReader();
+                addImageProcess(image, i, input, indexImgAddCards)
+                indexImgAddCards++
 			}
-			if (imageUploadAut != null) {
-                if (indexImgUpdate2==0) {
-                    indexImgUpdate2 = parseInt(actionUpdateData.getAttribute("data-indexImage-update"))
-				}                
-			}			
-            for (var i = 0; i < input.files.length; i++) {
-				var image = new FileReader();
-				addImageProcess(image, i, input, indexImgUpdate2)
-                if (indexImgUpdate2 != 0) {
-                    indexImgUpdate2++;
-                }
-			}
+			//if (imageUploadAut != null) {
+   //             if (indexImgUpdate2==0) {
+   //                 indexImgUpdate2 = parseInt(actionUpdateData.getAttribute("data-indexImage-update"))
+			//	}                
+			//}
+
+           
+			//var indexImgAddCards2 = indexImgAddCards;
+   //         indexImgAddCards++
+
+   //         for (var i = 0; i < input.files.length; i++) {
+			//	var image = new FileReader();
+   //             addImageProcess(image, i, input, indexImgUpdate2, indexImgAddCards2)
+   //             if (indexImgUpdate2 != 0) {
+   //                 indexImgUpdate2++;
+   //             }
+			//}
 			saveTemporaly();
 		}
-        function addImageProcess(image, i, input, indexImgUpdate2){
+        function addImageProcess(image, i, input, indexImgAddCards2){
 			return new Promise((resolve, reject) => {
 				image.onload = function (e) {
-					var newIndex = indexImgUpdate2 == 0 ? i : indexImgUpdate2
-					document.getElementById("image" + newIndex).setAttribute("src", e.target.result);
+                   
+                    document.getElementById("image" + indexImgAddCards2).setAttribute("src", e.target.result);
 				}
 				image.readAsDataURL(input.files[i]);
             })

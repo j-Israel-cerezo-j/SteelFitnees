@@ -1,6 +1,4 @@
-﻿function remremoveImag(i) {    
-    var inputImage = document.getElementById("image" + i);
-    inputImage.setAttribute('data-image-uploadAut' + i, "");
+﻿function remremoveImag(i, fileName) {
     document.getElementById("divImage" + i).innerHTML = ""
-
+    removeFile(fileName)
 }

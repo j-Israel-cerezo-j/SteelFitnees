@@ -37,20 +37,23 @@ namespace CapaLogicaNegocio.Services
         private SchedulesTable schedulesTable = new SchedulesTable();   
         private ProductTable productTable=new ProductTable();
         private FileService fileService = new FileService();
-        public bool add(Dictionary<string, string> request, List<HttpPostedFile> filesList)
+        public bool add(Dictionary<string, string> request,string getUrlReferrer)
         {
-            bool ban = false;
-            var a = fileService.saveFilesS();
+            bool ban = false;            
             var camposEmptysOrNull = Validation.isNullOrEmptys(request);
             if (camposEmptysOrNull.Count == 0)
             {
+                var filesList = fileService.saveFilesS(getUrlReferrer);
                 Branche branche = new Branche();
                 branche.nombre = RetrieveAtributes.values(request, "nombre");
                 branche.descripcion = RetrieveAtributes.values(request, "description");
                 branche.ubicacion = RetrieveAtributes.values(request, "ubicacion");
                 int idBranceAdd=brancheAdd.add(branche);
                 if (idBranceAdd == 0)
+                {
+                    fileService.removeAll(getUrlReferrer);
                     throw new ServiceException(MessageErrors.MessageErrors.errorAddingToBranch);
+                }                
 
                 try
                 {
@@ -62,14 +65,17 @@ namespace CapaLogicaNegocio.Services
                         Insert.Many(strUnionsFiel, "images");
                     }
                     ban = true;
+                    fileService.removeAll(getUrlReferrer);
                 }
                 catch(ServiceException se)
                 {
+                    fileService.removeAll(getUrlReferrer);
                     rollBackBranche(idBranceAdd.ToString());
                     throw new ServiceException(se.getMessage());
                 }
                 catch (Exception ex)
                 {
+                    fileService.removeAll(getUrlReferrer);
                     deleteBranche(idBranceAdd.ToString());
                     throw new ServiceException(MessageErrors.MessageErrors.errorAddingImage);
                 }
@@ -80,6 +86,7 @@ namespace CapaLogicaNegocio.Services
                 {
                     if (item.Value)
                     {
+                        fileService.removeAll(getUrlReferrer);
                         throw new ServiceException(item.Key + " esta vacío");
                     }
                 }

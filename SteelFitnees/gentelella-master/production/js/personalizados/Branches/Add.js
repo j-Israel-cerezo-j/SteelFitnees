@@ -6,6 +6,7 @@
         onkeyupInputEmtyy('nombre');
         onkeyupInputEmtyy('description');
         onkeyupInputEmtyy('ubicacion');
+        removeAllFiles();
         
     } else {
         var formData = new FormData(document.getElementById("form1"));

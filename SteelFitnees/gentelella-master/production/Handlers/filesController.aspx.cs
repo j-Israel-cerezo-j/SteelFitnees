@@ -24,6 +24,12 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             }else if (Request.QueryString["action"]== "saveFiles")
             {
                 saveFiles();
+            }else if (Request.QueryString["action"] == "removeAll")
+            {
+                removeAll();
+            }else if (Request.QueryString["action"] == "removeFile")
+            {
+                removeFile();
             }
         }
         private void saveTemporarily()
@@ -32,8 +38,10 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             Response response = new Response();
             try
             {
+                
+                string getUrlReferrer = Request.Headers["X-Forwarded-For"]!=null? Request.Headers["X-Forwarded-For"]: Request.UserHostAddress;
                 var httpPostFileList = getHttpPostFileListOfHtppFileCollection();
-                var success = fileService.saveTemporarily(httpPostFileList);                
+                var success = fileService.push(httpPostFileList, getUrlReferrer);                
                 response.success = success;
 
             }
@@ -66,6 +74,47 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             response.data = data;
             getJsonResponse = JsonConvert.SerializeObject(response);
         }
+        private void removeAll()
+        {
+            var data = new Dictionary<string, Object>();
+            Response response = new Response();
+            try
+            {
+                string getUrlReferrer = Request.Headers["X-Forwarded-For"] != null ? Request.Headers["X-Forwarded-For"] : Request.UserHostAddress;                
+                var success = fileService.removeAll(getUrlReferrer);
+                response.success = success;
+
+            }
+            catch (ServiceException se)
+            {
+                response.error = se.getMessage();
+            }
+            data.Add("footeer", "Verificar por favor");
+            response.data = data;
+            getJsonResponse = JsonConvert.SerializeObject(response);
+        }
+
+        private void removeFile()
+        {
+            var data = new Dictionary<string, Object>();
+            Response response = new Response();
+            try
+            {
+                string fileName = Request.QueryString["fileName"];
+                string getUrlReferrer = Request.Headers["X-Forwarded-For"] != null ? Request.Headers["X-Forwarded-For"] : Request.UserHostAddress;
+                var success = fileService.removeFile(getUrlReferrer, fileName);
+                response.success = success;
+
+            }
+            catch (ServiceException se)
+            {
+                response.error = se.getMessage();
+            }
+            data.Add("footeer", "Verificar por favor");
+            response.data = data;
+            getJsonResponse = JsonConvert.SerializeObject(response);
+        }
+
         private Dictionary<string, string> getValuesForm(string[] submitKeys)
         {
             var values = new Dictionary<string, string>();

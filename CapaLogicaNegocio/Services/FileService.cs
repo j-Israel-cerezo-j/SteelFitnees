@@ -14,22 +14,64 @@ namespace CapaLogicaNegocio.Services
 {
     public class FileService
     {
-        private static List<HttpPostedFile> httpPostedFiles = new List<HttpPostedFile>();
+        private static Dictionary<string, List<HttpPostedFile>> httpPostedFilessDirec = new Dictionary<string, List<HttpPostedFile>>()
+        {
+            { "192.168.2.1", new List<HttpPostedFile>() }
+            
+        };
         
-        public bool saveTemporarily(List<HttpPostedFile> httpPostedFiless) {
+        public bool push(List<HttpPostedFile> httpPostedFiless,string ipRequest) {
             try
             {
+                var files = new List<HttpPostedFile>();
                 foreach (var file in httpPostedFiless)
                 {
-                    FileService.httpPostedFiles.Add(file);
+                    files.Add(file);
+                }
+
+                if (!FileService.httpPostedFilessDirec.ContainsKey(ipRequest))
+                {                   
+                    FileService.httpPostedFilessDirec.Add(ipRequest,files);
+                }
+                else
+                {
+                    var fileTem = FileService.httpPostedFilessDirec[ipRequest];
+                    var newListTem = fileTem.Concat(files).ToList();
+                    FileService.httpPostedFilessDirec[ipRequest] = newListTem;
                 }
                 return true;
             }
             catch (Exception e)
             {                
                 throw new ServiceException("Error al cargar la imagen");
-            }            
+            }
         }
+        public List<HttpPostedFile> saveFilesS(string ipRequest)
+        {
+            return FileService.httpPostedFilessDirec[ipRequest];
+        }
+        public bool removeAll(string ipRequest)
+        {
+            return FileService.httpPostedFilessDirec.Remove(ipRequest);
+        }
+        public bool removeFile(string ipRequest,string fileName)
+        {
+            var files = FileService.httpPostedFilessDirec[ipRequest];
+            if (fileName!="")
+            {
+                foreach (var file in files)
+                {
+                    if (file.FileName == fileName)
+                    {
+                        files.Remove(file);
+                        return true;
+                    }
+                }
+            }            
+            return false;
+
+        }
+       
         async public Task<string> saveFiles(Dictionary<string, string> request)
         {
              var httpClient = new HttpClient();
@@ -42,12 +84,6 @@ namespace CapaLogicaNegocio.Services
 
             var responseContent = await response.Content.ReadAsStringAsync();
             return responseContent;
-        }
-
-
-        public List<HttpPostedFile> saveFilesS()
-        {
-            return httpPostedFiles;
         }
     }
 }

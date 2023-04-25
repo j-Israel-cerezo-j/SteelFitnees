@@ -10,12 +10,7 @@
         processData: false,
         success: function (resultado) {
             if (resultado.success) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Cargado...',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+               
             }
         }
     });
