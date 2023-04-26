@@ -1,5 +1,4 @@
 ﻿function buildAlert(response) {
-    console.log(response)
     if (response.success) {
         Swal.fire({
             icon: 'success',

@@ -7,7 +7,6 @@ var validator = new FormValidator({
 document.forms[0].onclick = function (e) {
     var submit = true,
         validatorResult = validator.checkAll(this);
-    console.log(validatorResult);
     return !!validatorResult.valid;
 };
 // on form "reset" event

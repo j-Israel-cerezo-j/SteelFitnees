@@ -144,9 +144,7 @@
                 var image = new FileReader();
                 console.log(image);
                 image.onload = function (e) {
-                    console.log(e)
                     document.getElementById("image").setAttribute("src", e.target.result);
-                    console.log(e.target.result)
                     document.getElementById("msjImagenCargadaAutomatica").innerHTML = ""
                 }
                 image.readAsDataURL(input.files[0]);

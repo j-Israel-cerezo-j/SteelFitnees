@@ -1,5 +1,4 @@
 ﻿function buildTableHours(json, jsonOnkeyp = true) {
-    console.log(json)
     document.getElementById("containerTableHours").innerHTML = "";
     var ban = false;
     var cont = 1;

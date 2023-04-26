@@ -101,7 +101,6 @@ function switchTablePahe(json, info) {
             document.getElementById("form1").reset();
             onkeyupNoSelectInSlc("days")
             onkeyupNoSelectInSlc("branches")
-
             break;
 
         case 'productos':

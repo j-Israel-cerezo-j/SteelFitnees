@@ -193,7 +193,7 @@
     <script src="templates/fitnessclub-master/assets/js/hover-direction-snake.min.js"></script>
 
     <!-- contact js -->
-    <script src="templates/fitnessclub-master/assets/js/contact.js"></script>
+    
     <script src="templates/fitnessclub-master/assets/js/jquery.form.js"></script>
     <script src="templates/fitnessclub-master/assets/js/jquery.validate.min.js"></script>
     <script src="templates/fitnessclub-master/assets/js/mail-script.js"></script>
