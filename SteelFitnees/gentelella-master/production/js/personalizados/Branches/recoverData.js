@@ -21,6 +21,7 @@ function cancelUpdate() {
     onkeyupInputEmtyy('nombre')
     onkeyupInputEmtyy('description')
     onkeyupInputEmtyy('ubicacion')
+    removeAllFiles();
 
 }
 

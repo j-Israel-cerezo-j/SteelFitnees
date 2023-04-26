@@ -47,7 +47,7 @@
                                     <td class=" ">${cont++}</td>`
             html += ` <td class=" ">${json[i].Nombre}</td>`
             html += ` <td class=" ">${json[i].Descripcion}</td>`
-            html += ` <td class=" "><img alt="Caragando..." src="${json[i].imagen}" height="100" width="150"/></td>`
+            html += ` <td class=" "><img alt="Caragando..." src="${json[i].imagen}" height="150" width="150"/></td>`
             html += `<td class="last"><button id="${json[i].id}" type="button" onclick="recoverDataa(event)" class="btn btn-success fa fa-pencil" style="height: 40px;width: 40px;"></button></td>`
             html += `
                                 </tr> `

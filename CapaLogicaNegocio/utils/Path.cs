@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CapaLogicaNegocio.utils
 {
-    public  class Path
+    public  class Pathh
     {
-        public static string Image = @"C:/Users/brein/Documents/proyects/SteelFitnees/SteelFitnees/gentelella-master/production/images/perzonalizadas/";
+        public static string Image = @"C:/Users/user/Documents/projects/SteelFitnees/SteelFitnees/gentelella-master/production/images/perzonalizadas/";
     }
 }

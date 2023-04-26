@@ -14,7 +14,7 @@
                         <div class="home-blog-single">
                             <div class="blog-img-cap">
                                 <div class="blog-img" style="padding:25px">
-                                    <img src="${json[i].imagen}" alt="" width="300" height="150">
+                                    <img src="${json[i].imagen}" alt="" width="300" height="250">
                                     <!-- Blog date -->
                                     <div class="blog-date text-center" style="padding:10px">
                                         <span>$ ${precioF}</span>

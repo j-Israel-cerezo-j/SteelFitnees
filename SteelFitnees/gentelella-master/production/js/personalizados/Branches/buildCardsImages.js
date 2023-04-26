@@ -9,12 +9,15 @@
 				    	<img class="reflejo" id="image${i}" alt="Cargar fotografía por favor." src="${json[i].path}" height="120" width="120" />
 				    	<div class="card-body">
 				    	    <div id="msjImagenCargadaAutomatica${i}"></div>
+                            <div><p>Nombre de imagen: ${json[i].Nombre}</p></div>
 				    	</div>
 				    </div>
 				</div>`      
 
-        document.getElementById("containerImages").innerHTML += html;        
+        document.getElementById("containerImages").innerHTML += html;
     }
+    var containerImg = document.getElementById("containerImages");
+    containerImg = containerImg.setAttribute("data-indexImage-update", json.length)
     addDataImag(json);
 }
 
@@ -24,3 +27,6 @@ function addDataImag(json) {
         inputImage.setAttribute('data-image-uploadAut', json[i].path);
     }
 }
+
+//Poner las imagenes de los productos en tamaño normal,
+/*poner los limpiadores cuando dibije la tabla, por que sognifica que salio exitoso */

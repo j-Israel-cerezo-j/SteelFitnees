@@ -1,5 +1,4 @@
 ﻿function buildFilterBySlc(json) {
-    console.log(json)
     if (document.getElementById("filterTableBy") != undefined) {
         var slcDays = document.getElementById("filterTableBy");
         document.getElementById("filterTableBy").innerHTML = "";

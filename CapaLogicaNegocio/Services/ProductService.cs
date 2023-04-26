@@ -35,6 +35,7 @@ namespace CapaLogicaNegocio.Services
             var camposEmptysOrNull = Validation.isNullOrEmptys(request);
             if (camposEmptysOrNull.Count == 0)
             {
+                Images.validWrongSizeInImageName(filesList);
                 Product product = new Product();
                 product.Nombre = RetrieveAtributes.values(request, "product");
                 product.Descripcion = RetrieveAtributes.values(request, "description");
@@ -61,13 +62,13 @@ namespace CapaLogicaNegocio.Services
         public bool updateProduct(Dictionary<string, string> request, string strId, List<HttpPostedFile> filesList)
         {
             if (strId == "")
-            {
                 throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
-            }
-            var camposEmptysOrNull = Validation.isNullOrEmptys(request);
+
             bool ban = false;
+            var camposEmptysOrNull = Validation.isNullOrEmptys(request);            
             if (camposEmptysOrNull.Count == 0)
             {
+                Images.validWrongSizeInImageName(filesList);
                 Product product = new Product();
                 product.idProducto = Convert.ToInt32(strId);
                 product.Nombre = RetrieveAtributes.values(request, "product");

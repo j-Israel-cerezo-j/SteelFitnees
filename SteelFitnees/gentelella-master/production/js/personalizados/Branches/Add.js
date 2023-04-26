@@ -1,4 +1,4 @@
-﻿function addB() {
+﻿function addB(formData) {
     var form = document.getElementById("form1");
     if (!form.checkValidity()) {
         event.preventDefault()
@@ -8,10 +8,7 @@
         onkeyupInputEmtyy('ubicacion');
         
     } else {
-        var formData = new FormData(document.getElementById("form1"));
         catalogosAddUpdateDelete('add', formData)
     }
-    document.getElementById("containerImages").innerHTML = ""
-    document.getElementById("form1").reset();
     form.classList.add('was-validated')
 }

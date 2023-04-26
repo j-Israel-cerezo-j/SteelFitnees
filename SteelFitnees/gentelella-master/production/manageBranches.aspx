@@ -27,13 +27,7 @@
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-12 form-group" style="margin-top:15px">
 						<div class="mb-3" id="containerFilePhotograph">
-							<input multiple style="border-radius:6px" accept="image/jpeg,image/png,image/jfif"  class="form-control" required="required" type="file" id="formFile" onchange="MostraIma(this)" name="images[]">
-							 <div class="valid-feedback">
-								¡ Buen trabajo!
-							</div>
-							<div class="invalid-feedback">
-								La imagen es requerida
-							</div>
+							<input multiple style="border-radius:6px" accept="image/jpeg,image/png,image/jfif"  class="form-control"  type="file" id="formFile" onchange="MostraIma(this)">
 						</div>
 					</div>	
 				</div>
@@ -70,7 +64,7 @@
 									</svg>
 									Eliminar
 								</button>
-								<button type="button" class="btn btnSuccesss reflejo" id="add" onclick="addB()">
+								<button type="button" class="btn btnSuccesss reflejo" id="add" onclick="addBr()">
 									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
 										<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
 									</svg>
@@ -78,13 +72,13 @@
 								</button>
 							</div>
 							<div class="col-md-6 col-sm-6" id="ctrl-update" style="display: none">
-								<button type="button" class="btn btn-primary reflejo" id="save"  onclick="update()" >
+								<button type="button" class="btn btn-primary reflejo" id="save"  onclick="updateBr()" >
 									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save-fill" viewBox="0 0 16 16">
 									  <path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v7.793L4.854 6.646a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l3.5-3.5a.5.5 0 0 0-.708-.708L8.5 9.293V1.5z"/>
 									</svg>
 									Guardar
 								</button>
-								<button type="button" class="btn btn-danger reflejo" id="cancel" onclick="cancelUpdate()">
+								<button type="button" class="btn btn-danger reflejo" id="cancel" onclick="cancelB()">
 									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-octagon-fill" viewBox="0 0 16 16">
 									  <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zm-6.106 4.5L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
 									</svg>
@@ -92,7 +86,7 @@
 								</button>
 							</div>
 							<div class="col-lg-4 col-md-4 col-sm-9">
-								<button style="padding:10px" class="btn btn-secondary reflejo" type="button" onclick="btnReset()">
+								<button style="padding:10px" class="btn btn-secondary reflejo" type="button" onclick="resertB()">
 									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
 									  <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
 									  <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
@@ -157,7 +151,10 @@
     <script src="js/personalizados/Branches/reset.js"></script>
     <script src="js/personalizados/Branches/OnkeyupSearch.js"></script>
     <script src="js/personalizados/Branches/buildCardsImages.js"></script>    
-    <script src="js/personalizados/Branches/removeImg.js"></script>
+    <script src="js/personalizados/Branches/Imgs.js"></script>
+    <script src="js/personalizados/Branches/requestFiles.js"></script>
+    <script src="js/personalizados/Branches/ajax/filesAjax.js"></script>
+
 
 	<script src="js/personalizados/FacadeCatalogosRecoverData/switchCatalogosRecoverData.js"></script>
 	
@@ -174,8 +171,7 @@
     <script src="js/personalizados/utils/Ajax/onkeyupSearchCatalogos.js"></script>
 	<script src="js/personalizados/utils/onkeyupInputEmpty.js"></script>
 	<script type="text/javascript">
-        window.onload = function () {
-
+        window.onload = function () {			
             var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
                 keyboard: false
             })
@@ -192,38 +188,7 @@
                 checkAll.nextElementSibling.setAttribute('onclick', 'toggleSelectAll()');
             }
 		}        
-		function MostraIma(input) {            
-
-            document.getElementById("containerImages").innerHTML = ""
-			document.getElementById("containerImages").innerHTML = `<h2 id="msjImages">Tus imagenes cargadas</h2>`
-			var actionUpdateData = document.getElementById("containerImages");
-            actionUpdateData.setAttribute('data-action-uploadAut', true);
-            for (var i = 0; i < input.files.length; i++) {
-                let html =
-                    `	<div id="divImage${i}" class="col-lg-2 col-md-2 col-sm-6 form-group justify-content-center" style="margin-top:15px">
-								<div class=" " style="width: 7.5rem;text-align:center;flex-direction:inherit">
-									<img class="reflejo" id="image${i}" alt="Cargar fotografía por favor." src="" height="120" width="120" />
-									<div class="card-body">
-									    <div id="msjImagenCargadaAutomatica${i}"></div>
-									</div>
-								</div>
-				            </div> `
-
-                document.getElementById("containerImages").innerHTML += html;
-            }
-            for (var i = 0; i < input.files.length; i++) {
-				var image = new FileReader();
-                 addImageProcess(image, i, input)
-            }
-		}
-        function addImageProcess(image, i, input){
-			return new Promise((resolve, reject) => {
-                image.onload = function (e) {
-                    document.getElementById("image" + i).setAttribute("src", e.target.result);
-				}
-                image.readAsDataURL(input.files[i]);
-            })
-        }
+		
 		
     </script>
 </asp:content> 

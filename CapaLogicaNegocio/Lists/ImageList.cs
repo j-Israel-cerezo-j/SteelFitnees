@@ -14,5 +14,9 @@ namespace CapaLogicaNegocio.Lists
         {
             return brancheData.dataImageByFkSucursal(idSucursal);
         }
+        public List<Image> listImages()
+        {
+            return brancheData.dataImage();
+        }
     }
 }

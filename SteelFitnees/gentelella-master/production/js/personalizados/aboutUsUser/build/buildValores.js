@@ -1,5 +1,4 @@
 ﻿function buildValores(json) {
-    console.log(json)
     document.getElementById("containerValores").innerHTML = ""
 
     var ban = false;
