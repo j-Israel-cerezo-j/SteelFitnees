@@ -94,7 +94,13 @@ function switchTablePahe(json, info) {
             buildTable(json);
             break;
         case 'sucursales':
+
+            document.getElementById("containerImages").innerHTML = ""
+            document.getElementById("form1").reset();
+            resetArrayFiles();
+            document.getElementById("save").value = "";
             buildTable(json);
+            
         case 'productBranche':
             if (value != "" && value != "-1" && value != undefined) {
                 requestBuildTableFilterBy();

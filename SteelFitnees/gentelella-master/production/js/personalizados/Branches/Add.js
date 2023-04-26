@@ -10,8 +10,5 @@
     } else {
         catalogosAddUpdateDelete('add', formData)
     }
-    document.getElementById("containerImages").innerHTML = ""
-    document.getElementById("form1").reset();
-    resetArrayFiles();
     form.classList.add('was-validated')
 }

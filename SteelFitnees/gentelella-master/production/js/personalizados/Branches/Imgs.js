@@ -21,6 +21,7 @@ function MostraIma(input) {
 								<img class="reflejo" id="image${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate}" alt="Cargar fotografía por favor." src="" height="120" width="120" />
 								<div class="card-body">
 								    <div id="msjImagenCargadaAutomatica${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate}"></div>
+									<div><p>Nombre de imagen: ${fileName}</p></div>
 								</div>
 							</div>
 				        </div> `

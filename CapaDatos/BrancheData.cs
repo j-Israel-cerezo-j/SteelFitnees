@@ -463,5 +463,35 @@ namespace CapaDatos
             }
             return schedules;
         }
+        public bool deleteImagesByFkBranch(int idBrache)
+        {
+            bool ban;
+            try
+            {
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "pro_deleteImagesByFkBranch";
+                Comando.Parameters.Add(new SqlParameter("@fkBranch", SqlDbType.Int));
+                Comando.Parameters["@fkBranch"].Value = idBrache;
+                Conexion.Open();
+                Comando.ExecuteNonQuery();
+                ban = true;
+            }
+            catch (SqlException e)
+            {
+
+                ban = false;
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                {
+                    Conexion.Close();
+                }
+                Comando.Parameters.Clear();
+            }
+            return ban;
+
+        }
     }
 }

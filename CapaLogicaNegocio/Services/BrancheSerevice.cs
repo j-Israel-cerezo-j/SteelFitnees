@@ -22,6 +22,8 @@ using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Xml.Linq;
+using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace CapaLogicaNegocio.Services
 {
@@ -40,7 +42,7 @@ namespace CapaLogicaNegocio.Services
         private SchedulesTable schedulesTable = new SchedulesTable();   
         private ProductTable productTable=new ProductTable();
         public bool add(Dictionary<string, string> request, List<HttpPostedFile> filesList)
-        {                       
+        {
             if (filesList.Count == 0)
                 throw new ServiceException(MessageErrors.MessageErrors.uploadPicturesPlease);
 
@@ -48,6 +50,7 @@ namespace CapaLogicaNegocio.Services
             var camposEmptysOrNull = Validation.isNullOrEmptys(request);            
             if (camposEmptysOrNull.Count == 0)
             {
+                var fileNamesTem=new List<string>();
                 Images.validWrongSizeInImageName(filesList);
                 Images.validateThatTheNameOfTheImageDoesNotHaveCommas(filesList);
                 Branche branche = new Branche();
@@ -56,15 +59,14 @@ namespace CapaLogicaNegocio.Services
                 branche.ubicacion = RetrieveAtributes.values(request, "ubicacion");
                 int idBranceAdd=brancheAdd.add(branche);
                 if (idBranceAdd == 0)
-                {                    
                     throw new ServiceException(MessageErrors.MessageErrors.errorAddingToBranch);
-                }                
 
                 try
                 {
                     foreach (var file in filesList)
                     {
                         string fileName = rd.Next(1, 100000000).ToString() + file.FileName;
+                        fileNamesTem.Add(fileName);
                         string path = Images.Save(file, "branches", fileName);
                         string strUnionsFiel = "('" + fileName + "','" + path + "'," + idBranceAdd + ")";
                         Insert.Many(strUnionsFiel, "images");
@@ -72,13 +74,17 @@ namespace CapaLogicaNegocio.Services
                     ban = true;
                 }
                 catch(ServiceException se)
-                {                    
+                {
+                    rollbackSavedImages(fileNamesTem);
+                    fileNamesTem = null;
                     rollBackBranche(idBranceAdd.ToString());
                     throw new ServiceException(se.getMessage());
                 }
                 catch (Exception ex)
-                {                    
-                    deleteBranche(idBranceAdd.ToString());
+                {
+                    rollbackSavedImages(fileNamesTem);
+                    fileNamesTem = null;
+                    rollBackBranche(idBranceAdd.ToString());
                     throw new ServiceException(MessageErrors.MessageErrors.errorAddingImage);
                 }
             }
@@ -93,17 +99,18 @@ namespace CapaLogicaNegocio.Services
                 }
             }
             return ban;
-        }        
+        }      
         public bool update(Dictionary<string, string> request,string strId, List<HttpPostedFile> filesList)
         {
             var arrayPathImg = Converter.ToList(RetrieveAtributes.values(request, "arrayParhImgs"));
-            if (filesList.Count == 0&& arrayPathImg[0].ToString()=="")
+            if (filesList.Count == 0 && arrayPathImg[0].ToString() == "")
                 throw new ServiceException(MessageErrors.MessageErrors.uploadPicturesPlease);
 
             bool ban = false;
             var camposEmptysOrNull = Validation.isNullOrEmptys(request);
             if (camposEmptysOrNull.Count == 0)
             {
+                var fileNamesTem = new List<string>();
                 Images.validWrongSizeInImageName(filesList);
                 Images.validateThatTheNameOfTheImageDoesNotHaveCommas(filesList);
                 bool status =Convert.ToBoolean( RetrieveAtributes.values(request, "statusImajes"));
@@ -112,6 +119,8 @@ namespace CapaLogicaNegocio.Services
                 branche.nombre = RetrieveAtributes.values(request, "nombre");
                 branche.descripcion = RetrieveAtributes.values(request, "description");
                 branche.ubicacion = RetrieveAtributes.values(request, "ubicacion");
+
+                var imagesDBByBranche = imageList.listImagesByIdBranche(branche.idSucursal);
                 if (status)
                 {
                     try
@@ -121,18 +130,27 @@ namespace CapaLogicaNegocio.Services
                         foreach (var file in filesList)
                         {                           
                             string fileName = rd.Next(1, 100000000).ToString() + file.FileName;
-                            string path = Images.Save(file, "branches", fileName);
+                            fileNamesTem.Add(fileName);
+                            string path = Images.Save(file, "branchTem", fileName);
                             string strUnionsFiel = "('" + fileName + "','" + path + "'," + branche.idSucursal + ")";
                             Insert.Many(strUnionsFiel, "images");
-                        }                        
+                        }
+                        deleteInFilderImage(imagesDBByBranche,arrayPathImg);
+
                         return true;
                     }
                     catch (ServiceException se)
                     {
+                        rollbackSavedImages(fileNamesTem);
+                        fileNamesTem = null;
+                        rollbackUpdate(branche.idSucursal,imagesDBByBranche);
                         throw new ServiceException(se.getMessage());
                     }
                     catch (Exception e)
                     {
+                        rollbackSavedImages(fileNamesTem);
+                        fileNamesTem = null;
+                        rollbackUpdate(branche.idSucursal, imagesDBByBranche);
                         throw new ServiceException(MessageErrors.MessageErrors.failedToUpdate);
                     }                    
                 }               
@@ -149,51 +167,18 @@ namespace CapaLogicaNegocio.Services
                 }
             }
             return ban;
-        }        
-        private void rollBackBranche(string strId)
-        {
-            brancheDelete.delete(strId);
-        }
-        private string queryPathImag(List<object> arrayPathImg)
-        {
-            StringBuilder sbPathIm = new StringBuilder();
-            sbPathIm.Append("(");
-            foreach (var path in arrayPathImg)
-            {
-                sbPathIm.Append("'" + path + "',");
-            }
-            sbPathIm.Remove(sbPathIm.Length - 1, 1);
-            sbPathIm.Append(")");
-            return sbPathIm.ToString();   
-        }
-        public string jsonImagesByIdBranche(string strId)
-        {
-            if (strId=="")
-            {
-                throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
-            }
-
-            return Converter.ToJson(imageList.listImagesByIdBranche(Convert.ToInt32(strId)));
-        }
-        public string jsonBranches()
-        {
-            return Converter.ToJson(brancheList.listBraches());
-        }
-        public string jsonTableBranches()
-        {
-            return Converter.ToJson(branchesTable.table(),"idSucursal").ToString();
         }
         public bool deleteBranche(string strIds)
         {
             try
             {
-                var idsList = Converter.ToList(strIds);                     
+                var idsList = Converter.ToList(strIds);
                 foreach (var idItem in idsList)
                 {
-                    var lisImages=imageList.listImagesByIdBranche(Convert.ToInt32(idItem));
+                    var lisImages = imageList.listImagesByIdBranche(Convert.ToInt32(idItem));
                     foreach (var img in lisImages)
                     {
-                        Images.Delete("branches",img.nombre);
+                        Images.Delete("branches", img.nombre);
                     }
                 }
                 delete.whereIn("images", "fkSucursal", strIds);
@@ -206,20 +191,41 @@ namespace CapaLogicaNegocio.Services
             catch (Exception e)
             {
                 throw new ServiceException(MessageErrors.MessageErrors.errorDeletingBranch);
-            }            
-        }
-        public string jsonRecoverData(string strId)
-        {
-            if (strId == "")
-            {
-                throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
             }
-            var branches = new List<Branche>
-            {
-                brancherData.dataBrancheByIdBranche(Convert.ToInt32(strId))
-            };
-            return Converter.ToJson(branches);
         }
+        public void deleteInFilderImage(List<Image> imagesDB,List<object> pathsImagesNews)
+        {
+            foreach (var image in imagesDB)
+            {
+                if (!pathsImagesNews.Contains(image.path))
+                {
+                    Images.Delete("branchTem", image.nombre);
+                }
+            }
+        }
+
+
+        private void rollbackUpdate(int idBranch, List<Image> images)
+        {
+            brancheDelete.deletImagesByIdBranch(idBranch);
+            foreach (var image in images)
+            {
+                string strUnionsFiel = "('" + image.nombre + "','" + image.path + "'," + idBranch.ToString() + ")";
+                Insert.Many(strUnionsFiel, "images");
+            }
+        }
+        private void rollbackSavedImages(List<string> fileNames)
+        {
+            foreach (var name in fileNames)
+            {
+                Images.Delete("branchTem", name);
+            }
+        }
+        private void rollBackBranche(string strId)
+        {
+            brancheDelete.delete(strId);
+        }
+        
         public Branche getBrancheById(string strId)
         {
             if (strId == "")
@@ -241,15 +247,6 @@ namespace CapaLogicaNegocio.Services
         {
             return dayList.listDays();
         }
-        public string jsontableSchedulesByIdBrancheTable(string strId)
-        {
-            if (strId == "")
-            {
-                throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
-            }
-            var namesTypeDateTime=new List<string>() { "horaInicio", "horaCierre" };
-            return Converter.ToJson(schedulesTable.ByIdBranche(Convert.ToInt32(strId)),true, namesTypeDateTime).ToString();
-        }
         public string getProductsByIdBranche(string strId)
         {
             if (strId == "")
@@ -258,7 +255,8 @@ namespace CapaLogicaNegocio.Services
             }
             return Converter.ToJson(productTable.ByIdBranche(Convert.ToInt32(strId))).ToString();
         }
-        public bool addCommmentsByBranche(Dictionary<string, string> request,string strId)
+
+        public bool addCommmentsByBranche(Dictionary<string, string> request, string strId)
         {
             bool ban = false;
             var camposEmptysOrNull = Validation.isNullOrEmptys(request);
@@ -267,9 +265,9 @@ namespace CapaLogicaNegocio.Services
                 if (strId == "")
                     throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
                 CommentBranch commentBranch = new CommentBranch();
-                commentBranch.comment= RetrieveAtributes.values(request, "comments");
-                commentBranch.commentDate= DateTime.Today;
-                commentBranch.fkBranche=Convert.ToInt32(strId);
+                commentBranch.comment = RetrieveAtributes.values(request, "comments");
+                commentBranch.commentDate = DateTime.Today;
+                commentBranch.fkBranche = Convert.ToInt32(strId);
 
                 return brancheAdd.addComments(commentBranch);
             }
@@ -285,6 +283,45 @@ namespace CapaLogicaNegocio.Services
             }
             return ban;
 
+        }
+
+        public string jsonImagesByIdBranche(string strId)
+        {
+            if (strId == "")
+            {
+                throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
+            }
+
+            return Converter.ToJson(imageList.listImagesByIdBranche(Convert.ToInt32(strId)));
+        }
+        public string jsonBranches()
+        {
+            return Converter.ToJson(brancheList.listBraches());
+        }
+        public string jsonTableBranches()
+        {
+            return Converter.ToJson(branchesTable.table(), "idSucursal").ToString();
+        }
+        public string jsonRecoverData(string strId)
+        {
+            if (strId == "")
+            {
+                throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
+            }
+            var branches = new List<Branche>
+            {
+                brancherData.dataBrancheByIdBranche(Convert.ToInt32(strId))
+            };
+            return Converter.ToJson(branches);
+        }
+        public string jsontableSchedulesByIdBrancheTable(string strId)
+        {
+            if (strId == "")
+            {
+                throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
+            }
+            var namesTypeDateTime=new List<string>() { "horaInicio", "horaCierre" };
+            return Converter.ToJson(schedulesTable.ByIdBranche(Convert.ToInt32(strId)),true, namesTypeDateTime).ToString();
         }
         public string jsonCommentsBranches(string strId)
         {
@@ -309,6 +346,20 @@ namespace CapaLogicaNegocio.Services
 
             return Converter.ToJson(brancheList.listCommentsByIdBracheAndWeek(Convert.ToInt32(strId),weekIni,weekEnd));
         }
+
+        private string queryPathImag(List<object> arrayPathImg)
+        {
+            StringBuilder sbPathIm = new StringBuilder();
+            sbPathIm.Append("(");
+            foreach (var path in arrayPathImg)
+            {
+                sbPathIm.Append("'" + path + "',");
+            }
+            sbPathIm.Remove(sbPathIm.Length - 1, 1);
+            sbPathIm.Append(")");
+            return sbPathIm.ToString();
+        }
+
         public string onkeyupCommentsByIdBranchesAndCharacteres(string strId, string characteres)
         {
             if (characteres!="")

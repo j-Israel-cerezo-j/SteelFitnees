@@ -28,14 +28,9 @@
             }            
         }
         formData.append("arrayParhImgs", arrayImgPath);
-        document.getElementById("form1").reset();
-        resetArrayFiles();
         catalogosAddUpdateDelete('update', formData);
         
         document.getElementById("labelMsjAction").innerText = "Agregar sucursal"
-        document.getElementById("formFile").setAttribute("required", "required");
-        document.getElementById("containerImages").innerHTML=""
-        document.getElementById("save").value = "";
 
     }
     onkeyupInputEmtyy('nombre')
