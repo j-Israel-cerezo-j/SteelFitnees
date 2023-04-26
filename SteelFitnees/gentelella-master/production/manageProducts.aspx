@@ -49,7 +49,7 @@
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-12 form-group justify-content-center" style="margin-top:15px">
 						<div  class="" style="width: 13.9rem;text-align:center">
-							<img class="reflejo" id="image" alt="Cargar fotografía por favor." src="" height="200" width="220"/>
+							<img class="reflejo" id="image" alt="Cargar fotografía por favor." src="" height="270" width="250"/>
 							<div class="card-body">
 								<div id="msjImagenCargadaAutomatica"></div>
 							</div>

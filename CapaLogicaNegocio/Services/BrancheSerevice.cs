@@ -67,7 +67,7 @@ namespace CapaLogicaNegocio.Services
                     {
                         string fileName = rd.Next(1, 100000000).ToString() + file.FileName;
                         fileNamesTem.Add(fileName);
-                        string path = Images.Save(file, "branches", fileName);
+                        string path = Images.Save(file, "branchTem", fileName);
                         string strUnionsFiel = "('" + fileName + "','" + path + "'," + idBranceAdd + ")";
                         Insert.Many(strUnionsFiel, "images");
                     }
@@ -178,7 +178,7 @@ namespace CapaLogicaNegocio.Services
                     var lisImages = imageList.listImagesByIdBranche(Convert.ToInt32(idItem));
                     foreach (var img in lisImages)
                     {
-                        Images.Delete("branches", img.nombre);
+                        Images.Delete("branchTem", img.nombre);
                     }
                 }
                 delete.whereIn("images", "fkSucursal", strIds);

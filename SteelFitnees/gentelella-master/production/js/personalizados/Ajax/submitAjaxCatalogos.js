@@ -81,18 +81,45 @@ function switchTablePahe(json, info) {
     var value = document.getElementById("filterTableBy") == undefined ? "-1" : document.getElementById("filterTableBy").value
     switch (info) {
         case 'dias':
+
+            document.getElementById("save").value = "";
+            document.getElementById("form1").reset();
+            onkeyupInputEmtyy('dia');
+            document.getElementById("labelMsjAction").innerText = "Agregar un dia"
             buildTable(json, true);
-            break;        
+            break;
+
         case 'horas':
+
             if (value != "" && value != "-1" && value != undefined) {
                 requestBuildTableFilterBy();
             } else {
                 buildTableHours(json); 
             }            
+            document.getElementById("labelMsjAction").innerText = "Agregar horario"
+            document.getElementById("save").value = "";
+            document.getElementById("form1").reset();
+            onkeyupNoSelectInSlc("days")
+            onkeyupNoSelectInSlc("branches")
+
             break;
+
         case 'productos':
+
+            var inputImage = document.getElementById("image");
+            inputImage.setAttribute('data-image-uploadAut', "");
+            document.getElementById("labelMsjAction").innerText = "Agregar producto"
+            document.getElementById("save").value = "";
+            document.getElementById("formFile").setAttribute("required", "required");
+            document.getElementById("image").setAttribute("src", "");
+            document.getElementById("msjImagenCargadaAutomatica").innerHTML = ""
+            document.getElementById("form1").reset();
+            onkeyupInputEmtyy('product')
+            onkeyupInputEmtyy('description')
+            onkeyupInputEmtyy('formFile')
             buildTable(json);
             break;
+
         case 'sucursales':
 
             document.getElementById("containerImages").innerHTML = ""
@@ -100,16 +127,35 @@ function switchTablePahe(json, info) {
             resetArrayFiles();
             document.getElementById("save").value = "";
             buildTable(json);
+            break;
             
         case 'productBranche':
+
             if (value != "" && value != "-1" && value != undefined) {
                 requestBuildTableFilterBy();
             } else {
                 buildTable(json);
-            }             
+            }
+            document.getElementById("labelMsjAction").innerText = "Agrega productos a sucursales"
+            document.getElementById("save").value = "";
+            document.getElementById("form1").reset();
+            onkeyupNoSelectInSlc("products")
+            onkeyupNoSelectInSlc("branches")
+            onkeyupInputEmtyy("cantidad")
+            onkeyupInputEmtyy("precio")
+            break;
+
         case 'aboutUsAdmin':
+
+            document.getElementById("form1").reset();
+            document.getElementById("labelMsjAction").innerText = "Sobre nosotros"
+            document.getElementById("save").value = "";
+            onkeyupInputEmtyy('mision');
+            onkeyupInputEmtyy('vision');
+            onkeyupInputEmtyy('valores');
             buildTable(json);
             break;
+
     }
 
     //$('#tbl-roles input[type=checkbox]').iCheck({
