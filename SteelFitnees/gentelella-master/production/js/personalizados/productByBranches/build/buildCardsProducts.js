@@ -6,19 +6,20 @@
     if (json != undefined) {
         for (var i = 0; i < json.length; i++) {
             ban = true;
+            var precioF = parseFloat(json[i].precio).toFixed(2)
             htmlProducts +=
                 `              
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xsm-6">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xsm-6">
                         <div class="home-blog-single mb-30">
                             <div class="blog-img-cap">
                                 <div class="blog-img">
-                                    <img src="${json[i].imagen}" alt="" width="10" height="230">
+                                    <img src="${json[i].imagen}" alt="" width="10" height="300">
                                     <!-- Blog date -->
                                     <div class="blog-date text-center">
-                                        <span>$ ${json[i].precio}</span>
+                                        <span>$ ${precioF}</span>
                                     </div>
                                 </div>
-                                <div class="blog-cap">
+                                <div class="blog-img mt-3">
                                     <h5><a >${json[i].producto}</a></h5>
                                     <p>${json[i].Descripcion}</p>
                                 </div>

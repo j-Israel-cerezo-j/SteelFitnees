@@ -52,7 +52,7 @@
 					</div>
 					<div class="item form-group col-lg-6 col-md-6 col-sm-12 col-xsm-12">
 						<label class="control-label">Precio por producto ($)</label>
-						<input id="precio" class="form-control" name="precio" type="number" min="0.0" value="0.0" step="any"  required onkeyup="onkeyupInputEmtyy('precio')">
+						<input id="precio" class="form-control" name="precio" type="number" min="0.0" value="0.0" title="El separador deciaml debe de ser ." step="any"  required onkeyup="onkeyupInputEmtyy('precio')">
 						<div class="valid-feedback">
 							¡ Buen trabajo!
 						</div>	

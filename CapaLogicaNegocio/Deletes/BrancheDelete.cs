@@ -14,5 +14,9 @@ namespace CapaLogicaNegocio.Deletes
         {
             return brancheData.delete(strIds);
         }
+        public bool deletImagesByIdBranch(int id)
+        {
+           return brancheData.deleteImagesByFkBranch(id);
+        }
     }
 }

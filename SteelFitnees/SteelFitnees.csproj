@@ -183,11 +183,13 @@
     <Content Include="gentelella-master\production\css\personalizados\map.css" />
     <Content Include="gentelella-master\production\css\personalizados\nav.css" />
     <Content Include="gentelella-master\production\css\personalizados\slider.css" />
+    <Content Include="gentelella-master\production\css\personalizados\x.css" />
     <Content Include="gentelella-master\production\frontend\templatesEmailGym\gymMessageHtml.html" />
     <Content Include="gentelella-master\production\Handlers\aboutUsController.aspx" />
     <Content Include="gentelella-master\production\Handlers\contactController.aspx" />
     <Content Include="gentelella-master\production\Handlers\daysController.aspx" />
     <Content Include="gentelella-master\production\Handlers\emailController.aspx" />
+    <Content Include="gentelella-master\production\Handlers\filesController.aspx" />
     <Content Include="gentelella-master\production\Handlers\filterByController.aspx" />
     <Content Include="gentelella-master\production\Handlers\hoursController.aspx" />
     <Content Include="gentelella-master\production\Handlers\imagesController.aspx" />
@@ -231,11 +233,14 @@
     <Content Include="gentelella-master\production\js\personalizados\allProducts\requestAllProducts.js" />
     <Content Include="gentelella-master\production\js\personalizados\allProducts\build\productsCards.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\Add.js" />
+    <Content Include="gentelella-master\production\js\personalizados\Branches\ajax\filesAjax.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\buildCardsImages.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\buildTable.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\delete.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\OnkeyupSearch.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\recoverData.js" />
+    <Content Include="gentelella-master\production\js\personalizados\Branches\Imgs.js" />
+    <Content Include="gentelella-master\production\js\personalizados\Branches\requestFiles.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\reset.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\tableOnload.js" />
     <Content Include="gentelella-master\production\js\personalizados\Branches\update.js" />
@@ -296,6 +301,7 @@
     <Content Include="gentelella-master\production\js\personalizados\slider\slider.js" />
     <Content Include="gentelella-master\production\js\personalizados\utils\Ajax\request.js" />
     <Content Include="gentelella-master\production\js\personalizados\utils\Ajax\requestTables.js" />
+    <Content Include="gentelella-master\production\js\personalizados\utils\formant12HourTime.js" />
     <Content Include="gentelella-master\production\Login.aspx" />
     <Content Include="gentelella-master\production\manageDays.aspx" />
     <Content Include="gentelella-master\production\manageEmails.aspx" />
@@ -5924,6 +5930,13 @@
     </Compile>
     <Compile Include="gentelella-master\production\Handlers\emailController.aspx.designer.cs">
       <DependentUpon>emailController.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gentelella-master\production\Handlers\filesController.aspx.cs">
+      <DependentUpon>filesController.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gentelella-master\production\Handlers\filesController.aspx.designer.cs">
+      <DependentUpon>filesController.aspx</DependentUpon>
     </Compile>
     <Compile Include="gentelella-master\production\Handlers\filterByController.aspx.cs">
       <DependentUpon>filterByController.aspx</DependentUpon>

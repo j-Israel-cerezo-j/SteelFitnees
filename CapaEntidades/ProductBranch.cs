@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,7 +38,7 @@ namespace CapaEntidades
                 "fkSucursal:'" + fkSucursal + "'," +
                 "fkProducto:'" + fkProducto + "'," +
                 "cantidad:'" + cantidad + "',"+
-                "precio:'" + precio + "'";
+                "precio:'" + Convert.ToDecimal(precio).ToString("0.00", CultureInfo.InvariantCulture) + "'";
         }
     }
 }

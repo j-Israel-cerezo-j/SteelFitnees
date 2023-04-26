@@ -278,6 +278,36 @@ namespace CapaDatos
             }
             return images;
         }
+        public List<Image> dataImage()
+        {
+            List<Image> images = new List<Image>();
+            try
+            {
+                SqlDataReader renglon;
+                Conexion.Open();
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "pro_listImages";                
+                renglon = Comando.ExecuteReader();
+                while (renglon.Read())
+                {
+                    images.Add(new Image(renglon));
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                {
+                    Conexion.Close();
+                }
+                Comando.Parameters.Clear();
+
+            }
+            return images;
+        }
 
         public bool delete(string strIds)
         {
@@ -432,6 +462,36 @@ namespace CapaDatos
                 Comando.Parameters.Clear();
             }
             return schedules;
+        }
+        public bool deleteImagesByFkBranch(int idBrache)
+        {
+            bool ban;
+            try
+            {
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "pro_deleteImagesByFkBranch";
+                Comando.Parameters.Add(new SqlParameter("@fkBranch", SqlDbType.Int));
+                Comando.Parameters["@fkBranch"].Value = idBrache;
+                Conexion.Open();
+                Comando.ExecuteNonQuery();
+                ban = true;
+            }
+            catch (SqlException e)
+            {
+
+                ban = false;
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                {
+                    Conexion.Close();
+                }
+                Comando.Parameters.Clear();
+            }
+            return ban;
+
         }
     }
 }

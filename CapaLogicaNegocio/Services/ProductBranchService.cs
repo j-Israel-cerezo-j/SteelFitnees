@@ -51,12 +51,10 @@ namespace CapaLogicaNegocio.Services
         {
             ProductBranch productBranch = new ProductBranch();
             string strCantidad = RetrieveAtributes.values(request, "cantidad");
-
             string strPrecio = RetrieveAtributes.values(request, "precio");
             validateFormantCantidadPrecio(strCantidad, strPrecio);
             productBranch.cantidad = Convert.ToInt32(strCantidad);
             productBranch.precio = decimal.Parse(strPrecio,System.Globalization.CultureInfo.InvariantCulture);
-
 
             string strSelectFkBranche = RetrieveAtributes.values(request, "branches");
             string strSelectFkProduct = RetrieveAtributes.values(request, "products");
@@ -91,7 +89,8 @@ namespace CapaLogicaNegocio.Services
             {
                 throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
             }
-            return Converter.ToJson(productBrancheTable.ByIdProduct(Convert.ToInt32(strId))).ToString();
+            var recordDecial = new List<string>() { "precio" };
+            return Converter.ToJson(productBrancheTable.ByIdProduct(Convert.ToInt32(strId)), false, null, recordDecial).ToString();
         }
         public string jsonProductBrancheTableByIdBranche(string strId)
         {
@@ -99,7 +98,8 @@ namespace CapaLogicaNegocio.Services
             {
                 throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
             }
-            return Converter.ToJson(productBrancheTable.ByIdBranche(Convert.ToInt32(strId))).ToString();
+            var recordDecial = new List<string>() { "precio" };
+            return Converter.ToJson(productBrancheTable.ByIdBranche(Convert.ToInt32(strId)), false, null, recordDecial).ToString();
         }
         public string jsonRecoverData(string strId)
         {

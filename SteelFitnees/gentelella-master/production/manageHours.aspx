@@ -41,15 +41,15 @@
 				</div>
 				<div class="row mt-5" style="margin-top:20px">
 					<div class="item col-lg-6 col-md-6 col-sm-12 col-xsm-12">
-						<label class="control-label">Hora inicio</label>
-						<input id="horaInicio" type="time" class="form-control" name="horaInicio" value="07:00" required>
+						<label for="time" class="control-label">Hora inicio</label>
+						<input id="horaInicio" type="time" class="form-control" name="horaInicio" value="07:00" pattern="(1[012]|[1-9]):[0-5][0-9] (AM|am|PM|pm)" title="Por favor, ingrese una hora en formato de 12 horas (por ejemplo, 09:30 AM)" required>
 						<div class="valid-feedback">
 							¡ Buen trabajo!
 						</div>					
 					</div>
 					<div class="item col-lg-6 col-md-6 col-sm-12 col-xsm-12">
-						<label class="control-label">Hora de cierre</label>
-						<input id="horaTermino" type="time" class="form-control" name="horaCierre" value="07:50" required>
+						<label for="time" class="control-label">Hora de cierre</label>
+						<input id="horaTermino" type="time" class="form-control" name="horaCierre" value="07:50" pattern="(1[012]|[1-9]):[0-5][0-9] (AM|am|PM|pm)" title="Por favor, ingrese una hora en formato de 12 horas (por ejemplo, 09:30 AM)" required>
 						<div class="valid-feedback">
 							¡ Buen trabajo!
 						</div>	
@@ -155,6 +155,7 @@
     <script src="js/personalizados/utils/Ajax/request.js"></script>
     <script src="js/personalizados/utils/Ajax/onkeyupSearchCatalogos.js"></script>
 
+    <script src="js/personalizados/utils/formant12HourTime.js"></script>
 	<script src="js/personalizados/utils/onkeyupNoSelectInSlc.js"></script>
     <script src="js/personalizados/utils/defaultBtnsDisplay.js"></script>
     <script src="js/personalizados/utils/currentDate.js"></script>
@@ -164,6 +165,7 @@
     <!-- Bootstrap -->
 	<script type="text/javascript">
 		window.onload = function () {
+
 			requestBranches();
 			requestDays();
 			buildTableOnload();		

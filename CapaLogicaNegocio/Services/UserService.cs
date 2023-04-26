@@ -15,7 +15,6 @@ namespace CapaLogicaNegocio.Services
     public class UserService
     {
         private Sessions session = new Sessions();
-
         public void addUser()
         {
             User user = new User();

@@ -8,8 +8,7 @@
         onkeyupInputEmtyy('valores');
     } else {
         var formData = new FormData(document.getElementById("form1"));
-        catalogosAddUpdateDelete('add', formData)
-        $("#resert").click();
+        catalogosAddUpdateDelete('add', formData);
     }
 
     form.classList.add('was-validated')
