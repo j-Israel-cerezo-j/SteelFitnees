@@ -82,6 +82,7 @@
     <Compile Include="Lists\ImageList.cs" />
     <Compile Include="Lists\ProductList.cs" />
     <Compile Include="MessageErrors\MessageErrors.cs" />
+    <Compile Include="ObjectPooling\Pool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecoverData\AboutUsDataRec.cs" />
     <Compile Include="RecoverData\BrancheRData.cs" />
