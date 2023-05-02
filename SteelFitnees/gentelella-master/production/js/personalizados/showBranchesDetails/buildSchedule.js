@@ -13,15 +13,15 @@
             var scheduleClose = formant12HoursTime(json[i].horaCierre);
 
             htmlDays += 
-                `<a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-home${json[i].idHorario}" role="tab" aria-controls="nav-home" aria-selected="true">${json[i].dia}</a>`
+                `<a class="nav-item nav-link" id="nav-home-tab${json[i].dia.toUpperCase()}" data-toggle="tab" href="#nav-home${json[i].idHorario}" role="tab" aria-controls="nav-home" aria-selected="true">${json[i].dia}</a>`
             htmlHours +=
-                `<div class="tab-pane fade" id = "nav-home${json[i].idHorario}" role = "tabpanel" aria - labelledby="nav-home-tab" >
+                `<div class="tab-pane fade" id="nav-home${json[i].idHorario}" role = "tabpanel" aria - labelledby="nav-home-tab" >
                     <div class="row">
                         <div class="col-lg-12 col-lg-12 col-md-6 col-lg-12">
                             <div class="tab-wrapper" style="justify-content: center;">
                                 <!-- single -->
                                 <div class="single-box"  style="width:25%">
-                                    <div class="single-caption text-center"  style="background: #ff1313;">
+                                    <div class="single-caption text-center"  style="background: #ff1313;border-radius:30px">
                                         <div class="caption">
                                             <span style="font-size:26px;background: #fff;color: black;">${scheduleOpen} - ${scheduleClose}</span>
                                         </div>
@@ -36,8 +36,20 @@
     if (ban) {
         document.getElementById("nav-tab").innerHTML = htmlDays
         document.getElementById("nav-tabContent").innerHTML = htmlHours
-
+        buildScheduleToday();
     } else {
         document.getElementById("nav-tab").innerHTML = `<h1>Sin horarios por el momento</h1>`
+    }
+}
+
+function buildScheduleToday() {
+    const daysOfWeek = ['DOMINGO', 'LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVEZ', 'VIERNES', 'SÁBADO'];
+    const today = new Date();
+    const dayOfWeek = today.getDay();
+    const todayName = daysOfWeek[dayOfWeek];
+
+    if (document.getElementById("nav-home-tab" + todayName) != undefined) {
+        const enlace = document.getElementById("nav-home-tab" + todayName);
+        enlace.click();
     }
 }

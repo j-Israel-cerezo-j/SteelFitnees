@@ -52,22 +52,20 @@ function remremoveImag(i, fileName) {
 	}
 }
 
-function addBr() {
-	document.getElementById("formFile").value = "";
-	var formData = new FormData(document.getElementById("form1"));
-	for (var i = 0; i < arrayFiles.length; i++) {
-		formData.append("file" + i, arrayFiles[i]);
-	}
-	addB(formData);
+function addBr() {		
+	addB(addFilesToFormData());
 }
-
-function updateBr() {
+function addFilesToFormData() {
 	document.getElementById("formFile").value = "";
 	var formData = new FormData(document.getElementById("form1"));
-	for (var i = 0; i < arrayFiles.length; i++) {
-		formData.append("file" + i, arrayFiles[i]);
-	}
-	update(formData);
+	var index = 0
+	arrayFiles.forEach(file => {
+		formData.append("file" + index++, file);
+	})
+	return formData
+}
+function updateBr() {
+	update(addFilesToFormData());
 }
 
 function recoverDataB(event) {

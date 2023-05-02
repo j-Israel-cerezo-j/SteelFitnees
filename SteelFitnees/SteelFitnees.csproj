@@ -199,6 +199,7 @@
     <Content Include="gentelella-master\production\Handlers\tablesController.aspx" />
     <Content Include="gentelella-master\production\Handlers\userController.aspx" />
     <Content Include="gentelella-master\production\images\perzonalizadas\aboutUs\misongym.png" />
+    <Content Include="gentelella-master\production\images\perzonalizadas\fotter\steelFotter.jpg" />
     <Content Include="gentelella-master\production\images\perzonalizadas\login\images.jpg" />
     <Content Include="gentelella-master\production\images\perzonalizadas\userL\285655_user_icon.png" />
     <Content Include="gentelella-master\production\indexUser.aspx" />
@@ -302,6 +303,7 @@
     <Content Include="gentelella-master\production\js\personalizados\utils\Ajax\request.js" />
     <Content Include="gentelella-master\production\js\personalizados\utils\Ajax\requestTables.js" />
     <Content Include="gentelella-master\production\js\personalizados\utils\formant12HourTime.js" />
+    <Content Include="gentelella-master\production\js\personalizados\utils\zoomImg.js" />
     <Content Include="gentelella-master\production\Login.aspx" />
     <Content Include="gentelella-master\production\manageDays.aspx" />
     <Content Include="gentelella-master\production\manageEmails.aspx" />

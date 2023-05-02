@@ -1,15 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="productsByBranche.aspx.cs" Inherits="SteelFitnees.gentelella_master.production.productsByBranche" MasterPageFile="~/gentelella-master/production/principal.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
- <meta charset="utf-8"/>
-    <meta http-equiv="x-ua-compatible" content="ie=edge"/>    
-    <meta name="description" content=""/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="manifest" href="site.webmanifest"/>    		
+ 	
 	<link rel="stylesheet" href="templates/fitnessclub-master/assets/css/style.css">    
     <link href="frontend/css/styleIndex.css" rel="stylesheet" />
-
-    <link href="bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row" style="margin-bottom:100px"></div>

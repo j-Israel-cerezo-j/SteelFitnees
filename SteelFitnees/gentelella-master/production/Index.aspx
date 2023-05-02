@@ -105,7 +105,7 @@
                     </div>
                 </div>                                    
                 <!-- Submit Button-->               
-                <div class="text-center"><button style="padding: 30px;font-size: 30px;" class="btn btn-primary" type="button" id="submitButton" onclick="addContact()">ENVIAR</button></div>
+                <div class="text-center"><button style="padding: 30px;font-size: 30px;border-radius:30px" class="btn" type="button" id="submitButton" onclick="addContact()">ENVIAR</button></div>
             </form>
             
         </div>
