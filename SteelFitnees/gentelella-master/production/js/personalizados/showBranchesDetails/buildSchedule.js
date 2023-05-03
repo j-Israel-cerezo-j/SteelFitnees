@@ -1,4 +1,4 @@
-﻿function buildSchedule(json) {    
+﻿function buildSchedule(json) {
     document.getElementById("nav-tab").innerHTML = ""
     document.getElementById("nav-tabContent").innerHTML = ""
     
@@ -15,22 +15,26 @@
             htmlDays += 
                 `<a class="nav-item nav-link" id="nav-home-tab${json[i].dia.toUpperCase()}" data-toggle="tab" href="#nav-home${json[i].idHorario}" role="tab" aria-controls="nav-home" aria-selected="true">${json[i].dia}</a>`
             htmlHours +=
-                `<div class="tab-pane fade" id="nav-home${json[i].idHorario}" role = "tabpanel" aria - labelledby="nav-home-tab" >
+                `<div class="tab-pane fade mt-4" id="nav-home${json[i].idHorario}" role = "tabpanel" aria - labelledby="nav-home-tab" >
                     <div class="row">
                         <div class="col-lg-12 col-lg-12 col-md-6 col-lg-12">
                             <div class="tab-wrapper" style="justify-content: center;">
                                 <!-- single -->
-                                <div class="single-box"  style="width:25%">
-                                    <div class="single-caption text-center"  style="background: #ff1313;border-radius:30px">
-                                        <div class="caption">
-                                            <span style="font-size:26px;background: #fff;color: black;">${scheduleOpen} - ${scheduleClose}</span>
+                                <div class="single-box">
+                                    <div class="note card text-dark bg-light mb-3" style="width:80%">
+                                        <div style="background: #ff1313;color:white;font-size: 32px;text-align: center;" class="card-header">${json[i].dia}</div>
+                                        <div style="background: #dcdcdc;height:170px;" class="card-body">
+                                            <h5 style="color:black;font-size: 30px;text-align: center;padding-top:10px;" class="card-title">${scheduleOpen}</h5>
+                                            <h5 style="color:black;font-size: 30px;text-align: center;" class="card-title"> - </h5>
+                                            <h5 style="color:black;font-size: 30px;text-align: center;" class="card-title"> ${scheduleClose}</h5>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div >`
+                </div>
+            </div >`
         }
     }
     if (ban) {

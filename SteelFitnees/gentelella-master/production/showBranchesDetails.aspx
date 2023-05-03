@@ -9,7 +9,7 @@
     <link rel="shortcut icon" type="templates/fitnessclub-master/image/x-icon" href="templates/fitnessclub-master/assets/img/favicon.ico"/>
 	<!-- CSS here -->
 	<link href="css/personalizados/reflejos.css" rel="stylesheet" />
-	
+    <link href="css/personalizados/cards.css" rel="stylesheet" />
     
     <link href="frontend/css/styleIndex.css" rel="stylesheet" />
     <link rel="stylesheet" href="templates/fitnessclub-master/assets/css/style.css">    
@@ -24,8 +24,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-12">
                     <!-- about-img -->
-                    <div class="about-img reflejo" id="imagen-contenedor" onmousemove="mousemoveZoomImage('imagen-contenedor','imagen')" onmouseout="mouseleaveZoomImage('imagen-contenedor','imagen')">
-                        <img  src="<%=getListImagesById[0].path %>" alt="" id="imagen">
+                    <div class="about-img reflejo">
+                        <img  src="<%=getListImagesById[0].path %>" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12">
@@ -60,7 +60,7 @@
     <!-- About-2 Area End -->
     <%--Horarios inicio--%>
     <div class="row">
-        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="34" viewBox="0 0 35 34" fill="none">
+        <svg onclick="buildScheduleToday()" xmlns="http://www.w3.org/2000/svg" width="35" height="34" viewBox="0 0 35 34" fill="none">
             <g clip-path="url(#clip0_232_8433)">
                 <path d="M16.6525 9.00254C16.6525 8.24471 17.2525 7.63037 17.9927 7.63037C18.7329 7.63037 19.333 8.24471 19.333 9.00254V18.6078C19.333 19.3656 18.7329 19.9799 17.9927 19.9799H11.2914C10.5512 19.9799 9.95117 19.3656 9.95117 18.6078C9.95117 17.8499 10.5512 17.2356 11.2914 17.2356H16.6525V9.00254Z" fill="red"></path>
                 <path d="M17.2872 32.4519C9.16646 32.4519 2.53031 25.7031 2.53031 17.312C2.53031 8.92091 9.16646 2.17216 17.2872 2.17216C25.408 2.17216 32.0442 8.92091 32.0442 17.312C32.0442 25.7031 25.408 32.4519 17.2872 32.4519Z" stroke="#666666" stroke-width="2.65243"></path>

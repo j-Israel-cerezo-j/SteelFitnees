@@ -180,6 +180,7 @@
     <Content Include="gentelella-master\production\bootstrap-5.0.2-dist\js\bootstrap.esm.min.js.map" />
     <Content Include="gentelella-master\production\bootstrap-5.0.2-dist\js\bootstrap.js.map" />
     <Content Include="gentelella-master\production\bootstrap-5.0.2-dist\js\bootstrap.min.js.map" />
+    <Content Include="gentelella-master\production\css\personalizados\cards.css" />
     <Content Include="gentelella-master\production\css\personalizados\map.css" />
     <Content Include="gentelella-master\production\css\personalizados\nav.css" />
     <Content Include="gentelella-master\production\css\personalizados\slider.css" />

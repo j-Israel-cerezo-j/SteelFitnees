@@ -102,8 +102,8 @@
                         <h2 style="margin: 0 0 25px;font-family: fantasy;font-size: 27px;line-height: 30px;color:white">Siguenos</h2>
                     </div>
                     <div class="row mt-5" style="justify-content:center">
-                        <a class="btn btn-dark btn-social mx-2" href="https://instagram.com/steelfitnesssanctorum?igshid=YmMyMTA2M2Y=" aria-label="Twitter"><i class="fab fa-instagram"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/steelfitnesssanctorum?mibextid=ZbWKwL" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn-dark btn-social mx-2" href="https://instagram.com/steelfitnesssanctorum?igshid=YmMyMTA2M2Y=" aria-label="Twitter"><i class="fab fa-instagram"></i></a>
+                        <a class="btn-dark btn-social mx-2" href="https://www.facebook.com/steelfitnesssanctorum?mibextid=ZbWKwL" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
             </div>
