@@ -20,7 +20,7 @@
                         <div class="col-lg-12 col-lg-12 col-md-6 col-lg-12">
                             <div class="tab-wrapper" style="justify-content: center;">
                                 <!-- single -->
-                                <div class="single-box">
+                                <div class="single-box" style="justify-content: center;">
                                     <div class="note card text-dark bg-light mb-3" style="width:80%">
                                         <div style="background: #ff1313;color:white;font-size: 32px;text-align: center;" class="card-header">${json[i].dia}</div>
                                         <div style="background: #dcdcdc;height:170px;" class="card-body">
@@ -47,7 +47,7 @@
 }
 
 function buildScheduleToday() {
-    const daysOfWeek = ['DOMINGO', 'LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVEZ', 'VIERNES', 'SÁBADO'];
+    const daysOfWeek = ['DOMINGO', 'LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO'];
     const today = new Date();
     const dayOfWeek = today.getDay();
     const todayName = daysOfWeek[dayOfWeek];
