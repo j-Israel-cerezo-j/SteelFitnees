@@ -23,6 +23,8 @@
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Core theme CSS (includes Bootstrap)-->
 
+
+
 	<link rel="stylesheet" href="templates/fitnessclub-master/assets/css/slicknav.css">	      
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -131,6 +133,7 @@
     <script src="templates/fitnessclub-master/assets/js/plugins.js"></script>
     <script src="templates/fitnessclub-master/assets/js/main.js"></script>
 
+   
 
 
     <!-- Bootstrap core JS-->

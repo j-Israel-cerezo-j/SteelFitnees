@@ -80,7 +80,7 @@
                 <div class="properties__button">
                             <!--Nav Button  -->                                            
                     <nav>      
-                        <div  style="justify-content:center" class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <div  style="justify-content:center;width:100%" class="nav nav-tabs row" id="nav-tab" role="tablist">
                         </div>
                     </nav>
                             <!--End Nav Button  -->
