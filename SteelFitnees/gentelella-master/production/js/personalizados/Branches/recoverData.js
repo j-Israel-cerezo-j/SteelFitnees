@@ -4,7 +4,7 @@
     $("#ctrl-principal").css('display', 'none');
     $("#ctrl-update").css('display', 'block');
     recoverData("recoverData", id);
-    var idsInputs = ["nombre", "description", "ubicacion"];
+    var idsInputs = ["nombre", "description", "ubicacion","telephone"];
     styleBoxShadowGreen(idsInputs);
 
 }
@@ -18,9 +18,10 @@ function cancelUpdate() {
     document.getElementById("form1").reset();
     document.getElementById("formFile").setAttribute("required", "required");
     document.getElementById("containerImages").innerHTML = ""
-    onkeyupInputEmtyy('nombre')
-    onkeyupInputEmtyy('description')
-    onkeyupInputEmtyy('ubicacion')
+    onkeyupInputEmtyy('nombre');
+    onkeyupInputEmtyy('description');
+    onkeyupInputEmtyy('ubicacion');
+    onkeyupInputEmtyy('telephone');
     removeAllFiles();
 
 }

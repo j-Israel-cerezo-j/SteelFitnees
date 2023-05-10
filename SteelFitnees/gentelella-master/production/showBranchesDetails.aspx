@@ -23,8 +23,10 @@
             background-size:cover;
             color:#FFFFFF">
     <div class="row"></div>
+    <div class="row"></div>
+    <div class="row"></div>
         <!--? About Area Start -->
-    <section class="about-area" style="padding-bottom:50px">
+    <section class="about-area" style="padding-bottom:50px;margin-top:100px">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-12">
@@ -33,14 +35,18 @@
                         <img  src="<%=getListImagesById[0].path %>" alt="">
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12" style="background-color:white">
-                    <div class="about-caption">
+                <div class="col-lg-6 col-md-12" style="background-color:white;margin-top:20px;">
+                    <div class="about-caption" style="margin-top:35px;padding-right:20px">
                         <!-- Section Tittle -->
                         <div class="section-tittle section-tittle3 mb-35">
                             <span>Sucursal</span>
                             <h2><%=getBranche.nombre %></h2>
                         </div>
                         <p class="pera-top"><%=getBranche.descripcion %></p>
+                        <p class="pera-top">
+                            <i class="fa fa-phone" aria-hidden="true"></i> 
+                            <a style="color:black" href="tel:<%=getBranche.telephone %>" target="new">    <%=getBranche.telephone %></a>
+                        </p>
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="41" height="39" viewBox="0 0 41 39" fill="none">
                                 <g clip-path="url(#clip0_232_8451)">
@@ -64,7 +70,7 @@
     </section>    
     <!-- About-2 Area End -->
     <%--Horarios inicio--%>
-    <div class="row" style="background-color: white; margin-left: 57px;margin-right:57px;padding:40px">
+    <div class="row" style="background-color: white;padding-top:35px;">
         <svg onclick="buildScheduleToday()" xmlns="http://www.w3.org/2000/svg" width="35" height="34" viewBox="0 0 35 34" fill="none">
             <g clip-path="url(#clip0_232_8433)">
                 <path d="M16.6525 9.00254C16.6525 8.24471 17.2525 7.63037 17.9927 7.63037C18.7329 7.63037 19.333 8.24471 19.333 9.00254V18.6078C19.333 19.3656 18.7329 19.9799 17.9927 19.9799H11.2914C10.5512 19.9799 9.95117 19.3656 9.95117 18.6078C9.95117 17.8499 10.5512 17.2356 11.2914 17.2356H16.6525V9.00254Z" fill="red"></path>
@@ -78,11 +84,11 @@
         </svg>
         <h1 style="text-align:center">Dias y horarios disponibles de la sucursal<p>Da click en el día</p></h1>
     </div>
-    <section class="date-tabs" style="padding-top: 0px;padding-bottom:80px" >       
+    <section class="date-tabs" style="padding-top: 0px;padding-bottom:50px;margin-left: 57px;margin-right: 57px;" >
         <!-- Heading & Nav Button -->
         <div class="row justify-content-center">
             <div class="col-lg-11">
-                <div class="properties__button">
+                <div class="properties__button" style="background: none;">
                             <!--Nav Button  -->                                            
                     <nav>      
                         <div  style="justify-content:center;width:100%" class="nav nav-tabs row" id="nav-tab" role="tablist"></div>
@@ -92,7 +98,7 @@
             </div>
         </div>
         <!-- Tab content -->
-        <div class="row justify-content-center" style="background-color:black;">
+        <div class="row justify-content-center" >
             <div class="col-lg-11">
                 <!-- Nav Card -->
                 <div class="tab-content" id="nav-tabContent" style="padding-bottom:10px" >                                        
@@ -149,7 +155,7 @@
         <!-- Gallery Area End -->
    
         <!--? Want To work -->
-    <section class="wantToWork-area w-padding mt-4" style="background-color:white">
+    <section class="wantToWork-area w-padding mt-2" style="background-color:white">
         <div class="container">
             <div class="row align-items-end justify-content-between">
                 <div class="col-lg-6 col-md-9 col-sm-9">
@@ -168,17 +174,15 @@
         <!--? Team Ara Start -->
     <div class="team-area pb-150" style="background-color:white">
         <div class="container">
-            <div class="row" id="containerProducts">
-                
-            </div>
+            <div class="row" id="containerProducts"></div>
         </div>
     </div>
-        <!-- Team Ara End -->
-    <div class="container" style="margin:15px">
+    <div class="row">
         <div class="col-xl-2 col-lg-2 col-md-3">
-            <a style="font-size:25px;border-radius:30px" id="return" class="btn">Regresar</a>
+            <a style="font-size:25px;border-radius:30px;position:fixed;bottom: 20px;right: 20px;" id="return" class="btn">Regresar</a>
         </div>
-    </div>    
+    </div>
+        <!-- Team Ara End -->    
         <!--? Want To work -->
     <section class="wantToWork-area w-padding section-bg" data-background="templates/fitnessclub-master/assets/img/gallery/section_bg02.png">
         <div class="container">

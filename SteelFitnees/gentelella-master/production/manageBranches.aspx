@@ -25,14 +25,20 @@
 							</div>
 							<div class="invalid-feedback">
 								El nombre de la sucursal es requerido
-							</div>						
+							</div>
                         </div>
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-12 col-xsm-12 form-group" style="margin-top:10px;padding-right: 0px;padding-left:10px;">
 						<label style="margin-left:10px;margin-bottom:10px" class="control-label row">Número télefonico</label>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							<input  style="border-radius:6px" type="text" id="telephone" name="telephone"  placeholder="(999) 999-9999" class="form-control has-feedback-left" data-inputmask="'mask' : '(999) 999-9999'">
-							<span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>											
+							<input  style="border-radius:6px" type="text" id="telephone" maxlength="10" name="telephone" required="required"  placeholder="p/e: 2222343223" class="form-control has-feedback-left" onkeyup="onkeyupInputEmtyy('telephone')">
+							<span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
+							<div class="valid-feedback">
+								¡ Buen trabajo!
+							</div>
+							<div class="invalid-feedback">
+								El número télefonico es requerido
+							</div>		
                         </div>
 					</div>
 				</div>

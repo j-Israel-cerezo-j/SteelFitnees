@@ -50,13 +50,16 @@ namespace CapaLogicaNegocio.Services
             var camposEmptysOrNull = Validation.isNullOrEmptys(request);            
             if (camposEmptysOrNull.Count == 0)
             {
+                string strTelephone = RetrieveAtributes.values(request, "telephone");
                 var fileNamesTem=new List<string>();
                 Images.validWrongSizeInImageName(filesList);
                 Images.validateThatTheNameOfTheImageDoesNotHaveCommas(filesList);
+                validateRequestTelephone(strTelephone);
                 Branche branche = new Branche();
                 branche.nombre = RetrieveAtributes.values(request, "nombre");
                 branche.descripcion = RetrieveAtributes.values(request, "description");
                 branche.ubicacion = RetrieveAtributes.values(request, "ubicacion");
+                branche.telephone= strTelephone;
                 int idBranceAdd=brancheAdd.add(branche);
                 if (idBranceAdd == 0)
                     throw new ServiceException(MessageErrors.MessageErrors.errorAddingToBranch);
@@ -111,15 +114,17 @@ namespace CapaLogicaNegocio.Services
             if (camposEmptysOrNull.Count == 0)
             {
                 var fileNamesTem = new List<string>();
+                string strTelephone = RetrieveAtributes.values(request, "telephone");
                 Images.validWrongSizeInImageName(filesList);
                 Images.validateThatTheNameOfTheImageDoesNotHaveCommas(filesList);
+                validateRequestTelephone(strTelephone);
                 bool status =Convert.ToBoolean( RetrieveAtributes.values(request, "statusImajes"));
                 Branche branche = new Branche();
                 branche.idSucursal = Convert.ToInt32(strId);
                 branche.nombre = RetrieveAtributes.values(request, "nombre");
                 branche.descripcion = RetrieveAtributes.values(request, "description");
                 branche.ubicacion = RetrieveAtributes.values(request, "ubicacion");
-
+                branche.telephone = strTelephone;
                 var imagesDBByBranche = imageList.listImagesByIdBranche(branche.idSucursal);
                 if (status)
                 {
@@ -136,8 +141,6 @@ namespace CapaLogicaNegocio.Services
                             Insert.Many(strUnionsFiel, "images");
                         }
                         deleteInFilderImage(imagesDBByBranche,arrayPathImg);
-
-                        return true;
                     }
                     catch (ServiceException se)
                     {
@@ -153,7 +156,7 @@ namespace CapaLogicaNegocio.Services
                         rollbackUpdate(branche.idSucursal, imagesDBByBranche);
                         throw new ServiceException(MessageErrors.MessageErrors.failedToUpdate);
                     }                    
-                }               
+                }
                 return brancheUpdate.update(branche);
             }
             else
@@ -387,6 +390,18 @@ namespace CapaLogicaNegocio.Services
         {            
             return Converter.ToJson(brancheList.listBranchesBranchesByCharactersConicidences(caracteres));
 
+        }
+
+        private void validateRequestTelephone(string strTelephone)
+        {
+            if (!Validation.numericalFormat(strTelephone))
+            {
+                throw new ServiceException(MessageErrors.MessageErrors.formantNumberTelephoneIncorrect);
+            }
+            else if (!Validation.FormantLengthTelephone(strTelephone))
+            {
+                throw new ServiceException(MessageErrors.MessageErrors.formantLengthTelephoneIncorrect);
+            }
         }
     }
 }

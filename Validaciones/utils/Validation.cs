@@ -127,5 +127,9 @@ namespace Validaciones.utils
         {
             return !(strCheck == "" || strCheck == null);
         }
+        public static bool FormantLengthTelephone(string strTelephone)
+        {
+            return !(strTelephone.Length < 10 || strTelephone.Length > 10);
+        }
     }
 }

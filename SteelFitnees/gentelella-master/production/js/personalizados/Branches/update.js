@@ -33,8 +33,5 @@
         document.getElementById("labelMsjAction").innerText = "Agregar sucursal"
 
     }
-    onkeyupInputEmtyy('nombre')
-    onkeyupInputEmtyy('description')
-    onkeyupInputEmtyy('ubicacion')
     form.classList.add('was-validated')
 }

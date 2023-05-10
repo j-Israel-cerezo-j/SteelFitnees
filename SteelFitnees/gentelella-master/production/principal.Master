@@ -86,7 +86,7 @@
     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
     </asp:ContentPlaceHolder>
         <!-- Footer-->
-    <footer class="footer py-4" style="margin-top: 5px;background-color:black">
+    <footer class="footer py-4" style="background-color:black">
         <div class="container mt-4">
             <div class="row" style="justify-content:center">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xsm-12">

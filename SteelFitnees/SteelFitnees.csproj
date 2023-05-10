@@ -203,6 +203,7 @@
     <Content Include="gentelella-master\production\images\perzonalizadas\aboutUs\misongym.png" />
     <Content Include="gentelella-master\production\images\perzonalizadas\fotter\steelFotter.jpg" />
     <Content Include="gentelella-master\production\images\perzonalizadas\login\images.jpg" />
+    <Content Include="gentelella-master\production\images\perzonalizadas\login\portadaGalleryGym2.jpg" />
     <Content Include="gentelella-master\production\images\perzonalizadas\userGen\showBranche\portada3.jpg" />
     <Content Include="gentelella-master\production\images\perzonalizadas\userGen\showBranche\portada3C.jpg" />
     <Content Include="gentelella-master\production\images\perzonalizadas\userGen\showBranche\portadaFym.jpg" />

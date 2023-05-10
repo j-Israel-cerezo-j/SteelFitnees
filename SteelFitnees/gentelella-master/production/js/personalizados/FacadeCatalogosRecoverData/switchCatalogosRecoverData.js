@@ -49,6 +49,7 @@
                     document.getElementById("nombre").value = json[i].Nombre;
                     document.getElementById("description").value = json[i].Descripcion;
                     document.getElementById("ubicacion").value = json[i].ubicacion;
+                    document.getElementById("telephone").value = json[i].telephone;
                     document.getElementById("save").value = json[i].id;
                     
                     document.getElementById("formFile").removeAttribute("required");

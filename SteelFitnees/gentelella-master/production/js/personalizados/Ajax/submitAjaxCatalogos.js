@@ -124,6 +124,10 @@ function switchTablePahe(json, info) {
             document.getElementById("containerImages").innerHTML = ""
             document.getElementById("form1").reset();
             resetArrayFiles();
+            onkeyupInputEmtyy('nombre')
+            onkeyupInputEmtyy('description')
+            onkeyupInputEmtyy('ubicacion')
+            onkeyupInputEmtyy('telephone');
             document.getElementById("save").value = "";
             buildTable(json);
             break;

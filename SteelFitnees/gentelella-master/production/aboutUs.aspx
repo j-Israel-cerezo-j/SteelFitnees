@@ -41,7 +41,7 @@
 	</main>
     <div class="container" style="margin:15px">
         <div class="col-xl-2 col-lg-2 col-md-3">
-            <a style="font-size:25px" id="return" class="btn btn-primary">Regresar</a>
+            <a style="font-size:25px;background-color:red" id="return" class="btn btn-primary">Regresar</a>
         </div>
     </div> 
     <script src="js/personalizados/aboutUsUser/aboutUsRequest.js"></script>

@@ -34,6 +34,8 @@ namespace CapaDatos
                 Comando.Parameters["@descripcion"].Value = branche.descripcion;
                 Comando.Parameters.Add(new SqlParameter("@ubicacion", SqlDbType.Text));
                 Comando.Parameters["@ubicacion"].Value = branche.ubicacion;
+                Comando.Parameters.Add(new SqlParameter("@telephone", SqlDbType.Text));
+                Comando.Parameters["@telephone"].Value = branche.telephone;
                 Conexion.Open();
                 idRecuperado = (int)Comando.ExecuteScalar();
             }
@@ -67,6 +69,8 @@ namespace CapaDatos
                 Comando.Parameters["@descripcion"].Value = branche.descripcion;
                 Comando.Parameters.Add(new SqlParameter("@ubicacion", SqlDbType.Text));
                 Comando.Parameters["@ubicacion"].Value = branche.ubicacion;
+                Comando.Parameters.Add(new SqlParameter("@telephone", SqlDbType.Text));
+                Comando.Parameters["@telephone"].Value = branche.telephone;
                 Conexion.Open();
                 Comando.ExecuteNonQuery();
                 ban = true;

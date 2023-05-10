@@ -23,7 +23,8 @@
                               </div>
                             </th>
                             <th class="column-title" style="display: table-cell;">No. </th>
-                            <th class="column-title" style="display: table-cell;">Nombre</th>                            
+                            <th class="column-title" style="display: table-cell;">Nombre</th>
+                            <th class="column-title" style="display: table-cell;">Télefono</th>
                             <th class="column-title" style="display: table-cell;">Descripción</th>
                             <th class="column-title" style="display: table-cell;">Direccion</th>
                             <th class="column-title no-link last" style="display: table-cell;"><span class="nobr">Editar</span>
@@ -46,6 +47,7 @@
                                     </td>
                                     <td class=" ">${cont++}</td>`
             html += ` <td class=" ">${json[i].Nombre}</td>`
+            html += ` <td class=" ">${json[i].telephone}</td>`
             html += ` <td class=" ">${json[i].Descripcion}</td>`
             html += ` <td class=" ">${json[i].ubicacion}</td>`
             html += `<td class="last"><button id="${json[i].id}" type="button" onclick="recoverDataB(event)" class="btn btn-success fa fa-pencil" style="height: 40px;width: 40px;"></button></td>`

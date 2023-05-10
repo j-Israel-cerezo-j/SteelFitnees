@@ -12,10 +12,10 @@
         <h2  class="section-heading text-uppercase">Sucursales</h2>
         <h3 class="section-subheading text-muted">Visita nuestras sucursales</h3>
     </div>
-    <div class="container">
+    <div class="container" style="margin-bottom:10px">
         <div class="row" style="justify-content:center" id="team"></div>
         <div class="col-xl-2 col-lg-2 col-md-3">
-            <a style="font-size:25px" id="return" class="btn btn-primary">Regresar</a>
+            <a style="font-size:25px;position:fixed;bottom: 20px;left: 20px;" id="return" class="btn btn-primary">Regresar</a>
         </div>
     </div>    
       <!-- Inner -->

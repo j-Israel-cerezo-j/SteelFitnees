@@ -6,6 +6,7 @@
         onkeyupInputEmtyy('nombre');
         onkeyupInputEmtyy('description');
         onkeyupInputEmtyy('ubicacion');
+        onkeyupInputEmtyy('telephone');
         
     } else {
         catalogosAddUpdateDelete('add', formData)

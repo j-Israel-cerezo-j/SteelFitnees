@@ -13,7 +13,7 @@
 
             htmlDays += 
                     `
-                    <div class="col-lg-2 col-md-2 col-sm-6 col-xsm-6" style="text-align: center;">
+                    <div class="col-lg-2 col-md-2 col-sm-6 col-xsm-6" style="text-align: center;padding-top:10px">
                         <a style="margin-bottom: 0px;width: 100%;" class="ynav-item nav-link card-header" id="nav-home-tab${json[i].dia.toUpperCase()}" data-toggle="tab" href="#nav-home${json[i].idHorario}" onclick="buildSchedulea('nav-home-tab${json[i].dia.toUpperCase()}','div${json[i].dia.toUpperCase()}','${json[i].dia.toUpperCase()}')" role="tab" aria-controls="nav-home" aria-selected="true">${json[i].dia}</a>
                         <div id="div${json[i].dia.toUpperCase()}">
                             <div style="background: #dcdcdc;" class="tab-pane fade" id="nav-home${json[i].idHorario}" role="tabpanel" aria-labelledby="nav-home-tab" >

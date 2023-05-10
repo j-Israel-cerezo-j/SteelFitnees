@@ -12,7 +12,8 @@ namespace CapaEntidades
         public int idSucursal { get; set; }
         public string nombre { get; set; }
         public string descripcion { get; set; }
-        public string ubicacion { get; set; }        
+        public string ubicacion { get; set; }
+        public string telephone { get; set; }
         public Branche()
         {
 
@@ -23,7 +24,8 @@ namespace CapaEntidades
             this.nombre = (string)Validation.getValue(renglon, "nombre");
             this.descripcion = (string)Validation.getValue(renglon, "descripcion");
             this.ubicacion = (string)Validation.getValue(renglon, "ubicacion");
-           
+            this.telephone= (string)Validation.getValue(renglon, "telephone");
+
         }
 
         override
@@ -33,6 +35,7 @@ namespace CapaEntidades
                 "id:'" + idSucursal + "', " +
                 "Nombre:'" + nombre + "'," +
                 "Descripcion:'" + descripcion + "'," +
+                "telephone:'" + telephone + "'," +
                 "ubicacion:'" + ubicacion + "'";              
         }
     }

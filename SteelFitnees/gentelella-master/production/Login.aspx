@@ -24,7 +24,12 @@
     <link href="css/personalizados/reflejos.css" rel="stylesheet" />    
     <link href="css/personalizados/errors.css" rel="stylesheet" />
 </head>
-<body >    
+<body style="
+            background-image: url('images/perzonalizadas/login/portadaGalleryGym2.jpg');
+            background-repeat:no-repeat;
+            background-attachment:fixed;
+            background-size:cover;
+            color:#FFFFFF" >
     <form id="formLogin" runat="server">
     <section class="vh-100">
         <div class="container-fluid h-custom">
@@ -34,7 +39,7 @@
                 </div>--%>
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">                    
                     <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                        <p class="lead fw-normal mb-0 me-3">Iniciar sesión</p>
+                        <p class="lead fw-normal mb-0 me-3" >Iniciar sesión</p>
                         <button type="button" class="btn btn-primary btn-floating mx-1">
                             <i class="fab fa-facebook-f"></i>
                         </button>
@@ -71,7 +76,7 @@
                                                 <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"></path>
                                             </svg>
                                         </span>                                           
-                                        <asp:TextBox CssClass="form-control form-control-lg" aria-label="Input group example" placeholder="Nombre de usuario" ID="UserName" runat="server"></asp:TextBox>
+                                        <asp:TextBox CssClass="form-control form-control-lg borderRadius" aria-label="Input group example" placeholder="Nombre de usuario" ID="UserName" runat="server"></asp:TextBox>
                                     </div>                                      
                                     <div class="row">
                                         <label class="form-label" for="form3Example3">Usuario</label>
@@ -88,7 +93,7 @@
                                                 <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
                                             </svg>
                                         </span>                                            
-                                        <asp:TextBox CssClass="form-control form-control-lg" aria-label="Input group example"  placeholder="Contraseña" ID="Password" runat="server" TextMode="Password"></asp:TextBox>
+                                        <asp:TextBox CssClass="borderRadius form-control form-control-lg" aria-label="Input group example"  placeholder="Contraseña" ID="Password" runat="server" TextMode="Password"></asp:TextBox>
                                         <span style="position: absolute;right:10px;top:15px">
                                             <svg style="display:block" id="slash" xmlns="http://www.w3.org/2000/svg" width="16" onclick="hideshow('Login1_Password','slash','eye')" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                                               <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
