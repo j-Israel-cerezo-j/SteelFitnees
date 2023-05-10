@@ -16,40 +16,59 @@
 			<form id="form1" class="row g-3 needs-validation" enctype="multipart/form-data" novalidate>
 				<div class="row ">
 					<div class="col-lg-6 col-md-6 col-sm-12 col-xsm-12 form-group" style="margin-top:15px;padding-right: 0px;padding-left:10px;">
-						<input  style="border-radius:6px" type="text" class="form-control has-feedback-left" required="required" name="nombre" id="nombre" placeholder="Nombre de la sucursal"  onkeyup="onkeyupInputEmtyy('nombre')">
-						<div class="valid-feedback">
+						<label style="margin-left:10px;margin-bottom:10px" class="control-label row">Nombre de la sucursal</label>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<input  style="border-radius:6px" type="text" class="form-control has-feedback-left" required="required" name="nombre" id="nombre" placeholder="Nombre de la sucursal"  onkeyup="onkeyupInputEmtyy('nombre')">
+							<span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+							<div class="valid-feedback">
 								¡ Buen trabajo!
-						</div>
-						<div class="invalid-feedback">
-							El nombre de la sucursal es requerido
-						</div>
-						<span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+							</div>
+							<div class="invalid-feedback">
+								El nombre de la sucursal es requerido
+							</div>						
+                        </div>
 					</div>
-					<div class="col-lg-6 col-md-6 col-sm-12 form-group" style="margin-top:15px">
-						<div class="mb-3" id="containerFilePhotograph">
-							<input multiple style="border-radius:6px" accept="image/jpeg,image/png,image/jfif"  class="form-control"  type="file" id="formFile" onchange="MostraIma(this)">
-						</div>
-					</div>	
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xsm-12 form-group" style="margin-top:10px;padding-right: 0px;padding-left:10px;">
+						<label style="margin-left:10px;margin-bottom:10px" class="control-label row">Número télefonico</label>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<input  style="border-radius:6px" type="text" id="telephone" name="telephone"  placeholder="(999) 999-9999" class="form-control has-feedback-left" data-inputmask="'mask' : '(999) 999-9999'">
+							<span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>											
+                        </div>
+					</div>
 				</div>
 				<div class="row justify-content-center">
 					<div class="col-lg-6 col-md-6 col-sm-12 form-group" style="margin-top:15px">
-						<textarea class="form-control" id="description" style="border-radius:6px" required="required" name="description"  placeholder="Descripción de la sucrusal" onkeyup="onkeyupInputEmtyy('description')" rows="5"></textarea>
-						<div class="valid-feedback">
-								¡ Buen trabajo!
-						</div>
-						<div class="invalid-feedback">
-							La descripción es requerida
-						</div>
+						<label style="margin-left:10px;margin-bottom:10px" class="control-label row">Descripción</label>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<textarea class="form-control" id="description" style="border-radius:6px" required="required" name="description"  placeholder="Descripción de la sucrusal" onkeyup="onkeyupInputEmtyy('description')" rows="5"></textarea>
+							<div class="valid-feedback">
+									¡ Buen trabajo!
+							</div>
+							<div class="invalid-feedback">
+								La descripción es requerida
+							</div>
+                        </div>
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-12 form-group" style="margin-top:15px">
-						<textarea class="form-control" id="ubicacion" style="border-radius:6px" required="required" name="ubicacion"  placeholder="Ubicación de la sucursal" onkeyup="onkeyupInputEmtyy('ubicacion')" rows="5"></textarea>
-						<div class="valid-feedback">
-								¡ Buen trabajo!
-						</div>
-						<div class="invalid-feedback">
-							La ubicación es requerida
-						</div>
+						<label style="margin-left:10px;margin-bottom:10px" class="control-label row">Ubicación</label>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<textarea class="form-control" id="ubicacion" style="border-radius:6px" required="required" name="ubicacion"  placeholder="Ubicación de la sucursal" onkeyup="onkeyupInputEmtyy('ubicacion')" rows="5"></textarea>
+							<div class="valid-feedback">
+									¡ Buen trabajo!
+							</div>
+							<div class="invalid-feedback">
+								La ubicación es requerida
+							</div>
+                        </div>
 					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-12 form-group" style="margin-top:15px">
+						<label style="margin-left:10px;margin-bottom:10px" class="control-label row">Cargar imagenes por favor...</label>
+                        <div class="col-md-10 col-sm-10 col-xs-10" id="containerFilePhotograph">
+							<input multiple style="border-radius:6px" accept="image/jpeg,image/png,image/jfif"  class="form-control"  type="file" id="formFile" onchange="MostraIma(this)">
+                        </div>
+					</div>	
 				</div>
 				<div class="card"> 
 					<div id="containerImages" class="mt-5 row justify-content-center"></div>

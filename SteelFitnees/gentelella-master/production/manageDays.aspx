@@ -13,16 +13,19 @@
 			<br>
 			<form id="form1"  class="g-3 needs-validation" novalidate>
 				<div class="row" style="margin-top:15px">
-					<div class="col-lg-6 col-md-6 col-sm-12 col-xsm-12 form-group mt-3" >								
-						<input style="border-radius:6px" type="text" class="form-control has-feedback-left" required="required" name="dia" id="dia" placeholder="Agregar un dia" onkeyup="onkeyupInputEmtyy('dia')">
-						<div id="containerMjsValidOrInValid"></div>
-						<div class="valid-feedback">
-							¡ Buen trabajo!
-						</div>
-						<div class="invalid-feedback">
-							Nombre del dia es requerido
-						</div>
-						<span class="fa fa-user form-control-feedback left " aria-hidden="true"></span>															
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xsm-12 form-group" style="margin-top:0px;padding-right: 0px;padding-left:10px;">
+						<label style="margin-left:10px;margin-bottom:10px" class="control-label row">Nombre del dia a agregar</label>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<input style="border-radius:6px" type="text" class="form-control has-feedback-left" required="required" name="dia" id="dia" placeholder="Nombre del día" onkeyup="onkeyupInputEmtyy('dia')">
+							<span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+							<div id="containerMjsValidOrInValid"></div>
+							<div class="valid-feedback">
+								¡ Buen trabajo!
+							</div>
+							<div class="invalid-feedback">
+								Nombre del dia es requerido
+							</div>
+                        </div>
 					</div>
 					<div class="col-lg-6 col-md-12 col-sm-12 col-xsm-12" style="margin-top:20px;">
 						<div class="form-group">

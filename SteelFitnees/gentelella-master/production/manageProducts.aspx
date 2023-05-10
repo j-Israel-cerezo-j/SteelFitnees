@@ -16,16 +16,19 @@
 				<h1 style="text-align:center" id="labelMsjAction">Agregar productos</h1>
 				<div class="row  justify-content-center mt-3">
 					<div class="col-lg-6 col-md-6 col-sm-12 form-group" style="margin-top:15px">
-						<input type="text"  style="border-radius:6px" class="form-control has-feedback-left" required="required" name="product" id="product" placeholder="Nombre del producto" onkeyup="onkeyupInputEmtyy('product')">
-						<div class="valid-feedback">
+						<label style="margin-left:10px;margin-bottom:10px" class="control-label row">Nombre del producto</label>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<input type="text"  style="border-radius:6px" class="form-control has-feedback-left" required="required" name="product" id="product" placeholder="Nombre del producto" onkeyup="onkeyupInputEmtyy('product')">
+							<span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+							<div class="valid-feedback">
 								¡ Buen trabajo!
-						</div>
-						<div class="invalid-feedback">
-							El nombre del producto es requerido
-						</div>
-						<span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+							</div>
+							<div class="invalid-feedback">
+								El nombre del producto es requerido
+							</div>						
+                        </div>
 					</div>
-					<div class="col-lg-6 col-md-6 col-sm-12 form-group" style="margin-top:15px">
+					<div class="col-lg-6 col-md-6 col-sm-12 form-group" style="margin-top:40px">
 						<div class="mb-3" id="containerFilePhotograph">
 							<input style="border-radius:6px" accept="image/jpeg,image/png"  class="form-control" required="required" type="file" id="formFile" onchange="MostraIma(this)" name="fotografia">
 							 <div class="valid-feedback">
@@ -39,15 +42,18 @@
 				</div>
 				<div class="row justify-content-center">
 					<div class="col-lg-6 col-md-6 col-sm-12 form-group" style="margin-top:15px">
-						<textarea class="form-control" id="description" style="border-radius:6px" required="required" name="description"  placeholder="Descripción del producto" onkeyup="onkeyupInputEmtyy('description')" rows="5"></textarea>
-						<div class="valid-feedback">
+						<label style="margin-left:10px;margin-bottom:10px" class="control-label row">Descripción del producto</label>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<textarea class="form-control" id="description" style="border-radius:6px" required="required" name="description"  placeholder="Descripción del producto" onkeyup="onkeyupInputEmtyy('description')" rows="5"></textarea>
+							<div class="valid-feedback">
 								¡ Buen trabajo!
-						</div>
-						<div class="invalid-feedback">
-							La descripción es requerida
-						</div>
+							</div>
+							<div class="invalid-feedback">
+								La descripción es requerida
+							</div>
+                        </div>
 					</div>
-					<div class="col-lg-6 col-md-6 col-sm-12 form-group justify-content-center" style="margin-top:15px">
+					<div class="col-lg-6 col-md-6 col-sm-12 form-group justify-content-center" style="margin-top:35px">
 						<div  class="" style="width: 13.9rem;text-align:center">
 							<img class="reflejo" id="image" alt="Cargar fotografía por favor." src="" height="270" width="250"/>
 							<div class="card-body">

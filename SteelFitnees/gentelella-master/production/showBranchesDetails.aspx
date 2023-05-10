@@ -16,10 +16,15 @@
     
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<main>
-    <div class="row" style="margin-bottom:100px"></div>
+<main style="
+            background-image: url(<%=getListImagesById[0].path%>);
+            background-repeat:no-repeat;
+            background-attachment:fixed;
+            background-size:cover;
+            color:#FFFFFF">
+    <div class="row"></div>
         <!--? About Area Start -->
-    <section class="about-area">
+    <section class="about-area" style="padding-bottom:50px">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-12">
@@ -28,7 +33,7 @@
                         <img  src="<%=getListImagesById[0].path %>" alt="">
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12">
+                <div class="col-lg-6 col-md-12" style="background-color:white">
                     <div class="about-caption">
                         <!-- Section Tittle -->
                         <div class="section-tittle section-tittle3 mb-35">
@@ -59,7 +64,7 @@
     </section>    
     <!-- About-2 Area End -->
     <%--Horarios inicio--%>
-    <div class="row">
+    <div class="row" style="background-color: white; margin-left: 57px;margin-right:57px;padding:40px">
         <svg onclick="buildScheduleToday()" xmlns="http://www.w3.org/2000/svg" width="35" height="34" viewBox="0 0 35 34" fill="none">
             <g clip-path="url(#clip0_232_8433)">
                 <path d="M16.6525 9.00254C16.6525 8.24471 17.2525 7.63037 17.9927 7.63037C18.7329 7.63037 19.333 8.24471 19.333 9.00254V18.6078C19.333 19.3656 18.7329 19.9799 17.9927 19.9799H11.2914C10.5512 19.9799 9.95117 19.3656 9.95117 18.6078C9.95117 17.8499 10.5512 17.2356 11.2914 17.2356H16.6525V9.00254Z" fill="red"></path>
@@ -73,25 +78,24 @@
         </svg>
         <h1 style="text-align:center">Dias y horarios disponibles de la sucursal<p>Da click en el día</p></h1>
     </div>
-    <section class="date-tabs" style="padding-top: 0px;" >       
+    <section class="date-tabs" style="padding-top: 0px;padding-bottom:80px" >       
         <!-- Heading & Nav Button -->
         <div class="row justify-content-center">
             <div class="col-lg-11">
                 <div class="properties__button">
                             <!--Nav Button  -->                                            
                     <nav>      
-                        <div  style="justify-content:center;width:100%" class="nav nav-tabs row" id="nav-tab" role="tablist">
-                        </div>
+                        <div  style="justify-content:center;width:100%" class="nav nav-tabs row" id="nav-tab" role="tablist"></div>
                     </nav>
                             <!--End Nav Button  -->
                 </div>
             </div>
         </div>
         <!-- Tab content -->
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="background-color:black;">
             <div class="col-lg-11">
                 <!-- Nav Card -->
-                <div class="tab-content" id="nav-tabContent" >                                        
+                <div class="tab-content" id="nav-tabContent" style="padding-bottom:10px" >                                        
                 </div>
                 <!-- End Nav Card -->
             </div>
@@ -99,27 +103,53 @@
     </section>
     <%--Horarios fin--%>
 
-    <div class="container">
              <!--? Gallery Area Start -->
         <div class="gallery-area">
             <div class="container-fluid p-0 fix">
-                <div class="row">
-                    <%int i = 0; foreach (var item in getListImagesById)
-                        { %>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="box snake mb-30"">
-                                    <div class="gallery-img small-img"  style="background-image: url(<%=item.path%>)"></div>
-                                </div>
+                <div class="row" style="justify-content:center">
+                    <div class="col-lg-6">                    
+                        <div id="carouselExampleDark" class="carousel carousel-dark" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                 <%if (getListImagesById != null && getListImagesById.Count > 0)
+                                { %>
+                                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <%for (int i = 1; i < getListImagesById.Count; i++)
+                                        {%>
+                                            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="<%=i %>" aria-label="Slide <%=i+1 %>"></button>
+                                        <%} %>
+                                <%} %>
                             </div>
-                        <% } %>
+                            <div class="carousel-inner">
+                            <%if (getListImagesById != null && getListImagesById.Count > 0)
+                            { %>
+                                <div class="carousel-item active" data-bs-interval="3000">
+                                    <img src="<%=getListImagesById[0].path%>" class="d-block reflejo" alt="..." width="650" height="450" >
+                                </div>
+                                 <%for (int i = 1; i < getListImagesById.Count; i++)
+                                { %>
+                                    <div class="carousel-item" data-bs-interval="3000">
+                                        <img src="<%=getListImagesById[i].path %>" class="d-block reflejo" alt="..." width="650" height="450">
+                                    </div>                          
+                                <%}%>      
+                            <%} %>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <!-- Gallery Area End -->
-    </div>
    
         <!--? Want To work -->
-    <section class="wantToWork-area w-padding">
+    <section class="wantToWork-area w-padding mt-4" style="background-color:white">
         <div class="container">
             <div class="row align-items-end justify-content-between">
                 <div class="col-lg-6 col-md-9 col-sm-9">
@@ -136,7 +166,7 @@
     </section>
         <!-- Want To work End -->
         <!--? Team Ara Start -->
-    <div class="team-area pb-150">
+    <div class="team-area pb-150" style="background-color:white">
         <div class="container">
             <div class="row" id="containerProducts">
                 

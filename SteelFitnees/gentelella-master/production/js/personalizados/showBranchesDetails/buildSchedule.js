@@ -13,14 +13,14 @@
 
             htmlDays += 
                     `
-                    <div class="col-lg-2 col-md-2 col-sm-12 col-xsm-12">
+                    <div class="col-lg-2 col-md-2 col-sm-6 col-xsm-6" style="text-align: center;">
                         <a style="margin-bottom: 0px;width: 100%;" class="ynav-item nav-link card-header" id="nav-home-tab${json[i].dia.toUpperCase()}" data-toggle="tab" href="#nav-home${json[i].idHorario}" onclick="buildSchedulea('nav-home-tab${json[i].dia.toUpperCase()}','div${json[i].dia.toUpperCase()}','${json[i].dia.toUpperCase()}')" role="tab" aria-controls="nav-home" aria-selected="true">${json[i].dia}</a>
                         <div id="div${json[i].dia.toUpperCase()}">
                             <div style="background: #dcdcdc;" class="tab-pane fade" id="nav-home${json[i].idHorario}" role="tabpanel" aria-labelledby="nav-home-tab" >
-                                <div class="col-lg-6 col-lg-6 col-md-6 col-lg-12" style="width: 100%;">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xsm-6" style="width: 100%;">
                                     <div class="tab-wrapper" style="justify-content: center;">
                                         <!-- single -->
-                                        <div class="single-box mt-5 mb-5" style="justify-content: center;">
+                                        <div class="mt-4 mb-4" style="justify-content: center;">
                                             <div class="row"><h5 style="color:black;font-size: 25px;text-align: center;">${scheduleOpen}</h5></div>
                                             <div class="row"><h5 style="color:black;font-size: 25px;text-align: center;"> - </h5></div>
                                             <div class="row"><h5 style="color:black;font-size: 25px;text-align: center;">${scheduleClose}</h5></div>
