@@ -20,18 +20,6 @@ namespace SteelFitnees.gentelella_master.production
     public partial class Login : System.Web.UI.Page
     {
         private UserService userService = new UserService();
-
-        public List<User> getUsersCookies { get; set; } = null;
-        public User getUserCookie { get; set; }
-        public string getJsonUsersCookies { get; set; }
-        public string getJsonUserCookiesDataIncorrect { get; set; } = "a";
-        public string getBlockedAccountMsj { get; set; } = "a";
-        public bool getPassIncorrect { get; set; } = false;
-        public bool getEmptyPassword { get; set; } = false;
-        public bool getPassRemember { get; set; } = false;
-        public bool getBlockedAccount { get; set; } = false;
-        public bool getModalShow { get; set; } = false;
-        public int getIndexValueListUser { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {//this.cmdLogin.ServerClick += new System.EventHandler(this.cmdLogin_ServerClick);
             
@@ -50,8 +38,7 @@ namespace SteelFitnees.gentelella_master.production
         {
             try
             {
-                lblBlockedAccount.Text = "";
-                lblEmailNonexistent.Text = "";
+                lblErrorMessage.Text = "";
                 if (userService.validateIfExistUser(Login1.UserName))
                 {
                     string urlRederic = "indexUser.aspx";
@@ -91,12 +78,16 @@ namespace SteelFitnees.gentelella_master.production
                 }
                 else
                 {
-                    lblEmailNonexistent.Text = "Nombre de usuario no registrado";
+                    lblErrorMessage.Text = "Nombre de usuario no registrado";
                 }
             }
-            catch (LoginException ex)
+            catch (ServiceException se)
             {
-                lblBlockedAccount.Text = ex.getMessage();
+                lblErrorMessage.Text=se.getMessage();
+            }
+            catch (LoginException le)
+            {
+                lblErrorMessage.Text=le.getMessage();
             }
         }
         private bool ValidateUser(string userName, string passWord, ref string urlRederic)

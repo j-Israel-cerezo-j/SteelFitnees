@@ -202,6 +202,7 @@
     <Content Include="gentelella-master\production\Handlers\userController.aspx" />
     <Content Include="gentelella-master\production\images\perzonalizadas\aboutUs\misongym.png" />
     <Content Include="gentelella-master\production\images\perzonalizadas\fotter\steelFotter.jpg" />
+    <Content Include="gentelella-master\production\images\perzonalizadas\icons\portadaFym-fotor-bg-remover-20230511125220.png" />
     <Content Include="gentelella-master\production\images\perzonalizadas\login\images.jpg" />
     <Content Include="gentelella-master\production\images\perzonalizadas\login\portadaGalleryGym2.jpg" />
     <Content Include="gentelella-master\production\images\perzonalizadas\userGen\showBranche\portada3.jpg" />
