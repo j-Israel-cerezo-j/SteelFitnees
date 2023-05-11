@@ -65,7 +65,7 @@
                                                     <li><a href="allProducts.aspx">Todos los productos</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="Login.aspx">Iniciar sesión</a></li>
+                                            <li><a href="allBranches.aspx">Sucursales</a></li>
                                         </ul>
                                     </nav>
                                 </div>

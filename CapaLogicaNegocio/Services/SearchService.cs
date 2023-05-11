@@ -17,11 +17,13 @@ namespace CapaLogicaNegocio.Services
     {
         private const string wordProduct = "PRODUCTOS";
         private const string wordBranche = "SUCURSALES";
+        private const string wordSingIn = "INICIAR SESION";
         private SearchTable searchTable= new SearchTable(); 
         public List<string> onkeyupSearchListMasterSeeker(string caracteres)
         {
             bool banProduct = false;
             bool banBrance = false;
+            bool banSingIn= false;
             string caracteresResult = "%" + caracteres + "%";
             var listCoincidences=Converter.ToList(searchTable.searchCoincidencesPrincipal(caracteresResult));
             for (int i = 0; i < caracteres.Length; i++)
@@ -40,6 +42,14 @@ namespace CapaLogicaNegocio.Services
                     break;
                 }
             }
+            for (int i = 0; i < caracteres.Length; i++)
+            {
+                if (wordSingIn.Contains(caracteres.ToUpper()[i]))
+                {
+                    banSingIn = true;
+                    break;
+                }
+            }
             if (banProduct)
             {
                 listCoincidences.Add(wordProduct.ToLower());
@@ -47,6 +57,10 @@ namespace CapaLogicaNegocio.Services
             if (banBrance)
             {
                 listCoincidences.Add(wordBranche.ToLower());
+            }
+            if (banSingIn)
+            {
+                listCoincidences.Add(wordSingIn.ToLower());
             }
             return listCoincidences;
 
@@ -60,7 +74,7 @@ namespace CapaLogicaNegocio.Services
            
             int caracteresSimilaresProductos = 0;
             int caracteresSimilaresSucursales = 0;
-
+            int caracteresSimilaresSingIn= 0;
 
             for (int i = 0; i < caracteres.Length; i++)
             {
@@ -78,7 +92,13 @@ namespace CapaLogicaNegocio.Services
                         caracteresSimilaresSucursales++;
                     }
                 }
-
+                if (caracteres.Length<=wordSingIn.Length)
+                {
+                    if (caracteres.ToUpper()[i] == wordSingIn[i])
+                    {
+                        caracteresSimilaresSingIn++;
+                    }
+                }
             }
             if (caracteresSimilaresProductos > caracteresSimilaresSucursales)
             {
@@ -96,6 +116,11 @@ namespace CapaLogicaNegocio.Services
                     response.Add("url", "allBranches.aspx");
                     return Converter.ToJson(response);
                 }
+            }
+            if (caracteresSimilaresSingIn>=7)
+            {
+                response.Add("url", "Login.aspx");
+                return Converter.ToJson(response);
             }
             var idBranche = searchTable.idBrancheByCharacteres(result);
             if (idBranche != -1)

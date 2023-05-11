@@ -65,5 +65,8 @@
             </div>
         </div>
     </div>
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <script src="js/personalizados/utils/hideshow.js"></script>
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
 </body>
 </html>
