@@ -2,6 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
  <meta charset="utf-8"/>
+
+    <title>Steel Fitness - Conócenos</title>
+
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>    
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>

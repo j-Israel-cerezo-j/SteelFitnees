@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/gentelella-master/production/principal.Master" AutoEventWireup="true" CodeBehind="Galeria.aspx.cs" Inherits="SteelFitnessWEB.Galeria" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <title>Steel Fitness - Galeria</title>
     <link rel="stylesheet" href="templates/fitnessclub-master/assets/css/style.css">    
     <link href="frontend/css/styleIndex.css" rel="stylesheet" />
 </asp:Content>

@@ -13,7 +13,7 @@
             <div class="col-lg-7 col-md-9 col-sm-10">
                 <div class="section-tittle text-center mb-100">
                     <h2><span>Selecciona una sucursal para checar sus comentarios dados por lus usuarios</span></h2>
-                    <select class="form-select form-select-lg mb-3 mt-5" id="branches" onchange="requestComments()" >
+                    <select style="border-radius:12px" class="form-select form-select-lg mb-3 mt-5" id="branches" onchange="requestComments()" >
                     </select>
                     <h2 style="margin:10px" class="mt-3" id="nameBranche"></h2>                    
                 </div>
