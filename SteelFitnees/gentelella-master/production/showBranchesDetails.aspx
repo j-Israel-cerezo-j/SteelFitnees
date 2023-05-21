@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="showBranchesDetails.aspx.cs" Inherits="SteelFitnees.gentelella_master.production.showBranchesDetails" MasterPageFile="~/gentelella-master/production/principal.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
- <meta charset="utf-8"/>
+    <meta charset="utf-8"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>    
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
