@@ -1,6 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="allBranches.aspx.cs" Inherits="SteelFitnees.gentelella_master.production.allBranches" MasterPageFile="~/gentelella-master/production/principal.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">       
+
+    <title>Steel Fitness - Sucursales</title>
+
     <link href="frontend/css/styleIndex.css" rel="stylesheet" />
     <link rel="stylesheet" href="templates/fitnessclub-master/assets/css/style.css">
     <link href="css/personalizados/reflejos.css" rel="stylesheet" />

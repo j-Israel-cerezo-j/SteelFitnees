@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="productsByBranche.aspx.cs" Inherits="SteelFitnees.gentelella_master.production.productsByBranche" MasterPageFile="~/gentelella-master/production/principal.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
- 	
+ 	<title>Steel Fitness - Productos por sucursal</title>
 	<link rel="stylesheet" href="templates/fitnessclub-master/assets/css/style.css">    
     <link href="frontend/css/styleIndex.css" rel="stylesheet" />
 </asp:Content>

@@ -200,6 +200,10 @@
     <Content Include="gentelella-master\production\Handlers\sucursalesController.aspx" />
     <Content Include="gentelella-master\production\Handlers\tablesController.aspx" />
     <Content Include="gentelella-master\production\Handlers\userController.aspx" />
+    <Content Include="gentelella-master\production\images\perzonalizadas\404\404E.jpg" />
+    <Content Include="gentelella-master\production\images\perzonalizadas\404\404EG.jpg" />
+    <Content Include="gentelella-master\production\images\perzonalizadas\404\404EroPesas.png" />
+    <Content Include="gentelella-master\production\images\perzonalizadas\404\erro404g.jpg" />
     <Content Include="gentelella-master\production\images\perzonalizadas\aboutUs\misongym.png" />
     <Content Include="gentelella-master\production\images\perzonalizadas\fotter\steelFotter.jpg" />
     <Content Include="gentelella-master\production\images\perzonalizadas\icons\portadaFym-fotor-bg-remover-20230511125220.png" />
@@ -1923,6 +1927,7 @@
     <Content Include="gentelella-master\production\turnjs4\samples\magazine\pages\9-regions.json" />
     <Content Include="gentelella-master\production\turnjs4\samples\steve-jobs\fonts\Stempel-Garamond-W01-Roman.woff" />
     <Content Include="gentelella-master\production\turnjs4\turnjs4-api-docs.pdf" />
+    <Content Include="gentelella-master\production\images\perzonalizadas\404\3d-rendering-black-dumbbells-floor-dark-concept-fitness-room-with-training-equipments-back_67155-14961.avif" />
     <None Include="Scripts\embedded\1.0\visio-web-embedded.debug-vsdoc.js" />
     <Content Include="gentelella-master\.gitignore" />
     <Content Include="gentelella-master\build\css\custom.css" />
