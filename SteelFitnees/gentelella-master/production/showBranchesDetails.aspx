@@ -43,7 +43,9 @@
                             <div class="section-tittle section-tittle3 mb-35">
                                 <span>Sucursal</span>
                                 <h2><%=getBranche.nombre %></h2>
-                            </div>
+                                <b style="font-size:20px" id="msjOpeningStatus"></b>
+                                <a href="#nav-tab"><p>Consulta nuestros horarios abajo</p></a>
+                            </div>                            
                             <p class="pera-top"><%=getBranche.descripcion %></p>
                             <p class="pera-top">
                                 <i class="fa fa-phone" aria-hidden="true"></i> 
@@ -73,7 +75,7 @@
         <!-- About-2 Area End -->
         <%--Horarios inicio--%>
         <div class="row" style="background-color: white;padding-top:35px;">
-            <svg onclick="buildScheduleToday()" xmlns="http://www.w3.org/2000/svg" width="35" height="34" viewBox="0 0 35 34" fill="none">
+            <svg style="cursor:pointer" onclick="buildScheduleToday()" xmlns="http://www.w3.org/2000/svg" width="35" height="34" viewBox="0 0 35 34" fill="none">
                 <g clip-path="url(#clip0_232_8433)">
                     <path d="M16.6525 9.00254C16.6525 8.24471 17.2525 7.63037 17.9927 7.63037C18.7329 7.63037 19.333 8.24471 19.333 9.00254V18.6078C19.333 19.3656 18.7329 19.9799 17.9927 19.9799H11.2914C10.5512 19.9799 9.95117 19.3656 9.95117 18.6078C9.95117 17.8499 10.5512 17.2356 11.2914 17.2356H16.6525V9.00254Z" fill="red"></path>
                     <path d="M17.2872 32.4519C9.16646 32.4519 2.53031 25.7031 2.53031 17.312C2.53031 8.92091 9.16646 2.17216 17.2872 2.17216C25.408 2.17216 32.0442 8.92091 32.0442 17.312C32.0442 25.7031 25.408 32.4519 17.2872 32.4519Z" stroke="#666666" stroke-width="2.65243"></path>
@@ -84,7 +86,8 @@
                     </clipPath>
                 </defs>
             </svg>
-            <h1 style="text-align:center">Dias y horarios disponibles de la sucursal<p>Da click en el día</p></h1>
+            <h1 style="text-align:center">Dias y horarios disponibles de la sucursal<p>Da click en el día o en reloj para poner el dia de hoy</p></h1>
+            <h4 style="text-align:center" id="noOpenTodayMsj"></h4>
         </div>
         <section class="date-tabs" style="padding-top: 0px;padding-bottom:50px;margin-left: 57px;margin-right: 57px;" >
             <!-- Heading & Nav Button -->
@@ -224,10 +227,12 @@
     <script src="js/personalizados/showBranchesDetails/buildSchedule.js"></script>
     <script src="js/personalizados/showBranchesDetails/requestComments.js"></script>
     <script src="js/personalizados/showBranchesDetails/ajax/branchesAjax.js"></script>
-
+    <script src="js/personalizados/showBranchesDetails/openingStatus.js"></script>
     <script src="js/personalizados/utils/zoomImg.js"></script>
     <script src="js/personalizados/utils/formant12HourTime.js"></script>
     <script src="js/personalizados/utils/onkeyupInputEmpty.js"></script>
+    <script src="js/personalizados/utils/returnOpeningStatus.js"></script>
+
     <!-- JS here -->
     <script src="templates/fitnessclub-master/assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <!-- Jquery, Popper, Bootstrap -->
@@ -269,16 +274,13 @@
     <script src="templates/fitnessclub-master/assets/js/main.js"></script>
 
     <script type="text/javascript">
-      
-        
-
         window.onload = function () {
             var jsonSchedules =<%=getSchedulesByIdBranche%>
             var productsById =<%=getProductsByIdBranche%>
             buildSchedule(jsonSchedules);
             buildProductById(productsById);
             addUrlReturn();
-
+            openingStatus()
         }
     </script>
 </asp:Content>

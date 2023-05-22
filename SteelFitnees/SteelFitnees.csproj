@@ -242,6 +242,7 @@
     <Content Include="gentelella-master\production\js\personalizados\Ajax\recoverData.js" />
     <Content Include="gentelella-master\production\js\personalizados\Ajax\submitAjaxCatalogos.js" />
     <Content Include="gentelella-master\production\js\personalizados\allBranches\addUrlReturn.js" />
+    <Content Include="gentelella-master\production\js\personalizados\allBranches\msjOpeningBrancheCards.js" />
     <Content Include="gentelella-master\production\js\personalizados\allProducts\addUrlBtnReturn.js" />
     <Content Include="gentelella-master\production\js\personalizados\allProducts\build\productsCards.js" />
     <Content Include="gentelella-master\production\js\personalizados\allProducts\initRange.js" />
@@ -322,6 +323,7 @@
     <Content Include="gentelella-master\production\js\personalizados\showBranchesDetails\buildProductById.js" />
     <Content Include="gentelella-master\production\js\personalizados\showBranchesDetails\buildSchedule.js" />
     <Content Include="gentelella-master\production\js\personalizados\showBranchesDetails\map.js" />
+    <Content Include="gentelella-master\production\js\personalizados\showBranchesDetails\openingStatus.js" />
     <Content Include="gentelella-master\production\js\personalizados\showBranchesDetails\requestComments.js" />
     <Content Include="gentelella-master\production\js\personalizados\slider\slider.js" />
     <Content Include="gentelella-master\production\js\personalizados\submitAjaxCatalogos.js" />
@@ -340,6 +342,7 @@
     <Content Include="gentelella-master\production\js\personalizados\utils\hideshow.js" />
     <Content Include="gentelella-master\production\js\personalizados\utils\onkeyupInputEmpty.js" />
     <Content Include="gentelella-master\production\js\personalizados\utils\onkeyupNoSelectInSlc.js" />
+    <Content Include="gentelella-master\production\js\personalizados\utils\returnOpeningStatus.js" />
     <Content Include="gentelella-master\production\js\personalizados\utils\styleBoxShadow.js" />
     <Content Include="gentelella-master\production\js\personalizados\utils\switchTableOnkeyup.js" />
     <Content Include="gentelella-master\production\js\personalizados\utils\validatorForm.js" />

@@ -14,7 +14,7 @@
             htmlDays += 
                     `
                     <div class="col-lg-2 col-md-2 col-sm-6 col-xsm-6" style="text-align: center;padding-top:10px">
-                        <a style="margin-bottom: 0px;width: 100%;" class="ynav-item nav-link card-header" id="nav-home-tab${json[i].dia.toUpperCase()}" data-toggle="tab" href="#nav-home${json[i].idHorario}" onclick="buildSchedulea('nav-home-tab${json[i].dia.toUpperCase()}','div${json[i].dia.toUpperCase()}','${json[i].dia.toUpperCase()}')" role="tab" aria-controls="nav-home" aria-selected="true">${json[i].dia}</a>
+                        <a style="margin-bottom: 0px;width: 100%;background:#ff1313;color:white" class="ynav-item nav-link card-header note" id="nav-home-tab${json[i].dia.toUpperCase()}" data-open="${json[i].horaInicio}" data-close="${json[i].horaCierre}" data-toggle="tab" href="#nav-home${json[i].idHorario}" onclick="buildSchedulea('nav-home-tab${json[i].dia.toUpperCase()}','div${json[i].dia.toUpperCase()}','${json[i].dia.toUpperCase()}')" role="tab" aria-controls="nav-home" aria-selected="true">${json[i].dia}</a>
                         <div id="div${json[i].dia.toUpperCase()}">
                             <div style="background: #dcdcdc;" class="tab-pane fade" id="nav-home${json[i].idHorario}" role="tabpanel" aria-labelledby="nav-home-tab" >
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xsm-6" style="width: 100%;">
@@ -47,13 +47,14 @@ function buildScheduleToday() {
     const dayOfWeek = today.getDay();
     const todayName = daysOfWeek[dayOfWeek];
 
-    if (document.getElementById("nav-home-tab" + todayName) != undefined) {
+    if (document.getElementById("nav-home-tab" + todayName) != undefined) {        
         const enlace = document.getElementById("nav-home-tab" + todayName);
-
         enlace.style.background = "#ff1313"
         enlace.style.color = "white"
         enlace.classList.add("note")
         enlace.click();
+    } else {
+        document.getElementById("noOpenTodayMsj").innerText = "Diculpa,pero hoy " + todayName +" nuestra sucursal no tiene servicios, te invitamos a ver los horarios de la sucursal abajo."
     }
 }
 

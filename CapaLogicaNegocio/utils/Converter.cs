@@ -178,7 +178,7 @@ namespace CapaLogicaNegocio.utils
             jsonSb.Append("]");
             return jsonSb;
         }
-        public static StringBuilder ToJson(DataTable table, string field)
+        public static StringBuilder ToJson(DataTable table, string field, bool typeDateTime = false, List<string> namesTypeDateTime = null)
         {
             int idAux = 0;
             StringBuilder jsonSb = new StringBuilder();
@@ -190,7 +190,24 @@ namespace CapaLogicaNegocio.utils
                     jsonSb.Append("{");
                     for (int j = 0; j < table.Columns.Count; j++)
                     {
-                        jsonSb.Append(table.Columns[j].ColumnName + ": '" + table.Rows[i][j].ToString() + "',");
+                        if (typeDateTime)
+                        {
+                            if (namesTypeDateTime != null)
+                            {
+                                if (namesTypeDateTime.Contains(table.Columns[j].ColumnName))
+                                {
+                                    jsonSb.Append(table.Columns[j].ColumnName + ": '" + Convert.ToDateTime(table.Rows[i][j]).ToString("HH:mm") + "',");
+                                }
+                                else
+                                {
+                                    jsonSb.Append(table.Columns[j].ColumnName + ": '" + table.Rows[i][j].ToString() + "',");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            jsonSb.Append(table.Columns[j].ColumnName + ": '" + table.Rows[i][j].ToString() + "',");
+                        }                        
                     }
                     jsonSb.Remove(jsonSb.Length - 1, 1);
                     jsonSb.Append("},");

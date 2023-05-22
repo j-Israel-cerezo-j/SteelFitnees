@@ -303,7 +303,8 @@ namespace CapaLogicaNegocio.Services
         }
         public string jsonTableBranches()
         {
-            return Converter.ToJson(branchesTable.table(), "idSucursal").ToString();
+            var namesTypeDateTime = new List<string>() { "horaInicio", "horaCierre" };
+            return Converter.ToJson(branchesTable.table(), "idSucursal",true, namesTypeDateTime).ToString();
         }
         public string jsonRecoverData(string strId)
         {
@@ -323,7 +324,7 @@ namespace CapaLogicaNegocio.Services
             {
                 throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
             }
-            var namesTypeDateTime=new List<string>() { "horaInicio", "horaCierre" };
+            var namesTypeDateTime = new List<string>() { "horaInicio", "horaCierre" };
             return Converter.ToJson(schedulesTable.ByIdBranche(Convert.ToInt32(strId)),true, namesTypeDateTime).ToString();
         }
         public string jsonCommentsBranches(string strId)

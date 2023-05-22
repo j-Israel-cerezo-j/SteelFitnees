@@ -26,11 +26,13 @@
     <script src="js/personalizados/allBranches/addUrlReturn.js"></script>
     <script src="js/personalizados/Index/requestBranches.js"></script>
     <script src="js/personalizados/Index/build/buildCardsBranches.js"></script>
+    <script src="js/personalizados/utils/returnOpeningStatus.js"></script>
     <script src="js/personalizados/utils/Ajax/request.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js" integrity="sha256-92U7H+uBjYAJfmb+iNPi7DPoj795ZCTY4ZYmplsn/fQ=" crossorigin="anonymous"></script>
     <script type="text/javascript">
         window.onload = function () {
+            
             requestBranches();
             addUrlReturn();
         }

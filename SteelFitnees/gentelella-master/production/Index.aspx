@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SteelFitnees.gentelella_master.production.Index" MasterPageFile="~/gentelella-master/production/principal.Master" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/gentelella-master/production/principal.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SteelFitnessWEB.Index" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 

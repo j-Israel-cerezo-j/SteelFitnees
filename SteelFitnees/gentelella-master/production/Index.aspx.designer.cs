@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SteelFitnees.gentelella_master.production
+namespace SteelFitnessWEB
 {
 
 
