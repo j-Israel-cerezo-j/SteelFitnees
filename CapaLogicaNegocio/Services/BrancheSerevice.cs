@@ -306,6 +306,12 @@ namespace CapaLogicaNegocio.Services
             var namesTypeDateTime = new List<string>() { "horaInicio", "horaCierre" };
             return Converter.ToJson(branchesTable.table(), "idSucursal",true, namesTypeDateTime).ToString();
         }
+
+        public string jsonTableBranchesByNameDay(string dayName)
+        {
+            var namesTypeDateTime = new List<string>() { "horaInicio", "horaCierre" };
+            return Converter.ToJson(branchesTable.tableByDayName(dayName), "idSucursal", true, namesTypeDateTime).ToString();
+        }
         public string jsonRecoverData(string strId)
         {
             if (strId == "")

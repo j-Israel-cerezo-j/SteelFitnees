@@ -4,8 +4,7 @@
     $("#ctrl-principal").css('display', 'none');
     $("#ctrl-update").css('display', 'block');
     recoverData("recoverData", id);
-    onkeyupNoSelectInSlc("days")
-    onkeyupNoSelectInSlc("branches")
+    
 
 
 }

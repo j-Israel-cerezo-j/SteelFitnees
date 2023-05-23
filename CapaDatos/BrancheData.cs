@@ -250,6 +250,34 @@ namespace CapaDatos
             }
             return schedules;
         }
+        public DataTable tableBranchesByDayName(string dayName)
+        {
+            DataTable schedules = new DataTable();
+            SqlDataReader renglon;
+            try
+            {
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "pro_tableBranchesByNameDay";
+                Comando.Parameters.Add(new SqlParameter("@nameDay", SqlDbType.VarChar,20));
+                Comando.Parameters["@nameDay"].Value = dayName;
+                Conexion.Open();
+                renglon = Comando.ExecuteReader();
+                schedules.Load(renglon);
+            }
+            catch (SqlException e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                {
+                    Conexion.Close();
+                }
+                Comando.Parameters.Clear();
+            }
+            return schedules;
+        }
         public List<Image> dataImageByFkSucursal(int idSucursal)
         {
             List<Image> images = new List<Image>();

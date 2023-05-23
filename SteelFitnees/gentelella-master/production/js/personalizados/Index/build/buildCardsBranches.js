@@ -1,4 +1,4 @@
-﻿function buildCardsBranches(json) {
+﻿ function buildCardsBranches(json) {
     document.getElementById("team").innerHTML = "";
     var ban = false;    
     var html = "";
@@ -14,6 +14,8 @@
                                 <div class="col-md-8">
                                     <div class="card-body">
                                         <h5 class="card-title">${json[i].nombre}</h5>
+                                        <b data-id=${ json[i].idSucursal} style="color:red" id="msjOpening${json[i].idSucursal}">Cerrado</b>
+                                        <small class="ml-5" id="msjSheduleCards${json[i].idSucursal}">Hoy no abre</small>
                                         <p class="card-text"><small class="text-muted">${json[i].ubicacion}</small></p>
                                         <a href="showBranchesDetails.aspx?id=${json[i].idSucursal}" class="btn btn-primary reflejo" id="btnIrSucursal">Visitar sucursal</a>                                        
                                     </div>
@@ -25,6 +27,7 @@
     }
     if (ban) {
         document.getElementById("team").innerHTML = html
+        buildOpeningBranches();
     }
 
 }

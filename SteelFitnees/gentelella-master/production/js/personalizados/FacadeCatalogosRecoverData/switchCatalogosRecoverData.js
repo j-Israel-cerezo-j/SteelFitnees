@@ -23,6 +23,9 @@
                     document.getElementById("horaInicio").value = fomatCorrectHoraInputIni;
                     document.getElementById("horaTermino").value = fomatCorrectHoraInputEnd;
                     document.getElementById("save").value = json[i].id;
+
+                    onkeyupNoSelectInSlc("days")
+                    onkeyupNoSelectInSlc("branches")
                 }
             break;
 
@@ -34,6 +37,10 @@
                     document.getElementById("precio").value = json[i].precio;
                     document.getElementById("cantidad").value = json[i].cantidad;
                     document.getElementById("save").value = json[i].id;
+                    onkeyupNoSelectInSlc("products")
+                    onkeyupNoSelectInSlc("branches")
+                    onkeyupInputEmtyy("cantidad")
+                    onkeyupInputEmtyy("precio")
                 }
             break;
 

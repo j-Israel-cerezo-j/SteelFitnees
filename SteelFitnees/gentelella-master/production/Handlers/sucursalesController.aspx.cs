@@ -28,6 +28,9 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             }else if (request=="commentsByBranche")
             {
                 getCommentsByBranche();
+            }else if (request=="day")
+            {
+                getSucursalesDayName();
             }
             else
             {
@@ -61,6 +64,26 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             try
             {                
                 string json = brancheSerevice.jsonTableBranches();
+                response.success = true;
+                data.Add("recoverData", JsonConvert.DeserializeObject<Dictionary<string, Object>[]>(json));
+
+            }
+            catch (ServiceException se)
+            {
+                response.error = se.getMessage();
+            }
+            data.Add("footeer", "Verificar por favor");
+            response.data = data;
+            getJsonResponse = JsonConvert.SerializeObject(response);
+        }
+        private void getSucursalesDayName()
+        {
+            var data = new Dictionary<string, Object>();
+            Response response = new Response();
+            try
+            {
+                string strDayName = Request.QueryString["dayName"];
+                string json = brancheSerevice.jsonTableBranchesByNameDay(strDayName);
                 response.success = true;
                 data.Add("recoverData", JsonConvert.DeserializeObject<Dictionary<string, Object>[]>(json));
 

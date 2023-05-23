@@ -4,10 +4,6 @@
     $("#ctrl-principal").css('display', 'none');
     $("#ctrl-update").css('display', 'block');
     recoverData("recoverData", id);
-    onkeyupNoSelectInSlc("products")
-    onkeyupNoSelectInSlc("branches")
-    onkeyupInputEmtyy("cantidad")
-    onkeyupInputEmtyy("precio")
 
 
 }

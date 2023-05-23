@@ -42,17 +42,17 @@
 				<div class="row mt-5" style="margin-top:20px">
 					<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xsm-12">
 						<label class="control-label">Cantidad de productos en la sucursal</label>
-						<input id="cantidad" class="form-control" name="cantidad" type="number" min="0" required value="0" onkeyup="onkeyupInputEmtyy('cantidad')">
+						<input style="border-radius:6px" id="cantidad" class="form-control" name="cantidad" type="number" min="0" required value="0" onkeyup="onkeyupInputEmtyy('cantidad')">
 						<div class="valid-feedback">
 							¡ Buen trabajo!
 						</div>
 						<div class="invalid-feedback">
-							Seleccione una opción correcta en dias
+							Seleccione una opción correcta en cantidad
 						</div>
 					</div>
 					<div class="item form-group col-lg-6 col-md-6 col-sm-12 col-xsm-12">
 						<label class="control-label">Precio por producto ($)</label>
-						<input id="precio" class="form-control" name="precio" type="number" min="0.0" value="0.0" title="El separador deciaml debe de ser ." step="any"  required onkeyup="onkeyupInputEmtyy('precio')">
+						<input style="border-radius:6px" id="precio" class="form-control" name="precio" type="number" min="0.0" value="0.0" title="El separador deciaml debe de ser ." step="any"  required onkeyup="onkeyupInputEmtyy('precio')">
 						<div class="valid-feedback">
 							¡ Buen trabajo!
 						</div>	

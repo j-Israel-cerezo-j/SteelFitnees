@@ -1,22 +1,22 @@
-﻿var dateCurrent = new Date();
-const daysOfWeek = ['DOMINGO', 'LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO'];
-const today = new Date();
-const dayOfWeek = today.getDay();
-const todayName = daysOfWeek[dayOfWeek];
+﻿
+function buildOpeningBranches() {
+     const daysOfWeek = ['DOMINGO', 'LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO'];
+     const today = new Date();
+     const dayOfWeek = today.getDay();
+     const todayName = daysOfWeek[dayOfWeek];
 
-function buildOpeningBranches(scheduleOpen, scheduleClose, day) {
-    const daysOfWeek = ['DOMINGO', 'LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO'];
-    const today = new Date();
-    const dayOfWeek = today.getDay();
-    const todayName = daysOfWeek[dayOfWeek];
-
-    if (document.getElementById("nav-home-tab" + todayName) != undefined) {
-        const enlace = document.getElementById("nav-home-tab" + todayName);
-        enlace.style.background = "#ff1313"
-        enlace.style.color = "white"
-        enlace.classList.add("note")
-        enlace.click();
-    } else {
-        document.getElementById("noOpenTodayMsj").innerText = "Diculpa,pero hoy " + todayName + " nuestra sucursal no tiene servicios, te invitamos a ver los horarios de la sucursal abajo."
-    }
+    request(buildMsjShedulesCards, 'Handlers/sucursalesController.aspx?meth=day&dayName=' + todayName,false);
 }
+
+function buildMsjShedulesCards(json) {
+        json.forEach(item => {
+        var divMsjOpening = document.getElementById("msjOpening" + item.idSucursal)
+        if (divMsjOpening != undefined) {
+            var scheduleOpen = formant12HoursTime(item.horaInicio);
+            var scheduleClose = formant12HoursTime(item.horaCierre);
+            document.getElementById("msjSheduleCards" + item.idSucursal).innerText = scheduleOpen + " - " + scheduleClose;
+            openingStatusR(item.horaInicio, item.horaCierre, "msjOpening" + item.idSucursal);
+        }
+    })
+}
+setInterval(buildOpeningBranches, 60000)

@@ -42,14 +42,14 @@
 				<div class="row mt-5" style="margin-top:20px">
 					<div class="item col-lg-6 col-md-6 col-sm-12 col-xsm-12">
 						<label for="time" class="control-label">Hora inicio</label>
-						<input id="horaInicio" type="time" class="form-control" name="horaInicio" value="07:00" pattern="(1[012]|[1-9]):[0-5][0-9] (AM|am|PM|pm)" title="Por favor, ingrese una hora en formato de 12 horas (por ejemplo, 09:30 AM)" required>
+						<input style="border-radius:6px" id="horaInicio" type="time" class="form-control" name="horaInicio" value="07:00" pattern="(1[012]|[1-9]):[0-5][0-9] (AM|am|PM|pm)" title="Por favor, ingrese una hora en formato de 12 horas (por ejemplo, 09:30 AM)" required>
 						<div class="valid-feedback">
 							¡ Buen trabajo!
 						</div>					
 					</div>
 					<div class="item col-lg-6 col-md-6 col-sm-12 col-xsm-12">
 						<label for="time" class="control-label">Hora de cierre</label>
-						<input id="horaTermino" type="time" class="form-control" name="horaCierre" value="07:50" pattern="(1[012]|[1-9]):[0-5][0-9] (AM|am|PM|pm)" title="Por favor, ingrese una hora en formato de 12 horas (por ejemplo, 09:30 AM)" required>
+						<input style="border-radius:6px" id="horaTermino" type="time" class="form-control" name="horaCierre" value="07:50" pattern="(1[012]|[1-9]):[0-5][0-9] (AM|am|PM|pm)" title="Por favor, ingrese una hora en formato de 12 horas (por ejemplo, 09:30 AM)" required>
 						<div class="valid-feedback">
 							¡ Buen trabajo!
 						</div>	

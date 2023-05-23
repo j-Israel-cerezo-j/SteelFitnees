@@ -15,6 +15,10 @@ namespace CapaLogicaNegocio.Tables
         {
             return brancheData.tableBranches();
         }
+        public DataTable tableByDayName(string dayName)
+        {
+            return brancheData.tableBranchesByDayName(dayName);
+        }
         public DataTable branchesBranchesByCharactersConicidences(string characters)
         {
             return brancheData.listBranchesBranchesByCharactersConicidences(characters);
