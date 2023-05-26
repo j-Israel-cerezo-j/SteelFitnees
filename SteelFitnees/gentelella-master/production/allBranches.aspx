@@ -20,11 +20,23 @@
         <div class="col-xl-2 col-lg-2 col-md-3">
             <a style="font-size:25px;position:fixed;bottom: 20px;left: 20px;" id="return" class="btn btn-primary">Regresar</a>
         </div>
-    </div>    
+    </div>
+    <div class="modal fade" id="modalComments" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                   <h2>Comentarios de nuestros clientes</h2> 
+                    <div id="containerComments"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
       <!-- Inner -->
     <!-- Carousel wrapper -->
     <script src="js/personalizados/allBranches/addUrlReturn.js"></script>
     <script src="js/personalizados/allBranches/msjOpeningBrancheCards.js"></script>
+    <script src="js/personalizados/allBranches/requestCommentsByBranche.js"></script>
     <script src="js/personalizados/Index/requestBranches.js"></script>
     <script src="js/personalizados/Index/build/buildCardsBranches.js"></script>
     <script src="js/personalizados/utils/formant12HourTime.js"></script>
@@ -32,10 +44,13 @@
     <script src="js/personalizados/utils/Ajax/request.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js" integrity="sha256-92U7H+uBjYAJfmb+iNPi7DPoj795ZCTY4ZYmplsn/fQ=" crossorigin="anonymous"></script>
     <script type="text/javascript">
-        window.onload = function () {
-            
+        window.onload = function () {            
             requestBranches();
             addUrlReturn();
+
+            var myModal = new bootstrap.Modal(document.getElementById('modalComments'), {
+                keyboard: false
+            })
         }
     </script>
 </asp:Content>

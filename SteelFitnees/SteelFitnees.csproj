@@ -243,6 +243,7 @@
     <Content Include="gentelella-master\production\js\personalizados\Ajax\submitAjaxCatalogos.js" />
     <Content Include="gentelella-master\production\js\personalizados\allBranches\addUrlReturn.js" />
     <Content Include="gentelella-master\production\js\personalizados\allBranches\msjOpeningBrancheCards.js" />
+    <Content Include="gentelella-master\production\js\personalizados\allBranches\requestCommentsByBranche.js" />
     <Content Include="gentelella-master\production\js\personalizados\allProducts\addUrlBtnReturn.js" />
     <Content Include="gentelella-master\production\js\personalizados\allProducts\build\productsCards.js" />
     <Content Include="gentelella-master\production\js\personalizados\allProducts\initRange.js" />

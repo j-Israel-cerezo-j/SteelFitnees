@@ -1,11 +1,12 @@
 ﻿ function buildCardsBranches(json) {
     document.getElementById("team").innerHTML = "";
-    var ban = false;    
+     var ban = false;    
+
     var html = "";
     if (json != undefined) {
         for (var i = 0; i < json.length; i++) {
             ban = true;
-            html += `<div class="col-lg-4 col-md-6 col-sm-6 col-xsm-6 cardsBranche">
+            html += `<div class="col-lg-4 col-md-6 col-sm-6 col-xsm-6 cardsBranche"  onmouseover="requestCommentsByBranche(this,event)" data-id="${json[i].idSucursal}"  id="cardBranch${json[i].idSucursal}" data-toggle="tooltip" data-html="true" title="Excelente servicio, Sucursal muy sucia">
                         <div class="mb-3 mt-4" style="max-width: 540px;height:100%">
                             <div class="row g-0">
                                 <div class="col-md-4">
