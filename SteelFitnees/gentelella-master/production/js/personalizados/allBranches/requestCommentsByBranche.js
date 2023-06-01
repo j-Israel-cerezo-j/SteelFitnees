@@ -1,34 +1,48 @@
 ﻿
-var commentsByBrancheArray=[]
-function requestCommentsByBranche(element, event) {    
-    var idBranche = event.target.dataset.id
-    var idElement = element.id;
-    
-    //if (commentsByBrancheArray.length == 0) {
-    //    console.log("entre")
-    //    const request = fetch('Handlers/sucursalesController.aspx?meth=commentsByBranche&id=' + idBranche)       
-    //    request
-    //        .then(resp => resp.json())
-    //        .then(resp => {
-    //            resp.data.recoverData.forEach(item => {
-    //                commentsByBrancheArray.push(item)
-    //            })
+function requestCommentsByBranche(id) {
+    var iconCommentShow = document.getElementById("iconCommentShow" + id);
+    iconCommentShow.style.display = "none";
+
+    var iconCommentHide = document.getElementById("iconCommentHide" + id);
+    iconCommentHide.style.display = "block";
+
+    request(resp => {
+        var htmlComments = `<div style="padding: 15px"> <b style="color:black;">Comentarios de nuestros clientes: </b>`;
+        var ban = false;
+        resp.forEach(item => {            
+            ban = true;
+            htmlComments += `
+                <p style="margin-bottom: 0px;">
+                        <small class="text-muted">${item.commentDate}</small>
+                </p>
+                <p style="color:black;" class="card-text" style="margin-bottom: 0px;">                        
+                    ${item.comment}
+                </p>
+                <div class="linea"></div>`
+        });
+
+        if (ban) {
+
+            var idBranch = resp[0].fkBranche;
+            htmlComments += `</div>`
+            document.getElementById("msjToolTipId" + idBranch).innerHTML = htmlComments;
+        } else {
+            document.getElementById("msjToolTipId" + id).innerHTML = `<p style="color:black;" class="card-text" style="margin-bottom: 0px;">Sin comentarios aún</p>`;
+        }
+    }, 'Handlers/sucursalesController.aspx?meth=commentsByBranche&id=' + id, false); 
+
+    var tooltip = document.getElementById("msjToolTipId" + id);
+    tooltip.style.display = "block";
+}
+
+function hideTooltip(id) {
+    var iconCommentShow = document.getElementById("iconCommentShow" + id);
+    iconCommentShow.style.display = "block";
+
+    var iconCommentHide = document.getElementById("iconCommentHide" + id);
+    iconCommentHide.style.display = "none";
 
 
-    //        })
-    //}
-
-    //var comments = " ";
-    //commentsByBrancheArray.forEach(item => {
-    //    comments += `<span>${item.comment}</span>`
-    //})
-    $("#cardBranch" + idBranche).tooltip();
-
-    $("#cardBranch" + idBranche).attr('data-html', true);
-    $("#cardBranch" + idBranche).attr('title', '<span>Hola</span>');
-        
-
-    // Volver a inicializar el tooltip
-    $("#cardBranch" + idBranche).tooltip('show');
-
+    var tooltip = document.getElementById("msjToolTipId"+id);
+    tooltip.style.display = "none";
 }

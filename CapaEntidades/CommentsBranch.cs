@@ -23,7 +23,7 @@ namespace CapaEntidades
             this.idComment = (int)(Validation.getValue(renglon, "idComment") ?? 0);                        
             this.comment = (string)(Validation.getValue(renglon, "comment"));
             this.commentDate = (DateTime)Validation.getValue(renglon, "commentDate");
-            this.fkBranche = (int)(Validation.getValue(renglon, "fkBranche") ?? 0);
+            this.fkBranche = (int)(Validation.getValue(renglon, "fkBranch") ?? 0);
         }
 
         override

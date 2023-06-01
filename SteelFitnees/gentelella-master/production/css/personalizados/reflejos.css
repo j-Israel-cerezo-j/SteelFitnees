@@ -51,3 +51,32 @@
     max-width: 100%;
     vertical-align: middle;
 }
+
+
+tooltip-container {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-content {
+    display: none;
+    position: sticky;
+    background-color: white;
+    color: #fff;
+    padding: 8px;
+    border-radius: 4px;
+    z-index: 1;
+}
+
+.tooltip-container:hover .tooltip-content {
+    display: block;
+}
+
+.linea {
+    border: 1px solid gray;
+}
+
+.scrollable-div {
+    max-height: 300px;
+    overflow-y: auto;
+}

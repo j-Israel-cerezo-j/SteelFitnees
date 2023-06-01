@@ -12,26 +12,15 @@
     <!-- Inner -->
     <div class="row" style="margin-bottom:150px"></div>
     <div class="text-center"  >
-        <h2  class="section-heading text-uppercase">Sucursales</h2>
+        <h2 class="section-heading text-uppercase">Sucursales</h2>
         <h3 class="section-subheading text-muted">Visita nuestras sucursales</h3>
     </div>
-    <div class="container" style="margin-bottom:10px">
+    <div class="container" >
         <div class="row" style="justify-content:center" id="team"></div>
         <div class="col-xl-2 col-lg-2 col-md-3">
             <a style="font-size:25px;position:fixed;bottom: 20px;left: 20px;" id="return" class="btn btn-primary">Regresar</a>
         </div>
     </div>
-    <div class="modal fade" id="modalComments" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                   <h2>Comentarios de nuestros clientes</h2> 
-                    <div id="containerComments"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-   
       <!-- Inner -->
     <!-- Carousel wrapper -->
     <script src="js/personalizados/allBranches/addUrlReturn.js"></script>
@@ -47,10 +36,7 @@
         window.onload = function () {            
             requestBranches();
             addUrlReturn();
-
-            var myModal = new bootstrap.Modal(document.getElementById('modalComments'), {
-                keyboard: false
-            })
+            $('[data-toggle="tooltip"]').tooltip();
         }
     </script>
 </asp:Content>
