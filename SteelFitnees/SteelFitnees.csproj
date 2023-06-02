@@ -1932,6 +1932,7 @@
     <Content Include="gentelella-master\production\turnjs4\samples\steve-jobs\fonts\Stempel-Garamond-W01-Roman.woff" />
     <Content Include="gentelella-master\production\turnjs4\turnjs4-api-docs.pdf" />
     <Content Include="gentelella-master\production\images\perzonalizadas\404\3d-rendering-black-dumbbells-floor-dark-concept-fitness-room-with-training-equipments-back_67155-14961.avif" />
+    <Content Include="libman.json" />
     <None Include="Scripts\embedded\1.0\visio-web-embedded.debug-vsdoc.js" />
     <Content Include="gentelella-master\.gitignore" />
     <Content Include="gentelella-master\build\css\custom.css" />
@@ -6147,6 +6148,10 @@
     <Content Include="Scripts\Office\metadata\endpoints.xml" />
     <Content Include="Scripts\Office\metadata\features.xml" />
     <Content Include="Scripts\Office\MicrosoftAjax.js" />
+    <Content Include="Scripts\rx.compat.js" />
+    <Content Include="Scripts\rx.compat.min.js" />
+    <Content Include="Scripts\rx.js" />
+    <Content Include="Scripts\rx.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -6402,6 +6407,10 @@
     <TypeScriptCompile Include="gentelella-master\vendors\devbridge-autocomplete\src\jquery.autocomplete.d.ts" />
     <TypeScriptCompile Include="gentelella-master\vendors\moment\moment.d.ts" />
     <TypeScriptCompile Include="Scripts\Office\1\office.d.ts" />
+    <TypeScriptCompile Include="Scripts\rx.d.ts" />
+    <TypeScriptCompile Include="Scripts\rx.es6.d.ts" />
+    <TypeScriptCompile Include="Scripts\rx.lite.d.ts" />
+    <TypeScriptCompile Include="Scripts\rx.lite.es6.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

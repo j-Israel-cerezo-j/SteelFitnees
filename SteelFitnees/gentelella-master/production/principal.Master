@@ -131,7 +131,7 @@
     <script src="templates/fitnessclub-master/assets/js/plugins.js"></script>
     <script src="templates/fitnessclub-master/assets/js/main.js"></script>
 
-   
+    <script src="../../Scripts/rx.min.js"></script>
 
 
     <!-- Bootstrap core JS-->
