@@ -20,7 +20,11 @@
         <div class="col-xl-2 col-lg-2 col-md-3">
             <a style="font-size:25px;position:fixed;bottom: 20px;left: 20px;" id="return" class="btn btn-primary">Regresar</a>
         </div>
-    </div>
+        <div id="g_id_onload"
+            data-client_id="TU_CLIENT_ID"
+            data-callback="handleCredentialResponse">
+        </div>
+    </div>    
       <!-- Inner -->
     <!-- Carousel wrapper -->
     <script src="js/personalizados/allBranches/addUrlReturn.js"></script>
@@ -32,6 +36,7 @@
     <script src="js/personalizados/utils/returnOpeningStatus.js"></script>
     <script src="js/personalizados/utils/Ajax/request.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js" integrity="sha256-92U7H+uBjYAJfmb+iNPi7DPoj795ZCTY4ZYmplsn/fQ=" crossorigin="anonymous"></script>
+    
     <script type="text/javascript">
         window.onload = function () {            
             requestBranches();

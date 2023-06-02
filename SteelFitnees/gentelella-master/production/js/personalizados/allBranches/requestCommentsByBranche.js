@@ -9,14 +9,14 @@ function requestCommentsByBranche(id) {
     request(resp => {
         var htmlComments = `<div style="padding: 15px"> <b style="color:black;">Comentarios de nuestros clientes: </b>`;
         var ban = false;
-        resp.forEach(item => {            
+        resp.forEach(item => {
             ban = true;
             htmlComments += `
                 <p style="margin-bottom: 0px;">
                         <small class="text-muted">${item.commentDate}</small>
                 </p>
                 <p style="color:black;" class="card-text" style="margin-bottom: 0px;">                        
-                    ${item.comment}
+                    "${item.comment}"
                 </p>
                 <div class="linea"></div>`
         });
@@ -46,3 +46,15 @@ function hideTooltip(id) {
     var tooltip = document.getElementById("msjToolTipId"+id);
     tooltip.style.display = "none";
 }
+
+
+
+
+function requestCountCommentsByBranche(id) {
+    return new Promise((resolve, reject) => {
+        request(resp => {
+            resolve(resp.length);
+        }, 'Handlers/sucursalesController.aspx?meth=commentsByBranche&id=' + id, false);
+    });
+}
+
