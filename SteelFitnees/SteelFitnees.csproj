@@ -315,6 +315,7 @@
     <Content Include="gentelella-master\production\js\personalizados\Productos\resertBtn.js" />
     <Content Include="gentelella-master\production\js\personalizados\Productos\tableOnload.js" />
     <Content Include="gentelella-master\production\js\personalizados\Productos\update.js" />
+    <Content Include="gentelella-master\production\js\personalizados\Promotions\img.js" />
     <Content Include="gentelella-master\production\js\personalizados\SendEmails\ajax\sendAjax.js" />
     <Content Include="gentelella-master\production\js\personalizados\SendEmails\btnReset.js" />
     <Content Include="gentelella-master\production\js\personalizados\SendEmails\SendEmail.js" />
@@ -353,6 +354,7 @@
     <Content Include="gentelella-master\production\manageDays.aspx" />
     <Content Include="gentelella-master\production\manageEmails.aspx" />
     <Content Include="gentelella-master\production\manageProducts.aspx" />
+    <Content Include="gentelella-master\production\managePromotions.aspx" />
     <Content Include="gentelella-master\production\principal.Master" />
     <Content Include="gentelella-master\production\productsByBranche.aspx" />
     <Content Include="gentelella-master\production\showBranchesDetails.aspx" />
@@ -6370,6 +6372,13 @@
     </Compile>
     <Compile Include="gentelella-master\production\manageProducts.aspx.designer.cs">
       <DependentUpon>manageProducts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gentelella-master\production\managePromotions.aspx.cs">
+      <DependentUpon>managePromotions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gentelella-master\production\managePromotions.aspx.designer.cs">
+      <DependentUpon>managePromotions.aspx</DependentUpon>
     </Compile>
     <Compile Include="gentelella-master\production\principal.Master.cs">
       <DependentUpon>principal.Master</DependentUpon>
