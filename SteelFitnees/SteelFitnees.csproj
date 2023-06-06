@@ -197,6 +197,7 @@
     <Content Include="gentelella-master\production\Handlers\imagesController.aspx" />
     <Content Include="gentelella-master\production\Handlers\OnkeyupSearchController.aspx" />
     <Content Include="gentelella-master\production\Handlers\productsController.aspx" />
+    <Content Include="gentelella-master\production\Handlers\promotionsController.aspx" />
     <Content Include="gentelella-master\production\Handlers\sucursalesController.aspx" />
     <Content Include="gentelella-master\production\Handlers\tablesController.aspx" />
     <Content Include="gentelella-master\production\Handlers\userController.aspx" />
@@ -315,7 +316,9 @@
     <Content Include="gentelella-master\production\js\personalizados\Productos\resertBtn.js" />
     <Content Include="gentelella-master\production\js\personalizados\Productos\tableOnload.js" />
     <Content Include="gentelella-master\production\js\personalizados\Productos\update.js" />
+    <Content Include="gentelella-master\production\js\personalizados\Promotions\add.js" />
     <Content Include="gentelella-master\production\js\personalizados\Promotions\img.js" />
+    <Content Include="gentelella-master\production\js\personalizados\Promotions\requestBranches.js" />
     <Content Include="gentelella-master\production\js\personalizados\SendEmails\ajax\sendAjax.js" />
     <Content Include="gentelella-master\production\js\personalizados\SendEmails\btnReset.js" />
     <Content Include="gentelella-master\production\js\personalizados\SendEmails\SendEmail.js" />
@@ -342,6 +345,7 @@
     <Content Include="gentelella-master\production\js\personalizados\utils\enableOrDisebledReadingInputs.js" />
     <Content Include="gentelella-master\production\js\personalizados\utils\formant12HourTime.js" />
     <Content Include="gentelella-master\production\js\personalizados\utils\hideshow.js" />
+    <Content Include="gentelella-master\production\js\personalizados\utils\HttpClient\POST\Post.js" />
     <Content Include="gentelella-master\production\js\personalizados\utils\onkeyupInputEmpty.js" />
     <Content Include="gentelella-master\production\js\personalizados\utils\onkeyupNoSelectInSlc.js" />
     <Content Include="gentelella-master\production\js\personalizados\utils\returnOpeningStatus.js" />
@@ -6295,6 +6299,13 @@
     </Compile>
     <Compile Include="gentelella-master\production\Handlers\productsController.aspx.designer.cs">
       <DependentUpon>productsController.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gentelella-master\production\Handlers\promotionsController.aspx.cs">
+      <DependentUpon>promotionsController.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gentelella-master\production\Handlers\promotionsController.aspx.designer.cs">
+      <DependentUpon>promotionsController.aspx</DependentUpon>
     </Compile>
     <Compile Include="gentelella-master\production\Handlers\sucursalesController.aspx.cs">
       <DependentUpon>sucursalesController.aspx</DependentUpon>
