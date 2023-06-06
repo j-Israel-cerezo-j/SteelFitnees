@@ -7,7 +7,7 @@ function requestCommentsByBranche(id) {
     iconCommentHide.style.display = "block";
 
     request(resp => {
-        var htmlComments = `<div style="padding: 15px"> <b style="color:black;">Comentarios de nuestros clientes: </b>`;
+        var htmlComments = `<div style="padding: 15px;z-index:2;"> <b style="color:black;">Comentarios de nuestros clientes: </b>`;
         var ban = false;
         resp.forEach(item => {
             ban = true;
@@ -58,3 +58,14 @@ function requestCountCommentsByBranche(id) {
     });
 }
 
+//const eventSource = new EventSource('Handlers/sucursalesController.aspx?meth=commentsByBranche&id=' + 41);
+
+//eventSource.onmessage = function (event) {
+//    // Aquí puedes manejar los eventos recibidos del servidor
+//    console.log(event.data);
+//};
+
+//eventSource.onerror = function (error) {
+//    // Aquí puedes manejar los errores de conexión
+//    console.error('Error de conexión', error);
+//};
