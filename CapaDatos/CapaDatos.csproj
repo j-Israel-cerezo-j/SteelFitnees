@@ -57,6 +57,7 @@
     <Compile Include="InsesrtsManysDatos.cs" />
     <Compile Include="ProductBrancheData.cs" />
     <Compile Include="ProductData.cs" />
+    <Compile Include="PromotionData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Querys\Query.cs" />
     <Compile Include="SearchData.cs" />

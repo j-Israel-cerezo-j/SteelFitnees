@@ -1,9 +1,12 @@
 ﻿using CapaEntidades;
+using CapaEntidades.DTO;
+using CapaLogicaNegocio;
 using CapaLogicaNegocio.Exceptions;
 using CapaLogicaNegocio.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.EnterpriseServices.CompensatingResourceManager;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,6 +16,7 @@ namespace SteelFitnees.gentelella_master.production.Handlers
 {
     public partial class promotionsController : System.Web.UI.Page
     {
+        private PromotionService promotionService=new PromotionService();
         public string getJsonResponse { get; private set; } = "{\"k\":1}";
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,20 +32,10 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             var data = new Dictionary<string, Object>();
             Response response = new Response();
             try
-            {
-                var formData = Request.Form["data"];
-                
-                var datas=JsonConvert.DeserializeObject<List<Promocion>>(formData);
-
-                for (int i = 0; i < datas.Count; i++)
-                {
-                    var formObject = datas[i];
-                    var name = formObject.branche;
-                    var age = formObject.check;
-                    var avatar = Request.Files[$"img{i}"];
-                }
-
-
+            {                
+                var jsonPromotion=promotionService.add(Request);
+                response.success = true;
+                data.Add("recoverData", JsonConvert.DeserializeObject<Dictionary<string, Object>[]>(jsonPromotion));
             }
             catch (ServiceException se)
             {
@@ -51,33 +45,5 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             response.data = data;
             getJsonResponse = JsonConvert.SerializeObject(response);
         }
-
-        private List<HttpPostedFile> getHttpPostFileListOfHtppFileCollection()
-        {
-            List<HttpPostedFile> filesList = new List<HttpPostedFile>();
-            HttpFileCollection files = Request.Files;
-            for (int i = 0; i < files.Count; i++)
-            {
-                filesList.Add(files[i]);
-            }
-            return filesList;
-        }
-
-        private Dictionary<string, string> getValuesForm(string[] submitKeys)
-        {
-            var values = new Dictionary<string, string>();
-            for (int i = 0; i < submitKeys.Length; i++)
-            {
-                string value = Request.Form[submitKeys[i]];
-                values.Add(submitKeys[i], value);
-            }
-            return values;
-        }
-    }
-    class Promocion
-    {
-        public string branche { get; set; }
-        public string check { get; set; }
-        Promocion() { }
-    }
+    }   
 }
