@@ -28,7 +28,7 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             else
             {
                 getProductsAll();
-            }            
+            }
         }
         private void getProductsAll()
         {
