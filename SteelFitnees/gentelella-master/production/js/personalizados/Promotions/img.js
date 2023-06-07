@@ -2,6 +2,11 @@
 var indexImgUpdate = 0;
 var indexImgUpdate2 = 0;
 var indexImgAddCards = 0;
+var htmlOptionsSlcBranches=""
+
+async function requestHtmlOptionsSlcBranches() {
+	htmlOptionsSlcBranches = await requestBranches();
+}
 
 function MostraIma(input) {
 	var actionUpdateData = document.getElementById("containerImages");
@@ -14,11 +19,16 @@ function MostraIma(input) {
 	}
 	for (var i = 0; i < input.files.length; i++) {
 		var fileName = input.files[i].name;
+		var valueIndex = indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate
+		var idBrancheSlc = "branches" + valueIndex
+		var idCheckVizualize = "checkVizualize" + valueIndex
+
 		let html =
 			`	<div id="divImage${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate}" class="col-lg-3 col-md-3 col-sm-6 form-group justify-content-center" style="margin-top:15px">
 					<div style="width: 7.5rem;text-align:center;flex-direction:inherit">
+						<p>${fileName}</p>
 						<img style="border-radius:20px;z-index:1" class="reflejo" id="image${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate}" alt="Cargar fotografía por favor." src="" height="200" width="200" />
-						<svg onclick="remremoveImag(${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate},'${fileName}')" style="cursor: pointer;z-index: 2;position: absolute;margin-left: 46px;margin-top: -140px;" width="45px" height="45px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+						<svg onclick="remremoveImag(${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate},'${fileName}')" style="cursor: pointer;z-index: 2;position: absolute;margin-left: 20px;margin-top: -123px;" width="45px" height="45px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
 							<title>Quitar imagen</title>
 							<defs></defs>
 							<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
@@ -39,25 +49,24 @@ function MostraIma(input) {
 					</div>
 					<div class="card-body">
 						<div class="form-check form-switch" style="margin-left: 40px;">
-							<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" style="font-size: 25px;    ">
+							<input class="form-check-input" type="checkbox" id="${idCheckVizualize}" value="null" style="font-size: 25px;    ">
 							<label class="form-check-label" for="flexSwitchCheckChecked">Mostrar al usuario</label>
 						</div>
-						<div class="mt-3">
-							<select class="form-select" aria-label=".form-select" style="border-radius:10px">
-								<option selected>Selecciona una sucursal(opcional)</option>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
+						<div class="mt-4">
+							<select class="form-select" id="${idBrancheSlc}" aria-label=".form-select" style="border-radius:10px">
+								${htmlOptionsSlcBranches}
 							</select>
 						</div>
 						<div class="mt-4" style="margin-left: 20px;">
 							<div id="msjImagenCargadaAutomatica${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate}"></div>
-							<div><p>Nombre de imagen: ${fileName}</p></div>
 						</div>
 					</div>
 				</div> `
 		document.getElementById("containerImages").innerHTML += html;
-		arrayFiles.push(input.files[i]);
+
+		var promotion = { img: input.files[i], idSlcBranch: idBrancheSlc, idCheck: idCheckVizualize }
+		arrayFiles.push(promotion);
+
 		var image = new FileReader();
 		addImageProcess(image, i, input, indexImgAddCards, indexImgUpdate)
 		indexImgAddCards++
@@ -65,6 +74,8 @@ function MostraIma(input) {
 			indexImgUpdate++;
 		}
 	}
+
+	console.log(arrayFiles);
 }
 function addImageProcess(image, i, input, indexImgAddCards2, indexImgUpdate2) {
 	return new Promise((resolve, reject) => {
@@ -79,45 +90,54 @@ function addImageProcess(image, i, input, indexImgAddCards2, indexImgUpdate2) {
 function remremoveImag(i, fileName) {
 	document.getElementById("divImage" + i).remove();
 	if (fileName != undefined) {
-		arrayFiles = arrayFiles.filter(item => item.name != fileName);
+		arrayFiles = arrayFiles.filter(item => item.img.name != fileName);
 	}
 }
 
-function addBr() {
-	addB(addFilesToFormData());
+function addPr() {
+	addPromotion(addFilesToFormData());
 }
+
 function addFilesToFormData() {
 	document.getElementById("formFile").value = "";
 	var formData = new FormData(document.getElementById("form1"));
+
+	var datas=[]		
 	var index = 0
-	arrayFiles.forEach(file => {
-		formData.append("file" + index++, file);
+	arrayFiles.forEach(promotion => {
+
+		var checkVizualizeSelected="" 
+		var brancheSelected = "";
+		if (document.getElementById(promotion.idSlcBranch) != undefined) {
+			brancheSelected = document.getElementById(promotion.idSlcBranch).value;
+		}		
+		if (document.getElementById(promotion.idCheck) != undefined) {
+			var checked=document.getElementById(promotion.idCheck);
+			checkVizualizeSelected = checked.checked
+		}				
+		index++;
+
+		var data = {
+			branche: brancheSelected,
+			check: checkVizualizeSelected,
+			img: promotion.img
+		}
+		datas.push(data)
 	})
+
+	console.log("data", datas)
+
+	datas.forEach(function (object, indexx) {
+		formData.append(`img${indexx}`, object.img);
+		delete object.avatar; // Eliminamos la propiedad "avatar" del objeto antes de enviarlo
+	});
+
+	formData.append("data", JSON.stringify(datas));
 	return formData
 }
-function updateBr() {
-	update(addFilesToFormData());
-}
 
-function recoverDataB(event) {
-	arrayFiles = [];
-	recoverDataa(event);
-}
-function cancelB() {
-	arrayFiles = [];
-	indexImgUpdate = 0;
-	indexImgUpdate2 = 0;
-	indexImgAddCards = 0;
-	cancelUpdate();
-}
-function resertB() {
-	arrayFiles = [];
-	indexImgUpdate = 0;
-	indexImgUpdate2 = 0;
-	indexImgAddCards = 0;
-	btnReset();
-}
 
 function resetArrayFiles() {
 	arrayFiles = [];
 }
+
