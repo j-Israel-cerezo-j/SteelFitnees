@@ -9,6 +9,7 @@ namespace CapaLogicaNegocio.MessageErrors
 {
     public class MessageErrors
     {
+        public static string formantIncorrectCheck= "Formato no correcto sobre el check";
         public static string formantNumberTelephoneIncorrect = "El núermo télefonico no debe de tener guiones,parentesis o espacios,solo numeros";
         public static string formantLengthTelephoneIncorrect = "El núermo télefonico tiene que ser igual a 10 digitos";
         public static string uploadPicturesPlease = "Favor de cargar la(s) imagene(s) de la sucursal";

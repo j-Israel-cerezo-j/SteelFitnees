@@ -77,14 +77,14 @@ namespace CapaLogicaNegocio.utils
             json += "}";
             return json;
         }
-        public static StringBuilder ToString(string[] entities)
+        public static StringBuilder ToString<T>(IEnumerable<T> entities)
         {
             StringBuilder jsonSB = new StringBuilder();
-            foreach (var entity in entities)
+            foreach (T entity in entities)
             {
-                jsonSB.Append("'" + entity + "',");
+                jsonSB.Append(entity.ToString()+",");
             }
-            if (entities.Length > 0)
+            if (entities.Count() > 0)
             {
                 jsonSB.Remove(jsonSB.Length - 1, 1);
             }

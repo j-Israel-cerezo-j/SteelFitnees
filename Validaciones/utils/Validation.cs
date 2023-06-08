@@ -123,6 +123,11 @@ namespace Validaciones.utils
             bool formatoCorrectoSelect = !(select == "-1" || select == null || select == "" || select == "-2");
             return formatoCorrectoSelect;
         }
+        public static bool SelectFormant(string select)
+        {
+            bool formatoCorrectoSelect = !(select == null || select == "");
+            return formatoCorrectoSelect;
+        }
         public static bool FormantCheck(string strCheck)
         {
             return !(strCheck == "" || strCheck == null);

@@ -61,6 +61,7 @@
     <Compile Include="Adds\DayAdd.cs" />
     <Compile Include="Adds\ProductAdd.cs" />
     <Compile Include="Adds\ProductBrancheAdd.cs" />
+    <Compile Include="Adds\PromotionAdd.cs" />
     <Compile Include="Deletes\AboutUsDelete.cs" />
     <Compile Include="Deletes\BrancheDelete.cs" />
     <Compile Include="Deletes\DayDelete.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Deletes\HourDelete.cs" />
     <Compile Include="Deletes\ProductBranchDelete.cs" />
     <Compile Include="Deletes\ProductDelete.cs" />
+    <Compile Include="Deletes\PromotionDelete.cs" />
     <Compile Include="Exceptions\LoginException.cs" />
     <Compile Include="Exceptions\ServiceException.cs" />
     <Compile Include="FacadeCrudCatalogs.cs" />
@@ -100,6 +102,7 @@
     <Compile Include="Services\HoursService.cs" />
     <Compile Include="Services\ProductBranchService.cs" />
     <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\PromotionService.cs" />
     <Compile Include="Services\SearchService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Session\Sessions.cs" />
@@ -107,6 +110,7 @@
     <Compile Include="Tables\DaysTable.cs" />
     <Compile Include="Tables\ProductBrancheTable.cs" />
     <Compile Include="Tables\ProductTable.cs" />
+    <Compile Include="Tables\PromotionTable.cs" />
     <Compile Include="Tables\SchedulesTable.cs" />
     <Compile Include="Tables\SearchTable.cs" />
     <Compile Include="Updates\AboutUsUpdate.cs" />
