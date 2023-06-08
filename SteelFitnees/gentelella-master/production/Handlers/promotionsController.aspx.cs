@@ -24,9 +24,54 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             if (requestMeth=="add")
             {
                 save();
+            }else if (requestMeth == "get")
+            {
+                getAllPromotions();
+            }else if (requestMeth== "brancheByPromotion")
+            {
+                getBrancheByPromotion();
             }
 
         }
+        private void getAllPromotions()
+        {
+            var data = new Dictionary<string, Object>();
+            Response response = new Response();
+            try
+            {
+                var jsonPromotion = promotionService.jsonPromotions();
+                response.success = true;
+                data.Add("recoverData", JsonConvert.DeserializeObject<Dictionary<string, Object>[]>(jsonPromotion));
+            }
+            catch (ServiceException se)
+            {
+                response.error = se.getMessage();
+            }
+            data.Add("footeer", "Verificar por favor");
+            response.data = data;
+            getJsonResponse = JsonConvert.SerializeObject(response);
+        }
+
+        private void getBrancheByPromotion()
+        {
+            var data = new Dictionary<string, Object>();
+            Response response = new Response();
+            try
+            {
+                string idPromotionStr=Request.QueryString["id"];
+                var idBranche = promotionService.idBrancheByPromotion(idPromotionStr);
+                response.success = true;
+                data.Add("recoverData",idBranche);
+            }
+            catch (ServiceException se)
+            {
+                response.error = se.getMessage();
+            }
+            data.Add("footeer", "Verificar por favor");
+            response.data = data;
+            getJsonResponse = JsonConvert.SerializeObject(response);
+        }
+
         private void save()
         {
             var data = new Dictionary<string, Object>();

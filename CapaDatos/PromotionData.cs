@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using CapaDatos.ExceptionDao;
 
 namespace CapaDatos
 {
@@ -85,6 +86,39 @@ namespace CapaDatos
                 Comando.Parameters.Clear();
             }
             return ban;
+        }
+
+        public int idBrancheByIdPromotions(int id)
+        {
+            int idRecuperado = 0;
+            try
+            {
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "pro_recoverIdBrancheByPromotion";
+
+                Comando.Parameters.Add(new SqlParameter("@id", SqlDbType.Int));
+                Comando.Parameters["@id"].Value = id;                
+                Conexion.Open();
+                idRecuperado = (int)Comando.ExecuteScalar();
+            }
+            catch (SqlException e)
+            {
+                throw new ExceptionDao.ExceptionDao(e.Message);
+            }catch (NullReferenceException ex)
+            {
+                throw new ExceptionDao.ExceptionDao(ex.Message);
+            }
+
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                {
+                    Conexion.Close();
+                }
+                Comando.Parameters.Clear();
+            }
+            return idRecuperado;
+
         }
 
         public bool delete(string strIds)

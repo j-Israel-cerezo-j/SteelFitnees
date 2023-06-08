@@ -211,6 +211,7 @@ namespace CapaLogicaNegocio.Services
             return Converter.ToJson(productList.listProductByCharacters(caracteres)).ToString();
 
         }
+
         public string jsonProductsTableByPrices(string strPriceMin,string strPriceMax)
         {
             if(!Validation.numericalFormat(strPriceMin) || strPriceMin=="")

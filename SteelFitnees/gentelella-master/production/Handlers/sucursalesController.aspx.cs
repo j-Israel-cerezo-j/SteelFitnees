@@ -9,6 +9,7 @@ using CapaEntidades;
 using CapaLogicaNegocio.Exceptions;
 using Newtonsoft.Json;
 using CapaLogicaNegocio;
+using System.Threading;
 
 namespace SteelFitnees.gentelella_master.production.Handlers
 {
@@ -116,7 +117,8 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             getJsonResponse = JsonConvert.SerializeObject(response);
         }
         private void getCommentsByBranche()
-        {
+        {         
+
             var data = new Dictionary<string, Object>();
             Response response = new Response();
             try
@@ -125,7 +127,6 @@ namespace SteelFitnees.gentelella_master.production.Handlers
                 string json = brancheSerevice.jsonCommentsBranches(id);
                 response.success = true;
                 data.Add("recoverData", JsonConvert.DeserializeObject<Dictionary<string, Object>[]>(json));
-
             }
             catch (ServiceException se)
             {

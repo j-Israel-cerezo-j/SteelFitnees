@@ -1,9 +1,11 @@
-﻿using CapaEntidades;
+﻿using CapaDatos.ExceptionDao;
+using CapaEntidades;
 using CapaEntidades.DTO;
 using CapaLogicaNegocio.Adds;
 using CapaLogicaNegocio.Deletes;
 using CapaLogicaNegocio.Exceptions;
 using CapaLogicaNegocio.MessageErrors;
+using CapaLogicaNegocio.RecoverData;
 using CapaLogicaNegocio.Tables;
 using CapaLogicaNegocio.utils;
 using Newtonsoft.Json;
@@ -22,6 +24,7 @@ namespace CapaLogicaNegocio.Services
         private PromotionAdd promotionAdd = new PromotionAdd();
         private PromotionDelete promotionDelete = new PromotionDelete();
         private PromotionTable promotionTable = new PromotionTable();
+        private PromotionRD promotionRD = new PromotionRD();
         private Random rd = new Random();
         public string add(HttpRequest request)
         {
@@ -78,6 +81,29 @@ namespace CapaLogicaNegocio.Services
             }
 
             return Converter.ToJson(promotionTable.table()).ToString();
+        }
+        public string jsonPromotions()
+        {
+            return Converter.ToJson(promotionTable.table()).ToString();
+        }
+        public int idBrancheByPromotion(string idStr)
+        {
+            
+            if (idStr == "")
+            {
+                throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
+            }else if (idStr== "undefined")
+            {
+                return 0;
+            }
+            try
+            {
+                return promotionRD.idBrancheByPromotion(Convert.ToInt32(idStr));
+            }
+            catch (ExceptionDao ed)
+            {
+                return 0;
+            }
         }
 
         private void rollbackImg(List<string> fileNames)
