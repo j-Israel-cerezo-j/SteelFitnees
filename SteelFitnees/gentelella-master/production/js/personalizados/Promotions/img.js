@@ -2,13 +2,12 @@
 var indexImgUpdate = 0;
 var indexImgUpdate2 = 0;
 var indexImgAddCards = 0;
-var htmlOptionsSlcBranches=""
 
-async function requestHtmlOptionsSlcBranches() {
-	htmlOptionsSlcBranches = await requestBranches();
-}
 
-function MostraIma(input) {
+async function MostraIma(input) {
+	
+
+	var htmlOptionsSlcBranches = await requestBranches();	
 	var actionUpdateData = document.getElementById("containerImages");
 	var imageUploadAut = actionUpdateData.getAttribute("data-action-uploadAut");
 
@@ -23,7 +22,7 @@ function MostraIma(input) {
 		var idBrancheSlc = "branches" + valueIndex
 		var idCheckVizualize = "checkVizualize" + valueIndex
 
-		let html =
+		let html2 =
 			`	<div id="divImage${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate}" class="col-lg-3 col-md-3 col-sm-6 form-group justify-content-center" style="margin-top:15px">
 					<div style="width: 7.5rem;text-align:center;flex-direction:inherit">
 						<p>${fileName}</p>
@@ -62,7 +61,7 @@ function MostraIma(input) {
 						</div>
 					</div>
 				</div> `
-		document.getElementById("containerImages").innerHTML += html;
+		document.getElementById("containerImages").innerHTML += html2;
 
 		var promotion = { img: input.files[i], idSlcBranch: idBrancheSlc, idCheck: idCheckVizualize }
 		arrayFiles.push(promotion);
@@ -74,8 +73,6 @@ function MostraIma(input) {
 			indexImgUpdate++;
 		}
 	}
-
-	console.log(arrayFiles);
 }
 function addImageProcess(image, i, input, indexImgAddCards2, indexImgUpdate2) {
 	return new Promise((resolve, reject) => {

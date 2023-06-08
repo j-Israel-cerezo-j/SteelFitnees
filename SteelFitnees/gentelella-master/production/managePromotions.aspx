@@ -47,8 +47,8 @@
     <script src="js/personalizados/Promotions/img.js"></script>
     <script src="js/personalizados/Promotions/add.js"></script>
     <script src="js/personalizados/Promotions/requestBranches.js"></script>
-	
-		    
+    <script src="js/personalizados/Promotions/imgOnloadAfterPost.js"></script>
+    <script src="js/personalizados/Promotions/requestPromotionsOnload.js"></script>
 
     <script src="js/personalizados/utils/HttpClient/POST/Post.js"></script>
 	<script src="js/personalizados/utils/Ajax/request.js"></script>
@@ -62,7 +62,7 @@
 	<script src="js/personalizados/utils/onkeyupInputEmpty.js"></script>
 	<script type="text/javascript">
         window.onload = function () {
-			requestHtmlOptionsSlcBranches();
+			requestPromotionsOnload();
         }
 
 

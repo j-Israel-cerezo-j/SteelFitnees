@@ -1,5 +1,6 @@
 ﻿function addPromotion(formData) {
-    post('Handlers/promotionsController.aspx?meth=add', formData, (json) => {
+	post('Handlers/promotionsController.aspx?meth=add', formData, (json) => {
+		document.getElementById("containerImages").innerHTML = "";
         if (!json.success) {
             Swal.fire({
                 icon: 'error',
@@ -16,6 +17,7 @@
                 timer: 1500
             })
         }
-        console.log(json)
+        buildPromotionsOnloadAferPost(json);
     });
 }
+

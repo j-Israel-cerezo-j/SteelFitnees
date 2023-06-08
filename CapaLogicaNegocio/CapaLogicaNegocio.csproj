@@ -92,6 +92,7 @@
     <Compile Include="RecoverData\ProductBranchRecoverData.cs" />
     <Compile Include="RecoverData\ProductData.cs" />
     <Compile Include="RecoverData\DayData.cs" />
+    <Compile Include="RecoverData\PromotionRD.cs" />
     <Compile Include="Selects\Select.cs" />
     <Compile Include="Services\AboutUsService.cs" />
     <Compile Include="Services\BrancheSerevice.cs" />
