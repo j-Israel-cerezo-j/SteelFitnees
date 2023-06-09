@@ -1,8 +1,12 @@
 ﻿var arrayFiles = []
+var promotionsOnload=[]
 var indexImgUpdate = 0;
 var indexImgUpdate2 = 0;
 var indexImgAddCards = 0;
 
+function getPrmotionsOnload() {
+	promotionsOnload = returnPromotionsOnload();
+}
 
 async function MostraIma(input) {
 	
@@ -25,8 +29,7 @@ async function MostraIma(input) {
 		let html2 =
 			`	<div id="divImage${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate}" class="col-lg-3 col-md-3 col-sm-6 form-group justify-content-center" style="margin-top:15px">
 					<div style="width: 7.5rem;text-align:center;flex-direction:inherit">
-						<p>${fileName}</p>
-						<img style="border-radius:20px;z-index:1" class="reflejo" id="image${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate}" alt="Cargar fotografía por favor." src="" height="200" width="200" />
+						<img style="border-radius:20px;z-index:1" class="reflejo" id="image${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate}" alt="Cargar fotografía por favor." src="" height="220" width="200" />
 						<svg onclick="remremoveImag(${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate},'${fileName}')" style="cursor: pointer;z-index: 2;position: absolute;margin-left: 20px;margin-top: -123px;" width="45px" height="45px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
 							<title>Quitar imagen</title>
 							<defs></defs>
@@ -63,7 +66,7 @@ async function MostraIma(input) {
 				</div> `
 		document.getElementById("containerImages").innerHTML += html2;
 
-		var promotion = { img: input.files[i], idSlcBranch: idBrancheSlc, idCheck: idCheckVizualize }
+		var promotion = { id: null, img: input.files[i], idSlcBranch: idBrancheSlc, idCheck: idCheckVizualize }
 		arrayFiles.push(promotion);
 
 		var image = new FileReader();
@@ -73,6 +76,16 @@ async function MostraIma(input) {
 			indexImgUpdate++;
 		}
 	}
+
+	getPrmotionsOnload();
+	promotionsOnload.forEach(promotion => {
+		if (promotion.idBranchV != 0) {
+			document.getElementById(promotion.idSlcBranch).value = promotion.idBranchV;
+		}
+		if (document.getElementById(promotion.idCheck) != undefined) {
+			document.getElementById(promotion.idCheck).checked = promotion.isCheck
+		}
+    })
 }
 function addImageProcess(image, i, input, indexImgAddCards2, indexImgUpdate2) {
 	return new Promise((resolve, reject) => {
@@ -96,6 +109,8 @@ function addPr() {
 }
 
 function addFilesToFormData() {
+	getPrmotionsOnload();
+
 	document.getElementById("formFile").value = "";
 	var formData = new FormData(document.getElementById("form1"));
 
@@ -115,6 +130,7 @@ function addFilesToFormData() {
 		index++;
 
 		var data = {
+			id: promotion.id,
 			branche: brancheSelected,
 			check: checkVizualizeSelected,
 			img: promotion.img
@@ -122,14 +138,36 @@ function addFilesToFormData() {
 		datas.push(data)
 	})
 
-	console.log("data", datas)
+	promotionsOnload.forEach(prom => {
+		var checkVizualizeSelected2 = ""
+		var brancheSelected2 = "";
+		if (document.getElementById(prom.idSlcBranch) != undefined) {
+			brancheSelected2 = document.getElementById(prom.idSlcBranch).value;
+		}
+		if (document.getElementById(prom.idCheck) != undefined) {
+			var checked2 = document.getElementById(prom.idCheck);
+			checkVizualizeSelected2 = checked2.checked
+		}		
+
+		var data = {
+			id: prom.id,
+			branche: brancheSelected2,
+			check: checkVizualizeSelected2,
+			img: null
+		}
+		datas.push(data)
+	})
 
 	datas.forEach(function (object, indexx) {
 		formData.append(`img${indexx}`, object.img);
 		delete object.avatar; // Eliminamos la propiedad "avatar" del objeto antes de enviarlo
 	});
 
+	console.log("data", datas)
 	formData.append("data", JSON.stringify(datas));
+
+	arrayFiles = [];
+	promotionsOnload = [];
 	return formData
 }
 

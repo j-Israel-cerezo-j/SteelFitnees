@@ -83,6 +83,7 @@
     <Compile Include="Lists\HoursList.cs" />
     <Compile Include="Lists\ImageList.cs" />
     <Compile Include="Lists\ProductList.cs" />
+    <Compile Include="Lists\PromotionBranchList.cs" />
     <Compile Include="MessageErrors\MessageErrors.cs" />
     <Compile Include="ObjectPooling\Pool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -120,6 +121,7 @@
     <Compile Include="Updates\HourUpdate.cs" />
     <Compile Include="Updates\ProductBrancheUpdate.cs" />
     <Compile Include="Updates\ProductUpdate.cs" />
+    <Compile Include="Updates\PromotionUpdate.cs" />
     <Compile Include="utils\Converter.cs" />
     <Compile Include="utils\DuplicateField.cs" />
     <Compile Include="utils\EncryptPassword.cs" />
