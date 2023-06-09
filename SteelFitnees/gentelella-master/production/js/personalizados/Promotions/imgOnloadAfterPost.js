@@ -15,7 +15,7 @@ async function buildPromotionsOnloadAferPost(json) {
 		 let html =
 			 `	<div id="divImage${i}" class="col-lg-3 col-md-3 col-sm-6 form-group justify-content-center" style="margin-top:15px">
 					<div class="form-check" style="margin-left: 10px;">
-						<input style="padding:10px" class="form-check-input" type="checkbox" value="${item.id}" id="checkPromoion${item.id}">
+						<input class="form-check-input checkBoxP" type="checkbox" value="${item.id}" id="checkPromoion${item.id}">
 						<label style="margin-left: 10px;" class="form-check-label">
 						  Eliminar promoción
 						</label>

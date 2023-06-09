@@ -1,7 +1,11 @@
 ﻿function deletePromotion(evt) {
     evt.preventDefault();
-    var promotionsCheck = $("#containerImages input:checked");
-    if (promotionsCheck.length == 0) {
+    
+    var checkboxes = document.getElementsByClassName("checkBoxP");
+    var checkboxesArray = Array.from(checkboxes);
+    var checkboxesSeleccionados = checkboxesArray.filter(check => { return check.checked });
+
+    if (checkboxesSeleccionados.length == 0) {
         Swal.fire
             ({
                 icon: 'error',
@@ -20,11 +24,10 @@
             confirmButtonText: '¡ Acepto !'
         }).then((result) => {
             if (result.isConfirmed) {
-                var ids = Array.from(promotionsCheck).map(check => check.value).join(',');
+                var ids = checkboxesSeleccionados.map(check => check.value).join(',');
                 var formData = new FormData();
                 formData.append('idsToDelete', ids);
-
-                console.log("ids",ids)
+                deleteWhithForm('', formData,);
             }
         })
     }

@@ -80,3 +80,7 @@ tooltip-container {
     max-height: 300px;
     overflow-y: auto;
 }
+
+.checkBoxP {
+    padding: 10px
+}

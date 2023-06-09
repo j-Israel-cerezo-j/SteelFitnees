@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.EnterpriseServices.CompensatingResourceManager;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Protocols;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -23,13 +24,16 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             string requestMeth = Request.QueryString["meth"];
             if (requestMeth=="add")
             {
-                save();
+                post();
             }else if (requestMeth == "get")
             {
                 getAllPromotions();
             }else if (requestMeth== "brancheByPromotion")
             {
                 getBrancheByPromotion();
+            }else if (requestMeth == "delete")
+            {
+                delete();
             }
 
         }
@@ -72,13 +76,32 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             getJsonResponse = JsonConvert.SerializeObject(response);
         }
 
-        private void save()
+        private void post()
         {
             var data = new Dictionary<string, Object>();
             Response response = new Response();
             try
             {                
                 var jsonPromotion=promotionService.add(Request);
+                response.success = true;
+                data.Add("recoverData", JsonConvert.DeserializeObject<Dictionary<string, Object>[]>(jsonPromotion));
+            }
+            catch (ServiceException se)
+            {
+                response.error = se.getMessage();
+            }
+            data.Add("footeer", "Verificar por favor");
+            response.data = data;
+            getJsonResponse = JsonConvert.SerializeObject(response);
+        }
+
+        private void delete()
+        {
+            var data = new Dictionary<string, Object>();
+            Response response = new Response();
+            try
+            {
+                var jsonPromotion = promotionService.add(Request);
                 response.success = true;
                 data.Add("recoverData", JsonConvert.DeserializeObject<Dictionary<string, Object>[]>(jsonPromotion));
             }

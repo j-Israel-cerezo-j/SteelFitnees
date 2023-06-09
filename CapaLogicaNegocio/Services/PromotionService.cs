@@ -118,6 +118,15 @@ namespace CapaLogicaNegocio.Services
         {
             return Converter.ToJson(promotionTable.table()).ToString();
         }
+        public string delete(HttpRequest request)
+        {
+            var ids = request.Form["idsToDelete"];
+            if (ids=="")
+            {
+                throw new ServiceException("Seleccione una casilla a eliminar por favor");
+            }
+            return "";
+        }
         public int idBrancheByPromotion(string idStr)
         {
             
