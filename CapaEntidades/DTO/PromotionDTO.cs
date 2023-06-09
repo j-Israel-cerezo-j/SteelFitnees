@@ -8,6 +8,7 @@ namespace CapaEntidades.DTO
 {
     public class PromotionDTO
     {
+        public string id { get; set; }
         public string branche { get; set; }
         public string check { get; set; }
     }

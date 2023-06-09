@@ -14,5 +14,10 @@ namespace CapaLogicaNegocio.Deletes
         {
             return promotionData.delete(strIds);
         }
+
+        public bool promotionBrachByidPromotionDelete(int idPromotion)
+        {
+            return promotionData.deletePrmotionsBranche(idPromotion);
+        }
     }
 }

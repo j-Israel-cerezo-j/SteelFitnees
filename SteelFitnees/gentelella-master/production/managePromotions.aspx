@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="managePromotions.aspx.cs" Inherits="SteelFitnees.gentelella_master.production.managePromotions" MasterPageFile="~/gentelella-master/production/adminMaster.Master" %>
 
 <asp:content id="Content2" ContentPlaceHolderID="head" runat="server">
-	<title>Gestionar misión,visión y valores</title>
+	<title>Gestionar promociones</title>
     <link href="css/personalizados/buttons.css" rel="stylesheet" />
     <link href="css/personalizados/reflejos.css" rel="stylesheet" />
 </asp:content> 
@@ -9,7 +9,7 @@
 <asp:content id="Content1" ContentPlaceHolderID="bodyContent" runat="server">
     <div class="x_panel">
 		<div class="x_content">
-			<h2 id="labelMsjAction">Agrega una nueva promocion</h2>
+			<h2 id="labelMsjAction">Agrega una nueva promoción</h2>
 			<br>
 			<form id="form1" class="row g-3 needs-validation" enctype="multipart/form-data" novalidate>
 				<div class="row">

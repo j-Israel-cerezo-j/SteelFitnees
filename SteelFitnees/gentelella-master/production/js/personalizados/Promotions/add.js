@@ -17,7 +17,7 @@
                 timer: 1500
             })
         }
-        buildPromotionsOnloadAferPost(json);
+        buildPromotionsOnloadAferPost(json.data.recoverData);
     });
 }
 

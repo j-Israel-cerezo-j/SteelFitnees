@@ -150,6 +150,98 @@ namespace CapaDatos
             return ban;
         }
 
+        public bool deletePrmotionsBranche(int idPromotion)
+        {
+            bool ban;
+            Comando.CommandType = CommandType.StoredProcedure;
+            Comando.CommandText = "pro_deletePrmotionsBranche";
+            try
+            {
+                Comando.Parameters.Add(new SqlParameter("@idPromotion", SqlDbType.Int));
+                Comando.Parameters["@idPromotion"].Value = idPromotion;
+                Conexion.Open();
+                Comando.ExecuteNonQuery();
+                ban = true;
+            }
+            catch (SqlException e)
+            {
+                ban = false;
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                {
+                    Conexion.Close();
+                }
+                Comando.Parameters.Clear();
+            }
+            return ban;
+        }
+
+        public bool update(int id,bool checkPromotion)
+        {
+            bool ban;
+            Comando.CommandType = CommandType.StoredProcedure;
+            Comando.CommandText = "pro_updatePromotion";
+            try
+            {
+                Comando.Parameters.Add(new SqlParameter("@id", SqlDbType.Int));
+                Comando.Parameters["@id"].Value = id;
+                Comando.Parameters.Add(new SqlParameter("@checkk", SqlDbType.Bit));
+                Comando.Parameters["@checkk"].Value = checkPromotion;
+                Conexion.Open();
+                Comando.ExecuteNonQuery();
+                ban = true;
+            }
+            catch (SqlException e)
+            {
+                ban = false;
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                {
+                    Conexion.Close();
+                }
+                Comando.Parameters.Clear();
+            }
+            return ban;
+        }
+
+        public bool updatePromotionBranchByPromotion(int idPromotion, int idBranch)
+        {
+            bool ban;
+            Comando.CommandType = CommandType.StoredProcedure;
+            Comando.CommandText = "pro_updatePromotionBranch";
+            try
+            {
+                Comando.Parameters.Add(new SqlParameter("@idBranch", SqlDbType.Int));
+                Comando.Parameters["@idBranch"].Value = idBranch;
+                Comando.Parameters.Add(new SqlParameter("@idPromotion", SqlDbType.Int));
+                Comando.Parameters["@idPromotion"].Value = idPromotion;
+                Conexion.Open();
+                Comando.ExecuteNonQuery();
+                ban = true;
+            }
+            catch (SqlException e)
+            {
+                ban = false;
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                {
+                    Conexion.Close();
+                }
+                Comando.Parameters.Clear();
+            }
+            return ban;
+        }
+
+
         public DataTable lisAllPromotions()
         {
             DataTable schedules = new DataTable();
@@ -175,6 +267,37 @@ namespace CapaDatos
                 Comando.Parameters.Clear();
             }
             return schedules;
+        }
+
+        public List<PromotionBranch> listPromotionBranch()
+        {
+            List<PromotionBranch> promotionsBranch = new List<PromotionBranch>();
+            try
+            {
+                SqlDataReader renglon;
+                Conexion.Open();
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "pro_listPromotionsBranch";
+                renglon = Comando.ExecuteReader();
+                while (renglon.Read())
+                {
+                    promotionsBranch.Add(new PromotionBranch(renglon));
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                {
+                    Conexion.Close();
+                }
+                Comando.Parameters.Clear();
+
+            }
+            return promotionsBranch;
         }
     }
 }
