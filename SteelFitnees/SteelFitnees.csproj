@@ -317,6 +317,7 @@
     <Content Include="gentelella-master\production\js\personalizados\Productos\tableOnload.js" />
     <Content Include="gentelella-master\production\js\personalizados\Productos\update.js" />
     <Content Include="gentelella-master\production\js\personalizados\Promotions\add.js" />
+    <Content Include="gentelella-master\production\js\personalizados\Promotions\delete.js" />
     <Content Include="gentelella-master\production\js\personalizados\Promotions\img.js" />
     <Content Include="gentelella-master\production\js\personalizados\Promotions\imgOnloadAfterPost.js" />
     <Content Include="gentelella-master\production\js\personalizados\Promotions\requestBranches.js" />

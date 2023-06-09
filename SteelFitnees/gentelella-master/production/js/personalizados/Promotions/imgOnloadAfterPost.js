@@ -6,7 +6,6 @@ function returnPromotionsOnload() {
 
 async function buildPromotionsOnloadAferPost(json) {
 	document.getElementById("containerImages").innerHTML = ""
-	console.log("json2", json)
 	var htmlOptionsSlcBranches2 = await requestBranches();
 	var i = 0;
 	 json.forEach(async item => {
@@ -15,13 +14,19 @@ async function buildPromotionsOnloadAferPost(json) {
 		 var fileName = item.fileNane;
 		 let html =
 			 `	<div id="divImage${i}" class="col-lg-3 col-md-3 col-sm-6 form-group justify-content-center" style="margin-top:15px">
-					<div style="width: 7.5rem;text-align:center;flex-direction:inherit">
+					<div class="form-check" style="margin-left: 10px;">
+						<input style="padding:10px" class="form-check-input" type="checkbox" value="${item.id}" id="checkPromoion${item.id}">
+						<label style="margin-left: 10px;" class="form-check-label">
+						  Eliminar promoción
+						</label>
+					</div>
+					<div style="width: 7.5rem;text-align:center;flex-direction:inherit" class="mt-3">
 						<img style="border-radius:20px;z-index:1" src="${item.img}" class="reflejo" id="image${i}" alt="Cargar fotografía por favor." src="" height="220" width="200" />
 					</div>
 					<div class="card-body">
 						<div class="form-check form-switch" style="margin-left: 40px;">
 							<input class="form-check-input" type="checkbox" id="${idCheckVizualize}" value="null" style="font-size: 25px;    ">
-							<label class="form-check-label" for="flexSwitchCheckChecked">Mostrar al usuario</label>
+							<label class="form-check-label" for="flexSwitchCheckChecked">Visible al usuario</label>
 						</div>
 						<div class="mt-4">
 							<select class="form-select" id="${idBrancheSlc}" aria-label=".form-select" style="border-radius:10px">
@@ -50,8 +55,6 @@ async function buildPromotionsOnloadAferPost(json) {
 	containerImg.setAttribute("data-indexImage-update", json.length)
 	containerImg.setAttribute("data-action-uploadAut", true)
 	addDataImag(json);
-
-	console.log("arrayPromotions", arrayPromotions)
 }
 
 function addDataImag(json) {

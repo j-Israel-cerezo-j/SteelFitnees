@@ -21,7 +21,7 @@
 					</div>	
 					<div class="col-lg-6 col-md-6 col-sm-12 form-group" style="margin-top:15px">
 						<div class="form-group">
-							<button class="btn btnDeletes reflejo" id="delete" type="button" onclick="deleteBranches(event)">
+							<button class="btn btnDeletes reflejo" id="delete" type="button" onclick="deletePromotion(event)">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
 									<path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"></path>                                    
 								</svg>
@@ -37,7 +37,12 @@
 					</div>	
 				</div>
 				<div class="card" style="padding-bottom:20px"> 
-					<h4 class="mt-4">Tu promociones cargadas</h4><p>Asignar tu promocion a una sucursal es de forma opcional</p>
+					<h3 class="mt-4">Tu promociones cargadas</h3>
+					<p style="font-size: 16px;">
+						Todas tus promociones seran vizualizadas en la página de inicio esten o no asignadas a una sucursal.
+						De forma opcional podras asignar la promoción a una sucursal para que se mostrada en la
+						página de detalles de la sucursal.
+					</p>
 					<div id="containerImages" class="mt-3 row justify-content-center"></div>
 				</div>				
 				<input type="hidden" name="catalogo" value="sucursales" id="catalogo" />
@@ -49,7 +54,7 @@
     <script src="js/personalizados/Promotions/requestBranches.js"></script>
     <script src="js/personalizados/Promotions/imgOnloadAfterPost.js"></script>
     <script src="js/personalizados/Promotions/requestPromotionsOnload.js"></script>
-
+    <script src="js/personalizados/Promotions/delete.js"></script>
     <script src="js/personalizados/utils/HttpClient/POST/Post.js"></script>
 	<script src="js/personalizados/utils/Ajax/request.js"></script>
 

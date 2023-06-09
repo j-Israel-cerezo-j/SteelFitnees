@@ -27,7 +27,7 @@ async function MostraIma(input) {
 		var idCheckVizualize = "checkVizualize" + valueIndex
 
 		let html2 =
-			`	<div id="divImage${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate}" class="col-lg-3 col-md-3 col-sm-6 form-group justify-content-center" style="margin-top:15px">
+			`	<div id="divImage${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate}" class="col-lg-3 col-md-3 col-sm-6 form-group justify-content-center" style="margin-top:54px">
 					<div style="width: 7.5rem;text-align:center;flex-direction:inherit">
 						<img style="border-radius:20px;z-index:1" class="reflejo" id="image${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate}" alt="Cargar fotografía por favor." src="" height="220" width="200" />
 						<svg onclick="remremoveImag(${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate},'${fileName}')" style="cursor: pointer;z-index: 2;position: absolute;margin-left: 20px;margin-top: -123px;" width="45px" height="45px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
@@ -64,7 +64,9 @@ async function MostraIma(input) {
 						</div>
 					</div>
 				</div> `
-		document.getElementById("containerImages").innerHTML += html2;
+
+		var htmlContainerImg = document.getElementById("containerImages").innerHTML;
+		document.getElementById("containerImages").innerHTML = html2+ htmlContainerImg;
 
 		var promotion = { id: null, img: input.files[i], idSlcBranch: idBrancheSlc, idCheck: idCheckVizualize }
 		arrayFiles.push(promotion);

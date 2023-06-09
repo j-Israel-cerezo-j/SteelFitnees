@@ -1,7 +1,7 @@
-﻿function deleteHours(evt) {
+﻿function deletePromotion(evt) {
     evt.preventDefault();
-    let rolesChecked = $("#tbl-roles tbody input:checked");
-    if (rolesChecked.length == 0) {
+    var promotionsCheck = $("#containerImages input:checked");
+    if (promotionsCheck.length == 0) {
         Swal.fire
             ({
                 icon: 'error',
@@ -20,12 +20,11 @@
             confirmButtonText: '¡ Acepto !'
         }).then((result) => {
             if (result.isConfirmed) {
-                var ids = Array.from(rolesChecked).map(check => check.value).join(',');
+                var ids = Array.from(promotionsCheck).map(check => check.value).join(',');
                 var formData = new FormData();
-                console.log("ids", ids)
                 formData.append('idsToDelete', ids);
-                formData.append('catalogo', 'horas');
-                catalogosAddUpdateDelete('delete', formData)
+
+                console.log("ids",ids)
             }
         })
     }

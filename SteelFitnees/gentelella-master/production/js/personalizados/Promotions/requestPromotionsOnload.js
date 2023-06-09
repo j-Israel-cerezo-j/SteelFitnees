@@ -1,3 +1,3 @@
 ﻿function requestPromotionsOnload() {
-    request(buildPromotionsOnloadAferPost, 'Handlers/promotionsController.aspx?meth=get', false);
+    request(buildPromotionsOnloadAferPost, 'Handlers/promotionsController.aspx?meth=get', true);
 }
