@@ -55,7 +55,9 @@
     <script src="js/personalizados/Promotions/imgOnloadAfterPost.js"></script>
     <script src="js/personalizados/Promotions/requestPromotionsOnload.js"></script>
     <script src="js/personalizados/Promotions/delete.js"></script>
+
     <script src="js/personalizados/utils/HttpClient/POST/Post.js"></script>
+    <script src="js/personalizados/utils/HttpClient/DELETE/Delete.js"></script>
 	<script src="js/personalizados/utils/Ajax/request.js"></script>
 
     <script src="js/personalizados/utils/styleBoxShadow.js"></script>

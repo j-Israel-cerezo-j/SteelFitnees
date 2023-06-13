@@ -33,7 +33,7 @@ namespace CapaDatos
                 Comando.CommandText = "pro_addPromotions";
 
                 Comando.Parameters.Add(new SqlParameter("@checkk", SqlDbType.Bit));
-                Comando.Parameters["@checkk"].Value = promotion.check;
+                Comando.Parameters["@checkk"].Value = promotion.checkk;
                 Comando.Parameters.Add(new SqlParameter("@img", SqlDbType.Text));
                 Comando.Parameters["@img"].Value = promotion.path;
                 Comando.Parameters.Add(new SqlParameter("@fileNane", SqlDbType.Text));
@@ -282,6 +282,37 @@ namespace CapaDatos
                 while (renglon.Read())
                 {
                     promotionsBranch.Add(new PromotionBranch(renglon));
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                {
+                    Conexion.Close();
+                }
+                Comando.Parameters.Clear();
+
+            }
+            return promotionsBranch;
+        }
+
+        public List<Promotion> listPromotion()
+        {
+            List<Promotion> promotionsBranch = new List<Promotion>();
+            try
+            {
+                SqlDataReader renglon;
+                Conexion.Open();
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "pro_listAllPromotions";
+                renglon = Comando.ExecuteReader();
+                while (renglon.Read())
+                {
+                    promotionsBranch.Add(new Promotion(renglon));
                 }
             }
             catch (SqlException ex)

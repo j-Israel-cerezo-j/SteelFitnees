@@ -27,7 +27,26 @@
                 var ids = checkboxesSeleccionados.map(check => check.value).join(',');
                 var formData = new FormData();
                 formData.append('idsToDelete', ids);
-                deleteWhithForm('', formData,);
+                deleteWhithForm('Handlers/promotionsController.aspx?meth=delete', formData, (json) => {
+                    document.getElementById("containerImages").innerHTML = "";
+                    if (!json.success) {
+                        Swal.fire({
+                            icon: 'error',
+                            confirmButtonColor: '#572364',
+                            text: json.error,
+                            footer: json.data.footeer
+                        })
+                    }
+                    else {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Promocione(s) eliminada(s).',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                    buildPromotionsOnloadAferPost(json.data.recoverData);
+                });
             }
         })
     }

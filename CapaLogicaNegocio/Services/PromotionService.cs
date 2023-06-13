@@ -7,6 +7,7 @@ using CapaLogicaNegocio.Exceptions;
 using CapaLogicaNegocio.Lists;
 using CapaLogicaNegocio.MessageErrors;
 using CapaLogicaNegocio.RecoverData;
+using CapaLogicaNegocio.Selects;
 using CapaLogicaNegocio.Tables;
 using CapaLogicaNegocio.Updates;
 using CapaLogicaNegocio.utils;
@@ -45,7 +46,7 @@ namespace CapaLogicaNegocio.Services
                 {             
                     id= promotionDTO.id!=null?Convert.ToInt32(promotionDTO.id): 0,
                     fkBranche = Convert.ToInt32(promotionDTO.branche),
-                    check = Convert.ToBoolean(promotionDTO.check),
+                    checkk = Convert.ToBoolean(promotionDTO.check),
                     img = request.Files[$"img{i}"]
 
                 };
@@ -77,7 +78,7 @@ namespace CapaLogicaNegocio.Services
                     }
                     else
                     {
-                        promotionUpdate.update(promotion.id, Convert.ToBoolean(promotion.check));
+                        promotionUpdate.update(promotion.id, Convert.ToBoolean(promotion.checkk));
                         if (promotion.fkBranche==-1)
                         {
                             if (idPromotionsInPrmotionBranch.Contains(promotion.id))
@@ -120,12 +121,32 @@ namespace CapaLogicaNegocio.Services
         }
         public string delete(HttpRequest request)
         {
-            var ids = request.Form["idsToDelete"];
-            if (ids=="")
+            var strIdsPromotionsRequest = request.Form["idsToDelete"];
+            if (strIdsPromotionsRequest == "")
             {
                 throw new ServiceException("Seleccione una casilla a eliminar por favor");
             }
-            return "";
+            var promotions = branchPromoList.listPromotions();
+            var idsPromotions=promotions.Select(x => x.id).ToList();
+            var promotionsBranchExisting = branchPromoList.listPromotionsBranch();
+            var idsExistingPromotionBranch = promotionsBranchExisting.Select(item => item.fkPromotion).ToList();
+            var idsListPromotionsRequest = Converter.ToList(strIdsPromotionsRequest);
+            idsListPromotionsRequest.ForEach(idPromotionRequestStr => {
+                var idPromotionR=Convert.ToInt32(idPromotionRequestStr);
+                if (idsExistingPromotionBranch.Contains(Convert.ToInt32(idPromotionR)))
+                {
+                    promotionDelete.promotionBrachByidPromotionDelete(Convert.ToInt32(idPromotionR));
+                }
+
+                if (idsPromotions.Contains(idPromotionR))
+                {
+                    var promotion = promotions.Find(pro => { return pro.id == idPromotionR; });
+                    Images.Delete("promotions", promotion.fileName);
+                }
+            });
+
+            promotionDelete.delete(strIdsPromotionsRequest);
+            return Converter.ToJson(promotionTable.table()).ToString();
         }
         public int idBrancheByPromotion(string idStr)
         {

@@ -15,5 +15,9 @@ namespace CapaLogicaNegocio.Lists
         {
             return promotionData.listPromotionBranch();
         }
+        public List<Promotion> listPromotions()
+        {
+            return promotionData.listPromotion();
+        }
     }
 }

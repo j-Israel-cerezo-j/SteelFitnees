@@ -101,7 +101,7 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             Response response = new Response();
             try
             {
-                var jsonPromotion = promotionService.add(Request);
+                var jsonPromotion = promotionService.delete(Request);
                 response.success = true;
                 data.Add("recoverData", JsonConvert.DeserializeObject<Dictionary<string, Object>[]>(jsonPromotion));
             }
