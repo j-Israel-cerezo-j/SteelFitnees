@@ -269,6 +269,62 @@ namespace CapaDatos
             return schedules;
         }
 
+        public DataTable lisAllPromotionsVisibles()
+        {
+            DataTable schedules = new DataTable();
+            SqlDataReader renglon;
+            try
+            {
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "pro_listAllPromotionsVisibles";
+                Conexion.Open();
+                renglon = Comando.ExecuteReader();
+                schedules.Load(renglon);
+            }
+            catch (SqlException e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                {
+                    Conexion.Close();
+                }
+                Comando.Parameters.Clear();
+            }
+            return schedules;
+        }
+
+        public DataTable lisAllPromotionsVisiblesByBranche(int idBranch)
+        {
+            DataTable schedules = new DataTable();
+            SqlDataReader renglon;
+            try
+            {
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "pro_listAllPromotionsVisiblesByBranche";
+                Comando.Parameters.Add(new SqlParameter("@idBranch", SqlDbType.Int));
+                Comando.Parameters["@idBranch"].Value = idBranch;
+                Conexion.Open();
+                renglon = Comando.ExecuteReader();
+                schedules.Load(renglon);
+            }
+            catch (SqlException e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                {
+                    Conexion.Close();
+                }
+                Comando.Parameters.Clear();
+            }
+            return schedules;
+        }
+
         public List<PromotionBranch> listPromotionBranch()
         {
             List<PromotionBranch> promotionsBranch = new List<PromotionBranch>();

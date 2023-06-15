@@ -21,6 +21,7 @@ namespace SteelFitnees.gentelella_master.production
         public bool getErrorBool { get; private set; } = false;
         public string getSchedulesByIdBranche{ get; private set; }
         public string getProductsByIdBranche { get; private set; }
+        public string getPromotionsByIdBranche { get; private set; }
         public string getMessageError{ get; private set; }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,7 +34,13 @@ namespace SteelFitnees.gentelella_master.production
                 geyDays();
                 getProductsById();
                 getTableSchedulesByIdBrancheTable();
+                getPromotionsByBranch();
             }
+        }
+        private void getPromotionsByBranch()
+        {
+            string stridBranche = Request.QueryString["id"];
+            getPromotionsByIdBranche=brancheSerevice.promotionsByBranch(stridBranche);
         }
         private void getBrancheByid()
         {

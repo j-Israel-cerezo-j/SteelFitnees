@@ -41,6 +41,7 @@ namespace CapaLogicaNegocio.Services
         private BranchesTable branchesTable=new BranchesTable();
         private SchedulesTable schedulesTable = new SchedulesTable();   
         private ProductTable productTable=new ProductTable();
+        private PromotionTable promotionTable=new PromotionTable(); 
         public bool add(Dictionary<string, string> request, List<HttpPostedFile> filesList)
         {
             if (filesList.Count == 0)
@@ -229,6 +230,14 @@ namespace CapaLogicaNegocio.Services
             brancheDelete.delete(strId);
         }
         
+        public string promotionsByBranch(string strId)
+        {
+            if (strId == "")
+            {
+                throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
+            }
+            return Converter.ToJson(promotionTable.tableVisiblesByBranche(Convert.ToInt32(strId))).ToString();
+        }
         public Branche getBrancheById(string strId)
         {
             if (strId == "")

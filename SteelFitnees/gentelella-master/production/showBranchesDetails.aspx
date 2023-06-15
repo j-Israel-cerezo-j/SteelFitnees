@@ -15,6 +15,7 @@
     
     <link href="frontend/css/styleIndex.css" rel="stylesheet" />
     <link rel="stylesheet" href="templates/fitnessclub-master/assets/css/style.css">    
+    <link href="css/personalizados/StyleSheet1.css" rel="stylesheet" />
     
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -158,9 +159,11 @@
                 </div>
             </div>
             <!-- Gallery Area End -->
-   
+        <div class="slider2 mt-5">
+	        <div style="padding-top:30px" class="slide-track2" id="containerPromotions"></div>
+        </div>
             <!--? Want To work -->
-        <section class="wantToWork-area w-padding mt-2" style="background-color:white">
+        <section class="wantToWork-area w-padding" style="background-color:white">
             <div class="container">
                 <div class="row align-items-end justify-content-between">
                     <div class="col-lg-6 col-md-9 col-sm-9">
@@ -227,6 +230,7 @@
     <div id="back-top" >
         <a title="Go to Top"> <i class="fas fa-level-up-alt"></i></a>
     </div>
+    <script src="js/personalizados/showBranchesDetails/buildPromotions.js"></script>
     <script src="js/personalizados/showBranchesDetails/addUrlReturn.js"></script>
     <script src="js/personalizados/showBranchesDetails/buildProductById.js"></script>
     <script src="js/personalizados/showBranchesDetails/buildSchedule.js"></script>
@@ -282,8 +286,11 @@
         window.onload = function () {
             var jsonSchedules =<%=getSchedulesByIdBranche%>
             var productsById =<%=getProductsByIdBranche%>
+            var promotions =<%=getPromotionsByIdBranche%>    
+            
             buildSchedule(jsonSchedules);
             buildProductById(productsById);
+            buildPromotions(promotions);
             addUrlReturn();
             openingStatus()
         }

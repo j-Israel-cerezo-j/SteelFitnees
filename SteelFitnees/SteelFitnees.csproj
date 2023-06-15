@@ -296,6 +296,7 @@
     <Content Include="gentelella-master\production\js\personalizados\Index\addU.js" />
     <Content Include="gentelella-master\production\js\personalizados\Index\build\buildCardsBranches.js" />
     <Content Include="gentelella-master\production\js\personalizados\Index\requestBranches.js" />
+    <Content Include="gentelella-master\production\js\personalizados\Index\requestPromotions.js" />
     <Content Include="gentelella-master\production\js\personalizados\Json.js" />
     <Content Include="gentelella-master\production\js\personalizados\Login\ajax\deleteSessionRecentAjax.js" />
     <Content Include="gentelella-master\production\js\personalizados\Login\sessionRecentUser.js" />
@@ -329,6 +330,7 @@
     <Content Include="gentelella-master\production\js\personalizados\showBranchesDetails\ajax\branchesAjax.js" />
     <Content Include="gentelella-master\production\js\personalizados\showBranchesDetails\buildAlert.js" />
     <Content Include="gentelella-master\production\js\personalizados\showBranchesDetails\buildProductById.js" />
+    <Content Include="gentelella-master\production\js\personalizados\showBranchesDetails\buildPromotions.js" />
     <Content Include="gentelella-master\production\js\personalizados\showBranchesDetails\buildSchedule.js" />
     <Content Include="gentelella-master\production\js\personalizados\showBranchesDetails\map.js" />
     <Content Include="gentelella-master\production\js\personalizados\showBranchesDetails\openingStatus.js" />
@@ -1945,6 +1947,7 @@
     <Content Include="gentelella-master\production\turnjs4\turnjs4-api-docs.pdf" />
     <Content Include="gentelella-master\production\images\perzonalizadas\404\3d-rendering-black-dumbbells-floor-dark-concept-fitness-room-with-training-equipments-back_67155-14961.avif" />
     <Content Include="libman.json" />
+    <Content Include="gentelella-master\production\css\personalizados\StyleSheet1.css" />
     <None Include="Scripts\embedded\1.0\visio-web-embedded.debug-vsdoc.js" />
     <Content Include="gentelella-master\.gitignore" />
     <Content Include="gentelella-master\build\css\custom.css" />

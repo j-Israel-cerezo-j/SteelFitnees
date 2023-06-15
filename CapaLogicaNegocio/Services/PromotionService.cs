@@ -119,6 +119,11 @@ namespace CapaLogicaNegocio.Services
         {
             return Converter.ToJson(promotionTable.table()).ToString();
         }
+
+        public string jsonPromotionsVisibles()
+        {
+            return Converter.ToJson(promotionTable.tableAllVisibles()).ToString();
+        }
         public string delete(HttpRequest request)
         {
             var strIdsPromotionsRequest = request.Form["idsToDelete"];

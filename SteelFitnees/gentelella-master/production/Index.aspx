@@ -9,7 +9,7 @@
     <link href="css/personalizados/reflejos.css" rel="stylesheet" />
     <link href="frontend/css/styleIndex.css" rel="stylesheet" />
     <link rel="stylesheet" href="templates/fitnessclub-master/assets/css/style.css">
-
+    <link href="css/personalizados/StyleSheet1.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
             <!-- Masthead-->
@@ -56,6 +56,10 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span style="color:white" class="visually-hidden">Next</span>
         </button>
+    </div>
+
+    <div class="slider2 mt-5">
+	    <div class="slide-track2" id="containerPromotions"></div>
     </div>
 
     <!-- Carousel wrapper -->
@@ -119,6 +123,7 @@
     <script src="js/personalizados/utils/returnOpeningStatus.js"></script>
     <script src="js/personalizados/utils/formant12HourTime.js"></script>
 
+    <script src="js/personalizados/Index/requestPromotions.js"></script>
     <script src="js/personalizados/Index/addU.js"></script>
     <script src="js/personalizados/Index/requestBranches.js"></script>
     <script src="js/personalizados/Index/build/buildCardsBranches.js"></script>
@@ -129,6 +134,7 @@
     <script type="text/javascript">
         window.onload = function () {
             requestBranches();
+            requestPromotions();
         }
-</script>
+    </script>
 </asp:Content>
