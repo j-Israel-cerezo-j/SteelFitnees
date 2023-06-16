@@ -9,7 +9,7 @@
     <link href="css/personalizados/reflejos.css" rel="stylesheet" />
     <link href="frontend/css/styleIndex.css" rel="stylesheet" />
     <link rel="stylesheet" href="templates/fitnessclub-master/assets/css/style.css">
-    <link href="css/personalizados/sliderPromotions.scss" rel="stylesheet" type="text/css" />
+    <link href="css/personalizados/sliderPromotions.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
             <!-- Masthead-->
@@ -57,8 +57,8 @@
             <span style="color:white" class="visually-hidden">Next</span>
         </button>
     </div>
-    <div class="slider">
-	    <div class="slide-track" id="containerPromotions"></div>
+    <div class="slider2 mt-5">
+	    <div class="slide2-track" id="containerPromotions"></div>
     </div>
 
     <!-- Carousel wrapper -->
@@ -131,6 +131,7 @@
     <script src="js/personalizados/allBranches/requestCommentsByBranche.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js" integrity="sha256-92U7H+uBjYAJfmb+iNPi7DPoj795ZCTY4ZYmplsn/fQ=" crossorigin="anonymous"></script>
     <script type="text/javascript">
+
         window.onload = function () {
             requestBranches();
             requestPromotions();

@@ -15,7 +15,7 @@
     
     <link href="frontend/css/styleIndex.css" rel="stylesheet" />
     <link rel="stylesheet" href="templates/fitnessclub-master/assets/css/style.css">    
-    <link href="css/personalizados/StyleSheet1.css" rel="stylesheet" />
+    <link href="css/personalizados/sliderPromotions.css" rel="stylesheet" type="text/css" />
     
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -160,7 +160,7 @@
             </div>
             <!-- Gallery Area End -->
         <div class="slider2 mt-5">
-	        <div style="padding-top:30px" class="slide-track2" id="containerPromotions"></div>
+	        <div class="slide2-track" id="containerPromotions"></div>
         </div>
             <!--? Want To work -->
         <section class="wantToWork-area w-padding" style="background-color:white">
@@ -283,6 +283,7 @@
     <script src="templates/fitnessclub-master/assets/js/main.js"></script>
 
     <script type="text/javascript">
+
         window.onload = function () {
             var jsonSchedules =<%=getSchedulesByIdBranche%>
             var productsById =<%=getProductsByIdBranche%>
