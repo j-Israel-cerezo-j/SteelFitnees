@@ -9,7 +9,7 @@
     <link href="css/personalizados/reflejos.css" rel="stylesheet" />
     <link href="frontend/css/styleIndex.css" rel="stylesheet" />
     <link rel="stylesheet" href="templates/fitnessclub-master/assets/css/style.css">
-    <link href="css/personalizados/StyleSheet1.css" rel="stylesheet" />
+    <link href="css/personalizados/sliderPromotions.scss" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
             <!-- Masthead-->
@@ -57,9 +57,8 @@
             <span style="color:white" class="visually-hidden">Next</span>
         </button>
     </div>
-
-    <div class="slider2 mt-5">
-	    <div class="slide-track2" id="containerPromotions"></div>
+    <div class="slider">
+	    <div class="slide-track" id="containerPromotions"></div>
     </div>
 
     <!-- Carousel wrapper -->

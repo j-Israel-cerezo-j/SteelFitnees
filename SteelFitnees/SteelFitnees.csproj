@@ -1947,7 +1947,7 @@
     <Content Include="gentelella-master\production\turnjs4\turnjs4-api-docs.pdf" />
     <Content Include="gentelella-master\production\images\perzonalizadas\404\3d-rendering-black-dumbbells-floor-dark-concept-fitness-room-with-training-equipments-back_67155-14961.avif" />
     <Content Include="libman.json" />
-    <Content Include="gentelella-master\production\css\personalizados\StyleSheet1.css" />
+    <Content Include="gentelella-master\production\css\personalizados\sliderPromotions.scss" />
     <None Include="Scripts\embedded\1.0\visio-web-embedded.debug-vsdoc.js" />
     <Content Include="gentelella-master\.gitignore" />
     <Content Include="gentelella-master\build\css\custom.css" />
