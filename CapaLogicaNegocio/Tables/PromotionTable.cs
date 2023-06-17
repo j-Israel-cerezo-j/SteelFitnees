@@ -24,6 +24,10 @@ namespace CapaLogicaNegocio.Tables
         {
             return promotionData.lisAllPromotionsVisiblesByBranche(idBranche);
         }
+        public DataTable tableByBranche(int idBranche)
+        {
+            return promotionData.lisAllPromotionsByBranche(idBranche);
+        }
 
     }
 }

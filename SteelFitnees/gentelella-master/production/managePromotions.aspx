@@ -43,7 +43,39 @@
 						De forma opcional podras asignar la promoción a una sucursal para que se mostrada en la
 						página de detalles de la sucursal.
 					</p>
-					<div id="containerImages" class="mt-3 row justify-content-center"></div>
+					<hr />
+					<div class="row">
+						<div class="form-group col-lg-3 col-md-6 col-sm-12 ">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter-left" viewBox="0 0 16 16">
+								<path d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+							</svg>
+							<label class="control-label">Filtrar por sucursal</label>
+							<select style="border-radius:6px" class="form-control" id="filter"   onchange="requestPromotionsByFilterBranch()">
+							</select>				
+						</div>
+						<div class="form-group col-lg-3 col-md-6 col-sm-12 mt-3 ">
+							<div class="form-check" style="margin-left: 10px;">
+								<input class="form-check-input checkBoxP" type="checkbox" id="checkSelector" onchange="fullSelecteds()">
+								<label style="margin-left: 10px;" class="form-check-label">
+									Selecionar todas las promociones
+								</label>
+							</div>
+						</div>
+						<div class="form-group col-lg-3 col-md-6 col-sm-12 mt-3 ">
+							<div class="form-check form-switch" style="margin-left: 40px;">
+								<input class="form-check-input" type="checkbox" id="selectorVisible" onchange="fullVisibles()" style="font-size: 25px;">
+								<label class="form-check-label" for="flexSwitchCheckChecked">Todas visibles</label>
+							</div>
+						</div>
+						<div class="form-group col-lg-3 col-md-6 col-sm-12 mt-3 ">
+							<button type="button" onclick="cleanFilter()" class="btn btn-secondary">Limpiar filtro</button>
+						</div>
+					</div>					
+					<hr />
+					<div>
+						<h3 id="lengthPromotions"></h3>
+						<div id="containerImages" class="mt-3 row justify-content-center"></div>
+					</div>
 				</div>				
 				<input type="hidden" name="catalogo" value="sucursales" id="catalogo" />
 			</form>
@@ -55,11 +87,14 @@
     <script src="js/personalizados/Promotions/imgOnloadAfterPost.js"></script>
     <script src="js/personalizados/Promotions/requestPromotionsOnload.js"></script>
     <script src="js/personalizados/Promotions/delete.js"></script>
+    <script src="js/personalizados/Promotions/requestPromotions.js"></script>
+    <script src="js/personalizados/Promotions/checksPromotions.js"></script>
+	<script src="js/personalizados/Promotions/cleanFilter.js"></script>
 
     <script src="js/personalizados/utils/HttpClient/POST/Post.js"></script>
     <script src="js/personalizados/utils/HttpClient/DELETE/Delete.js"></script>
 	<script src="js/personalizados/utils/Ajax/request.js"></script>
-
+    
     <script src="js/personalizados/utils/styleBoxShadow.js"></script>
     <script src="js/personalizados/utils/Ajax/requestTables.js"></script>
     <script src="js/personalizados/utils/defaultBtnsDisplay.js"></script>
@@ -70,6 +105,7 @@
 	<script type="text/javascript">
         window.onload = function () {
 			requestPromotionsOnload();
+			requestBranchesSlcFilter();
         }
 
 

@@ -124,6 +124,14 @@ namespace CapaLogicaNegocio.Services
         {
             return Converter.ToJson(promotionTable.tableAllVisibles()).ToString();
         }
+        public string promotionsByBranch(string strId)
+        {
+            if (strId == "")
+            {
+                throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
+            }
+            return Converter.ToJson(promotionTable.tableByBranche(Convert.ToInt32(strId))).ToString();
+        }
         public string delete(HttpRequest request)
         {
             var strIdsPromotionsRequest = request.Form["idsToDelete"];

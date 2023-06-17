@@ -318,10 +318,13 @@
     <Content Include="gentelella-master\production\js\personalizados\Productos\tableOnload.js" />
     <Content Include="gentelella-master\production\js\personalizados\Productos\update.js" />
     <Content Include="gentelella-master\production\js\personalizados\Promotions\add.js" />
+    <Content Include="gentelella-master\production\js\personalizados\Promotions\checksPromotions.js" />
+    <Content Include="gentelella-master\production\js\personalizados\Promotions\cleanFilter.js" />
     <Content Include="gentelella-master\production\js\personalizados\Promotions\delete.js" />
     <Content Include="gentelella-master\production\js\personalizados\Promotions\img.js" />
     <Content Include="gentelella-master\production\js\personalizados\Promotions\imgOnloadAfterPost.js" />
     <Content Include="gentelella-master\production\js\personalizados\Promotions\requestBranches.js" />
+    <Content Include="gentelella-master\production\js\personalizados\Promotions\requestPromotions.js" />
     <Content Include="gentelella-master\production\js\personalizados\Promotions\requestPromotionsOnload.js" />
     <Content Include="gentelella-master\production\js\personalizados\SendEmails\ajax\sendAjax.js" />
     <Content Include="gentelella-master\production\js\personalizados\SendEmails\btnReset.js" />

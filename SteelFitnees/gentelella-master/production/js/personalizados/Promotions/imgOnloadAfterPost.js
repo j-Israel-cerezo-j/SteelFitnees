@@ -7,6 +7,7 @@ function returnPromotionsOnload() {
 async function buildPromotionsOnloadAferPost(json) {
 	document.getElementById("containerImages").innerHTML = ""
 	var htmlOptionsSlcBranches2 = await requestBranches();
+	var lengthPromotions ="("+ json.length+")";
 	var i = 0;
 	 json.forEach(async item => {
 		 var idBrancheSlc = "branches" + i
@@ -25,7 +26,7 @@ async function buildPromotionsOnloadAferPost(json) {
 					</div>
 					<div class="card-body">
 						<div class="form-check form-switch" style="margin-left: 40px;">
-							<input class="form-check-input" type="checkbox" id="${idCheckVizualize}" value="null" style="font-size: 25px;    ">
+							<input class="form-check-input checkBoxVB" type="checkbox" id="${idCheckVizualize}" value="null" style="font-size: 25px;    ">
 							<label class="form-check-label" for="flexSwitchCheckChecked">Visible al usuario</label>
 						</div>
 						<div class="mt-4">
@@ -55,6 +56,7 @@ async function buildPromotionsOnloadAferPost(json) {
 	containerImg.setAttribute("data-indexImage-update", json.length)
 	containerImg.setAttribute("data-action-uploadAut", true)
 	addDataImag(json);
+	document.getElementById("lengthPromotions").innerText = lengthPromotions
 }
 
 function addDataImag(json) {
