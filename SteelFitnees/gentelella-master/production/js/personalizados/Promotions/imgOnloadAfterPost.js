@@ -5,9 +5,10 @@ function returnPromotionsOnload() {
 }
 
 async function buildPromotionsOnloadAferPost(json) {
+	arrayPromotions=[]
 	document.getElementById("containerImages").innerHTML = ""
 	var htmlOptionsSlcBranches2 = await requestBranches();
-	var lengthPromotions ="("+ json.length+")";
+	var lengthPromotions ="Promociones existentes: ("+ json.length+")";
 	var i = 0;
 	 json.forEach(async item => {
 		 var idBrancheSlc = "branches" + i

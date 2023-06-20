@@ -354,6 +354,33 @@ namespace CapaDatos
             return schedules;
         }
 
+        public DataTable lisAllPromotionsNoBranche()
+        {
+            DataTable schedules = new DataTable();
+            SqlDataReader renglon;
+            try
+            {
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "pro_listAllPromotionsNoBranche";
+                Conexion.Open();
+                renglon = Comando.ExecuteReader();
+                schedules.Load(renglon);
+            }
+            catch (SqlException e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                {
+                    Conexion.Close();
+                }
+                Comando.Parameters.Clear();
+            }
+            return schedules;
+        }
+
         public List<PromotionBranch> listPromotionBranch()
         {
             List<PromotionBranch> promotionsBranch = new List<PromotionBranch>();

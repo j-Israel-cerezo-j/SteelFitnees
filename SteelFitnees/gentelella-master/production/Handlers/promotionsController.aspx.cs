@@ -41,6 +41,10 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             {
                 getPromotionsByBranch();
             }
+            else if (requestMeth == "promotionNoBranch")
+            {
+                getPromotionsNoBranch();
+            }
             else if (requestMeth == "delete")
             {
                 delete();
@@ -111,6 +115,25 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             {
                 string idPromotionStr = Request.QueryString["id"];
                 var jsonPromotion = promotionService.promotionsByBranch(idPromotionStr);
+                response.success = true;
+                data.Add("recoverData", JsonConvert.DeserializeObject<Dictionary<string, Object>[]>(jsonPromotion));
+            }
+            catch (ServiceException se)
+            {
+                response.error = se.getMessage();
+            }
+            data.Add("footeer", "Verificar por favor");
+            response.data = data;
+            getJsonResponse = JsonConvert.SerializeObject(response);
+        }
+
+        private void getPromotionsNoBranch()
+        {
+            var data = new Dictionary<string, Object>();
+            Response response = new Response();
+            try
+            {                
+                var jsonPromotion = promotionService.promotionsNoBranch();
                 response.success = true;
                 data.Add("recoverData", JsonConvert.DeserializeObject<Dictionary<string, Object>[]>(jsonPromotion));
             }

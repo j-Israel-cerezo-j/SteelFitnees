@@ -26,6 +26,7 @@
             if (result.isConfirmed) {
                 var ids = checkboxesSeleccionados.map(check => check.value).join(',');
                 var formData = new FormData();
+                console.log('idsToDelete', ids)
                 formData.append('idsToDelete', ids);
                 deleteWhithForm('Handlers/promotionsController.aspx?meth=delete', formData, (json) => {
                     document.getElementById("containerImages").innerHTML = "";
@@ -45,7 +46,12 @@
                             timer: 1500
                         })
                     }
-                    buildPromotionsOnloadAferPost(json.data.recoverData);
+                    var idBranch = document.getElementById("filter").value;
+                    if (idBranch != "-1") {
+                        requestPromotionsByFilterBranch();
+                    } else {
+                        buildPromotionsOnloadAferPost(json.data.recoverData);
+                    }
                 });
             }
         })
