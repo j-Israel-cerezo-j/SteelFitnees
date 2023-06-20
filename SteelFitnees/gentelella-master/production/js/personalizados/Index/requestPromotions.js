@@ -21,7 +21,7 @@
             for (let i = 0; i < slideCount; i++) {
                 slideContainer.appendChild(slides[i].cloneNode(true));
             }
-            slideContainer.style.animationDuration = `${slideCount * 5}s`; // Ajusta la duración según tus necesidades
+            slideContainer.style.animationDuration = `${slideCount * 13}s`; // Ajusta la duración según tus necesidades
         }, 100);
 
        

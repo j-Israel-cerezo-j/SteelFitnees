@@ -20,7 +20,6 @@
     setTimeout(() => {
         slideContainer.style.animationDuration = `${slideCount * 20}s`; // Ajusta la duración según tus necesidades
     }, 100);
-
 }
 
 

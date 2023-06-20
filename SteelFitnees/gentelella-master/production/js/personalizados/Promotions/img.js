@@ -3,7 +3,6 @@ var promotionsOnload=[]
 var indexImgUpdate = 0;
 var indexImgUpdate2 = 0;
 var indexImgAddCards = 0;
-
 function getPrmotionsOnload() {
 	promotionsOnload = returnPromotionsOnload();
 }
@@ -20,6 +19,7 @@ async function MostraIma(input) {
 			indexImgUpdate = parseInt(actionUpdateData.getAttribute("data-indexImage-update"))
 		}
 	}
+	
 	for (var i = 0; i < input.files.length; i++) {
 		var fileName = input.files[i].name;
 		var valueIndex = indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate
@@ -51,7 +51,7 @@ async function MostraIma(input) {
 					</div>
 					<div class="card-body">
 						<div class="form-check form-switch" style="margin-left: 40px;">
-							<input class="form-check-input" type="checkbox" id="${idCheckVizualize}" value="null" style="font-size: 25px;    ">
+							<input class="form-check-input checkBoxVB" type="checkbox" id="${idCheckVizualize}" value="null" style="font-size: 25px;    ">
 							<label class="form-check-label" for="flexSwitchCheckChecked">Mostrar al usuario</label>
 						</div>
 						<div class="mt-4">
@@ -79,6 +79,8 @@ async function MostraIma(input) {
 		}
 	}
 
+	buildMsjPromotionsUpload();
+
 	getPrmotionsOnload();
 	promotionsOnload.forEach(promotion => {
 		if (promotion.idBranchV != 0) {
@@ -104,6 +106,7 @@ function remremoveImag(i, fileName) {
 	if (fileName != undefined) {
 		arrayFiles = arrayFiles.filter(item => item.img.name != fileName);
 	}
+	buildMsjPromotionsUpload();
 }
 
 function addPr() {
@@ -112,7 +115,6 @@ function addPr() {
 
 function addFilesToFormData() {
 	getPrmotionsOnload();
-
 	document.getElementById("formFile").value = "";
 	var formData = new FormData(document.getElementById("form1"));
 
@@ -165,11 +167,10 @@ function addFilesToFormData() {
 		delete object.avatar; // Eliminamos la propiedad "avatar" del objeto antes de enviarlo
 	});
 
-	console.log("data", datas)
-	formData.append("data", JSON.stringify(datas));
-
 	arrayFiles = [];
 	promotionsOnload = [];
+
+	formData.append("data", JSON.stringify(datas));
 	return formData
 }
 
@@ -178,3 +179,7 @@ function resetArrayFiles() {
 	arrayFiles = [];
 }
 
+function buildMsjPromotionsUpload() {
+	var newlyUploadedImg = arrayFiles.length;
+	document.getElementById("lengthPromotionsRecentUpload").innerText = "Promociones recien subidas: (" + newlyUploadedImg + ")";
+}

@@ -17,7 +17,12 @@
                 timer: 1500
             })
         }
-        buildPromotionsOnloadAferPost(json.data.recoverData);
+        var idBranch = document.getElementById("filter").value;
+        if (idBranch != "-1") {
+            requestPromotionsByFilterBranch();
+        } else {
+            buildPromotionsOnloadAferPost(json.data.recoverData);
+        }        
     });
 }
 
