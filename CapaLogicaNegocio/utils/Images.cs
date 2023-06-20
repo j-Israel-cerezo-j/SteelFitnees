@@ -8,6 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.ModelBinding;
+using Emgu.CV;
+using Emgu.CV.Structure;
+using Emgu.CV.CvEnum;
+using Emgu.CV.Features2D;
+using Emgu.CV.Util;
 
 namespace CapaLogicaNegocio.utils
 {

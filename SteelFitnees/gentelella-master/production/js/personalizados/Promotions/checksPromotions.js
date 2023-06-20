@@ -11,11 +11,23 @@
     }    
 }
 
-function fullVisibles() {
+function fullVisiblesOnload() {
     if (document.getElementById("selectorVisible") != undefined) {
         var checkVisible = document.getElementById("selectorVisible");
 
         var checkboxesVisibles = document.getElementsByClassName("checkBoxVB");
+        var arrayCheckVisibles = Array.from(checkboxesVisibles)
+        arrayCheckVisibles.map((check) => {
+            check.checked = checkVisible.checked ? true : false
+        });
+    }
+}
+
+function fullVisiblesUpload() {
+    if (document.getElementById("selectorVisibleUpload") != undefined) {
+        var checkVisible = document.getElementById("selectorVisibleUpload");
+
+        var checkboxesVisibles = document.getElementsByClassName("checkBoxVUP");
         var arrayCheckVisibles = Array.from(checkboxesVisibles)
         arrayCheckVisibles.map((check) => {
             check.checked = checkVisible.checked ? true : false

@@ -53,11 +53,18 @@ async function buildPromotionsOnloadAferPost(json) {
 		 var promotion = { id: item.id, idSlcBranch: idBrancheSlc, idBranchV: newValueIdBranche, idCheck: idCheckVizualize, isCheck: item.checkk == "True" ? true : false }
 		 arrayPromotions.push(promotion);
 	 });
+
 	var containerImg = document.getElementById("containerImages");
 	containerImg.setAttribute("data-indexImage-update", json.length)
 	containerImg.setAttribute("data-action-uploadAut", true)
 	addDataImag(json);
 	document.getElementById("lengthPromotions").innerText = lengthPromotions
+	cleanFull();
+
+	setTimeout(() => {
+		activePromoExisting();
+	}, 500)
+	
 }
 
 function addDataImag(json) {
@@ -73,4 +80,23 @@ function requestValueBrancheByPromotion(id) {
 			resolve(resp)
         }, 'Handlers/promotionsController.aspx?meth=brancheByPromotion&id='+id,false)
 	});
+}
+
+function activePromoExisting() {
+	var elemento = document.getElementById('promoExisting');
+	elemento.classList.add('active');
+	
+	var enlace = document.getElementById('promoExistingA');
+	enlace.click();
+}
+
+function activePromosUpload() {
+
+	var elementoUpload = document.getElementById('promosUpload');
+	elementoUpload.classList.add('active');
+
+	var enlaceUpload = document.getElementById('promosUploadA');
+	enlaceUpload.click();
+
+
 }

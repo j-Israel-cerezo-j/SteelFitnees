@@ -86,9 +86,12 @@ tooltip-container {
 }
 
 .checkBoxVB {
-    padding: 1px
+    padding: 10px
 }
 
+.checkBoxVUP {
+    padding: 10px
+}
 
 
 @import url('//fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap');

@@ -3,23 +3,27 @@ var promotionsOnload=[]
 var indexImgUpdate = 0;
 var indexImgUpdate2 = 0;
 var indexImgAddCards = 0;
+var htmlOptionsSlcBranches = "";
+
 function getPrmotionsOnload() {
 	promotionsOnload = returnPromotionsOnload();
 }
 
-async function MostraIma(input) {
-	
+async function requestHmtlOptions() {
+	htmlOptionsSlcBranches =await requestBranches();
+}
 
-	var htmlOptionsSlcBranches = await requestBranches();	
+function MostraIma(input) {		
+
 	var actionUpdateData = document.getElementById("containerImages");
 	var imageUploadAut = actionUpdateData.getAttribute("data-action-uploadAut");
 
 	if (imageUploadAut != null) {
 		if (indexImgUpdate == 0) {
-			indexImgUpdate = parseInt(actionUpdateData.getAttribute("data-indexImage-update"))
+			indexImgUpdate = parseInt(actionUpdateData.getAttribute("data-indexImage-update"));
 		}
 	}
-	
+
 	for (var i = 0; i < input.files.length; i++) {
 		var fileName = input.files[i].name;
 		var valueIndex = indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate
@@ -51,7 +55,7 @@ async function MostraIma(input) {
 					</div>
 					<div class="card-body">
 						<div class="form-check form-switch" style="margin-left: 40px;">
-							<input class="form-check-input checkBoxVB" type="checkbox" id="${idCheckVizualize}" value="null" style="font-size: 25px;    ">
+							<input class="form-check-input checkBoxVUP" type="checkbox" id="${idCheckVizualize}" value="null" style="font-size: 25px;    ">
 							<label class="form-check-label" for="flexSwitchCheckChecked">Mostrar al usuario</label>
 						</div>
 						<div class="mt-4">
@@ -65,8 +69,8 @@ async function MostraIma(input) {
 					</div>
 				</div> `
 
-		var htmlContainerImg = document.getElementById("containerImages").innerHTML;
-		document.getElementById("containerImages").innerHTML = html2+ htmlContainerImg;
+		var htmlContainerImg = document.getElementById("containerImagesUpload").innerHTML;
+		document.getElementById("containerImagesUpload").innerHTML = html2+ htmlContainerImg;
 
 		var promotion = { id: null, img: input.files[i], idSlcBranch: idBrancheSlc, idCheck: idCheckVizualize }
 		arrayFiles.push(promotion);
@@ -80,16 +84,6 @@ async function MostraIma(input) {
 	}
 
 	buildMsjPromotionsUpload();
-
-	getPrmotionsOnload();
-	promotionsOnload.forEach(promotion => {
-		if (promotion.idBranchV != 0) {
-			document.getElementById(promotion.idSlcBranch).value = promotion.idBranchV;
-		}
-		if (document.getElementById(promotion.idCheck) != undefined) {
-			document.getElementById(promotion.idCheck).checked = promotion.isCheck
-		}
-    })
 }
 function addImageProcess(image, i, input, indexImgAddCards2, indexImgUpdate2) {
 	return new Promise((resolve, reject) => {
@@ -164,7 +158,7 @@ function addFilesToFormData() {
 
 	datas.forEach(function (object, indexx) {
 		formData.append(`img${indexx}`, object.img);
-		delete object.avatar; // Eliminamos la propiedad "avatar" del objeto antes de enviarlo
+		delete object.avatar;
 	});
 
 	arrayFiles = [];
@@ -181,5 +175,12 @@ function resetArrayFiles() {
 
 function buildMsjPromotionsUpload() {
 	var newlyUploadedImg = arrayFiles.length;
-	document.getElementById("lengthPromotionsRecentUpload").innerText = "Promociones recien subidas: (" + newlyUploadedImg + ")";
+	document.getElementById("lengthPromotionsRecentUpload").innerText = "Recien subidas: (" + newlyUploadedImg + ")";
 }
+
+function removeFullPromosUpload() {
+	arrayFiles = [];
+	document.getElementById("containerImagesUpload").innerHTML = "";
+	buildMsjPromotionsUpload();
+}
+
