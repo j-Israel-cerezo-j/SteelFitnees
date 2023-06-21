@@ -36,6 +36,8 @@ namespace CapaDatos
                 Comando.Parameters["@checkk"].Value = promotion.checkk;
                 Comando.Parameters.Add(new SqlParameter("@img", SqlDbType.Text));
                 Comando.Parameters["@img"].Value = promotion.path;
+                Comando.Parameters.Add(new SqlParameter("@promotionName", SqlDbType.VarChar,50));
+                Comando.Parameters["@promotionName"].Value = promotion.promotionName;
                 Comando.Parameters.Add(new SqlParameter("@fileNane", SqlDbType.Text));
                 Comando.Parameters["@fileNane"].Value = promotion.fileName;
                 Conexion.Open();

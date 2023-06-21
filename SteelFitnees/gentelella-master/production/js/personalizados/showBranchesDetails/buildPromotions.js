@@ -7,6 +7,7 @@
     });
     document.getElementById("containerPromotions").innerHTML = html;
 
+    document.getElementById("containerPromotionsFatherBranch").style.display = html == "" ? "none" : "block";
     const slideContainer = document.getElementById('containerPromotions');
     const slides = slideContainer.getElementsByClassName('slide2');
     const slideCount = slides.length;

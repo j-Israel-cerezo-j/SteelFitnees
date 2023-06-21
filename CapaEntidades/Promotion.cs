@@ -13,6 +13,7 @@ namespace CapaEntidades
     {
         public int id { get; set; }
         public int fkBranche { get; set; }
+        public string promotionName { get; set; }
         public bool checkk { get; set; }
         public HttpPostedFile img { get; set; }
         public string path { get; set; }
@@ -26,6 +27,7 @@ namespace CapaEntidades
             this.id = (int)(Validation.getValue(renglon, "id") ?? 0);
             this.checkk= (bool)Validation.getValue(renglon, "checkk");
             this.path= (string)Validation.getValue(renglon, "img");
+            this.promotionName = (string)Validation.getValue(renglon, "promotionName");
             this.fileName = (string)Validation.getValue(renglon, "fileNane");
 
         }
@@ -37,6 +39,7 @@ namespace CapaEntidades
                 "id:'" + id + "', " +
                 "check:'" + checkk + "'," +
                 "path:'" + path + "'," +
+                "promotionName: '"+ promotionName + ","+
                 "fileName:'" + fileName + "'";               
         }
 

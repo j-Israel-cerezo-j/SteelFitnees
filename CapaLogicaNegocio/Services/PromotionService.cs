@@ -46,6 +46,7 @@ namespace CapaLogicaNegocio.Services
                 {             
                     id= promotionDTO.id!=null?Convert.ToInt32(promotionDTO.id): 0,
                     fkBranche = Convert.ToInt32(promotionDTO.branche),
+                    promotionName=promotionDTO.promotionName,
                     checkk = Convert.ToBoolean(promotionDTO.check),
                     img = request.Files[$"img{i}"]
 

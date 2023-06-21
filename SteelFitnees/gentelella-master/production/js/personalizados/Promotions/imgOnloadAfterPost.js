@@ -10,7 +10,8 @@ async function buildPromotionsOnloadAferPost(json) {
 	var htmlOptionsSlcBranches2 = await requestBranches();
 	var lengthPromotions ="Promociones existentes: ("+ json.length+")";
 	var i = 0;
-	 json.forEach(async item => {
+	json.forEach(async item => {
+		console.log("item ", item)
 		 var idBrancheSlc = "branches" + i
 		 var idCheckVizualize = "checkVizualize" + i
 		 var fileName = item.fileNane;
@@ -22,7 +23,10 @@ async function buildPromotionsOnloadAferPost(json) {
 						  Eliminar promoción
 						</label>
 					</div>
-					<div style="width: 7.5rem;text-align:center;flex-direction:inherit" class="mt-3">
+					<label style="margin-left: 10px;" class="form-check-label mt-3">
+						  Nombre: ${item.promotionName}
+					</label>
+					<div style="width: 7.5rem;text-align:center;flex-direction:inherit" class="mt-1">
 						<img style="border-radius:20px;z-index:1" src="${item.img}" class="reflejo" id="image${i}" alt="Cargar fotografía por favor." src="" height="220" width="200" />
 					</div>
 					<div class="card-body">
@@ -59,7 +63,7 @@ async function buildPromotionsOnloadAferPost(json) {
 	containerImg.setAttribute("data-action-uploadAut", true)
 	addDataImag(json);
 	document.getElementById("lengthPromotions").innerText = lengthPromotions
-	cleanFull();
+	clean();
 
 	setTimeout(() => {
 		activePromoExisting();

@@ -4,6 +4,7 @@ var indexImgUpdate = 0;
 var indexImgUpdate2 = 0;
 var indexImgAddCards = 0;
 var htmlOptionsSlcBranches = "";
+var fecha = new Date();
 
 function getPrmotionsOnload() {
 	promotionsOnload = returnPromotionsOnload();
@@ -14,7 +15,8 @@ async function requestHmtlOptions() {
 }
 
 function MostraIma(input) {		
-
+	var opcionesFormato = { month: 'long' };
+	var nombreMes = fecha.toLocaleString('es-ES', opcionesFormato);	
 	var actionUpdateData = document.getElementById("containerImages");
 	var imageUploadAut = actionUpdateData.getAttribute("data-action-uploadAut");
 
@@ -29,9 +31,16 @@ function MostraIma(input) {
 		var valueIndex = indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate
 		var idBrancheSlc = "branches" + valueIndex
 		var idCheckVizualize = "checkVizualize" + valueIndex
+		var idInputPromoName = "promotionName" + valueIndex
 
 		let html2 =
 			`	<div id="divImage${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate}" class="col-lg-3 col-md-3 col-sm-6 form-group justify-content-center" style="margin-top:54px">
+					<div class="row mb-3">
+						<label style="margin-bottom:10px" class="control-label">Nombre de la promoción</label>
+						<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+							<input style="border-radius:6px" type="text" class="form-control" value="Promo ${nombreMes.toUpperCase()} No.${valueIndex}" id="${idInputPromoName}" placeholder="Nombre de la promoción" onkeyup="onkeyupInputEmtyy('${idInputPromoName}')">
+						</div>
+					</div>
 					<div style="width: 7.5rem;text-align:center;flex-direction:inherit">
 						<img style="border-radius:20px;z-index:1" class="reflejo" id="image${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate}" alt="Cargar fotografía por favor." src="" height="220" width="200" />
 						<svg onclick="remremoveImag(${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate},'${fileName}')" style="cursor: pointer;z-index: 2;position: absolute;margin-left: 20px;margin-top: -123px;" width="45px" height="45px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
@@ -72,7 +81,7 @@ function MostraIma(input) {
 		var htmlContainerImg = document.getElementById("containerImagesUpload").innerHTML;
 		document.getElementById("containerImagesUpload").innerHTML = html2+ htmlContainerImg;
 
-		var promotion = { id: null, img: input.files[i], idSlcBranch: idBrancheSlc, idCheck: idCheckVizualize }
+		var promotion = { id: null, img: input.files[i], idSlcBranch: idBrancheSlc, idCheck: idCheckVizualize, idInputNamePromotion: idInputPromoName }
 		arrayFiles.push(promotion);
 
 		var image = new FileReader();
@@ -118,19 +127,24 @@ function addFilesToFormData() {
 
 		var checkVizualizeSelected="" 
 		var brancheSelected = "";
+		var valueNamePromotion = "";
 		if (document.getElementById(promotion.idSlcBranch) != undefined) {
 			brancheSelected = document.getElementById(promotion.idSlcBranch).value;
 		}		
 		if (document.getElementById(promotion.idCheck) != undefined) {
 			var checked=document.getElementById(promotion.idCheck);
 			checkVizualizeSelected = checked.checked
-		}				
+		}
+		if (document.getElementById(promotion.idInputNamePromotion) != undefined) {
+			valueNamePromotion = document.getElementById(promotion.idInputNamePromotion).value;
+		}
 		index++;
 
 		var data = {
 			id: promotion.id,
 			branche: brancheSelected,
 			check: checkVizualizeSelected,
+			promotionName: valueNamePromotion,
 			img: promotion.img
 		}
 		datas.push(data)

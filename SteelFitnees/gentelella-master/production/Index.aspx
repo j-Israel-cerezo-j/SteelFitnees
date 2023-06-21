@@ -57,7 +57,7 @@
             <span style="color:white" class="visually-hidden">Next</span>
         </button>
     </div>
-    <div class="slider2 mt-5">
+    <div class="slider2 mt-5" id="containerFatherPromotions">
 	    <div class="slide2-track" id="containerPromotions"></div>
     </div>
 

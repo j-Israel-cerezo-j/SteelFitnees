@@ -1,5 +1,6 @@
 ﻿function cleanFilter() {
-    requestPromotionsOnload();    
+    requestPromotionsOnload();
+    cleanFull()
 }
 
 function cleanFull() {
@@ -12,7 +13,18 @@ function cleanFull() {
     checkVisibleUpload.checked = false;
     checkSelector.checked = false;
     document.getElementById("containerImagesUpload").innerHTML = ""
+    resetArrayFiles();
+    buildMsjPromotionsUpload();
+}
 
+function clean() {
+    var checkVisible = document.getElementById("selectorVisible");
+    var checkVisibleUpload = document.getElementById("selectorVisibleUpload");
+    var checkSelector = document.getElementById("checkSelector");    
+    checkVisible.checked = false;
+    checkVisibleUpload.checked = false;
+    checkSelector.checked = false;
+    document.getElementById("containerImagesUpload").innerHTML = ""
     resetArrayFiles();
     buildMsjPromotionsUpload();
 }

@@ -9,6 +9,7 @@
         });
         document.getElementById("containerPromotions").innerHTML = html;
 
+        document.getElementById("containerFatherPromotions").style.display = html == "" ? "none" : "block";
 
         const slideContainer = document.getElementById('containerPromotions');
         const slides = slideContainer.getElementsByClassName('slide2');
