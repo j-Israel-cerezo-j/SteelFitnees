@@ -1,6 +1,7 @@
 ﻿function cleanFilter() {
     requestPromotionsOnload();
     cleanFull()
+    document.getElementById("stateFilter").innerText = "Sin filtro seleccionado"
 }
 
 function cleanFull() {
@@ -13,6 +14,7 @@ function cleanFull() {
     checkVisibleUpload.checked = false;
     checkSelector.checked = false;
     document.getElementById("containerImagesUpload").innerHTML = ""
+    document.getElementById("inputSearch").value = ""
     resetArrayFiles();
     buildMsjPromotionsUpload();
 }

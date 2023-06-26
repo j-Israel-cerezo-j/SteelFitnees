@@ -29,17 +29,13 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             {
                 getAllPromotions();
             }
-            else if (requestMeth == "getPromotionsVisible")
-            {
-                getAllPromotionsVisibles();
-            }
             else if (requestMeth== "brancheByPromotion")
             {
                 getBrancheByPromotion();
             }
-            else if (requestMeth == "promotionByBranch")
+            else if (requestMeth == "promotionByBranchOrVisibility")
             {
-                getPromotionsByBranch();
+                getPromotionsByVisibilityOrBranchOrNone();
             }
             else if (requestMeth == "promotionNoBranch")
             {
@@ -57,24 +53,6 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             try
             {
                 var jsonPromotion = promotionService.jsonPromotions();
-                response.success = true;
-                data.Add("recoverData", JsonConvert.DeserializeObject<Dictionary<string, Object>[]>(jsonPromotion));
-            }
-            catch (ServiceException se)
-            {
-                response.error = se.getMessage();
-            }
-            data.Add("footeer", "Verificar por favor");
-            response.data = data;
-            getJsonResponse = JsonConvert.SerializeObject(response);
-        }
-        private void getAllPromotionsVisibles()
-        {
-            var data = new Dictionary<string, Object>();
-            Response response = new Response();
-            try
-            {
-                var jsonPromotion = promotionService.jsonPromotionsVisibles();
                 response.success = true;
                 data.Add("recoverData", JsonConvert.DeserializeObject<Dictionary<string, Object>[]>(jsonPromotion));
             }
@@ -107,14 +85,15 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             getJsonResponse = JsonConvert.SerializeObject(response);
         }
 
-        private void getPromotionsByBranch()
+        private void getPromotionsByVisibilityOrBranchOrNone()
         {
             var data = new Dictionary<string, Object>();
             Response response = new Response();
             try
             {
                 string idPromotionStr = Request.QueryString["id"];
-                var jsonPromotion = promotionService.promotionsByBranch(idPromotionStr);
+                string strVisivility= Request.QueryString["visivility"];
+                var jsonPromotion = promotionService.promotionsByVisibilityOrBranchOrNone(idPromotionStr, strVisivility);
                 response.success = true;
                 data.Add("recoverData", JsonConvert.DeserializeObject<Dictionary<string, Object>[]>(jsonPromotion));
             }

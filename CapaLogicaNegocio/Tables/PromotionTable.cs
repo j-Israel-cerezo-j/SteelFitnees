@@ -16,13 +16,17 @@ namespace CapaLogicaNegocio.Tables
         {
             return promotionData.lisAllPromotions();
         }
-        public DataTable tableAllVisibles()
+        public DataTable tableAllVisibility(int visibility)
         {
-            return promotionData.lisAllPromotionsVisibles();
+            return promotionData.lisAllPromotionsVisibility(visibility);
         }
-        public DataTable tableVisiblesByBranche(int idBranche)
+        public DataTable tableVisivilityByBranche(int idBranche,int visivility)
         {
-            return promotionData.lisAllPromotionsVisiblesByBranche(idBranche);
+            return promotionData.lisAllPromotionsVisivilityByBranche(idBranche, visivility);
+        }
+        public DataTable listAllPromotionsByCharacteres(string characteres)
+        {
+            return promotionData.listAllPromotionsByCharacteres(characteres);
         }
         public DataTable tableByBranche(int idBranche)
         {

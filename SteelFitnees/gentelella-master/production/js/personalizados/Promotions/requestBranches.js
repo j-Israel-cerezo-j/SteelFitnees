@@ -29,6 +29,8 @@ function requestBranchesSlcFilter() {
             var optionSelection = document.createElement("option");
             optionSelection.value = "-2";
             optionSelection.text = "Promociones sin sucursal";
+            slcBranches.onchange = requestPromotionsByFilterBranchAndVisibilityOrNone
+
             slcBranches.appendChild(optionSelection);
         }
     }, 'Handlers/sucursalesController.aspx', false);

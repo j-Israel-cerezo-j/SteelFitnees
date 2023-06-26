@@ -15,6 +15,7 @@ namespace CapaLogicaNegocio
         private ProductService productService = new ProductService();
         private ProductBranchService branchService = new ProductBranchService();
         private SearchService searchService = new SearchService();  
+        private PromotionService promotionService = new PromotionService(); 
         public List<string> coincidences(string catalogo, string caracteres,string strId="")
         {
             char[] charsToTrim = { ' ' };
@@ -62,6 +63,8 @@ namespace CapaLogicaNegocio
                     return productService.onkeyupSearchTableByIdBrancheAndCharacteres(result, strId);
                 case "allProducts":
                     return productService.tableProductsAllByCharacteres(result);
+                case "promotions":
+                    return promotionService.promotionsSearching(result);
                 default:
                     throw new ServiceException(MessageErrors.MessageErrors.catalogNoExists);
             }

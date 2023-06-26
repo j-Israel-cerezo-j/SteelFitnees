@@ -121,17 +121,29 @@ namespace CapaLogicaNegocio.Services
             return Converter.ToJson(promotionTable.table()).ToString();
         }
 
-        public string jsonPromotionsVisibles()
+        public string promotionsSearching(string strValue)
         {
-            return Converter.ToJson(promotionTable.tableAllVisibles()).ToString();
+            return Converter.ToJson(promotionTable.listAllPromotionsByCharacteres(strValue)).ToString();
         }
-        public string promotionsByBranch(string strId)
+
+        public string promotionsByVisibilityOrBranchOrNone(string strId,string visibilityStr)
         {
-            if (strId == "")
+            if (strId == null && visibilityStr == null)
             {
                 throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
             }
-            return Converter.ToJson(promotionTable.tableByBranche(Convert.ToInt32(strId))).ToString();
+            else if (strId == null&& visibilityStr!= null)
+            {
+                return Converter.ToJson(promotionTable.tableAllVisibility(Convert.ToInt32(visibilityStr))).ToString();
+            }
+            if (visibilityStr!= null && strId != null)
+            {
+                return Converter.ToJson(promotionTable.tableVisivilityByBranche(Convert.ToInt32(strId), Convert.ToInt32(visibilityStr))).ToString();
+            }
+            else
+            {
+                return Converter.ToJson(promotionTable.tableByBranche(Convert.ToInt32(strId))).ToString();
+            }
         }
         public string promotionsNoBranch()
         {

@@ -28,6 +28,6 @@
        
 
 
-    }, 'Handlers/promotionsController.aspx?meth=getPromotionsVisible', true);
+    }, 'Handlers/promotionsController.aspx?meth=promotionByBranchOrVisibility&visivility=1', true);
 }
 

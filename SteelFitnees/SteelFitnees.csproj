@@ -345,6 +345,7 @@
     <Content Include="gentelella-master\production\js\personalizados\Promotions\requestBranches.js" />
     <Content Include="gentelella-master\production\js\personalizados\Promotions\requestPromotions.js" />
     <Content Include="gentelella-master\production\js\personalizados\Promotions\requestPromotionsOnload.js" />
+    <Content Include="gentelella-master\production\js\personalizados\Promotions\searchPromotions.js" />
     <Content Include="gentelella-master\production\js\personalizados\SendEmails\ajax\sendAjax.js" />
     <Content Include="gentelella-master\production\js\personalizados\SendEmails\btnReset.js" />
     <Content Include="gentelella-master\production\js\personalizados\SendEmails\SendEmail.js" />

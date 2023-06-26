@@ -32,13 +32,14 @@ function MostraIma(input) {
 		var idBrancheSlc = "branches" + valueIndex
 		var idCheckVizualize = "checkVizualize" + valueIndex
 		var idInputPromoName = "promotionName" + valueIndex
+		var numeroAleatorio = Math.floor(Math.random() * 1000) + 1;
 
 		let html2 =
 			`	<div id="divImage${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate}" class="col-lg-3 col-md-3 col-sm-6 form-group justify-content-center" style="margin-top:54px">
 					<div class="row mb-3">
 						<label style="margin-bottom:10px" class="control-label">Nombre de la promoción</label>
 						<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-							<input style="border-radius:6px" type="text" class="form-control" value="Promo ${nombreMes.toUpperCase()} No.${valueIndex}" id="${idInputPromoName}" placeholder="Nombre de la promoción" onkeyup="onkeyupInputEmtyy('${idInputPromoName}')">
+							<input style="border-radius:6px" type="text" class="form-control" value="Promo ${nombreMes.toUpperCase()} ${numeroAleatorio}" id="${idInputPromoName}" placeholder="Nombre de la promoción" onkeyup="onkeyupInputEmtyy('${idInputPromoName}')">
 						</div>
 					</div>
 					<div style="width: 7.5rem;text-align:center;flex-direction:inherit">
@@ -193,6 +194,7 @@ function buildMsjPromotionsUpload() {
 }
 
 function removeFullPromosUpload() {
+	document.getElementById("form1").reset();
 	arrayFiles = [];
 	document.getElementById("containerImagesUpload").innerHTML = "";
 	buildMsjPromotionsUpload();

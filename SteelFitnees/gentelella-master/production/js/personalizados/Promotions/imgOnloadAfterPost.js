@@ -23,7 +23,7 @@ async function buildPromotionsOnloadAferPost(json) {
 						  Eliminar promoción
 						</label>
 					</div>
-					<label style="margin-left: 10px;" class="form-check-label mt-3">
+					<label style="margin-left: 10px;font-size:15px;" class="form-check-label mt-3">
 						  Nombre: ${item.promotionName}
 					</label>
 					<div style="width: 7.5rem;text-align:center;flex-direction:inherit" class="mt-1">

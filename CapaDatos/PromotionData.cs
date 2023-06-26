@@ -271,14 +271,17 @@ namespace CapaDatos
             return schedules;
         }
 
-        public DataTable lisAllPromotionsVisibles()
+        public DataTable lisAllPromotionsVisibility(int visibility)
         {
             DataTable schedules = new DataTable();
             SqlDataReader renglon;
             try
             {
                 Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "pro_listAllPromotionsVisibles";
+                Comando.Parameters.Add(new SqlParameter("@visibiliti",SqlDbType.Int));
+                Comando.Parameters["@visibiliti"].Value = visibility;
+
+                Comando.CommandText = "pro_listAllPromotionsByVisivility";
                 Conexion.Open();
                 renglon = Comando.ExecuteReader();
                 schedules.Load(renglon);
@@ -298,16 +301,47 @@ namespace CapaDatos
             return schedules;
         }
 
-        public DataTable lisAllPromotionsVisiblesByBranche(int idBranch)
+        public DataTable lisAllPromotionsVisivilityByBranche(int idBranch,int visivility)
         {
             DataTable schedules = new DataTable();
             SqlDataReader renglon;
             try
             {
                 Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "pro_listAllPromotionsVisiblesByBranche";
+                Comando.CommandText = "pro_listAllPromotionsVisibilityByBranche";
                 Comando.Parameters.Add(new SqlParameter("@idBranch", SqlDbType.Int));
                 Comando.Parameters["@idBranch"].Value = idBranch;
+                Comando.Parameters.Add(new SqlParameter("@visibility", SqlDbType.Int));
+                Comando.Parameters["@visibility"].Value = visivility;
+                Conexion.Open();
+                renglon = Comando.ExecuteReader();
+                schedules.Load(renglon);
+            }
+            catch (SqlException e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                {
+                    Conexion.Close();
+                }
+                Comando.Parameters.Clear();
+            }
+            return schedules;
+        }
+
+        public DataTable listAllPromotionsByCharacteres(string characteres)
+        {
+            DataTable schedules = new DataTable();
+            SqlDataReader renglon;
+            try
+            {
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "pro_listAllPromotionsByCharacteres";
+                Comando.Parameters.Add(new SqlParameter("@characters", SqlDbType.VarChar));
+                Comando.Parameters["@characters"].Value = characteres;
                 Conexion.Open();
                 renglon = Comando.ExecuteReader();
                 schedules.Load(renglon);

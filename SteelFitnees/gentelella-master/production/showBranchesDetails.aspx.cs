@@ -40,7 +40,7 @@ namespace SteelFitnees.gentelella_master.production
         private void getPromotionsByBranch()
         {
             string stridBranche = Request.QueryString["id"];
-            getPromotionsByIdBranche=brancheSerevice.promotionsByBranch(stridBranche);
+            getPromotionsByIdBranche=brancheSerevice.promotionsByBranchAndViisibility(stridBranche,"1");
         }
         private void getBrancheByid()
         {

@@ -230,13 +230,14 @@ namespace CapaLogicaNegocio.Services
             brancheDelete.delete(strId);
         }
         
-        public string promotionsByBranch(string strId)
+        public string promotionsByBranchAndViisibility(string strId,string visivilityStr)
         {
             if (strId == "")
             {
                 throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
             }
-            return Converter.ToJson(promotionTable.tableVisiblesByBranche(Convert.ToInt32(strId))).ToString();
+            int visivility=Convert.ToInt32(visivilityStr);
+            return Converter.ToJson(promotionTable.tableVisivilityByBranche(Convert.ToInt32(strId), visivility)).ToString();
         }
         public Branche getBrancheById(string strId)
         {

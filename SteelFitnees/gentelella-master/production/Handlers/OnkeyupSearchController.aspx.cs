@@ -41,7 +41,29 @@ namespace SteelFitnees.gentelella_master.production.Handlers
             else if (action == "allProducts")
             {
                 onkeyupSearchAllProducts();
+            }else if (action=="byCharacteres")
+            {
+                searchPromotions();
             }
+        }
+        private void searchPromotions()
+        {
+            Dictionary<string,object> data=new Dictionary<string,object>();
+            Response response = new Response();
+            try
+            {
+                var strValue = Request.Form["valueSearch"];
+                var tablePromotionsStr=facadeOnkeyup.tables("promotions",strValue);
+                data.Add("recoverDara", JsonConvert.DeserializeObject<Dictionary<string, object>[]>(tablePromotionsStr));
+                response.success = true;
+            }
+            catch (ServiceException ex) {                
+                response.error = ex.getMessage();
+            }
+
+            data.Add("footeer", "Verificar por favor");
+            response.data = data;
+            getJsonResponse = JsonConvert.SerializeObject(response);
         }
         private void onkeyupSearch()
         {
