@@ -10,6 +10,26 @@
     });    
 }
 
+function requestBranchesChecks() {
+    return new Promise((resolve, reject) => {
+        request(json => {
+            var htmlSlcBranche = ""
+            json.forEach(item => {
+                htmlSlcBranche += `
+                <div class="form-check" style="margin-left: 10px;">
+				    <input class="form-check-input checkBoxP" type="checkbox" value="${item.id}" id="checkBranch${item.id}">
+					    <label style="margin-left: 10px;" class="form-check-label">
+						    ${item.Nombre}
+						</label>
+				</div>`
+            });
+            resolve(htmlSlcBranche);
+        }, 'Handlers/sucursalesController.aspx', false);
+    });
+}
+
+
+
 
 function requestBranchesSlcFilter() {
     request(json => {

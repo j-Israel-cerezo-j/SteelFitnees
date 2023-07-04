@@ -7,7 +7,7 @@ html, body {
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #4158D0;
-    background-image: linear-gradient(43deg, #131212 0%, #684C46 46%, #DF4322 100%);
+    background-image: linear-gradient(43deg, #131212 0%, #14401a 46%, #00802b 100%);
 }
 .body {
     font-family: 'Roboto', sans-serif;
@@ -52,9 +52,9 @@ body {
 }
 
 .btnLogin {
-    background-color: brown;
-    border-color: brown;
-    border-radius:30px;
+    background-color: #198754;
+    border-color: #198754;
+    border-radius: 30px;
 }
 
 .inputsLogin{

@@ -225,6 +225,12 @@
             <a style="font-size:25px;border-radius:30px;position:fixed;bottom: 20px;right: 20px;" id="return" class="btn">Regresar</a>
         </div>
     </div>
+    <a href="https://wa.me/<%=getBranche.telephone %>" class="whatsapp-link">
+        <div class="col-xl-3 col-lg-3 col-md-3" style="background-color:green;font-size:20px;border-radius:30px;position:fixed;bottom: 20px;left: 20px;padding-top:5px;padding-bottom:5px;">
+            <img src="https://cdn.tochat.be/icns/gallery/whatsapps/whatsapp-icon.png" style="margin-left:15px" alt="WhatsApp Logo" class="whatsapp-logo">
+            Quiero mas información
+        </div>
+    </a>
         <!-- Want To work End -->
 </main>    
     <!-- Scroll Up -->

@@ -22,6 +22,7 @@ namespace CapaDatos
             Comando = new SqlCommand();
             Comando.Connection = Conexion;
         }
+
         public DataTable findFromLike(Dictionary<string, string> campos, string table)
         {
             DataTable dt = new DataTable();

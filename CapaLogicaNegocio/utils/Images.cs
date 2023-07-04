@@ -19,8 +19,8 @@ namespace CapaLogicaNegocio.utils
     public class Images
     {
         public static string Save(HttpPostedFile file, string binder,string fileName)
-        {            
-            string pathFileReturn = "";            
+        {
+            string pathFileReturn = "";
             string UpLoadPath =Pathh.Image  + binder;
             if (file == null)
             {

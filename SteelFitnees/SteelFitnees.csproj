@@ -234,6 +234,9 @@
     <Content Include="gentelella-master\production\images\perzonalizadas\userGen\showBranche\portadaFym.jpg" />
     <Content Include="gentelella-master\production\images\perzonalizadas\userGen\showBranche\portadaGalleryGym2.jpg" />
     <Content Include="gentelella-master\production\images\perzonalizadas\userL\285655_user_icon.png" />
+    <Content Include="gentelella-master\production\images\perzonalizadas\whatsApp\whatsApp.png" />
+    <Content Include="gentelella-master\production\images\perzonalizadas\whatsApp\whatsAppLog.png" />
+    <Content Include="gentelella-master\production\images\perzonalizadas\whatsApp\whatsAppLog2.png" />
     <Content Include="gentelella-master\production\indexUser.aspx" />
     <Content Include="gentelella-master\production\js\personalizados\aboutUsAdmin\add.js" />
     <Content Include="gentelella-master\production\js\personalizados\aboutUsAdmin\buildTableRequestOnload.js" />

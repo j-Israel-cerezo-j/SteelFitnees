@@ -30,7 +30,14 @@
             <div class="row">
                 <div class="col-lg-5 mx-auto">
                     <div class="p-5 bg-white rounded shadow-lg">
-                        <h2 class="mb-2 text-center">Steel fitness</h2>
+                        <div class="row" style="justify-content:center;margin-right:60px">
+                            <div class="col-lg-2 col-md-2 col-ms-6 col-xsm-6" style="margin-right:10px;margin-top:15px">
+                                <h4 style="color:#198754"><b>Steel</b></h4>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-ms-6 col-xsm-6" style="text-align:center">
+                                <h1>fitness</h1>
+                            </div>
+                        </div>
                         <p class="text-center lead">Bienvenido, por favor inicie sesión</p>
                         <form runat="server" id="formLogin"> 
                             <span class="invalid-feedback" role="alert" style="display:inline;">

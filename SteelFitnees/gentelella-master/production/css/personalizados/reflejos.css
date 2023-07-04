@@ -129,3 +129,12 @@ tooltip-container {
         transform: rotate(360deg);
     }
 }
+
+.whatsapp-link {
+    display: inline-block;
+}
+
+.whatsapp-logo {
+    width: 40px;
+    height: 40px;
+}
