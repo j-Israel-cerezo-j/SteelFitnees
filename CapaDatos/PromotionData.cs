@@ -90,9 +90,10 @@ namespace CapaDatos
             return ban;
         }
 
-        public int idBrancheByIdPromotions(int id)
+        public List<int> idBrancheByIdPromotions(int id)
         {
-            int idRecuperado = 0;
+            SqlDataReader renglon = null;
+            var idsBranchsByPromotion=new List<int>();
             try
             {
                 Comando.CommandType = CommandType.StoredProcedure;
@@ -101,7 +102,11 @@ namespace CapaDatos
                 Comando.Parameters.Add(new SqlParameter("@id", SqlDbType.Int));
                 Comando.Parameters["@id"].Value = id;                
                 Conexion.Open();
-                idRecuperado = (int)Comando.ExecuteScalar();
+                renglon = Comando.ExecuteReader();
+                while (renglon.Read())
+                {
+                    idsBranchsByPromotion.Add((int)renglon["fkBranche"]);
+                }
             }
             catch (SqlException e)
             {
@@ -119,7 +124,7 @@ namespace CapaDatos
                 }
                 Comando.Parameters.Clear();
             }
-            return idRecuperado;
+            return idsBranchsByPromotion;
 
         }
 

@@ -36,67 +36,56 @@ namespace CapaLogicaNegocio.Services
             var formData = request.Form["data"];
             var promotionsDTO = JsonConvert.DeserializeObject<List<PromotionDTO>>(formData);
             int i = 0;
-            var promotions = new List<Promotion>();
+            var promotionsRequest = new List<Promotion>();
             promotionsDTO.ForEach(promotionDTO => {
-
-                validateFormantBranch(promotionDTO.branche);
                 validateFormantCheck(promotionDTO.check);
 
                 Promotion promotion = new Promotion()
-                {             
-                    id= promotionDTO.id!=null?Convert.ToInt32(promotionDTO.id): 0,
-                    fkBranche = Convert.ToInt32(promotionDTO.branche),
-                    promotionName=promotionDTO.promotionName,
+                {
+                    id = promotionDTO.id != null ? Convert.ToInt32(promotionDTO.id) : 0,
+                    fkBranche = promotionDTO.branches,
+                    promotionName =promotionDTO.promotionName,
                     checkk = Convert.ToBoolean(promotionDTO.check),
                     img = request.Files[$"img{i}"]
 
                 };
                 i++;
-                promotions.Add(promotion);
+                promotionsRequest.Add(promotion);
             });
 
-            var promotionsBranch = branchPromoList.listPromotionsBranch();
-            List<int> idPromotionsInPrmotionBranch = promotionsBranch.Select(promotionB => promotionB.fkPromotion).ToList();
+            var promotionsBranchDB = branchPromoList.listPromotionsBranch();
+            List<int> idPromotionsInPrmotionBranchDB = promotionsBranchDB.Select(promotionB => promotionB.fkPromotion).ToList();
             var fileNamesTem = new List<string>();
             var idsPromotionsTem = new List<int>();
             
             try
             {
-                promotions.ForEach(promotion => {
-                    if (promotion.id==0)
+                promotionsRequest.ForEach(promotionRequest => {
+                    if (promotionRequest.id==0)
                     {
-                        Images.validWrongSizeInImageName(new List<HttpPostedFile>() { promotion.img });
-                        promotion.fileName = rd.Next(1, 100000000).ToString() + promotion.img.FileName;
-                        string path = Images.Save(promotion.img, "promotions", promotion.fileName);
-                        promotion.path = path;
-                        fileNamesTem.Add(promotion.fileName);
-                        var idPromotionInser = promotionAdd.addPromotion(promotion);
+                        Images.validWrongSizeInImageName(new List<HttpPostedFile>() { promotionRequest.img });
+                        promotionRequest.fileName = rd.Next(1, 100000000).ToString() + promotionRequest.img.FileName;
+                        string path = Images.Save(promotionRequest.img, "promotions", promotionRequest.fileName);
+                        promotionRequest.path = path;
+                        fileNamesTem.Add(promotionRequest.fileName);
+                        var idPromotionInser = promotionAdd.addPromotion(promotionRequest);
                         idsPromotionsTem.Add(idPromotionInser);
-                        if (promotion.fkBranche != -1)
+                        if (promotionRequest.fkBranche != null)
                         {
-                            promotionAdd.addPromotionBranch(promotion.fkBranche, idPromotionInser);
+                            foreach (var idBrancheItem in promotionRequest.fkBranche)
+                            {
+                                promotionAdd.addPromotionBranch(Convert.ToInt32(idBrancheItem), idPromotionInser);
+                            }
                         }
                     }
                     else
                     {
-                        promotionUpdate.update(promotion.id, Convert.ToBoolean(promotion.checkk));
-                        if (promotion.fkBranche==-1)
+                        promotionUpdate.update(promotionRequest.id, Convert.ToBoolean(promotionRequest.checkk));
+                        promotionDelete.promotionBrachByidPromotionDelete(promotionRequest.id);
+
+                        foreach (var idBrancheitem in promotionRequest.fkBranche)
                         {
-                            if (idPromotionsInPrmotionBranch.Contains(promotion.id))
-                            {
-                                promotionDelete.promotionBrachByidPromotionDelete(promotion.id);
-                            }                            
-                        }
-                        else
-                        {
-                            if (idPromotionsInPrmotionBranch.Contains(promotion.id))
-                            {
-                                promotionUpdate.updateBrancheInPromotionBranchByPromotion(promotion.id, promotion.fkBranche);
-                            }
-                            else
-                            {
-                                promotionAdd.addPromotionBranch(promotion.fkBranche, promotion.id);
-                            }
+                            promotionAdd.addPromotionBranch(Convert.ToInt32(idBrancheitem), promotionRequest.id);
                         }
                     }
                 });
@@ -178,7 +167,7 @@ namespace CapaLogicaNegocio.Services
             promotionDelete.delete(strIdsPromotionsRequest);
             return Converter.ToJson(promotionTable.table()).ToString();
         }
-        public int idBrancheByPromotion(string idStr)
+        public List<int> idBrancheByPromotion(string idStr)
         {
             
             if (idStr == "")
@@ -186,7 +175,7 @@ namespace CapaLogicaNegocio.Services
                 throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
             }else if (idStr== "undefined")
             {
-                return 0;
+                return null;
             }
             try
             {
@@ -194,7 +183,7 @@ namespace CapaLogicaNegocio.Services
             }
             catch (ExceptionDao ed)
             {
-                return 0;
+                return null;
             }
         }
 

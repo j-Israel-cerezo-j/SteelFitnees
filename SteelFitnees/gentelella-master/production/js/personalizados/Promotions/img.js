@@ -3,7 +3,7 @@ var promotionsOnload=[]
 var indexImgUpdate = 0;
 var indexImgUpdate2 = 0;
 var indexImgAddCards = 0;
-var htmlOptionsSlcBranches = "";
+var htmlChecksBranches = "";
 var fecha = new Date();
 
 function getPrmotionsOnload() {
@@ -11,7 +11,7 @@ function getPrmotionsOnload() {
 }
 
 async function requestHmtlOptions() {
-	htmlOptionsSlcBranches =await requestBranches();
+	htmlChecksBranches = await requestBranchesChecks();
 }
 
 function MostraIma(input) {		
@@ -29,7 +29,7 @@ function MostraIma(input) {
 	for (var i = 0; i < input.files.length; i++) {
 		var fileName = input.files[i].name;
 		var valueIndex = indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate
-		var idBrancheSlc = "branches" + valueIndex
+		var idBranches = "branches" + valueIndex
 		var idCheckVizualize = "checkVizualize" + valueIndex
 		var idInputPromoName = "promotionName" + valueIndex
 		var numeroAleatorio = Math.floor(Math.random() * 1000) + 1;
@@ -68,10 +68,8 @@ function MostraIma(input) {
 							<input class="form-check-input checkBoxVUP" type="checkbox" id="${idCheckVizualize}" value="null" style="font-size: 25px;    ">
 							<label class="form-check-label" for="flexSwitchCheckChecked">Mostrar al usuario</label>
 						</div>
-						<div class="mt-4">
-							<select class="form-select" id="${idBrancheSlc}" aria-label=".form-select" style="border-radius:10px">
-								${htmlOptionsSlcBranches}
-							</select>
+						<div class="mt-4" id="${idBranches}">
+							${htmlChecksBranches}
 						</div>
 						<div class="mt-4" style="margin-left: 20px;">
 							<div id="msjImagenCargadaAutomatica${indexImgUpdate == 0 ? indexImgAddCards : indexImgUpdate}"></div>
@@ -82,7 +80,7 @@ function MostraIma(input) {
 		var htmlContainerImg = document.getElementById("containerImagesUpload").innerHTML;
 		document.getElementById("containerImagesUpload").innerHTML = html2+ htmlContainerImg;
 
-		var promotion = { id: null, img: input.files[i], idSlcBranch: idBrancheSlc, idCheck: idCheckVizualize, idInputNamePromotion: idInputPromoName }
+		var promotion = { id: null, img: input.files[i], idChecksBranchs: idBranches, idCheck: idCheckVizualize, idInputNamePromotion: idInputPromoName }
 		arrayFiles.push(promotion);
 
 		var image = new FileReader();
@@ -114,6 +112,7 @@ function remremoveImag(i, fileName) {
 }
 
 function addPr() {
+	loadingBlock('.loader');
 	addPromotion(addFilesToFormData());
 }
 
@@ -125,12 +124,15 @@ function addFilesToFormData() {
 	var datas=[]		
 	var index = 0
 	arrayFiles.forEach(promotion => {
-
-		var checkVizualizeSelected="" 
-		var brancheSelected = "";
+		var idsBranches=[]
+		var checkVizualizeSelected=""
 		var valueNamePromotion = "";
-		if (document.getElementById(promotion.idSlcBranch) != undefined) {
-			brancheSelected = document.getElementById(promotion.idSlcBranch).value;
+		if (document.getElementById(promotion.idChecksBranchs) != undefined) {
+			var divBranchChecks = document.getElementById(promotion.idChecksBranchs)
+			var checksBoxBranchs = divBranchChecks.querySelectorAll('input[type="checkbox"]')			
+			var checksBranches = Array.from(checksBoxBranchs);
+			var checksSelectedBranchs = checksBranches.filter(check => { return check.checked });
+			idsBranches = checksSelectedBranchs.map(check => check.value);
 		}		
 		if (document.getElementById(promotion.idCheck) != undefined) {
 			var checked=document.getElementById(promotion.idCheck);
@@ -143,7 +145,7 @@ function addFilesToFormData() {
 
 		var data = {
 			id: promotion.id,
-			branche: brancheSelected,
+			branches: idsBranches,
 			check: checkVizualizeSelected,
 			promotionName: valueNamePromotion,
 			img: promotion.img
@@ -152,19 +154,24 @@ function addFilesToFormData() {
 	})
 
 	promotionsOnload.forEach(prom => {
+		var idsBranchesOnload = []
 		var checkVizualizeSelected2 = ""
-		var brancheSelected2 = "";
-		if (document.getElementById(prom.idSlcBranch) != undefined) {
-			brancheSelected2 = document.getElementById(prom.idSlcBranch).value;
+		if (document.getElementById(prom.idDivBranch) != undefined) {
+
+			var divBranchChecks = document.getElementById(prom.idDivBranch)
+			var checksBoxBranchsOnload = divBranchChecks.querySelectorAll('input[type="checkbox"]')
+			var checksBranchesOnload = Array.from(checksBoxBranchsOnload);
+			var checksSelectedBranchsOnload = checksBranchesOnload.filter(check => { return check.checked });
+			idsBranchesOnload = checksSelectedBranchsOnload.map(check => check.value);
+
 		}
 		if (document.getElementById(prom.idCheck) != undefined) {
 			var checked2 = document.getElementById(prom.idCheck);
 			checkVizualizeSelected2 = checked2.checked
-		}		
-
+		}
 		var data = {
 			id: prom.id,
-			branche: brancheSelected2,
+			branches: idsBranchesOnload,
 			check: checkVizualizeSelected2,
 			img: null
 		}
@@ -175,10 +182,8 @@ function addFilesToFormData() {
 		formData.append(`img${indexx}`, object.img);
 		delete object.avatar;
 	});
-
 	arrayFiles = [];
 	promotionsOnload = [];
-
 	formData.append("data", JSON.stringify(datas));
 	return formData
 }
@@ -194,7 +199,7 @@ function buildMsjPromotionsUpload() {
 }
 
 function removeFullPromosUpload() {
-	document.getElementById("form1").reset();
+	document.getElementById("formFile").value = "";
 	arrayFiles = [];
 	document.getElementById("containerImagesUpload").innerHTML = "";
 	buildMsjPromotionsUpload();

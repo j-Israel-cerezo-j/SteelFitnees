@@ -199,6 +199,7 @@
     <Content Include="gentelella-master\production\bootstrap-5.0.2-dist\js\bootstrap.esm.min.js.map" />
     <Content Include="gentelella-master\production\bootstrap-5.0.2-dist\js\bootstrap.js.map" />
     <Content Include="gentelella-master\production\bootstrap-5.0.2-dist\js\bootstrap.min.js.map" />
+    <Content Include="gentelella-master\production\css\personalizados\efectsLoading.css" />
     <Content Include="gentelella-master\production\css\personalizados\branches.css" />
     <Content Include="gentelella-master\production\css\personalizados\cards.css" />
     <Content Include="gentelella-master\production\css\personalizados\map.css" />

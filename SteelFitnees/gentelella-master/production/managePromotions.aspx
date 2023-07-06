@@ -4,6 +4,8 @@
 	<title>Gestionar promociones</title>
     <link href="css/personalizados/buttons.css" rel="stylesheet" />
     <link href="css/personalizados/reflejos.css" rel="stylesheet" />
+    <link href="css/personalizados/efectsLoading.css" rel="stylesheet" />
+    <script src="js/personalizados/utils/loading.js"></script>
 </asp:content> 
 
 <asp:content id="Content1" ContentPlaceHolderID="bodyContent" runat="server">
@@ -155,6 +157,13 @@
 				</div>
 			</form>
 		</div>
+		<figure class="loader" style="display:none">
+			<div class="dot white"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+		</figure>
 	</div>
     <script src="js/personalizados/Promotions/searchPromotions.js"></script>
     <script src="js/personalizados/Promotions/img.js"></script>

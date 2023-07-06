@@ -7,12 +7,11 @@ function returnPromotionsOnload() {
 async function buildPromotionsOnloadAferPost(json) {
 	arrayPromotions=[]
 	document.getElementById("containerImages").innerHTML = ""
-	var htmlOptionsSlcBranches2 = await requestBranches();
+	var htmlChecksBranches2 = await requestBranchesChecks();
 	var lengthPromotions ="Promociones existentes: ("+ json.length+")";
 	var i = 0;
 	json.forEach(async item => {
-		console.log("item ", item)
-		 var idBrancheSlc = "branches" + i
+		 var idDivBranches = "branches" + i
 		 var idCheckVizualize = "checkVizualize" + i
 		 var fileName = item.fileNane;
 		 let html =
@@ -34,10 +33,8 @@ async function buildPromotionsOnloadAferPost(json) {
 							<input class="form-check-input checkBoxVB" type="checkbox" id="${idCheckVizualize}" value="null" style="font-size: 25px;    ">
 							<label class="form-check-label" for="flexSwitchCheckChecked">Visible al usuario</label>
 						</div>
-						<div class="mt-4">
-							<select class="form-select" id="${idBrancheSlc}" aria-label=".form-select" style="border-radius:10px">
-								${htmlOptionsSlcBranches2}
-							</select>
+						<div class="mt-4" id="${idDivBranches}">
+							${htmlChecksBranches2}
 						</div>
 						<div class="mt-4" style="margin-left: 20px;">
 							<div id="msjImagenCargadaAutomatica${i}"></div>
@@ -45,16 +42,20 @@ async function buildPromotionsOnloadAferPost(json) {
 					</div>
 				</div> `
 		 i++;
-		 document.getElementById("containerImages").innerHTML += html;
-		 var idBranche = await requestValueBrancheByPromotion(item.id);
-		 if (idBranche != 0) {
-			 document.getElementById(idBrancheSlc).value = idBranche;
+		document.getElementById("containerImages").innerHTML += html;
+		var idsBranches =[]
+		idsBranches = await requestValueBrancheByPromotion(item.id);
+		if (idsBranches != null) {
+			var checkboxDiv1 = document.getElementById(idDivBranches).querySelectorAll('input[type="checkbox"]');
+			var checkBoxArray = Array.from(checkboxDiv1);
+			checkBoxArray.forEach((check) => {
+				check.checked = idsBranches.includes(parseInt(check.value))
+			})
 		 }
 		 if (document.getElementById(idCheckVizualize) != undefined) {
 			 document.getElementById(idCheckVizualize).checked = item.checkk == "True" ? true : false
 		 }
-		 var newValueIdBranche = idBranche == 0 ? -1 : idBranche
-		 var promotion = { id: item.id, idSlcBranch: idBrancheSlc, idBranchV: newValueIdBranche, idCheck: idCheckVizualize, isCheck: item.checkk == "True" ? true : false }
+		var promotion = { id: item.id, idDivBranch: idDivBranches, idBranchV: idsBranches, idCheck: idCheckVizualize, isCheck: item.checkk == "True" ? true : false }
 		 arrayPromotions.push(promotion);
 	 });
 
@@ -67,8 +68,8 @@ async function buildPromotionsOnloadAferPost(json) {
 
 	setTimeout(() => {
 		activePromoExisting();
-	}, 500)
-	
+		loadingNone('.loader');
+	}, 2000)
 }
 
 function addDataImag(json) {

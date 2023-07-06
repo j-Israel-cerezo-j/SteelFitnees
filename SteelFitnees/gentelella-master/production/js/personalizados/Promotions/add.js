@@ -9,14 +9,6 @@
                 footer: json.data.footeer
             })
         }
-        else {
-            Swal.fire({
-                icon: 'success',
-                title: 'Promociones agregadas.',
-                showConfirmButton: false,
-                timer: 1500
-            })
-        }
         var idBranch = document.getElementById("filter").value;
         if (idBranch != "-1") {
             requestPromotionsByFilterBranch();

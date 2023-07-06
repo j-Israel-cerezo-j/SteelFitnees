@@ -12,7 +12,7 @@ namespace CapaEntidades
     public class Promotion
     {
         public int id { get; set; }
-        public int fkBranche { get; set; }
+        public List<string> fkBranche { get; set; }
         public string promotionName { get; set; }
         public bool checkk { get; set; }
         public HttpPostedFile img { get; set; }

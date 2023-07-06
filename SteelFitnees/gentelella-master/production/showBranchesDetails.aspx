@@ -72,7 +72,7 @@
                 </div>
             </div>
            <input type="hidden" value="<%=getIdBranche %>" id="idBranche" />
-        </section>    
+        </section>
         <!-- About-2 Area End -->
         <%--Horarios inicio--%>
         <div class="row" style="background-color: white;padding-top:35px;">
@@ -115,50 +115,50 @@
         </section>
         <%--Horarios fin--%>
 
-                 <!--? Gallery Area Start -->
-            <div class="gallery-area">
-                <div class="container-fluid p-0 fix">
-                    <div class="row" style="justify-content:center">
-                        <div class="col-lg-6">                    
-                            <div id="carouselExampleDark" class="carousel carousel-dark" data-bs-ride="carousel">
-                                <div class="carousel-indicators">
-                                     <%if (getListImagesById != null && getListImagesById.Count > 0)
-                                    { %>
-                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                        <%for (int i = 1; i < getListImagesById.Count; i++)
-                                            {%>
-                                                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="<%=i %>" aria-label="Slide <%=i+1 %>"></button>
-                                            <%} %>
-                                    <%} %>
-                                </div>
-                                <div class="carousel-inner">
-                                <%if (getListImagesById != null && getListImagesById.Count > 0)
+        <!--? Gallery Area Start -->
+        <div class="gallery-area">
+            <div class="container-fluid p-0 fix">
+                <div class="row" style="justify-content:center">
+                    <div class="col-lg-6">                    
+                        <div id="carouselExampleDark" class="carousel carousel-dark" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                    <%if (getListImagesById != null && getListImagesById.Count > 0)
                                 { %>
-                                    <div class="carousel-item active" data-bs-interval="3000">
-                                        <img src="<%=getListImagesById[0].path%>" class="d-block reflejo" alt="..." width="650" height="450" >
-                                    </div>
-                                     <%for (int i = 1; i < getListImagesById.Count; i++)
-                                    { %>
-                                        <div class="carousel-item" data-bs-interval="3000">
-                                            <img src="<%=getListImagesById[i].path %>" class="d-block reflejo" alt="..." width="650" height="450">
-                                        </div>                          
-                                    <%}%>      
+                                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <%for (int i = 1; i < getListImagesById.Count; i++)
+                                        {%>
+                                            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="<%=i %>" aria-label="Slide <%=i+1 %>"></button>
+                                        <%} %>
                                 <%} %>
-                                </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
                             </div>
+                            <div class="carousel-inner">
+                            <%if (getListImagesById != null && getListImagesById.Count > 0)
+                            { %>
+                                <div class="carousel-item active" data-bs-interval="3000">
+                                    <img src="<%=getListImagesById[0].path%>" class="d-block reflejo" alt="..." width="650" height="450" >
+                                </div>
+                                    <%for (int i = 1; i < getListImagesById.Count; i++)
+                                { %>
+                                    <div class="carousel-item" data-bs-interval="3000">
+                                        <img src="<%=getListImagesById[i].path %>" class="d-block reflejo" alt="..." width="650" height="450">
+                                    </div>                          
+                                <%}%>      
+                            <%} %>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Gallery Area End -->
+        </div>
+        <!-- Gallery Area End -->
         <div class="slider2 mt-5" id="containerPromotionsFatherBranch">
 	        <div class="slide2-track" id="containerPromotions"></div>
         </div>
@@ -194,7 +194,7 @@
                         <div class="wantToWork-caption">
                             <h2>Visitanos pronto</h2>
                         </div>
-                    </div> 
+                    </div>
                     <form id="formComments" class="g-3 needs-validation" novalidate style="width:100%"> 
                         <div style="width:100%" class="col-xl-4 col-lg-4 col-md-8 col-sm-12 col-xsm-12">
                             <label style="color:white" class="form-label">Comentanos tus sugerencias de la sucursal o si fue de tu agrado</label>

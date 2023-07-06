@@ -10,7 +10,7 @@ namespace CapaLogicaNegocio.RecoverData
     public class PromotionRD
     {
         private PromotionData promotionData = new PromotionData();
-        public int idBrancheByPromotion(int id)
+        public List<int> idBrancheByPromotion(int id)
         {
             return promotionData.idBrancheByIdPromotions(id);
         }

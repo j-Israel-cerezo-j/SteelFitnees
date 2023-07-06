@@ -10,7 +10,7 @@ namespace CapaEntidades.DTO
     {
         public string id { get; set; }
         public string promotionName { get; set; }
-        public string branche { get; set; }
+        public List<string> branches { get; set; }
         public string check { get; set; }
     }
 }
