@@ -8,6 +8,13 @@
                 text: json.error,
                 footer: json.data.footeer
             })
+        } else {
+            Swal.fire({
+                icon: 'success',
+                title: 'Promocione(s) guardada(s).',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
         var idBranch = document.getElementById("filter").value;
         if (idBranch != "-1") {

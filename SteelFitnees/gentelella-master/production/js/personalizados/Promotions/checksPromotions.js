@@ -6,7 +6,7 @@
         var arrayCheck = Array.from(checkboxes)
         arrayCheck.map((check) => {
 
-            check.checked = checkSelector.checked ? true : false
+            check.checked = checkSelector.checked;
         });
     }    
 }
@@ -18,7 +18,7 @@ function fullVisiblesOnload() {
         var checkboxesVisibles = document.getElementsByClassName("checkBoxVB");
         var arrayCheckVisibles = Array.from(checkboxesVisibles)
         arrayCheckVisibles.map((check) => {
-            check.checked = checkVisible.checked ? true : false
+            check.checked = checkVisible.checked;
         });
     }
 }
@@ -30,20 +30,18 @@ function fullVisiblesUpload() {
         var checkboxesVisibles = document.getElementsByClassName("checkBoxVUP");
         var arrayCheckVisibles = Array.from(checkboxesVisibles)
         arrayCheckVisibles.map((check) => {
-            check.checked = checkVisible.checked ? true : false
+            check.checked = checkVisible.checked;
         });
     }
 }
 
-function allBranchesCheks() {
-
-    if (document.getElementById("checkAllBranch") != undefined) {
-        var checkSelector = document.getElementById("checkAllBranch")
-        var checkboxes = document.getElementsByClassName("checkBoxSB");
-        var arrayCheck = Array.from(checkboxes)
-        arrayCheck.map((check) => {
-
-            check.checked = checkSelector.checked ? true : false
-        });
+function allBranchesCheks(idDivBranches) {
+    if (document.getElementById("checkAllBranch" + idDivBranches.id) != undefined) {
+        var checkAllBranch = document.getElementById("checkAllBranch" + idDivBranches.id)
+        var divCheckBoxesBranches = document.getElementById(idDivBranches.id).querySelectorAll('input[type="checkbox"]')
+        var checkBoxBranchArray = Array.from(divCheckBoxesBranches)
+        checkBoxBranchArray.forEach(checkItem => {
+            checkItem.checked = checkAllBranch.checked;
+        })         
     }
 }

@@ -66,14 +66,15 @@ function MostraIma(input) {
 					<div class="card-body">
 						<div class="form-check form-switch" style="margin-left: 40px;">
 							<input class="form-check-input checkBoxVUP" type="checkbox" id="${idCheckVizualize}" value="null" style="font-size: 25px;    ">
-							<label class="form-check-label" for="flexSwitchCheckChecked">Mostrar al usuario</label>
+							<label class="form-check-label" for="flexSwitchCheckChecked">Visible al usuario</label>
 						</div>
-						<div class="form-check" style="margin-left: 10px;">
-							<input class="form-check-input checkBoxABP" type="checkbox" id="checkAllBranch">
+						<div class="form-check mt-4" style="margin-left: 10px;">
+							<input class="form-check-input checkBoxABP" type="checkbox" id="checkAllBranch${idBranches}" onchange="allBranchesCheks(${idBranches})">
 							<label style="margin-left: 10px;" class="form-check-label">
-							    Seleccionar todas las sucursales
+							    Todas las sucursales
 							</label>
 						</div>
+						<hr />
 						<div class="mt-4" id="${idBranches}">
 							${htmlChecksBranches}
 						</div>
