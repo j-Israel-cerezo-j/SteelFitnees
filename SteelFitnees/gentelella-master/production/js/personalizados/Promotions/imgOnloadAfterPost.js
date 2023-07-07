@@ -33,7 +33,14 @@ async function buildPromotionsOnloadAferPost(json) {
 							<input class="form-check-input checkBoxVB" type="checkbox" id="${idCheckVizualize}" value="null" style="font-size: 25px;    ">
 							<label class="form-check-label" for="flexSwitchCheckChecked">Visible al usuario</label>
 						</div>
-						<div class="mt-4" id="${idDivBranches}">
+						<div class="form-check mt-4" style="margin-left: 10px;">
+							<input class="form-check-input checkBoxABP" type="checkbox" id="checkAllBranch" onchange="allBranchesCheks()">
+							<label style="margin-left: 10px;" class="form-check-label">
+							    Todas las sucursales
+							</label>
+						</div>
+						<hr />
+						<div class="mt-2" id="${idDivBranches}">
 							${htmlChecksBranches2}
 						</div>
 						<div class="mt-4" style="margin-left: 20px;">

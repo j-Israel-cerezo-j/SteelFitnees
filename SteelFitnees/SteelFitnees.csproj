@@ -381,6 +381,7 @@
     <Content Include="gentelella-master\production\js\personalizados\utils\HttpClient\GET\GET.js" />
     <Content Include="gentelella-master\production\js\personalizados\utils\HttpClient\POST\Post.js" />
     <Content Include="gentelella-master\production\js\personalizados\utils\loadAnimation.js" />
+    <Content Include="gentelella-master\production\js\personalizados\utils\loading.js" />
     <Content Include="gentelella-master\production\js\personalizados\utils\onkeyupInputEmpty.js" />
     <Content Include="gentelella-master\production\js\personalizados\utils\onkeyupNoSelectInSlc.js" />
     <Content Include="gentelella-master\production\js\personalizados\utils\returnOpeningStatus.js" />

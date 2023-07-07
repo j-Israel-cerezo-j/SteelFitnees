@@ -34,3 +34,16 @@ function fullVisiblesUpload() {
         });
     }
 }
+
+function allBranchesCheks() {
+
+    if (document.getElementById("checkAllBranch") != undefined) {
+        var checkSelector = document.getElementById("checkAllBranch")
+        var checkboxes = document.getElementsByClassName("checkBoxSB");
+        var arrayCheck = Array.from(checkboxes)
+        arrayCheck.map((check) => {
+
+            check.checked = checkSelector.checked ? true : false
+        });
+    }
+}

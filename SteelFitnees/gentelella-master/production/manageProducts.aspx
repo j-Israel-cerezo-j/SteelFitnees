@@ -28,6 +28,7 @@
 							</div>						
                         </div>
 					</div>
+					
 					<div class="col-lg-6 col-md-6 col-sm-12 form-group" style="margin-top:40px">
 						<div class="mb-3" id="containerFilePhotograph">
 							<input style="border-radius:6px" accept="image/jpeg,image/png"  class="form-control" required="required" type="file" id="formFile" onchange="MostraIma(this)" name="fotografia">

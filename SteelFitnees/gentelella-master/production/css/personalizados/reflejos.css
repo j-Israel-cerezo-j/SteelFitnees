@@ -97,6 +97,10 @@ tooltip-container {
     padding: 10px
 }
 
+.checkBoxABP {
+    padding: 10px
+}
+
 
 @import url('//fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap');
 
