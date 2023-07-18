@@ -21,7 +21,7 @@ namespace CapaLogicaNegocio.utils
         public static string Save(HttpPostedFile file, string binder,string fileName)
         {
             string pathFileReturn = "";
-            string UpLoadPath =Pathh.Image  + binder;
+            string UpLoadPath =Pathh.pathImag() + binder;
             if (file == null)
             {
                 throw new ServiceException("Cargar archivo correctamente");
@@ -30,12 +30,13 @@ namespace CapaLogicaNegocio.utils
             {
                 try
                 {
+                    string newUpLoadPath = UpLoadPath.Replace("\\", "/");
                     string ext = System.IO.Path.GetExtension(file.FileName);
                     if (ext != ".jpg" && ext != ".png"&& ext != ".JPG" && ext != ".PNG"&& ext != "JPG" && ext != "PNG" && ext != "PNG"&&ext!= ".jfif"&&ext!= ".jpeg" && ext != ".JPEG")
                     {
                         throw new ServiceException(MessageErrors.MessageErrors.wrongFileExtension("png o jpg"));
                     }
-                    string pathFile = UpLoadPath + "/" + fileName;
+                    string @pathFile = newUpLoadPath + "/" + fileName;
                     pathFileReturn = "images/perzonalizadas/" + binder + "/" + fileName;
                     file.SaveAs(pathFile);
                 }
@@ -52,7 +53,7 @@ namespace CapaLogicaNegocio.utils
         }
         public static void Delete(string binder, string fileName)
         {
-            string path = Pathh.Image + binder+ "/" + fileName;
+            string path = Pathh.pathImag()+ binder+ "/" + fileName;
             if (File.Exists(path))
             {
                 try
@@ -67,8 +68,8 @@ namespace CapaLogicaNegocio.utils
         }
         public static void move(string binderOrige, string binderDest, string fileName)
         {
-            string sourceFile = Pathh.Image + binderOrige + "/" + fileName;
-            string destinationFolder = Pathh.Image + binderDest;
+            string sourceFile = Pathh.pathImag()+ binderOrige + "/" + fileName;
+            string destinationFolder = Pathh.pathImag()+ binderDest;
 
             // Si la carpeta de destino no existe, la creamos
             if (!Directory.Exists(destinationFolder))

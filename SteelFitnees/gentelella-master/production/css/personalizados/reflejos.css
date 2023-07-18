@@ -101,6 +101,15 @@ tooltip-container {
     padding: 10px
 }
 
+.checkRedBGRRed {
+    background-color: red !important;
+    border-color: red !important;
+}
+.checkRedBGRGreen {
+    background-color: green !important;
+    border-color: green !important;
+}
+
 
 @import url('//fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap');
 

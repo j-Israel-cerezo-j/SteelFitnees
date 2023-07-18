@@ -18,23 +18,18 @@
 				página de detalles de la sucursal.
 			</p>
 			<form id="form1" class="row g-3 needs-validation" enctype="multipart/form-data" novalidate>
-				<div class="card" style="padding-bottom:20px;padding-top:30px"> 
-					<div class="row">						
-						<div class="form-group col-lg-3 col-md-3 col-sm-3 col-xsm-12">
-							<button type="button" onclick="cleanFilter()" class="btn btn-secondary">Limpiar filtro</button>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-3 col-xsm-12 form-group">
-							<div class="form-group">
-								<button type="button" class="btn btnSuccesss reflejo" id="add" onclick="addPr()">
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-										<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-									</svg>
-									Guardar todo
-								</button>
-							</div>
-						</div>
-					</div>					
-					<hr />
+				<div class="form-group col-lg-3 col-md-3 col-sm-3 col-xsm-12">
+					<button style="font-size:18px;z-index:2;border-radius:30px;position:fixed;bottom: 20px;left: 250px;padding-top:10px;padding-bottom:10px;" type="button" onclick="cleanFilter()" class="btn btn-secondary">Limpiar filtro</button>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-3 col-xsm-12">
+					<button style="font-size:18px;z-index:2;border-radius:30px;position:fixed;bottom: 20px;right: 20px;padding-top:10px;padding-bottom:10px" type="button" class="btn btnSuccesss reflejo" id="add" onclick="addPr()">
+						<svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+							<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+						</svg>
+						Guardar todo
+					</button>
+				</div>
+				<div class="card" style="padding-bottom:20px;padding-top:30px">
 					<ul class="nav nav-tabs">
 						<li id="promoExisting" class="nav-item">
 							<a id="promoExistingA"  class="nav-link active" data-toggle="tab" href="#home">Promociones existentes</a>

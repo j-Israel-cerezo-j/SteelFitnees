@@ -5,9 +5,21 @@
         var checkboxes = document.getElementsByClassName("checkBoxP");
         var arrayCheck = Array.from(checkboxes)
         arrayCheck.map((check) => {
-
             check.checked = checkSelector.checked;
+            if (checkSelector.checked) {
+                check.classList.add("checkRedBGRRed")
+                checkSelector.classList.add("checkRedBGRRed")
+            } else {
+                check.classList.remove("checkRedBGRRed")
+                checkSelector.classList.remove("checkRedBGRRed")
+            }
         });
+
+        if (checkSelector.checked) {
+            checkSelector.classList.add("checkRedBGRRed")
+        } else {
+            checkSelector.classList.remove("checkRedBGRRed")
+        }
     }    
 }
 
@@ -42,6 +54,21 @@ function allBranchesCheks(idDivBranches) {
         var checkBoxBranchArray = Array.from(divCheckBoxesBranches)
         checkBoxBranchArray.forEach(checkItem => {
             checkItem.checked = checkAllBranch.checked;
+            if (checkAllBranch.checked) {
+                checkItem.classList.add("checkRedBGRGreen")
+                checkAllBranch.classList.add("checkRedBGRGreen")
+            } else {
+                checkItem.classList.remove("checkRedBGRGreen")
+                checkAllBranch.classList.remove("checkRedBGRGreen")
+            }
         })         
+    }
+}
+
+function addClassColorCheckBox(check,classs) {
+    if (check.checked) {
+        check.classList.add(classs)
+    } else {
+        check.classList.remove(classs)
     }
 }

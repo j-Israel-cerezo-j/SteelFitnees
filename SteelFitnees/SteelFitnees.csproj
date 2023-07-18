@@ -6569,6 +6569,7 @@
     <Folder Include="gentelella-master\production\images\perzonalizadas\background\" />
     <Folder Include="gentelella-master\production\images\perzonalizadas\branches\" />
     <Folder Include="gentelella-master\production\images\perzonalizadas\products\" />
+    <Folder Include="gentelella-master\production\images\perzonalizadas\promotions\" />
     <Folder Include="gentelella-master\production\turnjs4\samples\basic\pics\" />
   </ItemGroup>
   <PropertyGroup>
