@@ -169,7 +169,6 @@ namespace CapaLogicaNegocio.Services
         }
         public List<int> idBrancheByPromotion(string idStr)
         {
-            
             if (idStr == "")
             {
                 throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
@@ -191,7 +190,7 @@ namespace CapaLogicaNegocio.Services
         {
             fileNames.ForEach(fileName => {
                 Images.Delete("promotions",fileName);
-            });            
+            });
         }
 
         private void rollbackPromotions(List<int> idsPromotions)
@@ -199,7 +198,7 @@ namespace CapaLogicaNegocio.Services
             if (idsPromotions.Count() > 0) {
                 var idsStr = Converter.ToString(idsPromotions);
                 promotionDelete.delete(idsStr.ToString());
-            }            
+            }
         }
         private void validateFormantBranch(string fkBranche)
         {

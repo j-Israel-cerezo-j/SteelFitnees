@@ -46,7 +46,7 @@
                                 <h2><%=getBranche.nombre %></h2>
                                 <b style="font-size:20px" id="msjOpeningStatus"></b>
                                 <a href="#nav-tab"><p>Consulta nuestros horarios abajo</p></a>
-                            </div>                            
+                            </div>
                             <p class="pera-top"><%=getBranche.descripcion %></p>
                             <p class="pera-top">
                                 <i class="fa fa-phone" aria-hidden="true"></i> 
@@ -146,11 +146,15 @@
                             <%} %>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span>
+                                    <img src="images/perzonalizadas/icons/left.png" />
+                                </span>
                                 <span class="visually-hidden">Previous</span>
                             </button>
                             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span>
+                                    <img src="images/perzonalizadas/icons/right.png" />
+                                </span>
                                 <span class="visually-hidden">Next</span>
                             </button>
                         </div>

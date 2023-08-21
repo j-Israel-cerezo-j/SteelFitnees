@@ -15,7 +15,7 @@
             })
     } else {
         Swal.fire({
-            title: '¿Estas seguro de eliminar?',
+            title: '¿Estas seguro de eliminar ' + checkboxesSeleccionados.length + ' promocion(es)?',
             text: "¡Ya no podras revertir el cambio!",
             icon: 'warning',
             showCancelButton: true,
@@ -26,7 +26,6 @@
             if (result.isConfirmed) {
                 var ids = checkboxesSeleccionados.map(check => check.value).join(',');
                 var formData = new FormData();
-                console.log('idsToDelete', ids)
                 formData.append('idsToDelete', ids);
                 deleteWhithForm('Handlers/promotionsController.aspx?meth=delete', formData, (json) => {
                     document.getElementById("containerImages").innerHTML = "";

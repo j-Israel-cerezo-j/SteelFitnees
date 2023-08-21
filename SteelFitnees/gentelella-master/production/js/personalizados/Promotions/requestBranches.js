@@ -18,9 +18,9 @@ function requestBranchesChecks() {
                 htmlSlcBranche += `
                 <div class="form-check" style="margin-left: 10px;">
 				    <input class="form-check-input checkBoxSB" type="checkbox" value="${item.id}" id="checkBranch${item.id}" onchange="addClassColorCheckBox(this,'checkRedBGRGreen')">
-					    <label style="margin-left: 10px;" class="form-check-label">
-						    ${item.Nombre}
-						</label>
+					<label style="margin-left: 10px;" class="form-check-label">
+					    ${item.Nombre}
+					</label>
 				</div>`
             });
             resolve(htmlSlcBranche);

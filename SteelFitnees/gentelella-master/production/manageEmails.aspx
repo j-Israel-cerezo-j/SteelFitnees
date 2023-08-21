@@ -14,7 +14,7 @@
 			<form id="form1" class="row g-3 needs-validation" novalidate>
 				<div class="row mt-4">
 					<label class="form-label"><b>Asunto:</b></label>
-					<div class="col-lg-6 col-md-6 col-sm-12 col-xsm-12 form-group" style="margin-top:15px;padding-right: 0px;padding-left:10px;">						
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xsm-12 form-group" style="margin-top:15px;padding-right: 0px;padding-left:10px;">
 						<input  style="border-radius:6px" type="text" class="form-control has-feedback-left" required="required" name="asunto" id="asunto" placeholder="Asunto del correo"  onkeyup="onkeyupInputEmtyy('asunto')">
 						<div class="valid-feedback">
 								¡ Buen trabajo!
@@ -63,7 +63,7 @@
 						<span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
 					</div>
 				</div>--%>
-				<div class="row mt-3">					
+				<div class="row mt-3">
 					<div class="col-lg-6 col-md-6 col-sm-12 form-group">
 						<div class="mb-3" id="containerFilePhotograph">
 							<input style="border-radius:6px" accept="image/jpeg,image/png"  class="form-control" required="required" type="file" id="formFile" onchange="MostraIma(this)" name="image">
@@ -83,20 +83,8 @@
 							</div>
 						</div>
 					</div>
-				</div>				
-				<div class="row mt-4" style="justify-content:center">
-					<label class="form-label"><b>Cuerpo del correo:</b></label>
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xsm-12 form-group" style="padding-right: 0px;padding-left:10px;">
-						<textarea style="border-radius:6px" class="form-control" rows="6" required="required" name="info" id="info" placeholder="Redacte el correo a mandar aqui por favor"  onkeyup="onkeyupInputEmtyy('info')"></textarea>						
-						<div class="valid-feedback">
-								¡ Buen trabajo!
-						</div>
-						<div class="invalid-feedback">
-							Favor de redactar el correo a mandar
-						</div>
-					</div>
 				</div>
-				<div class="row  justify-content-center" style="margin-top:30px" >
+				<div class="row  justify-content-center" style="margin-top:30px">
 					<div class="col-md-6 col-sm-6">
 						<div class="form-group row">
 							<div class="col-md-6 col-sm-6" id="ctrl-principal">
@@ -121,10 +109,6 @@
 					</div>
 				</div>
 			</form>
-			<%-- Tabla Inicio--%>
-			<div class="clearfix"></div>
-			<div id="containerTableBranches"></div>			
-			<%-- Tabla Final--%>			
 		</div>
 	</div>
     <script src="js/personalizados/SendEmails/ajax/sendAjax.js"></script>

@@ -19,17 +19,25 @@ namespace CapaLogicaNegocio.Services
     {
         private AboutUsAdd usAdd=new AboutUsAdd();
         private AboutUsList usList=new AboutUsList();
+        private AboutUsUpdate usUpdate=new AboutUsUpdate();
+        private AboutUsDelete usDelete=new AboutUsDelete();
         private AboutUsDataRec UsDataRec = new AboutUsDataRec();
-        private AboutUsUpdate usUpdate=new AboutUsUpdate(); 
-        private AboutUsDelete usDelete=new AboutUsDelete(); 
-        public bool add(Dictionary<string, string> request)
+        public bool persistence(Dictionary<string, string> request, string strId="")
         {
             bool ban = false;
             var camposEmptysOrNull = Validation.isNullOrEmptys(request);
             if (camposEmptysOrNull.Count == 0)
             {
                 AboutUs aboutUs = buildObjAboutUs(request);
-                return usAdd.add(aboutUs);
+                if (strId == "")
+                {
+                    return usAdd.add(aboutUs);
+                }
+                else
+                {
+                    aboutUs.idAbout = Convert.ToInt32(strId);
+                    return usUpdate.update(aboutUs);
+                }
             }
             else
             {
@@ -43,6 +51,7 @@ namespace CapaLogicaNegocio.Services
             }
             return ban;
         }
+
         public string jsonAboutUs()
         {
             return Converter.ToJson(usList.listAboutUs()).ToString();
@@ -65,32 +74,7 @@ namespace CapaLogicaNegocio.Services
             string jsonRecoerDtes = Converter.ToJson(aboutUs);
             return jsonRecoerDtes;
         }
-        public bool updateAboutUs(Dictionary<string, string> request, string strId)
-        {
-            if (strId == "")
-            {
-                throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
-            }
-            var camposEmptysOrNull = Validation.isNullOrEmptys(request);
-            bool ban = false;
-            if (camposEmptysOrNull.Count == 0)
-            {
-                AboutUs aboutUs = buildObjAboutUs(request);
-                aboutUs.idAbout = Convert.ToInt32(strId);
-                return usUpdate.update(aboutUs);
-            }
-            else
-            {
-                foreach (var item in camposEmptysOrNull)
-                {
-                    if (item.Value)
-                    {
-                        throw new ServiceException(item.Key + " esta vacío");
-                    }
-                }
-            }
-            return ban;
-        }
+       
         public bool deleteAboutUs(string strIds)
         {
             return usDelete.delete(strIds);

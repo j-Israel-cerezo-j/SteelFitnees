@@ -77,7 +77,6 @@ namespace CapaLogicaNegocio
             {
                 case "commentsCharacteres":
                     return brancheSerevice.onkeyupCommentsByIdBranchesAndCharacteres(id, result);
-
                 default:
                     throw new ServiceException(MessageErrors.MessageErrors.catalogNoExists);
             }

@@ -28,11 +28,11 @@ namespace Validaciones.utils
             }
             return value;
         }
-        public static Dictionary<string, bool> isNullOrEmptys(Dictionary<string, string> attributes)
+        public static Dictionary<string, bool> isNullOrEmptys(Dictionary<string, string> requestForm)
         {
             char[] charsToTrim = { ' ' };
             var result = new Dictionary<string, bool>();
-            foreach (var item in attributes)
+            foreach (var item in requestForm)
             {
                 string valueWithoutSpaces = item.Value.Trim(charsToTrim);
                 if (String.IsNullOrEmpty(valueWithoutSpaces))

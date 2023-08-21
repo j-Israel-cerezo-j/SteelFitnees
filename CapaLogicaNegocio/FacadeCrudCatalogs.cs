@@ -26,17 +26,17 @@ namespace CapaLogicaNegocio
             switch (catalog)
             {
                 case "horas":
-                    return hoursService.add(request);
+                    return hoursService.persistence(request);
                 case "dias":
-                    return dayService.add(request);
+                    return dayService.persistence(request);
                 case "productos":
-                    return productService.add(request, filesList);
+                    return productService.persistence(request, filesList);
                 case "sucursales":
                     return brancheSerevice.add(request, filesList);
                 case "productBranche":
-                    return productBranchService.add(request);
+                    return productBranchService.persistence(request);
                 case "aboutUsAdmin":
-                    return aboutUsService.add(request);
+                    return aboutUsService.persistence(request);
                 default:
                     throw new ServiceException(MessageErrors.MessageErrors.catalogNoExists);
 
@@ -51,17 +51,17 @@ namespace CapaLogicaNegocio
             switch (catalog)
             {
                 case "horas":
-                    return hoursService.updateHours(request,strId);
+                    return hoursService.persistence(request,strId);
                 case "dias":
-                    return dayService.updateDays(request, strId);                
+                    return dayService.persistence(request, strId);                
                 case "productos":
-                    return productService.updateProduct(request, strId, filesList);
+                    return productService.persistence(request, filesList, strId);
                 case "sucursales":
                     return brancheSerevice.update(request, strId, filesList);
                 case "productBranche":
-                    return productBranchService.updateProductBranche(request, strId);
+                    return productBranchService.persistence(request, strId);
                 case "aboutUsAdmin":
-                    return aboutUsService.updateAboutUs(request, strId);
+                    return aboutUsService.persistence(request, strId);
                 default:
                     throw new ServiceException(MessageErrors.MessageErrors.catalogNoExists);
 

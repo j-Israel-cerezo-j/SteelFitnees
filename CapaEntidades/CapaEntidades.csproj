@@ -51,6 +51,7 @@
     <Compile Include="Contact.cs" />
     <Compile Include="Day.cs" />
     <Compile Include="DTO\PromotionDTO.cs" />
+    <Compile Include="Galery.cs" />
     <Compile Include="Hour.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="Product.cs" />

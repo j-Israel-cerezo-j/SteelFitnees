@@ -29,7 +29,8 @@ namespace CapaLogicaNegocio.Services
         private ProductUpdate productUpdate = new ProductUpdate();
         private ProductTable productTable = new ProductTable();
         private Random rd = new Random();
-        public bool add(Dictionary<string, string> request, List<HttpPostedFile> filesList)
+
+        public bool persistence(Dictionary<string, string> request, List<HttpPostedFile> filesList,string strId="")
         {
             bool ban = false;
             var camposEmptysOrNull = Validation.isNullOrEmptys(request);
@@ -39,13 +40,23 @@ namespace CapaLogicaNegocio.Services
                 Product product = new Product();
                 product.Nombre = RetrieveAtributes.values(request, "product");
                 product.Descripcion = RetrieveAtributes.values(request, "description");
+
                 foreach (var file in filesList)
                 {
                     string fileName = rd.Next(1, 100000000).ToString() + file.FileName;
-                    product.imagen = Images.Save(file, "products", fileName);
-                    product.filename = fileName;
-                }               
-                return productAdd.add(product);
+                    product.imagen = defineImagePath(request, file, fileName, strId);
+                    product.filename = defineTheSourceOfTheFileName(file, "fileName", "Productos", "idProducto", strId, fileName);
+                }
+
+                if (strId == "")
+                {                   
+                    return productAdd.add(product);
+                }
+                else
+                {
+                    product.idProducto = Convert.ToInt32(strId);
+                    return productUpdate.productUpdate(product);
+                }
             }
             else
             {
@@ -59,40 +70,6 @@ namespace CapaLogicaNegocio.Services
             }
             return ban;
         }
-        public bool updateProduct(Dictionary<string, string> request, string strId, List<HttpPostedFile> filesList)
-        {
-            if (strId == "")
-                throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
-
-            bool ban = false;
-            var camposEmptysOrNull = Validation.isNullOrEmptys(request);            
-            if (camposEmptysOrNull.Count == 0)
-            {
-                Images.validWrongSizeInImageName(filesList);
-                Product product = new Product();
-                product.idProducto = Convert.ToInt32(strId);
-                product.Nombre = RetrieveAtributes.values(request, "product");
-                product.Descripcion = RetrieveAtributes.values(request, "description");
-                foreach (var file in filesList)
-                {
-                    string fileName = rd.Next(1, 100000000).ToString() + file.FileName;
-                    product.imagen = defineImagePath(request, file, fileName, product.idProducto);
-                    product.filename = defineTheSourceOfTheFileName(file, "fileName", "Productos", "idProducto", product.idProducto.ToString(), fileName);
-                }                
-                return productUpdate.productUpdate(product);
-            }
-            else
-            {
-                foreach (var item in camposEmptysOrNull)
-                {
-                    if (item.Value)
-                    {
-                        throw new ServiceException(item.Key + " esta vacío");
-                    }
-                }
-            }
-            return ban;
-        }        
         public string jsonProducts()
         {
             return Converter.ToJson(productList.listProduct()).ToString();
@@ -158,24 +135,29 @@ namespace CapaLogicaNegocio.Services
             products.Add(productData.dataProduct(Convert.ToInt32(strId)));
             return Converter.ToJson(products);
         }
-        private string defineImagePath(Dictionary<string, string> request, HttpPostedFile file,string fileName,int idProduct)
-        {
-            string path = "";
+        private string defineImagePath(Dictionary<string, string> request, HttpPostedFile file,string fileName,string idProduct)
+        {            
             if (file == null || file.FileName == "")
             {
-                path = RetrieveAtributes.values(request, "imageUploadAut");
+                return  RetrieveAtributes.values(request, "imageUploadAut");
             }
             else
             {
-                string fileNameRe = (string)Select.findFieldWhere("fileName", "Productos", "idProducto", idProduct.ToString());
-                Images.Delete("products", fileNameRe);
-                path =Images.Save(file, "products", fileName);
+                if (idProduct!="")
+                {
+                    string fileNameRe = (string)Select.findFieldWhere("fileName", "Productos", "idProducto", idProduct);
+                    Images.Delete("products", fileNameRe);
+                    return Images.Save(file, "products", fileName);
+                }
+                else
+                {
+                    return Images.Save(file, "products", fileName);
+                }
             }
-            return path;
         }
-        protected string defineTheSourceOfTheFileName(HttpPostedFile file, string slcField, string table, string fieldWhere, string idUser,string fileName)
+        protected string defineTheSourceOfTheFileName(HttpPostedFile file, string slcField, string table, string fieldWhere, string idProduct,string fileName)
         {
-            return file == null || file.FileName == "" ? retiveFileNameUser(slcField, table, fieldWhere, idUser) : fileName;
+            return file == null || file.FileName == "" ? (idProduct== "" ? fileName : retiveFileNameUser(slcField, table, fieldWhere, idProduct))  : fileName;
         }
         private string retiveFileNameUser(string field, string table, string fieldWhere, string idsUser)
         {

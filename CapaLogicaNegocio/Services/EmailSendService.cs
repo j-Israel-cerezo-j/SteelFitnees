@@ -15,6 +15,7 @@ using CapaLogicaNegocio.Lists;
 using System.Net.Mime;
 using System.IO;
 using System.Web;
+using System.Diagnostics.Contracts;
 
 namespace CapaLogicaNegocio.Services
 {
@@ -30,39 +31,47 @@ namespace CapaLogicaNegocio.Services
             {
                 try
                 {
-                    MailMessage mensaje = new MailMessage();
+                    var contacts = contactList.contacts();
+                    if (contacts.Count == 0)
+                    {
+                        throw new ServiceException(MessageErrors.MessageErrors.empetyContacts);
+                    }
+
                     string affair = RetrieveAtributes.values(request, "asunto");
                     string bodyEmail = RetrieveAtributes.values(request, "info");
-                    //string senderMail = RetrieveAtributes.values(request, "senderMail");
-                    //string senderPassword = RetrieveAtributes.values(request, "senderPassword");
-
-                    //if (!senderMail.Contains("@"))
-                    //{
-                    //    throw new ServiceException(MessageErrors.MessageErrors.incorrectFomrmantEmail);
-                    //}
                     Attachment adjunto = new Attachment(file.InputStream, file.FileName);
-                    AlternateView htmlView = AlternateView.CreateAlternateViewFromString(Html.htmlTemplateEmail(), null, "text/html");
                     LinkedResource linkedResource = new LinkedResource(adjunto.ContentStream, adjunto.ContentType);
-                    linkedResource.ContentId = "imagenEnHTML";
-                    htmlView.LinkedResources.Add(linkedResource);                   
-                    mensaje.AlternateViews.Add(htmlView);
-                    //string smpEmailSend = selectSmpEmailSend(senderMail);
+                    // Agregar los destinatarios al mensaje
+                    foreach (var contact in contacts)
+                    {
+                        MailMessage mensaje = new MailMessage();
+                        //string senderMail = RetrieveAtributes.values(request, "senderMail");
+                        //string senderPassword = RetrieveAtributes.values(request, "senderPassword");
 
-                    mensaje = addMessageRecipients(mensaje);
-                    
-                    mensaje.From = new MailAddress("steelfitnessclub@hotmail.com");
-                    mensaje.Subject = affair;
-                    mensaje.Body = bodyEmail;
+                        //if (!senderMail.Contains("@"))
+                        //{
+                        //    throw new ServiceException(MessageErrors.MessageErrors.incorrectFomrmantEmail);
+                        //}
+                        AlternateView htmlView = AlternateView.CreateAlternateViewFromString(Html.htmlTemplateEmail(contact.nombre, affair), null, "text/html");
+                        linkedResource.ContentId = "imagenEnHTML";
+                        htmlView.LinkedResources.Add(linkedResource);
+                        mensaje.AlternateViews.Add(htmlView);
+                        mensaje.Subject = "¡Hola, " + contact.nombre + "! " + affair;
+                        mensaje.To.Add(contact.email);
+                        //string smpEmailSend = selectSmpEmailSend(senderMail);
+                        mensaje.From = new MailAddress("steelfitnessclub@hotmail.com");
+                        mensaje.Body = bodyEmail;
 
-                    // Crear un objeto SmtpClient para enviar el correo
-                    SmtpClient cliente = new SmtpClient("smtp-mail.outlook.com");
-                    cliente.Port = 587; // Puerto del servidor SMTP
-                    cliente.Credentials = new NetworkCredential("steelfitnessclub@hotmail.com", "OldBear765");
-                    cliente.EnableSsl = true; // Usar SSL para conexión segura
+                        // Crear un objeto SmtpClient para enviar el correo
+                        SmtpClient cliente = new SmtpClient("smtp-mail.outlook.com");
+                        cliente.Port = 587; // Puerto del servidor SMTP
+                        cliente.Credentials = new NetworkCredential("steelfitnessclub@hotmail.com", "OldBear765");
+                        cliente.EnableSsl = true; // Usar SSL para conexión segura
 
-                    // Enviar el mensaje
-                    cliente.Send(mensaje);
-                    ban = true;
+                        // Enviar el mensaje
+                        cliente.Send(mensaje);
+                        ban = true;
+                    }
                 }
                 catch (SmtpException e)
                 {

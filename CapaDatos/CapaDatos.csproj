@@ -54,6 +54,7 @@
     <Compile Include="DeleteWhere.cs" />
     <Compile Include="ExceptionDao\ExceptionDao.cs" />
     <Compile Include="FindFrom.cs" />
+    <Compile Include="GaleryData.cs" />
     <Compile Include="InsesrtsManysDatos.cs" />
     <Compile Include="ProductBrancheData.cs" />
     <Compile Include="ProductData.cs" />

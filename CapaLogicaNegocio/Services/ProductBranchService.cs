@@ -22,14 +22,22 @@ namespace CapaLogicaNegocio.Services
         private ProductBranchDelete branchDelete=new ProductBranchDelete();
         private ProductBranchRecoverData recoverData =new ProductBranchRecoverData();
         private ProductBrancheUpdate brancheUpdate=new ProductBrancheUpdate();
-        public bool add(Dictionary<string, string> request)
+        public bool persistence(Dictionary<string, string> request,string strId="")
         {
             bool ban = false;
             var camposEmptysOrNull = Validation.isNullOrEmptys(request);
             if (camposEmptysOrNull.Count == 0)
             {
-                ProductBranch productBranch= buildObjProductBranch(request);
-                return productBrancheAdd.add(productBranch);
+                ProductBranch productBranch = buildObjProductBranch(request);
+                if (strId == "")
+                {
+                    return productBrancheAdd.add(productBranch);
+                }
+                else
+                {
+                    productBranch.idRegistro = Convert.ToInt32(strId);
+                    return brancheUpdate.update(productBranch);
+                }
             }
             else
             {
@@ -113,32 +121,6 @@ namespace CapaLogicaNegocio.Services
             };
             string jsonRecoerDtes = Converter.ToJson(hours);
             return jsonRecoerDtes;
-        }
-        public bool updateProductBranche(Dictionary<string, string> request, string strId)
-        {
-            if (strId == "")
-            {
-                throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
-            }
-            var camposEmptysOrNull = Validation.isNullOrEmptys(request);
-            bool ban = false;
-            if (camposEmptysOrNull.Count == 0)
-            {
-                ProductBranch productBranch = buildObjProductBranch(request);
-                productBranch.idRegistro = Convert.ToInt32(strId);
-                return brancheUpdate.update(productBranch);
-            }
-            else
-            {
-                foreach (var item in camposEmptysOrNull)
-                {
-                    if (item.Value)
-                    {
-                        throw new ServiceException(item.Key + " esta vacío");
-                    }
-                }
-            }
-            return ban;
         }
         public List<string> onkeyupSearchList(string caracteres)
         {

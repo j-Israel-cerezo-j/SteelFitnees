@@ -25,7 +25,7 @@ namespace CapaLogicaNegocio.Services
         private DayUpdate dayUpdate = new DayUpdate();
         private HoursList hoursList = new HoursList();
         private DaysTable daysTable= new DaysTable();
-        public bool add(Dictionary<string, string> request)
+        public bool persistence(Dictionary<string, string> request,string strId="")
         {
             bool ban = false;
             var camposEmptysOrNull = Validation.isNullOrEmptys(request);
@@ -33,34 +33,15 @@ namespace CapaLogicaNegocio.Services
             {
                 Day day = new Day();
                 day.dia = RetrieveAtributes.values(request, "dia");
-                return dayAdd.add(day);
-            }
-            else
-            {
-                foreach (var item in camposEmptysOrNull)
+                if (strId == "")
                 {
-                    if (item.Value)
-                    {
-                        throw new ServiceException(item.Key + " esta vacío");
-                    }
+                    return dayAdd.add(day);
                 }
-            }
-            return ban;
-        }
-        public bool updateDays(Dictionary<string, string> request, string strId)
-        {
-            if (strId == "")
-            {
-                throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
-            }
-            var camposEmptysOrNull = Validation.isNullOrEmptys(request);
-            bool ban = false;
-            if (camposEmptysOrNull.Count == 0)
-            {
-                Day day = new Day();
-                day.idDia = Convert.ToInt32(strId);
-                day.dia = RetrieveAtributes.values(request, "dia");
-                return dayUpdate.update(day);
+                else
+                {
+                    day.idDia = Convert.ToInt32(strId);                    
+                    return dayUpdate.update(day);
+                }
             }
             else
             {

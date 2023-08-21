@@ -51,11 +51,11 @@ namespace CapaLogicaNegocio.Services
             var camposEmptysOrNull = Validation.isNullOrEmptys(request);            
             if (camposEmptysOrNull.Count == 0)
             {
-                string strTelephone = RetrieveAtributes.values(request, "telephone");
-                var fileNamesTem=new List<string>();
                 Images.validWrongSizeInImageName(filesList);
                 Images.validateThatTheNameOfTheImageDoesNotHaveCommas(filesList);
+                string strTelephone = RetrieveAtributes.values(request, "telephone");
                 validateRequestTelephone(strTelephone);
+                var fileNamesTem = new List<string>();
                 Branche branche = new Branche();
                 branche.nombre = RetrieveAtributes.values(request, "nombre");
                 branche.descripcion = RetrieveAtributes.values(request, "description");
@@ -207,7 +207,6 @@ namespace CapaLogicaNegocio.Services
                 }
             }
         }
-
 
         private void rollbackUpdate(int idBranch, List<Image> images)
         {
@@ -404,11 +403,9 @@ namespace CapaLogicaNegocio.Services
 
         }
         public string onkeyupSearchTable(string caracteres)
-        {            
+        {
             return Converter.ToJson(brancheList.listBranchesBranchesByCharactersConicidences(caracteres));
-
         }
-
         private void validateRequestTelephone(string strTelephone)
         {
             if (!Validation.numericalFormat(strTelephone))

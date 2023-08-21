@@ -28,14 +28,23 @@ namespace CapaLogicaNegocio.Services
         private HourUpdate hourUpdate = new HourUpdate();
         private SchedulesTable schedulesTable = new SchedulesTable();
 
-        public bool add(Dictionary<string, string> request)
+        public bool persistence(Dictionary<string, string> request,string strId="")
         {
             bool ban = false;
             var camposEmptysOrNull = Validation.isNullOrEmptys(request);
             if (camposEmptysOrNull.Count == 0)
             {
                 Hour hour = buildObjHour(request);
-                return addHour.add(hour);
+                if (strId == "")
+                {
+                    return addHour.add(hour);
+                }
+                else
+                {
+                    hour.idHorario = Convert.ToInt32(strId);
+                    return hourUpdate.hourUpdate(hour);
+
+                }
             }
             else
             {
@@ -57,32 +66,6 @@ namespace CapaLogicaNegocio.Services
         public bool deleteHours(string strIds)
         {
             return deleteHour.delete(strIds);
-        }
-        public bool updateHours(Dictionary<string, string> request, string strId)
-        {
-            if (strId=="")
-            {
-                throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
-            }
-            var camposEmptysOrNull = Validation.isNullOrEmptys(request);
-            bool ban = false;
-            if (camposEmptysOrNull.Count == 0)
-            {                                
-                Hour hour = buildObjHour(request);
-                hour.idHorario = Convert.ToInt32(strId);
-                return hourUpdate.hourUpdate(hour);
-            }
-            else
-            {
-                foreach (var item in camposEmptysOrNull)
-                {
-                    if (item.Value)
-                    {
-                        throw new ServiceException(item.Key + " esta vacío");
-                    }
-                }
-            }
-            return ban;
         }
         public string jsonRecoverData(string strId)
         {            

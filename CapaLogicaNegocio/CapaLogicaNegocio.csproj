@@ -79,6 +79,7 @@
     <Compile Include="Adds\BrancheAdd.cs" />
     <Compile Include="Adds\ContacAdd.cs" />
     <Compile Include="Adds\DayAdd.cs" />
+    <Compile Include="Adds\GaleryAdd.cs" />
     <Compile Include="Adds\ProductAdd.cs" />
     <Compile Include="Adds\ProductBrancheAdd.cs" />
     <Compile Include="Adds\PromotionAdd.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="RecoverData\AboutUsDataRec.cs" />
     <Compile Include="RecoverData\BrancheRData.cs" />
     <Compile Include="RecoverData\DataHour.cs" />
+    <Compile Include="RecoverData\GaleryRD.cs" />
     <Compile Include="RecoverData\ProductBranchRecoverData.cs" />
     <Compile Include="RecoverData\ProductData.cs" />
     <Compile Include="RecoverData\DayData.cs" />
@@ -121,6 +123,7 @@
     <Compile Include="Services\DayService.cs" />
     <Compile Include="Services\EmailSendService.cs" />
     <Compile Include="Services\FileService.cs" />
+    <Compile Include="Services\GaleryService.cs" />
     <Compile Include="Services\HoursService.cs" />
     <Compile Include="Services\ProductBranchService.cs" />
     <Compile Include="Services\ProductService.cs" />

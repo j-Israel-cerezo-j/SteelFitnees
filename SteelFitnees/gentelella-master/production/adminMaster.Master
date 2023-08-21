@@ -81,6 +81,7 @@
                                         <li><a ><i class="fa fa-edit" ></i> Catálogos <span class="fa fa-chevron-down"></span></a>
                                             <ul class="nav child_menu" >
                                                 <li><a href="manageDays.aspx">Dias</a></li>
+                                                <li><a href="manageGalery.aspx">Galeria</a></li>
                                                 <li><a href="manageProducts.aspx">Productos</a></li>
                                                 <li><a href="manageBranches.aspx">Sucursales</a></li>
                                                 <li><a href="aboutUsAdmin.aspx">Sobre nosotros</a></li>

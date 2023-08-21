@@ -185,9 +185,8 @@ function addFilesToFormData() {
 		datas.push(data)
 	})
 
-	datas.forEach(function (object, indexx) {
+	datas.forEach((object, indexx) => {
 		formData.append(`img${indexx}`, object.img);
-		delete object.avatar;
 	});
 	arrayFiles = [];
 	promotionsOnload = [];

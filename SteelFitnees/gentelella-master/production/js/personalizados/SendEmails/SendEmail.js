@@ -4,7 +4,6 @@
         event.preventDefault()
         event.stopPropagation()
         onkeyupInputEmtyy('asunto');
-        onkeyupInputEmtyy('info');
     } else {
         Swal.fire({
             title: '¿Estas seguro de tus datos?',

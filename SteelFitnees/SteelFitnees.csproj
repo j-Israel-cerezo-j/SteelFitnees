@@ -213,6 +213,7 @@
     <Content Include="gentelella-master\production\Handlers\emailController.aspx" />
     <Content Include="gentelella-master\production\Handlers\filesController.aspx" />
     <Content Include="gentelella-master\production\Handlers\filterByController.aspx" />
+    <Content Include="gentelella-master\production\Handlers\GaleryController.aspx" />
     <Content Include="gentelella-master\production\Handlers\hoursController.aspx" />
     <Content Include="gentelella-master\production\Handlers\imagesController.aspx" />
     <Content Include="gentelella-master\production\Handlers\OnkeyupSearchController.aspx" />
@@ -227,7 +228,10 @@
     <Content Include="gentelella-master\production\images\perzonalizadas\404\erro404g.jpg" />
     <Content Include="gentelella-master\production\images\perzonalizadas\aboutUs\misongym.png" />
     <Content Include="gentelella-master\production\images\perzonalizadas\fotter\steelFotter.jpg" />
+    <Content Include="gentelella-master\production\images\perzonalizadas\icons\left.png" />
+    <Content Include="gentelella-master\production\images\perzonalizadas\icons\play.png" />
     <Content Include="gentelella-master\production\images\perzonalizadas\icons\portadaFym-fotor-bg-remover-20230511125220.png" />
+    <Content Include="gentelella-master\production\images\perzonalizadas\icons\right.png" />
     <Content Include="gentelella-master\production\images\perzonalizadas\login\images.jpg" />
     <Content Include="gentelella-master\production\images\perzonalizadas\login\portadaGalleryGym2.jpg" />
     <Content Include="gentelella-master\production\images\perzonalizadas\userGen\showBranche\portada3.jpg" />
@@ -296,6 +300,9 @@
     <Content Include="gentelella-master\production\js\personalizados\Dayass\TableOnload.js" />
     <Content Include="gentelella-master\production\js\personalizados\Dayass\update.js" />
     <Content Include="gentelella-master\production\js\personalizados\FacadeCatalogosRecoverData\switchCatalogosRecoverData.js" />
+    <Content Include="gentelella-master\production\js\personalizados\GaleryAdmin\AddImg.js" />
+    <Content Include="gentelella-master\production\js\personalizados\GaleryAdmin\buildGaleryOnload.js" />
+    <Content Include="gentelella-master\production\js\personalizados\GaleryAdmin\buildImgPostBack.js" />
     <Content Include="gentelella-master\production\js\personalizados\Galery\addUrlReturn.js" />
     <Content Include="gentelella-master\production\js\personalizados\hours\add.js" />
     <Content Include="gentelella-master\production\js\personalizados\hours\buildTableOnload.js" />
@@ -393,6 +400,7 @@
     <Content Include="gentelella-master\production\Login.aspx" />
     <Content Include="gentelella-master\production\manageDays.aspx" />
     <Content Include="gentelella-master\production\manageEmails.aspx" />
+    <Content Include="gentelella-master\production\manageGalery.aspx" />
     <Content Include="gentelella-master\production\manageProducts.aspx" />
     <Content Include="gentelella-master\production\managePromotions.aspx" />
     <Content Include="gentelella-master\production\principal.Master" />
@@ -6402,6 +6410,13 @@
     <Compile Include="gentelella-master\production\Handlers\filterByController.aspx.designer.cs">
       <DependentUpon>filterByController.aspx</DependentUpon>
     </Compile>
+    <Compile Include="gentelella-master\production\Handlers\GaleryController.aspx.cs">
+      <DependentUpon>GaleryController.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gentelella-master\production\Handlers\GaleryController.aspx.designer.cs">
+      <DependentUpon>GaleryController.aspx</DependentUpon>
+    </Compile>
     <Compile Include="gentelella-master\production\Handlers\hoursController.aspx.cs">
       <DependentUpon>hoursController.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -6500,6 +6515,13 @@
     <Compile Include="gentelella-master\production\manageEmails.aspx.designer.cs">
       <DependentUpon>manageEmails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="gentelella-master\production\manageGalery.aspx.cs">
+      <DependentUpon>manageGalery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gentelella-master\production\manageGalery.aspx.designer.cs">
+      <DependentUpon>manageGalery.aspx</DependentUpon>
+    </Compile>
     <Compile Include="gentelella-master\production\manageHours.aspx.cs">
       <DependentUpon>manageHours.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -6568,6 +6590,7 @@
   <ItemGroup>
     <Folder Include="gentelella-master\production\images\perzonalizadas\background\" />
     <Folder Include="gentelella-master\production\images\perzonalizadas\branches\" />
+    <Folder Include="gentelella-master\production\images\perzonalizadas\galery\" />
     <Folder Include="gentelella-master\production\images\perzonalizadas\products\" />
     <Folder Include="gentelella-master\production\images\perzonalizadas\promotions\" />
     <Folder Include="gentelella-master\production\turnjs4\samples\basic\pics\" />
