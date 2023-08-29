@@ -14,6 +14,7 @@ using CapaLogicaNegocio.utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -108,6 +109,11 @@ namespace CapaLogicaNegocio.Services
         public string jsonPromotions()
         {
             return Converter.ToJson(promotionTable.table()).ToString();
+        }
+
+        public DataTable jsonPromotionsTable()
+        {
+            return promotionTable.table();
         }
 
         public string promotionsSearching(string strValue)

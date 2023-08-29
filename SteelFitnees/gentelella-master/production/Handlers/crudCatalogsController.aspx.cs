@@ -8,6 +8,8 @@ using CapaLogicaNegocio;
 using CapaEntidades;
 using Newtonsoft.Json;
 using CapaLogicaNegocio.Exceptions;
+using System.Web.Http;
+
 namespace SteelFitnessWEB.gentelella_master.production.Handlers
 {
     public partial class crudCatalogsController : System.Web.UI.Page
@@ -21,7 +23,7 @@ namespace SteelFitnessWEB.gentelella_master.production.Handlers
             {
 
                 add();
-            }            
+            }
             else if (type == "delete")
             {
                 requestDelete();
@@ -35,6 +37,7 @@ namespace SteelFitnessWEB.gentelella_master.production.Handlers
                 requestUpdate();
             }
         }
+
         private void add()
         {            
             var data = new Dictionary<string, Object>();

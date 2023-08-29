@@ -24,32 +24,16 @@ namespace CapaLogicaNegocio.Services
         private AboutUsDataRec UsDataRec = new AboutUsDataRec();
         public bool persistence(Dictionary<string, string> request, string strId="")
         {
-            bool ban = false;
-            var camposEmptysOrNull = Validation.isNullOrEmptys(request);
-            if (camposEmptysOrNull.Count == 0)
+            AboutUs aboutUs = buildObjAboutUs(request);
+            if (strId == "")
             {
-                AboutUs aboutUs = buildObjAboutUs(request);
-                if (strId == "")
-                {
-                    return usAdd.add(aboutUs);
-                }
-                else
-                {
-                    aboutUs.idAbout = Convert.ToInt32(strId);
-                    return usUpdate.update(aboutUs);
-                }
+                isEmpty(aboutUs);
+                return usAdd.add(aboutUs);
             }
-            else
-            {
-                foreach (var item in camposEmptysOrNull)
-                {
-                    if (item.Value)
-                    {
-                        throw new ServiceException(item.Key + " esta vacío");
-                    }
-                }
-            }
-            return ban;
+
+            aboutUs.idAbout = Convert.ToInt32(strId);
+            isEmpty(aboutUs, nameof(aboutUs.idAbout));
+            return usUpdate.update(aboutUs);
         }
 
         public string jsonAboutUs()
@@ -86,6 +70,23 @@ namespace CapaLogicaNegocio.Services
             aboutUs.vision = RetrieveAtributes.values(request, "vision").Trim();
             aboutUs.valores = RetrieveAtributes.values(request, "valores").Trim();
             return aboutUs;
+        }
+        private void isEmpty(AboutUs aboutUs, string id = "")
+        {
+            var isEmptyWhitId = "";
+            if (id != null && id != "")
+            {
+                isEmptyWhitId = Validation.empty(aboutUs, nameof(aboutUs.idAbout));
+            }
+            else
+            {
+                isEmptyWhitId = Validation.empty(aboutUs);
+            }
+
+            if (isEmptyWhitId != null)
+            {
+                throw new ServiceException(isEmptyWhitId + MessageErrors.MessageErrors.isEmpty);
+            }
         }
     }
 }

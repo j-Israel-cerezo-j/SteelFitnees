@@ -25,6 +25,14 @@ namespace CapaEntidades
             this.vision = (string)Validation.getValue(renglon, "vision");
             this.valores = (string)Validation.getValue(renglon, "valores");
         }
+        public bool empty()
+        {
+            return string.IsNullOrWhiteSpace(this.mision) || string.IsNullOrWhiteSpace(this.vision) || string.IsNullOrWhiteSpace(this.valores)|| this.idAbout==0;
+        }
+        public bool emptyExceptId()
+        {
+            return string.IsNullOrWhiteSpace(this.mision) || string.IsNullOrWhiteSpace(this.vision) || string.IsNullOrWhiteSpace(this.valores);
+        }
 
         override
         public string ToString()

@@ -16,26 +16,28 @@ namespace CapaLogicaNegocio.Services
         private ContacAdd contacAdd=new ContacAdd();
         public bool add(Dictionary<string, string> request)
         {
-            bool ban = false;
-            var camposEmptysOrNull = Validation.isNullOrEmptys(request);
-            if (camposEmptysOrNull.Count == 0)
+            Contact contac = new Contact();
+            contac.nombre = RetrieveAtributes.values(request, "nombre");
+            contac.email = RetrieveAtributes.values(request, "email");
+            isEmpty(contac);
+            return contacAdd.add(contac);
+        }
+        private void isEmpty(Contact contact, string id = "")
+        {
+            var isEmptyWhitId = "";
+            if (id != null && id != "")
             {
-                Contact contac = new Contact();
-                contac.nombre = RetrieveAtributes.values(request, "nombre");
-                contac.email = RetrieveAtributes.values(request, "email");
-                return contacAdd.add(contac);
+                isEmptyWhitId = Validation.empty(contact, nameof(contact.idInformacion));
             }
             else
             {
-                foreach (var item in camposEmptysOrNull)
-                {
-                    if (item.Value)
-                    {
-                        throw new ServiceException(item.Key + " esta vacío");
-                    }
-                }
+                isEmptyWhitId = Validation.empty(contact);
             }
-            return ban;
+
+            if (isEmptyWhitId != null)
+            {
+                throw new ServiceException(isEmptyWhitId + MessageErrors.MessageErrors.isEmpty);
+            }
         }
     }
 }

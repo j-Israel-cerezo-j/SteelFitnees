@@ -24,32 +24,15 @@ namespace CapaLogicaNegocio.Services
         private ProductBrancheUpdate brancheUpdate=new ProductBrancheUpdate();
         public bool persistence(Dictionary<string, string> request,string strId="")
         {
-            bool ban = false;
-            var camposEmptysOrNull = Validation.isNullOrEmptys(request);
-            if (camposEmptysOrNull.Count == 0)
+            ProductBranch productBranch = buildObjProductBranch(request);
+            if (strId == "")
             {
-                ProductBranch productBranch = buildObjProductBranch(request);
-                if (strId == "")
-                {
-                    return productBrancheAdd.add(productBranch);
-                }
-                else
-                {
-                    productBranch.idRegistro = Convert.ToInt32(strId);
-                    return brancheUpdate.update(productBranch);
-                }
+                isEmpty(productBranch);
+                return productBrancheAdd.add(productBranch);
             }
-            else
-            {
-                foreach (var item in camposEmptysOrNull)
-                {
-                    if (item.Value)
-                    {
-                        throw new ServiceException(item.Key + " esta vacío");
-                    }
-                }
-            }
-            return ban;
+            productBranch.idRegistro = Convert.ToInt32(strId);
+            isEmpty(productBranch, nameof(productBranch.idRegistro));
+            return brancheUpdate.update(productBranch);
         }
         public bool deleteProductBranch(string strIds)
         {
@@ -133,6 +116,24 @@ namespace CapaLogicaNegocio.Services
             var namesTypeDateTime = new List<string>() { "horaInicio", "horaCierre" };
             return Converter.ToJson(productBrancheTable.ByCharacters(caracteres)).ToString();
 
+        }
+
+        private void isEmpty(ProductBranch productBranch, string id = "")
+        {
+            var isEmptyWhitId = "";
+            if (id != null && id != "")
+            {
+                isEmptyWhitId = Validation.empty(productBranch, nameof(productBranch.idRegistro));
+            }
+            else
+            {
+                isEmptyWhitId = Validation.empty(productBranch);
+            }
+
+            if (isEmptyWhitId != null)
+            {
+                throw new ServiceException(isEmptyWhitId + MessageErrors.MessageErrors.isEmpty);
+            }
         }
     }
 }

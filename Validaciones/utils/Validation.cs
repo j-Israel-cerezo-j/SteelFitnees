@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.Reflection;
 
 namespace Validaciones.utils
 {
@@ -60,6 +61,28 @@ namespace Validaciones.utils
                 }
             }
             return result;
+        }
+        public static string empty(object entity,string nameId="")
+        {
+            Type tipe= entity.GetType();
+            PropertyInfo[] properties = tipe.GetProperties();
+
+            foreach (var propeti in properties)
+            {
+                var value= propeti.GetValue(entity);
+                if (propeti.Name == nameId)
+                {
+                    if ((int)value == 0)
+                    {
+                        return propeti.Name;
+                    }
+                }
+                else if (value==null || (value is string && string.IsNullOrWhiteSpace((string)value)))
+                {                    
+                    return propeti.Name;
+                }
+            }
+            return null;
         }
         public static bool IsEmail(string email)
         {

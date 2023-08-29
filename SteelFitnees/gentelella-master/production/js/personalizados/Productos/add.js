@@ -9,8 +9,7 @@
         onkeyupInputEmtyy('formFile');
     } else {
         var formData = new FormData(document.getElementById("form1"));
-        catalogosAddUpdateDelete('add', formData);
+        catalogosAddUpdateDelete('add', formData);   
     }
-
-    form.classList.add('was-validated')
+   form.classList.add('was-validated')    
 }

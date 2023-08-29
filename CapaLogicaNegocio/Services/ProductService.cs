@@ -31,44 +31,26 @@ namespace CapaLogicaNegocio.Services
         private Random rd = new Random();
 
         public bool persistence(Dictionary<string, string> request, List<HttpPostedFile> filesList,string strId="")
-        {
-            bool ban = false;
-            var camposEmptysOrNull = Validation.isNullOrEmptys(request);
-            if (camposEmptysOrNull.Count == 0)
+        {           
+            Images.validWrongSizeInImageName(filesList);
+            Product product = new Product();
+            product.Nombre = RetrieveAtributes.values(request, "product");
+            product.Descripcion = RetrieveAtributes.values(request, "description");
+            foreach (var file in filesList)
             {
-                Images.validWrongSizeInImageName(filesList);
-                Product product = new Product();
-                product.Nombre = RetrieveAtributes.values(request, "product");
-                product.Descripcion = RetrieveAtributes.values(request, "description");
-
-                foreach (var file in filesList)
-                {
-                    string fileName = rd.Next(1, 100000000).ToString() + file.FileName;
-                    product.imagen = defineImagePath(request, file, fileName, strId);
-                    product.filename = defineTheSourceOfTheFileName(file, "fileName", "Productos", "idProducto", strId, fileName);
-                }
-
-                if (strId == "")
-                {                   
-                    return productAdd.add(product);
-                }
-                else
-                {
-                    product.idProducto = Convert.ToInt32(strId);
-                    return productUpdate.productUpdate(product);
-                }
+                string fileName = rd.Next(1, 100000000).ToString() + file.FileName;
+                product.imagen = defineImagePath(request, file, fileName, strId);
+                product.filename = defineTheSourceOfTheFileName(file, "fileName", "Productos", "idProducto", strId, fileName);
             }
-            else
+
+            if (strId != "")
             {
-                foreach (var item in camposEmptysOrNull)
-                {
-                    if (item.Value)
-                    {
-                        throw new ServiceException(item.Key + " esta vacío");
-                    }
-                }
+                product.idProducto = Convert.ToInt32(strId);
+                isEmpty(product, nameof(product.idProducto));
+                return productUpdate.productUpdate(product);                
             }
-            return ban;
+            isEmpty(product);
+            return productAdd.add(product);
         }
         public string jsonProducts()
         {
@@ -131,8 +113,10 @@ namespace CapaLogicaNegocio.Services
             {
                 throw new ServiceException(MessageErrors.MessageErrors.idRecordEmpty);
             }
-            var products = new List<Product>();
-            products.Add(productData.dataProduct(Convert.ToInt32(strId)));
+            var products = new List<Product>
+            {
+                productData.dataProduct(Convert.ToInt32(strId))
+            };
             return Converter.ToJson(products);
         }
         private string defineImagePath(Dictionary<string, string> request, HttpPostedFile file,string fileName,string idProduct)
@@ -205,6 +189,24 @@ namespace CapaLogicaNegocio.Services
                 throw new ServiceException(MessageErrors.MessageErrors.formantIncorrectNumber);
             }
             return Converter.ToJson(productTable.tableProductsByPrices(Convert.ToDecimal(strPriceMin),Convert.ToDecimal(strPriceMax)), "idProducto").ToString();
+        }
+
+        private void isEmpty(Product product,string id="")
+        {
+            var isEmptyWhitId = "";
+            if (id!=null && id != "")
+            {
+                isEmptyWhitId = Validation.empty(product, nameof(product.idProducto));
+            }
+            else
+            {
+                isEmptyWhitId = Validation.empty(product);
+            }
+
+            if (isEmptyWhitId != null)
+            {
+                throw new ServiceException(isEmptyWhitId + MessageErrors.MessageErrors.isEmpty);
+            }
         }
     }
 }

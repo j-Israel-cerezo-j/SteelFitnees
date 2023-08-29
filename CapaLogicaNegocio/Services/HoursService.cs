@@ -30,33 +30,15 @@ namespace CapaLogicaNegocio.Services
 
         public bool persistence(Dictionary<string, string> request,string strId="")
         {
-            bool ban = false;
-            var camposEmptysOrNull = Validation.isNullOrEmptys(request);
-            if (camposEmptysOrNull.Count == 0)
+            Hour hour = buildObjHour(request);
+            if (strId == "")
             {
-                Hour hour = buildObjHour(request);
-                if (strId == "")
-                {
-                    return addHour.add(hour);
-                }
-                else
-                {
-                    hour.idHorario = Convert.ToInt32(strId);
-                    return hourUpdate.hourUpdate(hour);
-
-                }
+                isEmpty(hour);
+                return addHour.add(hour);
             }
-            else
-            {
-                foreach (var item in camposEmptysOrNull)
-                {
-                    if (item.Value)
-                    {
-                        throw new ServiceException(item.Key + " esta vacío");
-                    }
-                }
-            }
-            return ban;
+            hour.idHorario = Convert.ToInt32(strId);
+            isEmpty(hour, nameof(hour.idHorario));
+            return hourUpdate.hourUpdate(hour);
         }
         public string jsonHoursTable()
         {
@@ -136,6 +118,24 @@ namespace CapaLogicaNegocio.Services
             var namesTypeDateTime = new List<string>() { "horaInicio", "horaCierre" };
             return Converter.ToJson(schedulesTable.ByCharacters(caracteres),true,namesTypeDateTime).ToString();
 
+        }
+
+        private void isEmpty(Hour hour, string id = "")
+        {
+            var isEmptyWhitId = "";
+            if (id != null && id != "")
+            {
+                isEmptyWhitId = Validation.empty(hour, nameof(hour.idHorario));
+            }
+            else
+            {
+                isEmptyWhitId = Validation.empty(hour);
+            }
+
+            if (isEmptyWhitId != null)
+            {
+                throw new ServiceException(isEmptyWhitId + MessageErrors.MessageErrors.isEmpty);
+            }
         }
     }
 }

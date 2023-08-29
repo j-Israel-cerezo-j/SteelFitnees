@@ -25,35 +25,18 @@ namespace CapaLogicaNegocio.Services
         private DayUpdate dayUpdate = new DayUpdate();
         private HoursList hoursList = new HoursList();
         private DaysTable daysTable= new DaysTable();
-        public bool persistence(Dictionary<string, string> request,string strId="")
+        public bool persistence(Dictionary<string, string> request, string strId = "")
         {
-            bool ban = false;
-            var camposEmptysOrNull = Validation.isNullOrEmptys(request);
-            if (camposEmptysOrNull.Count == 0)
+            Day day = new Day();
+            day.dia = RetrieveAtributes.values(request, "dia");
+            if (strId != "")
             {
-                Day day = new Day();
-                day.dia = RetrieveAtributes.values(request, "dia");
-                if (strId == "")
-                {
-                    return dayAdd.add(day);
-                }
-                else
-                {
-                    day.idDia = Convert.ToInt32(strId);                    
-                    return dayUpdate.update(day);
-                }
+                day.idDia = Convert.ToInt32(strId);
+                isEmpty(day, nameof(day.idDia));
+                return dayUpdate.update(day);
             }
-            else
-            {
-                foreach (var item in camposEmptysOrNull)
-                {
-                    if (item.Value)
-                    {
-                        throw new ServiceException(item.Key + " esta vacío");
-                    }
-                }
-            }
-            return ban;
+            isEmpty(day);
+            return dayAdd.add(day);
         }
         public bool deleteDays(string strIds)
         {
@@ -94,6 +77,23 @@ namespace CapaLogicaNegocio.Services
         {
             return Converter.ToJson(dayList.tableDaysByCharactersConicidences(caracteres));
 
+        }
+        private void isEmpty(Day day, string id = "")
+        {
+            var isEmptyWhitId = "";
+            if (id != null && id != "")
+            {
+                isEmptyWhitId = Validation.empty(day, nameof(day.idDia));
+            }
+            else
+            {
+                isEmptyWhitId = Validation.empty(day);
+            }
+
+            if (isEmptyWhitId != null)
+            {
+                throw new ServiceException(isEmptyWhitId + MessageErrors.MessageErrors.isEmpty);
+            }
         }
     }
 }
