@@ -1,0 +1,157 @@
+﻿.reflejo {
+    position: relative;
+    -moz-box-shadow: 4px 4px 4px rgba(0, 0, 0,0.5);
+    -webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, .5);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, .5);
+}
+
+
+.greenMenu {
+    background: #28a745 linear-gradient(180deg,#48b461,#28a745) repeat-x!important;
+    color: #fff;
+}
+
+.cardsBranche {
+    margin: 50px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 22px rgba(0,0,0,.15));
+    background: hsla(0,0%,100%,.8);
+    backdrop-filter: blur(13px);
+    border-radius: 20px;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    border: 0 solid #e2e8f0;
+    text-align: -webkit-match-parent;
+}
+.cardsProducts {
+    margin-bottom: 40px;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+    padding-left: 0;
+    padding-right: 0;
+    list-style: none outside;
+    box-sizing: border-box;
+    display: list-item;
+    font-family: "Raleway";
+    border-radius: 10px;
+    padding: 20px 20px 0;
+    border: 1px solid transparent;
+    border-bottom: none;
+    margin-bottom: 30px;
+    zoom: 1;
+    position: relative;
+    margin-bottom: 12px;
+    list-style: none outside;
+    text-decoration: none;
+    transition: 0.5s;
+    color: #0066cc;
+    background: transparent;
+    margin: 0;
+    width: auto;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+
+tooltip-container {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-content {
+    display: none;
+    position: sticky;
+    background-color: white;
+    color: #fff;
+    padding: 8px;
+    border-radius: 4px;
+    z-index: 1;
+}
+
+.tooltip-container:hover .tooltip-content {
+    display: block;
+}
+
+.linea {
+    border: 1px solid gray;
+}
+
+.scrollable-div {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.checkBoxP {
+    padding: 10px
+}
+
+.checkBoxVB {
+    padding: 10px
+}
+
+.checkBoxSB {
+    padding: 10px
+}
+
+.checkBoxVUP {
+    padding: 10px
+}
+
+.checkBoxABP {
+    padding: 10px
+}
+
+.checkRedBGRRed {
+    background-color: red !important;
+    border-color: red !important;
+}
+.checkRedBGRGreen {
+    background-color: green !important;
+    border-color: green !important;
+}
+
+
+@import url('//fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap');
+
+#contenedor {
+    display: grid;
+    place-content: center;
+    height: 100vh;
+    color: black;
+}
+
+.cargando {
+    position: relative;
+    color: black;
+    margin-top: 2em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase
+}
+
+.rueda {
+    border: 10px solid rgba(255, 255, 255, .3);
+    border-radius: 50%;
+    border-left-color:black;
+    width: 80px;
+    height: 80px;
+    animation: giro 1s linear infinite;
+}
+
+@keyframes giro {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.whatsapp-link {
+    display: inline-block;
+}
+
+.whatsapp-logo {
+    width: 40px;
+    height: 40px;
+}
